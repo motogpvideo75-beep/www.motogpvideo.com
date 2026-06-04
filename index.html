@@ -3,157 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N-Sport Live | Canlı Yayın Merkezi</title>
-    <!-- Video oynatıcı için gerekli modern kütüphane (Plyr) -->
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <title>MotoGP Video - CANLI: Seans Arenası & Takım Kadroları</title>
     <style>
-        * {
+        /* Ultra Modern Netflix & Canlı Yayın Estetiği */
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        body {
-            background-color: #0d0e12;
-            color: #ffffff;
+
+        header {
+            background-color: #0a0a0a;
+            padding: 15px 4%;
+            border-bottom: 3px solid #e10600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-size: 24px; font-weight: 900; text-transform: uppercase; }
+        .logo span { color: #e10600; }
+        
+        .live-badge {
+            background-color: #e10600;
+            color: white;
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: uppercase;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        .main-container {
+            max-width: 1450px;
+            margin: 25px auto;
+            padding: 0 4%;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            gap: 35px;
         }
-        header {
-            background-color: #161822;
-            padding: 15px 20px;
-            text-align: center;
-            border-bottom: 2px solid #e50914;
-        }
-        header h1 {
-            font-size: 24px;
-            color: #e50914;
-            letter-spacing: 1px;
-        }
-        .main-container {
-            display: flex;
-            flex: 1;
-            padding: 20px;
+
+        /* 🎬 CANLI ARENA: VİDEO VE SOHBET */
+        .live-arena {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
             gap: 20px;
+            background-color: #0e0e0e;
+            border: 1px solid #222;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
         }
-        .player-section {
-            flex: 3;
+
+        @media (max-width: 992px) {
+            .live-arena { grid-template-columns: 1fr; }
+            .chat-box { height: 300px !important; }
+        }
+
+        .stream-window {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background-color: #000;
+        }
+
+        .stream-window iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%; border: none;
+        }
+
+        .chat-box {
+            background-color: #111;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .chat-title {
+            background-color: #161616;
+            padding: 15px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #e10600;
+            border-bottom: 1px solid #222;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            font-size: 13px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .msg { line-height: 1.4; }
+        .user { color: #2196f3; font-weight: bold; margin-right: 5px; }
+
+        /* 🏁 YENİ: GÖRSEL TAKIM VE PİLOT GRID SİSTEMİ */
+        .section-title {
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-left: 4px solid #e10600;
+            padding-left: 12px;
+            margin-bottom: 20px;
+        }
+
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .team-card {
+            background-color: #101010;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Takımların Resmi Kurumsal Renk Şeritleri (Marka Alanları) */
+        .team-header {
+            padding: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Takım Renk Atamaları */
+        .team-ducati { background: linear-gradient(90deg, #dc0000, #8b0000); }
+        .team-aprilia { background: linear-gradient(90deg, #1a1a1a, #444444); border-bottom: 2px solid #dc0000; }
+        .team-ktm { background: linear-gradient(90deg, #ff6600, #b34700); }
+        .team-yamaha { background: linear-gradient(90deg, #002255, #001133); }
+
+        .brand-label {
+            font-size: 11px;
+            background-color: rgba(0,0,0,0.4);
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        .riders-list {
+            padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-        .channel-section {
-            flex: 1;
-            background-color: #161822;
-            border-radius: 8px;
-            padding: 15px;
-            max-height: 70vh;
-            overflow-y: auto;
+
+        .rider-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #1a1a1a;
         }
-        .channel-section h3 {
-            margin-bottom: 15px;
-            font-size: 18px;
-            border-bottom: 1px solid #2d3142;
-            padding-bottom: 5px;
+
+        .rider-row:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
         }
-        .channel-list {
+
+        .rider-number {
+            font-size: 20px;
+            font-weight: 900;
+            color: #e10600;
+            width: 45px;
+            font-style: italic;
+        }
+
+        .rider-info {
             display: flex;
             flex-direction: column;
-            gap: 10px;
         }
-        .channel-item {
-            background-color: #232635;
-            padding: 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border-left: 4px solid transparent;
+
+        .rider-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
         }
-        .channel-item:hover, .channel-item.active {
-            background-color: #2d3142;
-            border-left-color: #e50914;
+
+        .rider-nation {
+            font-size: 12px;
+            color: #666;
+            margin-top: 2px;
         }
-        /* Mobil Uyum Düzenlemeleri */
-        @media (max-width: 768px) {
-            .main-container {
-                flex-direction: column;
-            }
-            .channel-section {
-                max-height: none;
-            }
+
+        /* YASAL GÜVENCE FOOTER */
+        footer {
+            background-color: #030303;
+            padding: 40px 4%;
+            margin-top: 60px;
+            border-top: 1px solid #111;
+            font-size: 12px;
+            color: #444;
+            line-height: 1.6;
         }
+
+        .disclaimer-title { color: #e10600; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>N-SPORT LIVE</h1>
+        <div class="logo">MotoGP<span>Video</span></div>
+        <div class="live-badge">⚫ SEANS ARENASI CANLI</div>
     </header>
 
     <div class="main-container">
-        <!-- OYNATICI ALANI -->
-        <div class="player-section">
-            <video id="player" playsinline controls></video>
-            <h2 id="current-channel-title">Kanal Seçiniz</h2>
-        </div>
 
-        <!-- KANAL LİSTESİ ALANI -->
-        <div class="channel-section">
-            <h3>SPOR KANALLARI</h3>
-            <div class="channel-list">
-                <!-- Buradaki linkler tamamen yasal, dünya çapında açık kaynaklı test yayınlarıdır -->
-                <div class="channel-item active" onclick="changeChannel('Kanal 1: Dünya Doğa ve Spor Yayını', 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8')">
-                    🎥 Kanal 1: Doğa & Aksiyon Sporları
-                </div>
-                <div class="channel-item" onclick="changeChannel('Kanal 2: Test Canlı Yayın Akışı', 'https://diceyk67mswt7.cloudfront.net/iso2/index.m3u8')">
-                    🏁 Kanal 2: Motor Sporları Test
-                </div>
-                <div class="channel-item" onclick="changeChannel('Kanal 3: Uzay ve Bilim Canlı', 'https://nasa-i.akamaihd.net/hls/live/253565/NASA-NTV1-Public/master.m3u8')">
-                    🚀 Kanal 3: NASA TV (Yasal Canlı)
+        <!-- 🎬 CANLI REKABET ARENASI -->
+        <div class="live-arena">
+            <div class="stream-window">
+                <iframe src="https://youtube.com" allowfullscreen></iframe>
+            </div>
+            
+            <div class="chat-box">
+                <div class="chat-title">🔴 BAĞIMSIZ CANLI SOHBET</div>
+                <div class="chat-messages">
+                    <div class="msg"><span class="user" style="color: #ff6600;">KTM_Power:</span> Acosta bu virajlarda çok agresif çizgi çiziyor.</div>
+                    <div class="msg"><span class="user" style="color: #2196f3;">ToprakFan_54:</span> Yamaha motoru düzlükte biraz daha hızlanmış gibi duruyor!</div>
+                    <div class="msg"><span class="user" style="color: #e10600;">DucatiCorse:</span> Bagnaia lastikleri koruyor, sıralama turunda her an atak yapabilir.</div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- HLS (Canlı Yayın Akış) Teknolojisi ve Player için Scriptler -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
-    <script>
-        const video = document.getElementById('player');
-        const channelTitle = document.getElementById('current-channel-title');
-        let player;
+        <!-- 🏁 YENİ: MARKA RENKLİ MOTOGP TAKIM KADROLARI VİTRİNİ -->
+        <section>
+            <div class="section-title">🏁 2026 Resmi MotoGP Takımları & Sporcu Gridi</div>
+            <div class="teams-grid">
 
-        // Oynatıcıyı başlat
-        document.addEventListener('DOMContentLoaded', () => {
-            player = new Plyr(video);
-            // İlk kanalı otomatik aç
-            changeChannel('Kanal 1: Dünya Doğa ve Spor Yayını', 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8');
-        });
+                <!-- 1. Takım: DUCATI -->
+                <div class="team-card">
+                    <div class="team-header team-ducati">
+                        <span>Ducati Lenovo Team</span>
+                        <span class="brand-label">Ducati</span>
+                    </div>
+                    <div class="riders-list">
+                        <div class="rider-row">
+                            <div class="rider-number">#1</div>
+                            <div class="rider-info">
+                                <span class="rider-name">Francesco Bagnaia</span>
+                                <span class="rider-nation">İtalya</span>
+                            </div>
+                        </div>
+                        <div class="rider-row">
+                            <div class="rider-number">#93</div>
+                            <div class="rider-info">
+                                <span class="rider-name">Marc Márquez</span>
+                                <span class="rider-nation">İspanya</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        // Kanal Değiştirme Fonksiyonu
-        function changeChannel(title, streamUrl) {
-            channelTitle.innerText = title;
-           
-            // Aktif kanal butonunun stilini güncelle
-            const items = document.querySelectorAll('.channel-item');
-            items.forEach(item => item.classList.remove('active'));
-            event.currentTarget.classList.add('active');
+                <!-- 2. Takım: APRILIA -->
+                <div class="team-card">
+                    <div class="team-header team-aprilia">
+                        <span>Aprilia Racing</span>
+                        <span class="brand-label">Aprilia</span>
+                    </div>
+                    <div class="riders-list">
+                        <div class="rider-row">
+                            <div class="rider-number">#72</div>
+                            <div class="rider-info">
+                                <span class="rider-name">Marco Bezzecchi</span>
+                                <span class="rider-nation">İtalya</span>
+                            </div>
+                        </div>
+                        <div class="rider-row">
+                            <div class="rider-number">#89</div>
+                            <div class="rider-info">
+                                <span class="rider-name">Jorge Martín</span>
+                                <span class="rider-nation">İspanya</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(streamUrl);
-                hls.attachMedia(video);
-                hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                    video.play();
-                });
-            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = streamUrl;
-                video.addEventListener('loadedmetadata', function() {
-                    video.play();
-                });
-            }
-        }
-    </script>
-</body>
-</html>
+                <!-- 3. Takım: KTM -->
+                <div class="team-card">
+                    <div class="team-header team-ktm">
+                        <span>Red Bull KTM Factory</span>
+                        <span class="brand-label">KTM</span>
