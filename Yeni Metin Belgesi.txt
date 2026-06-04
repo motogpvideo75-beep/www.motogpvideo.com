@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta name="google-site-verification" content="eMBHdPqO39Y3X8JpjTz0YtrSsz0Gxpr8xWB6UbYt6Ew" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotoGPVideo - Canlı Seans Arenası & Dünya Süperbike Merkezi</title>
+    <meta name="description" content="MotoGP ve WorldSBK heyecanı motogpvideo.com'da! Canlı video arenası, bağımsız topluluk sohbet odası ve güncel 2026 takım gridleri.">
+    
+    <style>
+        /* Premium Motorsporları Karanlık Teması */
+        :root {
+            --bg-base: #060609;
+            --bg-surface: #111116;
+            --motogp-red: #ff0500;
+            --sbk-blue: #007bff;
+            --text-main: #ffffff;
+            --text-dim: #7c7c8a;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigasyon Barı */
+        header {
+            background-color: #020204;
+            padding: 15px 5%;
+            border-bottom: 2px solid #22222c;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-size: 24px;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-style: italic;
+            letter-spacing: -0.5px;
+        }
+        .brand-logo span { color: var(--motogp-red); }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        .nav-menu a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-menu a:hover { color: #fff; }
+
+        /* Yeni Canlı Sonuçlar Buton Tasarımı */
+        .live-results-btn {
+            background-color: #28a745;
+            color: white !important;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 12px !important;
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.4);
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(40, 167, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* 🎬 CANLI ARENA: VİDEO & CHAT */
+        .arena-layout {
+            display: grid;
+            grid-template-columns: 2.8fr 1.2fr;
+            gap: 25px;
+            margin-bottom: 45px;
+        }
+
+        .screen-box {
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+        .screen-box iframe {
+            position: absolute;
+            top:0; left:0; width:100%; height:100%; border:none;
+        }
+
+        .chat-box {
+            background-color: var(--bg-surface);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #22222a;
+            overflow: hidden;
+        }
+        .chat-header {
+            background-color: #181822;
+            padding: 15px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #fff;
+            border-bottom: 1px solid #22222a;
+            display: flex;
+            justify-content: space-between;
+        }
+        .chat-stream {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 380px;
+        }
+        .chat-line span { font-weight: bold; margin-right: 5px; }
+
+        /* 📊 DİNAMİK SEKMELİ GRID YAPISI */
+        .grid-section-title {
+            font-size: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .championship-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 992px) {
+            .arena-layout { grid-template-columns: 1fr; }
+            .championship-wrapper { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 15px; }
+        }
+
+        .champ-column {
+            background-color: var(--bg-surface);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid #22222a;
+        }
+
+        .column-header {
+            font-size: 18px;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .motogp-border { border-bottom: 3px solid var(--motogp-red); }
+        .sbk-border { border-bottom: 3px solid var(--sbk-blue); }
+
+        .team-block {
+            margin-bottom: 20px;
+            background: #171721;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .team-name {
+            font-size: 14px;
+            font-weight: 800;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .rider-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            padding: 6px 0;
+            border-bottom: 1px solid #222232;
+        }
+        .rider-row:last-child { border: none; }
+        .num-tag { font-weight: 900; }
+        .motogp-color { color: var(--motogp-red); }
+        .sbk-color { color: var(--sbk-blue); }
+
+        /* YASAL GÜVENCE DUVARI */
+        footer {
+            background-color: #020204;
+            padding: 40px 5%;
+            margin-top: 70px;
+            border-top: 1px solid #1c1c24;
+            font-size: 12px;
+            color: var(--text-dim);
+            line-height: 1.7;
+        }
+        .legal-title { color: #fff; font-weight: bold; margin-bottom: 8px; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-logo">MotoGP<span>Video</span></div>
+        <nav class="nav-menu">
+            <a href="#arena">Yayın Arenası</a>
+            <a href="#grids">2026 Gridleri</a>
+            <!-- Yeni Yasal Canlı Sonuçlar Butonu -->
+            <a href="https://motogp.com" target="_blank" rel="noopener" class="live-results-btn">📊 CANLI SONUÇLAR</a>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        
+        <!-- CANLI REKABET VE MEDYA ARENASI -->
+        <div class="arena-layout" id="arena">
+            <div class="screen-box">
+                <!-- YouTube Embed Altyapısı: MotoGP'nin resmi yüklemeler listesini otomatik oynatır -->
+                <iframe src="https://youtube.com" allowfullscreen></iframe>
+            </div>
+            
+            <div class="chat-box">
+                <div class="chat-header">
+                    <span>🔴 ORTAK BAĞIMSIZ SOHBET</span>
+                    <span style="font-size: 10px; opacity: 0.6;">Yarış Modu</span>
+                </div>
+                <div class="chat-stream">
+                    <div class="chat-line"><span style="color:var(--motogp-red);">TR_Pramac:</span> Toprak, 2026'da Yamaha MotoGP motoruyla düzlükte can yakacak!</div>
+                    <div class="chat-line"><span style="color:var(--sbk-blue);">SBK_Analis:</span> Toprak MotoGP'ye gidince WorldSBK'de Bulega liderliği aldı bile.</div>
+                    <div class="chat-line"><span style="color:#ffc107;">MarquezFan:</span> Ducati Lenovo garajında Bagnaia ve Marquez savaşı çok sert geçiyor.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- İKİ ŞAMPİYONA YAN YANA -->
+        <div class="grid-section-title">🏁 2026 Resmi Sürücü ve Marka Gridleri</div>
+        
+        <div class="championship-wrapper" id="grids">
+            
+            <!-- SOL KOLON: MOTOGP -->
+            <div class="champ-column">
+                <div class="column-header motogp-border">
+                    <span>MotoGP™ World Championship</span>
+                    <span class="motogp-color" style="font-size:12px;">PROTOTİP</span>
+                </div>
+                
+                <div class="team-block">
+                    <div class="team-name">Prima Pramac Racing (Yamaha)</div>
+                    <div class="rider-row"><span>Toprak Razgatlıoğlu</span> <span class="num-tag motogp-color">#54</span></div>
+                    <div class="rider-row"><span>Jack Miller</span> <span class="num-tag motogp-color">#43</span></div>
+                </div>
+
+                <div class="team-block">
+                    <div class="team-name">Ducati Lenovo Team</div>
+                    <div class="rider-row"><span>Marc Marquez</span> <span class="num-tag motogp-color">#93</span></div>
+                    <div class="rider-row"><span>Francesco Bagnaia</span> <span class="num-tag motogp-color">#1</span></div>
+                </div>
+            </div>
+
+            <!-- SAĞ KOLON: WORLDSBK (SÜPERBİKE) -->
+            <div class="champ-column">
+                <div class="column-header sbk-border">
+                    <span>WorldSBK™ Superbike</span>
+                    <span class="sbk-color" style="font-size:12px;">ÜRETİM TABANLI</span>
+                </div>
+
+                <div class="team-block">
+                    <div class="team-name">Aruba.it Racing - Ducati</div>
