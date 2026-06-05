@@ -14,7 +14,7 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background: var(--bg); color: var(--text); padding: 20px; }
-        header { text-align: center; margin-bottom: 40px; }
+        header { text-align: center; margin-bottom: 40px; padding: 20px 0; border-bottom: 2px solid var(--card); }
         header h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
         header p { color: var(--muted); margin-top: 10px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
@@ -22,35 +22,39 @@
         .video-box { position: relative; width: 100%; padding-top: 56.25%; background: #000; }
         .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         .badge { position: absolute; top: 10px; left: 10px; background: var(--accent); color: white; padding: 5px 10px; font-size: 0.75rem; font-weight: bold; border-radius: 4px; text-transform: uppercase; z-index: 10; }
-        .content { padding: 15px; text-align: center; }
-        h3 { font-size: 1.1rem; font-weight: 600; }
+        .content { padding: 20px; text-align: center; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+        .btn { display: inline-block; background: var(--accent); color: white; text-decoration: none; padding: 8px 16px; border-radius: 4px; font-weight: bold; font-size: 0.9rem; margin-top: 10px; transition: 0.2s; }
+        .btn:hover { opacity: 0.9; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>CANLI <span style="color:var(--accent)">MOTOR SPORLARI</span> MERKEZİ</h1>
-    <p>MotoGP ve WorldSBK Resmi Yayınları ve Güncel İçerikler</p>
+    <p>MotoGP ve WorldSBK Resmi Yayınları ve En Güncel İçerikler</p>
 </header>
 
 <div class="grid">
     <div class="card">
         <div class="video-box">
-            <span class="badge">MotoGP Canlı / Güncel</span>
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PL6A633F60492E365E" allowfullscreen></iframe>
+            <span class="badge">MotoGP Öne Çıkanlar</span>
+            <iframe src="https://www.youtube.com/embed/live_stream?channel=UC8p_Liq3L3PIeFC0EsZgx-Q" allowfullscreen></iframe>
         </div>
         <div class="content">
-            <h3>Resmi En Yeni Videolar</h3>
+            <h3>MotoGP Canlı Yayın & Özetler</h3>
+            <a href="https://www.youtube.com/user/MotoGP" target="_blank" class="btn">Resmi Kanalı Aç</a>
         </div>
     </div>
 
     <div class="card">
         <div class="video-box">
-            <span class="badge">WorldSBK Canlı / Güncel</span>
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLIdp2N87ZatMCwGvXgTst1C8bYmD_KAsW" allowfullscreen></iframe>
+            <span class="badge">WorldSBK Öne Çıkanlar</span>
+            <iframe src="https://www.youtube.com/embed/live_stream?channel=UCIdp2N87ZatLh_g_G9Yv96A" allowfullscreen></iframe>
         </div>
         <div class="content">
-            <h3>Resmi En Yeni Videolar</h3>
+            <h3>WorldSBK Canlı Yayın & Özetler</h3>
+            <a href="https://www.youtube.com/c/worldsbk" target="_blank" class="btn">Resmi Kanalı Aç</a>
         </div>
     </div>
 </div>
