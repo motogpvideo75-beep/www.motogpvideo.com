@@ -5,58 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motor Sporları Canlı Merkezi</title>
     <style>
-        :root { 
-            --bg: #0a0f18; 
-            --card: #141f32; 
-            --accent: #ff2a4b; 
-            --text: #ffffff; 
-            --muted: #8a99ad; 
-        }
+        :root { --bg: #0a0f18; --card: #141f32; --accent: #ff2a4b; --text: #ffffff; --muted: #8a99ad; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: var(--bg); color: var(--text); padding: 20px; }
-        header { text-align: center; margin-bottom: 40px; padding: 20px 0; border-bottom: 2px solid var(--card); }
-        header h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
-        header p { color: var(--muted); margin-top: 10px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
-        .card { background: var(--card); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 8px 24px rgba(0,0,0,0.3); border-bottom: 3px solid var(--accent); }
-        .video-box { position: relative; width: 100%; padding-top: 56.25%; background: #000; }
-        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        .badge { position: absolute; top: 10px; left: 10px; background: var(--accent); color: white; padding: 5px 10px; font-size: 0.75rem; font-weight: bold; border-radius: 4px; text-transform: uppercase; z-index: 10; }
-        .content { padding: 20px; text-align: center; }
-        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
-        .btn { display: inline-block; background: var(--accent); color: white; text-decoration: none; padding: 8px 16px; border-radius: 4px; font-weight: bold; font-size: 0.9rem; margin-top: 10px; transition: 0.2s; }
-        .btn:hover { opacity: 0.9; }
+        body { background: var(--bg); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; justify-content: center; align-items: center; padding: 20px; }
+        header { text-align: center; margin-bottom: 50px; }
+        h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
+        h1 span { color: var(--accent); }
+        header p { color: var(--muted); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; max-width: 900px; }
+        .card { background: var(--card); border-radius: 15px; padding: 40px; text-align: center; border: 2px solid transparent; transition: 0.3s; text-decoration: none; color: white; display: flex; flex-direction: column; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .card:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 15px 40px rgba(255, 42, 75, 0.2); }
+        .icon { font-size: 50px; margin-bottom: 20px; }
+        .card h2 { font-size: 1.8rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .card p { color: var(--muted); margin-bottom: 20px; }
+        .btn { background: var(--accent); color: white; padding: 12px 30px; border-radius: 50px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; transition: 0.2s; }
+        .card:hover .btn { background: #fff; color: #000; }
+        .footer { margin-top: 60px; color: #384357; font-size: 0.9rem; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>CANLI <span style="color:var(--accent)">MOTOR SPORLARI</span> MERKEZİ</h1>
-    <p>MotoGP ve WorldSBK Resmi Yayınları ve En Güncel İçerikler</p>
+    <h1>CANLI <span>MOTOR SPORLARI</span> MERKEZİ</h1>
+    <p>Resmi Kanallara ve En Güncel Yayınlara Engelsiz Doğrudan Erişim</p>
 </header>
 
 <div class="grid">
-    <div class="card">
-        <div class="video-box">
-            <span class="badge">MotoGP Öne Çıkanlar</span>
-            <iframe src="https://www.youtube.com/embed/live_stream?channel=UC8p_Liq3L3PIeFC0EsZgx-Q" allowfullscreen></iframe>
-        </div>
-        <div class="content">
-            <h3>MotoGP Canlı Yayın & Özetler</h3>
-            <a href="https://www.youtube.com/user/MotoGP" target="_blank" class="btn">Resmi Kanalı Aç</a>
-        </div>
-    </div>
+    <a href="https://www.youtube.com/@motogp/streams" target="_blank" class="card">
+        <div class="icon">🏁</div>
+        <h2>MotoGP</h2>
+        <p>Canlı Yayınlar, Yarış Özetleri ve Özel İçerikler</p>
+        <div class="btn">YAYINI AÇ</div>
+    </a>
 
-    <div class="card">
-        <div class="video-box">
-            <span class="badge">WorldSBK Öne Çıkanlar</span>
-            <iframe src="https://www.youtube.com/embed/live_stream?channel=UCIdp2N87ZatLh_g_G9Yv96A" allowfullscreen></iframe>
-        </div>
-        <div class="content">
-            <h3>WorldSBK Canlı Yayın & Özetler</h3>
-            <a href="https://www.youtube.com/c/worldsbk" target="_blank" class="btn">Resmi Kanalı Aç</a>
-        </div>
-    </div>
+    <a href="https://www.youtube.com/@worldsbk/streams" target="_blank" class="card">
+        <div class="icon">🏍️</div>
+        <h2>WorldSBK</h2>
+        <p>Canlı Yayınlar, Hafta Sonu Özetleri ve Padoktan Haberler</p>
+        <div class="btn">YAYINI AÇ</div>
+    </a>
+</div>
+
+<div class="footer">
+    © 2026 MotoGP Video Hub - Kesintisiz Hız Portalı
 </div>
 
 </body>
