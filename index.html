@@ -3,7 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MotoGP Video - CANLI</title>
+    <title>MotoGP Video - CANLI: Seans Arenası & Takım Kadroları</title>
+    <style>
+        /* Modern Netflix & Yarış Dünyası Teması */
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0a0a0a;
+            padding: 15px 4%;
+            border-bottom: 3px solid #e10600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-size: 24px; font-weight: 900; text-transform: uppercase; }
+        .logo span { color: #e10600; }
+        
+        .live-badge {
+            background-color: #e10600;
+            color: white;
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: uppercase;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        .main-container {
+            max-width: 1450px;
+            margin: 25px auto;
+            padding: 0 4%;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        /* CANLI ARENA: VİDEO VE SOHBET KUTUSU */
+        .live-arena {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 20px;
+            background-color: #0e0e0e;
+            border: 1px solid #222;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+        }
+
+        @media (max-width: 992px) {
+            .live-arena { grid-template-columns: 1fr; }
+            .chat-box { height: 300px !important; }
+        }
+
+        .stream-window {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background-color: #000;
+        }
+
+        .stream-window iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%; border: none;
+        }
+
+        .chat-box {
+            background-color: #111;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .chat-title {
+            background-color: #161616;
+            padding: 15px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #e10600;
+            border-bottom: 1px solid #222;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            font-size: 13px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .msg { line-height: 1.4; }
+        .user { color: #2196f3; font-weight: bold; margin-right: 5px; }
+
+        /* GRID SİSTEMİ VE TAKIM KARTLARI */
+        .section-title {
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-left: 4px solid #e10600;
+            padding-left: 12px;
+            margin-bottom: 20px;
+        }
+
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .team-card {
+            background-color: #101010;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .team-header {
+            padding: 15px;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Takımların Kurumsal Renk Renk Geçişleri */
+        .team-ducati { background: linear-gradient(90deg, #dc0000, #8b0000); }
+        .team-aprilia { background: linear-gradient(90deg, #1a1a1a, #444444); border-bottom: 2px solid #dc0000; }
+        .team-ktm { background: linear-gradient(90deg, #ff6600, #b34700); }
+        .team-yamaha { background: linear-gradient(90deg, #002255, #001133); }
+        .team-honda { background: linear-gradient(90deg, #f58220, #004b87); }
+        .team-pramac { background: linear-gradient(90deg, #1f1f2e, #4d4d70); border-bottom: 2px solid #ff0055; }
+        .team-gresini { background: linear-gradient(90deg, #8fa3b5, #5f7587); }
+        .team-vr46 { background: linear-gradient(90deg, #111111, #222222); border-bottom: 2px solid #dafe02; }
+
+        .brand-label {
+            font-size: 11px;
+            background-color: rgba(0,0,0,0.4);
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        .riders-list {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .rider-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .rider-row:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .rider-number {
+            font-size: 20px;
+            font-weight: 900;
+            color: #e10600;
+            width: 45px;
+            font-style: italic;
+        }
+
+        .rider-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rider-name {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .rider-nation {
+            font-size: 12px;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        /* YASAL FOOTER ALANI */
+        footer {
+            background-color: #030303;
+            padding: 40px 4%;
+            margin-top: 60px;
+            border-top: 1px solid #111;
+            font-size: 12px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .disclaimer-title { color: #e10600; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; }
+    </style>
 </head>
 <body>
 
@@ -30,13 +247,12 @@
             </div>
         </div>
 
-
-        <!-- 🏁 YENİ: MARKA RENKLİ MOTOGP TAKIM KADROLARI VİTRİNİ -->
+        <!-- 🏁 2026 SÜRÜCÜ GRİDİ -->
         <section>
             <div class="section-title">🏁 2026 Resmi MotoGP Takımları & Sporcu Gridi</div>
             <div class="teams-grid">
 
-                <!-- 1. Takım: DUCATI -->
+                <!-- 1. DUCATI LENOVO -->
                 <div class="team-card">
                     <div class="team-header team-ducati">
                         <span>Ducati Lenovo Team</span>
@@ -60,7 +276,7 @@
                     </div>
                 </div>
 
-                <!-- 2. Takım: APRILIA -->
+                <!-- 2. APRILIA RACING -->
                 <div class="team-card">
                     <div class="team-header team-aprilia">
                         <span>Aprilia Racing</span>
@@ -68,24 +284,13 @@
                     </div>
                     <div class="riders-list">
                         <div class="rider-row">
-                            <div class="rider-number">#72</div>
-                            <div class="rider-info">
-                                <span class="rider-name">Marco Bezzecchi</span>
-                                <span class="rider-nation">İtalya</span>
-                            </div>
-                        </div>
-                        <div class="rider-row">
                             <div class="rider-number">#89</div>
                             <div class="rider-info">
                                 <span class="rider-name">Jorge Martín</span>
                                 <span class="rider-nation">İspanya</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- 3. Takım: KTM -->
-                <div class="team-card">
-                    <div class="team-header team-ktm">
-                        <span>Red Bull KTM Factory</span>
-                        <span class="brand-label">KTM</span>
+                        <div class="rider-row">
+                            <div class="rider-number">#72</div>
+                            <div class="rider-info">
+                                <span class="rider-name">Marco Bezzecchi</span>
