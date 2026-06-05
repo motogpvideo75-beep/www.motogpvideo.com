@@ -1,20 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MotoGP Video - Independent Fan & News Hub</title>
-    <!-- Tailwind CSS for Modern UI -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Motor Sporları Canlı Yayın & Video Merkezi</title>
     <style>
-        /* Aspect Ratio Zırhı (16:9) */
-        .video-aspect {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
+        :root {
+            --bg-color: #0a0f18;
+            --card-bg: #141f32;
+            --accent-color: #ff2a4b;
+            --text-color: #ffffff;
+            --text-muted: #8a99ad;
         }
-        .video-aspect img {
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--card-bg);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header h1 span {
+            color: var(--accent-color);
+        }
+
+        header p {
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255, 42, 75, 0.2);
+        }
+
+        .thumbnail-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background: #000;
+        }
+
+        .thumbnail-container img {
             position: absolute;
             top: 0;
             left: 0;
@@ -22,136 +89,86 @@
             height: 100%;
             object-fit: cover;
         }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .card-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 3.1rem;
+        }
+
+        .btn-watch {
+            margin-top: auto;
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .btn-watch:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* Yükleniyor Efekti (Skeleton) */
+        .loading-text {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            grid-column: 1 / -1;
+            padding: 40px;
+        }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans">
+<body>
 
-    <!-- Üst Menü / Navigation -->
-    <header class="bg-black border-b border-gray-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-black tracking-wider text-red-600">MOTOGP<span class="text-white">VIDEO</span></a>
-            <nav class="space-x-6 text-sm font-semibold">
-                <a href="#" class="hover:text-red-500 transition text-red-500">Latest Videos</a>
-                <a href="#" class="hover:text-red-500 transition text-gray-400">News</a>
-                <a href="#" class="hover:text-red-500 transition text-gray-400">WorldSBK</a>
-            </nav>
-        </div>
+    <header>
+        <h1>Canlı <span>Motor Sporları</span> Merkezi</h1>
+        <p>MotoGP, WorldSBK ve Resmi Kanallardan Anlık, API Kotasız En Güncel İçerikler</p>
     </header>
 
-    <!-- Ana İçerik Alanı -->
-    <main class="max-w-7xl mx-auto px-4 py-8">
-        
-        <!-- Öne Çıkan Büyük Video Bölümü (Featured) -->
-        <section class="mb-12">
-            <h1 class="text-3xl font-extrabold mb-6 border-l-4 border-red-600 pl-3">Featured Race Highlights</h1>
-            <div class="bg-black rounded-xl overflow-hidden shadow-2xl border border-gray-800">
-                
-                <!-- KUTSAL KÖPRÜ ALANI: Oynatma hatasını aşan akıllı link -->
-                <div class="video-aspect relative group cursor-pointer">
-                    <a href="https://www.youtube.com/watch?v=f3_k_R11-Dk" target="_blank" rel="noopener noreferrer" class="block w-full h-full">
-                        <!-- Yüksek Çözünürlüklü Arka Plan Görseli -->
-                        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80" alt="MotoGP Action" class="opacity-75 group-hover:opacity-50 transition duration-300">
-                        
-                        <!-- Ortadaki Kırmızı Play Butonu Efekti -->
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="bg-red-600 p-5 rounded-full shadow-2xl group-hover:scale-110 transition duration-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white fill-current" viewBox="0 0 24 24">
-                                    <path d="M8 5v14l11-7z"/>
-                                </svg>
-                            </div>
-                        </div>
-                        
-                        <!-- Sağ Alttaki Yönlendirme Rozeti -->
-                        <div class="absolute bottom-4 right-4 bg-black/80 px-3 py-1.5 rounded text-xs font-bold tracking-wider text-white border border-gray-700">
-                            WATCH ON YOUTUBE ↗
-                        </div>
-                    </a>
-                </div>
-
-                <div class="p-6">
-                    <span class="bg-red-600 text-xs font-bold px-2.5 py-1 rounded">OFFICIAL MEDIA</span>
-                    <h2 class="text-xl font-bold mt-3">Grand Prix Race Highlights | Multi-Angle Fan View</h2>
-                    <p class="text-gray-400 mt-2 text-sm">Watch the latest thrilling battles and track action directly via the official streaming provider. Stay tuned for our expert fan commentary and race analysis below.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Alt 3'lü Video Listesi -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold mb-6 border-l-4 border-red-600 pl-3">Recent Action & Clips</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                <!-- Video Kartı 1 -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 shadow-lg flex flex-col justify-between">
-                    <div class="video-aspect relative group cursor-pointer">
-                        <a href="https://www.youtube.com/watch?v=v8_S0v3vB6w" target="_blank" rel="noopener noreferrer">
-                            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=600&q=80" alt="Clip 1" class="opacity-80 group-hover:opacity-60 transition duration-300">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="bg-red-600 p-3 rounded-full shadow-lg group-hover:scale-110 transition duration-300">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white fill-current" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-sm line-clamp-2">Incredible Overtakes & Top Speed Moments</h3>
-                    </div>
-                </div>
-
-                <!-- Video Kartı 2 -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 shadow-lg flex flex-col justify-between">
-                    <div class="video-aspect relative group cursor-pointer">
-                        <a href="https://www.youtube.com/watch?v=f3_k_R11-Dk" target="_blank" rel="noopener noreferrer">
-                            <img src="https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=600&q=80" alt="Clip 2" class="opacity-80 group-hover:opacity-60 transition duration-300">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="bg-red-600 p-3 rounded-full shadow-lg group-hover:scale-110 transition duration-300">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white fill-current" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-sm line-clamp-2">Qualifying Session Analysis & Pole Position Lap</h3>
-                    </div>
-                </div>
-
-                <!-- Video Kartı 3 -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 shadow-lg flex flex-col justify-between">
-                    <div class="video-aspect relative group cursor-pointer">
-                        <a href="https://www.youtube.com/watch?v=f3_k_R11-Dk" target="_blank" rel="noopener noreferrer">
-                            <img src="https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&w=600&q=80" alt="Clip 3" class="opacity-80 group-hover:opacity-60 transition duration-300">
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="bg-red-600 p-3 rounded-full shadow-lg group-hover:scale-110 transition duration-300">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white fill-current" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-sm line-clamp-2">Rider Interviews & Post-Race Paddock News</h3>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
-    <!-- Hukuki Koruma Sağlayan Footer Alanı -->
-    <footer class="bg-black text-gray-500 text-xs py-12 border-t border-gray-800 mt-12">
-        <div class="max-w-7xl mx-auto px-4 text-center space-y-4">
-            <p class="text-gray-400 font-medium">© 2026 www.motogpvideo.com. All rights reserved.</p>
-            <div class="max-w-3xl mx-auto bg-gray-950 p-4 rounded border border-gray-900 text-justify md:text-center leading-relaxed">
-                <span class="text-red-500 font-bold block mb-1">LEGAL DISCLAIMER</span>
-                This website is an independent news, commentary, and fan platform. It is <strong>NOT</strong> affiliated, associated, authorized, endorsed by, or in any way officially connected with Dorna Sports, MotoGP, WorldSBK, Red Bull TV, or any of their official partners or subsidiaries. All product names, logos, brands, and trademarks displayed on this site are the property of their respective trademark holders. The video thumbnails and content linked on this platform are served via official public third-party sharing protocols and redirect users directly to the official content creators' platforms. No copyrighted video files are hosted on our local servers.
-            </div>
+    <div class="container">
+        <div id="video-grid" class="grid">
+            <div class="loading-text">En güncel yarış videoları ve yayınlar yükleniyor...</div>
         </div>
-    </footer>
+    </div>
 
-</body>
-</html>
+    <script>
+        // Takip etmek istediğimiz resmi YouTube kanallarının ID listesi
+        // MotoGP (UC8p_Liq3L3PIeFC0EsZgx-Q) ve WorldSBK (UCIdp2N87ZatLh_g_G9Yv96A)
+        const CHANNELS = [
+            { name: 'MotoGP', id: 'UC8p_Liq3L3PIeFC0EsZgx-Q' },
+            { name: 'WorldSBK', id: 'UCIdp2N87ZatLh_g_G9Yv96A' }
+        ];
+
+        // API ana
