@@ -20,11 +20,38 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo { font-size: 24px; font-weight: 900; text-transform: uppercase; }
         .logo span { color: #e10600; }
         
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: #fff;
+            background-color: #161616;
+            border-color: #333;
+        }
+
         .live-badge {
             background-color: #e10600;
             color: white;
@@ -64,7 +91,7 @@
 
         @media (max-width: 992px) {
             .live-arena { grid-template-columns: 1fr; }
-            .chat-box { height: 300px !important; }
+            .chat-box { height: 350px !important; }
         }
 
         .stream-window {
@@ -97,10 +124,13 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            height: 400px;
+            scroll-behavior: smooth;
         }
 
-        .msg { line-height: 1.4; }
-        .user { color: #2196f3; font-weight: bold; margin-right: 5px; }
+        .msg { line-height: 1.4; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .user { font-weight: bold; margin-right: 5px; }
 
         .section-title {
             font-size: 22px;
@@ -110,6 +140,23 @@
             border-left: 4px solid #e10600;
             padding-left: 12px;
             margin-bottom: 20px;
+        }
+
+        /* 📰 YENİ AUTOMATIK HABERLER ALANI STİLLERİ */
+        .news-section {
+            background-color: #0e0e0e;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .news-container {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 8px;
+            background-color: #111;
         }
 
         .teams-grid {
@@ -147,57 +194,14 @@
         .team-gresini { background: linear-gradient(90deg, #8fa3b5, #5f7587); }
         .team-vr46 { background: linear-gradient(90deg, #111111, #222222); border-bottom: 2px solid #dafe02; }
 
-        .brand-label {
-            font-size: 11px;
-            background-color: rgba(0,0,0,0.4);
-            padding: 3px 8px;
-            border-radius: 3px;
-        }
-
-        .riders-list {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .rider-row {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #1a1a1a;
-        }
-
-        .rider-row:last-child {
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .rider-number {
-            font-size: 20px;
-            font-weight: 900;
-            color: #e10600;
-            width: 45px;
-            font-style: italic;
-        }
-
-        .rider-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .rider-name {
-            font-size: 15px;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .rider-nation {
-            font-size: 12px;
-            color: #666;
-            margin-top: 2px;
-        }
+        .brand-label { font-size: 11px; background-color: rgba(0,0,0,0.4); padding: 3px 8px; border-radius: 3px; }
+        .riders-list { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .rider-row { display: flex; align-items: center; gap: 15px; padding-bottom: 10px; border-bottom: 1px solid #1a1a1a; }
+        .rider-row:last-child { padding-bottom: 0; border-bottom: none; }
+        .rider-number { font-size: 20px; font-weight: 900; color: #e10600; width: 45px; font-style: italic; }
+        .rider-info { display: flex; flex-direction: column; }
+        .rider-name { font-size: 15px; font-weight: 700; color: #fff; }
+        .rider-nation { font-size: 12px; color: #666; margin-top: 2px; }
 
         footer {
             background-color: #030303;
@@ -216,7 +220,10 @@
 
     <header>
         <div class="logo">MotoGP<span>Video</span></div>
-        <div class="live-badge">⚫ SEANS ARENASI CANLI</div>
+        <div class="nav-menu">
+            <a href="#haberler" class="nav-link">Haberler</a>
+            <div class="live-badge">⚫ SEANS ARENASI CANLI</div>
+        </div>
     </header>
 
     <div class="main-container">
@@ -224,7 +231,6 @@
         <!-- 🎬 CANLI REKABET ARENASI -->
         <div class="live-arena">
             <div class="stream-window">
-                <!-- 2. SEÇENEK: GÜVENLİ VE ŞIK BEKLEME EKRANI -->
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: radial-gradient(circle, #151515 0%, #000000 100%); border-radius: 8px;">
                     <h2 style="color: #e10600; font-weight: 900; margin: 0; font-size: 24px; text-transform: uppercase; letter-spacing: 2px; animation: pulse 1.5s infinite;">🔴 SEANS ARENASI BEKLEMEDE</h2>
                     <p style="color: #888; margin-top: 10px; font-size: 14px;">Resmi MotoGP Canlı Yayını Başladığında Oynatıcı Aktif Olacaktır.</p>
@@ -233,13 +239,20 @@
             
             <div class="chat-box">
                 <div class="chat-title">🔴 BAĞIMSIZ CANLI SOHBET</div>
-                <div class="chat-messages">
+                <div class="chat-messages" id="chatWindow">
                     <div class="msg"><span class="user" style="color: #ff6600;">KTM_Power:</span> Acosta bu virajlarda çok agresif çizgi çiziyor.</div>
                     <div class="msg"><span class="user" style="color: #2196f3;">ToprakFan_54:</span> Yamaha motoru düzlükte biraz daha hızlanmış gibi duruyor!</div>
                     <div class="msg"><span class="user" style="color: #e10600;">DucatiCorse:</span> Bagnaia lastikleri koruyor, sıralama turunda her an atak yapabilir.</div>
                 </div>
             </div>
         </div>
+
+        <!-- 📰 YENİ: OTOMATİK CANLI HABER MERKEZİ -->
+        <section id="haberler" class="news-section">
+            <div class="section-title">📰 Dünya Basınından Anlık MotoGP Gelişmeleri</div>
+            <!-- Yasal RSS Haber Çekici Entegrasyonu -->
+            <iframe class="news-container" src="https://rss.app" title="MotoGP Canlı Haber Akışı"></iframe>
+        </section>
 
         <!-- 🏁 2026 SÜRÜCÜ GRİDİ -->
         <section>
@@ -257,33 +270,3 @@
                             <div class="rider-number">#1</div>
                             <div class="rider-info">
                                 <span class="rider-name">Francesco Bagnaia</span>
-                                <span class="rider-nation">İtalya</span>
-                            </div>
-                        </div>
-                        <div class="rider-row">
-                            <div class="rider-number">#93</div>
-                            <div class="rider-info">
-                                <span class="rider-name">Marc Márquez</span>
-                                <span class="rider-nation">İspanya</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. APRILIA RACING -->
-                <div class="team-card">
-                    <div class="team-header team-aprilia">
-                        <span>Aprilia Racing</span>
-                        <span class="brand-label">Aprilia</span>
-                    </div>
-                    <div class="riders-list">
-                        <div class="rider-row">
-                            <div class="rider-number">#89</div>
-                            <div class="rider-info">
-                                <span class="rider-name">Jorge Martín</span>
-                                <span class="rider-nation">İspanya</span>
-                            </div>
-                        </div>
-                        <div class="rider-row">
-                            <div class="rider-number">#72</div>
-                            <div class="rider-info">
