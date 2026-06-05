@@ -150,6 +150,46 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
+        /* 📸 YENİ: GALERİ ALANI STİLLERİ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #222;
+            aspect-ratio: 16 / 10;
+            background-color: #111;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+        }
+
         .teams-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -213,6 +253,7 @@
         <div class="logo">MotoGP<span>Video</span></div>
         <div class="nav-menu">
             <a href="#haberler" class="nav-link">Haberler</a>
+            <a href="#galeri" class="nav-link">Galeri</a>
             <div class="live-badge">⚫ SEANS ARENASI CANLI</div>
         </div>
     </header>
@@ -238,17 +279,8 @@
             </div>
         </div>
 
-        <!-- 📰 YENİ VE HATASIZ HABER MERKEZİ -->
+        <!-- 📰 OTOMATİK CANLI HABER MERKEZİ -->
         <section id="haberler" class="news-section">
             <div class="section-title">📰 Dünya Basınından Anlık MotoGP Gelişmeleri</div>
             
             <div style="background-color: #111; border: 1px solid #333; border-radius: 8px; padding: 20px; overflow: hidden;">
-                <!-- Kayan Haber Bandı -->
-                <div style="display: flex; align-items: center; gap: 15px; background: #161616; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
-                    <span style="background: #e10600; color: white; padding: 3px 8px; font-size: 11px; font-weight: bold; border-radius: 3px; text-transform: uppercase;">FLAŞ</span>
-                    <marquee style="color: #fff; font-size: 14px; font-weight: 500;" scrollamount="4">
-                        🔥 Marc Marquez: "2026'da Ducati Lenovo ile şampiyonluk tek hedefim!" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🏁 S Sport ve S Sport Plus, MotoGP Türkiye yayın haklarını tazeledi! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🚀 Toprak Razgatlıoğlu'nun Pramac Yamaha ile gerçekleştirdiği test turları dünya basınında geniş yankı uyandırdı! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 🛑 Dorna Sports, 2026 teknik kural değişikliklerinin detaylarını takımlara iletti.
-                    </marquee>
-                </div>
-                
-                <!-- Türkçe Güncel Haber Kartları -->
