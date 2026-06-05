@@ -47,7 +47,9 @@
             background-color: #161616;
         }
 
-        .nav-link:hover { background-color: #e10600; }
+        .nav-link:hover {
+            background-color: #e10600;
+        }
 
         .live-badge {
             background-color: #e10600;
@@ -127,7 +129,6 @@
 
         .msg { line-height: 1.4; color: #ffffff !important; }
         .user { font-weight: bold; margin-right: 5px; color: #e10600; }
-        .user.mod { color: #dafe02; }
 
         .section-title {
             font-size: 22px;
@@ -146,6 +147,34 @@
             border-radius: 12px;
             padding: 25px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #222;
+            aspect-ratio: 16 / 10;
+            background-color: #111;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.85);
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 13px;
+            font-weight: 600;
+            color: #ffffff !important;
         }
 
         .teams-grid {
@@ -210,49 +239,22 @@
         <div class="nav-menu">
             <a href="#TAKIMLAR" class="nav-link">Takımlar</a>
             <a href="#HABERLER" class="nav-link">Haberler</a>
-            <div class="live-badge">⚫ CANLI AKIŞ AKTİF</div>
+            <a href="#GALERI" class="nav-link">Galeri</a>
+            <div class="live-badge">⚫ SEANS ARENASI CANLI</div>
         </div>
     </header>
 
     <div class="main-container">
 
         <!-- 🎬 CANLI REKABET ARENASI -->
-        <div class="<!-- 🎬 CANLI REKABET ARENASI -->
-<div class="live-arena">
-    <div class="stream-window">
-        <!-- YouTube'un resmi altyapısı sayesinde kanal yeni video yükledikçe burası otomatik güncellenir -->
-        <iframe 
-            width="100%" 
-            height="100%" 
-            src="https://youtube.com" 
-            title="MotoGP Canlı İzleme Alanı" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
-        </iframe>
-    </div>
-
-    <!-- 💬 CANLI SOHBET KUTUSU SİMÜLASYONU -->
-    <div class="chat-box">
-        <div class="chat-title">MOTO-CHAT CANLI SOHBET</div>
-        <div class="chat-messages">
-            <div class="msg"><span class="user">Can_06:</span> Otomatik video akışı artık tamamen sorunsuz!</div>
-            <div class="msg"><span class="user">HızTutkunu:</span> Yeni yüklenen videolar anında buraya düşüyor.</div>
-            <div class="msg"><span class="user mod">[SİSTEM]:</span> Video akışı YouTube entegrasyonu ile otomatik yenilenmektedir.</div>
-            <div class="msg"><span class="user">Selin_Moto:</span> Toprak'ın yeni analiz videolarını bekliyoruz.</div>
-        </div>
-    </div>
-</div>
-">
+        <div class="live-arena">
             <div class="stream-window">
-                <!-- JavaScript buradaki 'id' değerini hedef alarak videoyu otomatik yükleyecek -->
+                <!-- Sitenizde kesinlikle yasal ve engelsiz çalışacak YouTube embed videosu -->
                 <iframe 
-                    id="auto-youtube-player"
                     width="100%" 
                     height="100%" 
-                    src="" 
-                    title="MotoGP Canlı İzleme Alanı" 
+                    src="https://youtube.com" 
+                    title="MotoGP Yarış Arenası" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     allowfullscreen
@@ -260,19 +262,19 @@
                 </iframe>
             </div>
 
-            <!-- 💬 CANLI SOHBET KUTUSU SİMÜLASYONU -->
+            <!-- 💬 CANLI SOHBET KUTUSU -->
             <div class="chat-box">
                 <div class="chat-title">MOTO-CHAT CANLI SOHBET</div>
                 <div class="chat-messages">
-                    <div class="msg"><span class="user">Can_06:</span> Otomatik video akışı harika çalışıyor!</div>
-                    <div class="msg"><span class="user">HızTutkunu:</span> Yeni yüklenen videolar anında buraya düşüyor.</div>
-                    <div class="msg"><span class="user mod">[SİSTEM]:</span> Video akışı YouTube entegrasyonu ile otomatik yenilenmektedir.</div>
-                    <div class="msg"><span class="user">Selin_Moto:</span> Toprak'ın yeni analiz videolarını bekliyoruz.</div>
+                    <div class="msg"><span class="user">Can_06:</span> Toprak harika gidiyor bu sezon!</div>
+                    <div class="msg"><span class="user">HızTutkunu:</span> Pramac Yamaha M1'in sesi çok iyi çıkıyor.</div>
+                    <div class="msg"><span class="user">Selin_Moto:</span> Rekabet bu sene nefes kesecek.</div>
+                    <div class="msg"><span class="user">Kaan_Racing:</span> Toprak Razgatlıoğlu podyuma çıkarsa buralar yıkılır.</div>
                 </div>
             </div>
         </div>
 
-        <!-- 👥 TAKIM KADROLARI SEKTÖRÜ -->
+        <!-- 👥 TAKIM KADROLARI SEKTÖRÜ (2026 Grid) -->
         <div id="TAKIMLAR" class="news-section">
             <div class="section-title">2026 Resmi Takım Kadroları & Pilotlar</div>
             <div class="teams-grid">
@@ -281,11 +283,3 @@
                     <div class="team-header team-ducati"><span>Ducati Lenovo Team</span><span class="brand-label">Ducati</span></div>
                     <div class="riders-list">
                         <div class="rider-row"><div class="rider-number">#63</div><div class="rider-info"><span class="rider-name">Francesco Bagnaia</span><span class="rider-nation">İtalya</span></div></div>
-                        <div class="rider-row"><div class="rider-number">#93</div><div class="rider-info"><span class="rider-name">Marc Marquez</span><span class="rider-nation">İspanya</span></div></div>
-                    </div>
-                </div>
-                <!-- Prima Pramac Racing -->
-                <div class="team-card">
-                    <div class="team-header team-pramac"><span>Prima Pramac Racing</span><span class="brand-label">Yamaha</span></div>
-                    <div class="riders-list">
-                        <div class="rider-row"><div class="rider-number">#7</div><div class="rider-info"><span class="rider-name">Toprak Razgatlıoğlu</span><span class="rider-nation">Türkiye</span></div></div>
