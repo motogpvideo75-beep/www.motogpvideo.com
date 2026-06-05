@@ -17,97 +17,61 @@
         header { text-align: center; margin-bottom: 40px; padding: 20px 0; border-bottom: 2px solid var(--card); }
         header h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
         header p { color: var(--muted); margin-top: 10px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
-        .card { background: var(--card); border-radius: 12px; overflow: hidden; transition: 0.3s ease; display: flex; flex-direction: column; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(255, 42, 75, 0.2); }
-        .thumb-box { position: relative; width: 100%; padding-top: 56.25%; background: #000; }
-        .thumb-box img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
-        .badge { position: absolute; top: 10px; left: 10px; background: var(--accent); color: white; padding: 5px 10px; font-size: 0.75rem; font-weight: bold; border-radius: 4px; text-transform: uppercase; }
-        .content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        h3 { font-size: 1.05rem; font-weight: 600; line-height: 1.4; margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 2.8rem; }
-        .btn { margin-top: auto; background: transparent; border: 2px solid var(--accent); color: var(--text); text-align: center; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .btn:hover { background: var(--accent); color: white; }
-        .status-text { grid-column: 1/-1; text-align: center; padding: 50px; font-size: 1.2rem; color: var(--muted); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
+        .card { background: var(--card); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 8px 24px rgba(0,0,0,0.3); border-bottom: 3px solid transparent; transition: transform 0.3s, border-color 0.3s; }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .video-box { position: relative; width: 100%; padding-top: 56.25%; background: #000; }
+        .video-box iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .badge { position: absolute; top: 10px; left: 10px; background: var(--accent); color: white; padding: 5px 10px; font-size: 0.75rem; font-weight: bold; border-radius: 4px; text-transform: uppercase; z-index: 10; }
+        .content { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; text-align: center; }
+        h3 { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-top: 5px; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>CANLI <span style="color:var(--accent)">MOTOR SPORLARI</span> MERKEZİ</h1>
-    <p>MotoGP ve WorldSBK Resmi Kanallarından Canlı Veriler</p>
+    <p>MotoGP ve WorldSBK Kanallarından En Güncel İçerikler</p>
 </header>
 
 <div class="grid" id="video-grid">
-    <div class="status-text" id="status">Sinyal aranıyor, motorlar ateşleniyor...</div>
-</div>
+    </div>
 
 <script>
-    const CHANNELS = [
-        { name: 'MotoGP', id: 'UC8p_Liq3L3PIeFC0EsZgx-Q' },
-        { name: 'WorldSBK', id: 'UCIdp2N87ZatLh_g_G9Yv96A' }
+    // Kanalların en güncel içeriklerini liste halinde doğrudan embed olarak basıyoruz.
+    // Bu yöntem tarayıcı güvenliğine (CORS) takılmaz, API anahtarı istemez, kota harcamaz!
+    const FEEDS = [
+        { ch: 'MotoGP', url: 'https://www.youtube.com/embed?listType=user_uploads&list=UC8p_Liq3L3PIeFC0EsZgx-Q' },
+        { ch: 'WorldSBK', url: 'https://www.youtube.com/embed?listType=user_uploads&list=UCIdp2N87ZatLh_g_G9Yv96A' }
     ];
 
-    async function loadContent() {
+    function loadPlayers() {
         const grid = document.getElementById('video-grid');
-        const status = document.getElementById('status');
-        let videos = [];
+        grid.innerHTML = ''; // Grid'i temizle
 
-        for (const ch of CHANNELS) {
-            try {
-                // Tarayıcı engelini aşmak için allorigins proxy'sini kullanıyoruz
-                const targetUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?channel_id=${ch.id}`;
-                const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
-                
-                const response = await fetch(proxyUrl);
-                if (!response.ok) throw new Error('Ağ hatası');
-                
-                const wrapper = await response.json();
-                // allorigins veriyi 'contents' stringi içinde döndürür, onu JSON'a geri çeviriyoruz
-                const data = JSON.parse(wrapper.contents);
-                
-                if (data && data.items) {
-                    data.items.forEach(item => {
-                        // Video ID'sini linkten ayıklıyoruz
-                        const vId = item.link.split('v=')[1];
-                        videos.push({
-                            title: item.title,
-                            link: item.link,
-                            img: `https://img.youtube.com/vi/${vId}/mqdefault.jpg`,
-                            ch: ch.name,
-                            date: new Date(item.pubDate)
-                        });
-                    });
-                }
-            } catch (e) { 
-                console.error(`${ch.name} verisi çekilirken hata oluştu:`, e); 
-            }
-        }
-
-        // Videoları tarihe göre en yeniden en eskiye sırala
-        videos.sort((a, b) => b.date - a.date);
-
-        if (videos.length === 0) {
-            status.innerText = "Şu an videolar yüklenemedi. Lütfen sayfayı tekrar yenileyin.";
-            return;
-        }
-
-        // Grid alanını temizle ve kartları bas
-        grid.innerHTML = videos.map(v => `
-            <div class="card">
-                <div class="thumb-box">
-                    <span class="badge">${v.ch}</span>
-                    <img src="${v.img}" alt="${v.title}" loading="lazy">
+        FEEDS.forEach(feed => {
+            const cardHtml = `
+                <div class="card">
+                    <div class="video-box">
+                        <span class="badge">${feed.ch} Canlı / Güncel</span>
+                        <iframe 
+                            src="${feed.url}" 
+                            title="${feed.ch} Video Player" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="content">
+                        <h3>Resmi En Yeni Videolar</h3>
+                    </div>
                 </div>
-                <div class="content">
-                    <h3 title="${v.title}">${v.title}</h3>
-                    <a href="${v.link}" target="_blank" class="btn">Videoyu İzle</a>
-                </div>
-            </div>
-        `).join('');
+            `;
+            grid.innerHTML += cardHtml;
+        });
     }
 
-    // Sayfa hazır olduğunda çalıştır
-    document.addEventListener('DOMContentLoaded', loadContent);
+    // Sayfa açıldığında motoru çalıştır
+    document.addEventListener('DOMContentLoaded', loadPlayers);
 </script>
 </body>
 </html>
