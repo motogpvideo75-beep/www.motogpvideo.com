@@ -3,71 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motor Sporları Canlı Merkezi</title>
+    <title>Motor Sporları Merkezi</title>
     <style>
-        :root { --bg: #0a0f18; --card: #141f32; --accent: #ff2a4b; --text: #ffffff; --muted: #8a99ad; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: var(--bg); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; justify-content: center; align-items: center; padding: 40px 20px; }
-        header { text-align: center; margin-bottom: 50px; }
-        h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
-        h1 span { color: var(--accent); }
-        header p { color: var(--muted); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; width: 100%; max-width: 1200px; }
-        .card { background: var(--card); border-radius: 15px; padding: 30px 20px; text-align: center; border: 2px solid transparent; transition: 0.3s; text-decoration: none; color: white; display: flex; flex-direction: column; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .card:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 15px 40px rgba(255, 42, 75, 0.2); }
-        .icon { font-size: 45px; margin-bottom: 15px; }
-        .card h2 { font-size: 1.5rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-        .card p { color: var(--muted); margin-bottom: 20px; font-size: 0.95rem; flex-grow: 1; }
-        .btn { background: var(--accent); color: white; padding: 10px 25px; border-radius: 50px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; transition: 0.2s; width: 100%; }
-        .card:hover .btn { background: #fff; color: #000; }
-        .footer { margin-top: 60px; color: #384357; font-size: 0.9rem; letter-spacing: 1px; }
+        :root { --bg: #0a0f18; --card: #141f32; --accent: #ff2a4b; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; }
+        .hero { margin: 40px 0; }
+        h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 3px; }
+        span { color: var(--accent); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
+        .card { background: var(--card); padding: 20px; border-radius: 15px; border: 1px solid #2a3a5a; text-decoration: none; color: white; transition: 0.3s; }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .btn { display: inline-block; background: var(--accent); padding: 10px 20px; border-radius: 50px; margin-top: 15px; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>CANLI <span>MOTOR SPORLARI</span> MERKEZİ</h1>
-    <p>Resmi Kanallara, Canlı Yayınlara ve Yarış Merkezlerine Kesintisiz Erişim</p>
-</header>
+<div class="hero">
+    <h1>MOTOR SPORLARI <span>CANLI MERKEZİ</span></h1>
+    <p>En hızlı içerikler ve resmi yayınlar için tek nokta.</p>
+</div>
 
 <div class="grid">
-    <!-- MotoGP Giriş -->
     <a href="https://www.youtube.com/@motogp/streams" target="_blank" class="card">
-        <div class="icon">🏁</div>
-        <h2>MotoGP YouTube</h2>
-        <p>Canlı Yayınlar, Yarış Özetleri ve Özel İçerikler</p>
-        <div class="btn">YAYINI AÇ</div>
+        <h3>🏁 MotoGP</h3>
+        <p>Resmi Canlı Yayınlar</p>
+        <div class="btn">GİT</div>
     </a>
-
-    <!-- WorldSBK Giriş -->
     <a href="https://www.youtube.com/@worldsbk/streams" target="_blank" class="card">
-        <div class="icon">🏍️</div>
-        <h2>WorldSBK YouTube</h2>
-        <p>Canlı Yayınlar, Hafta Sonu Özetleri ve Padok</p>
-        <div class="btn">YAYINI AÇ</div>
+        <h3>🏍️ WorldSBK</h3>
+        <p>Pist ve Padok</p>
+        <div class="btn">GİT</div>
     </a>
-
-    <!-- Formula 1 Giriş (Kanal ID'li Kurşun Geçirmez Link) -->
     <a href="https://www.youtube.com/channel/UCgBitIgXgWi6R9EgAh_vIFw/videos" target="_blank" class="card">
-        <div class="icon">🏎️</div>
-        <h2>Formula 1</h2>
-        <p>En Hızlı Pilotlar, Yarış Özetleri ve Analizler</p>
-        <div class="btn">F1 DÜNYASINA GİR</div>
+        <h3>🏎️ Formula 1</h3>
+        <p>Resmi Kanal</p>
+        <div class="btn">GİT</div>
     </a>
-
-    <!-- Resmi Web Siteleri Giriş -->
     <a href="https://www.motogp.com" target="_blank" class="card">
-        <div class="icon">🌐</div>
-        <h2>Canlı Skor & Zaman</h2>
-        <p>Resmi Web Sitelerinden Canlı Dereceler ve Haberler</p>
-        <div class="btn">SİTEYE GİT</div>
+        <h3>🌐 Canlı Skor</h3>
+        <p>Resmi Zamanlama</p>
+        <div class="btn">GİT</div>
     </a>
 </div>
 
-<div class="footer">
-    © 2026 MotoGP Video Hub - Kesintisiz Hız Portalı
-</div>
+<footer style="margin-top: 50px; color: #555;">
+    <p>© 2026 MotoGP Video Hub - Güncel ve Hızlı</p>
+</footer>
 
-<!-- Güncelleme Noktası -->
 </body>
-</html> .
+</html>
