@@ -3,55 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motor Sporları Merkezi</title>
+    <title>Motor Sporları Canlı Merkezi | Live Motorsports Hub</title>
     <style>
         :root { --bg: #0a0f18; --card: #141f32; --accent: #ff2a4b; --text: #ffffff; }
         body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; }
-        .hero { margin: 40px 0; }
-        h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 3px; }
-        span { color: var(--accent); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
-        .card { background: var(--card); padding: 20px; border-radius: 15px; border: 1px solid #2a3a5a; text-decoration: none; color: white; transition: 0.3s; }
-        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .btn { display: inline-block; background: var(--accent); padding: 10px 20px; border-radius: 50px; margin-top: 15px; font-weight: bold; }
+        .hero h1 { font-size: 2rem; text-transform: uppercase; margin-bottom: 5px; }
+        .hero p { color: #8a99ad; margin-bottom: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; max-width: 1200px; margin: 0 auto; }
+        .card { background: var(--card); padding: 15px; border-radius: 10px; text-decoration: none; color: white; border: 1px solid #2a3a5a; transition: 0.3s; }
+        .card:hover { border-color: var(--accent); transform: scale(1.02); }
+        .btn-small { display: block; background: var(--accent); padding: 8px; border-radius: 5px; margin-top: 10px; font-weight: bold; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
 <div class="hero">
-    <h1>MOTOR SPORLARI <span>CANLI MERKEZİ</span></h1>
-    <p>En hızlı içerikler ve resmi yayınlar için tek nokta.</p>
+    <h1>MOTOR SPORLARI MERKEZİ</h1>
+    <p>TR | EN - Kesintisiz Yayın ve Resmi Kanallar</p>
 </div>
 
 <div class="grid">
-    <a href="https://www.youtube.com/@motogp/streams" target="_blank" class="card">
-        <h3>🏁 MotoGP</h3>
-        <p>Resmi Canlı Yayınlar</p>
-        <div class="btn">GİT</div>
-    </a>
-    <a href="https://www.youtube.com/@worldsbk/streams" target="_blank" class="card">
-        <h3>🏍️ WorldSBK</h3>
-        <p>Pist ve Padok</p>
-        <div class="btn">GİT</div>
-    </a>
-    <!-- Formula 1 (Güvenli Arama Yönlendirmesi) -->
-<a href="https://www.youtube.com/results?search_query=Formula+1+official+channel" target="_blank" class="card">
-    <div class="icon">🏎️</div>
-    <h2>Formula 1</h2>
-    <p>Resmi Kanal ve Yarış Özetleri</p>
-    <div class="btn">F1 DÜNYASINA GİR</div>
-</a>
-    </a>
-    <a href="https://www.motogp.com" target="_blank" class="card">
-        <h3>🌐 Canlı Skor</h3>
-        <p>Resmi Zamanlama</p>
-        <div class="btn">GİT</div>
-    </a>
+    <!-- Temel Yayıncılar -->
+    <a href="https://www.youtube.com/@motogp" class="card"><h3>MotoGP</h3><div class="btn-small">İZLE</div></a>
+    <a href="https://www.redbull.com/int-en/live" class="card"><h3>Red Bull TV</h3><div class="btn-small">İZLE</div></a>
+    <a href="https://www.eurosport.com" class="card"><h3>Eurosport 1-2-3</h3><div class="btn-small">İZLE</div></a>
+    <a href="https://www.ssportplus.com" class="card"><h3>S Sport</h3><div class="btn-small">İZLE</div></a>
+    <a href="https://www.tntsports.co.uk" class="card"><h3>TNT Sports</h3><div class="btn-small">İZLE</div></a>
+    <a href="https://www.youtube.com/@F1" class="card"><h3>Formula 1</h3><div class="btn-small">İZLE</div></a>
 </div>
-
-<footer style="margin-top: 50px; color: #555;">
-    <p>© 2026 MotoGP Video Hub - Güncel ve Hızlı</p>
-</footer>
 
 </body>
 </html>
