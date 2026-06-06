@@ -18,16 +18,21 @@
         <a href="https://www.youtube.com/@motogp/streams" class="card"><h3>MotoGP</h3><div class="btn-small">CANLI</div></a>
         <a href="https://www.youtube.com/@worldsbk/streams" class="card"><h3>WorldSBK</h3><div class="btn-small">CANLI</div></a>
         <a href="https://www.youtube.com/channel/UCgBitIgXgWi6R9EgAh_vIFw/videos" class="card"><h3>Formula 1</h3><div class="btn-small">CANLI</div></a>
+        <a href="https://www.redbull.com/tr-tr/live" class="card"><h3>Red Bull TV</h3><div class="btn-small">CANLI</div></a>
+        <a href="https://www.eurosport.com/motorsport/" class="card"><h3>Eurosport</h3><div class="btn-small">YAYINLAR</div></a>
+        <a href="https://www.ssportplus.com/canli-yayin" class="card"><h3>S Sport</h3><div class="btn-small">İZLE</div></a>
+        <a href="https://www.tntsports.co.uk/" class="card"><h3>TNT Sports</h3><div class="btn-small">İZLE</div></a>
+        <a href="https://www.motorsport.tv/" class="card"><h3>Motorsport.tv</h3><div class="btn-small">CANLI</div></a>
+        <a href="https://www.twitch.tv/directory/category/racing" class="card"><h3>Twitch Racing</h3><div class="btn-small">İNCELE</div></a>
     </div>
+
     <script>
-        const translations = {
-            'tr': { 'title': 'MOTOR SPORLARI MERKEZİ' },
-            'en': { 'title': 'MOTORSPORTS LIVE HUB' }
-        };
+        const tr = { 'title': 'MOTOR SPORLARI MERKEZİ' };
+        const en = { 'title': 'MOTORSPORTS LIVE HUB' };
         function toggleLang() {
             const lang = document.documentElement.lang === 'tr' ? 'en' : 'tr';
             document.documentElement.lang = lang;
-            document.getElementById('title').innerText = translations[lang]['title'];
+            document.getElementById('title').innerText = (lang === 'tr' ? tr : en)['title'];
         }
     </script>
 </body>
