@@ -14,11 +14,22 @@
         .card:hover { border-color: var(--accent); }
         .btn-small { background: var(--accent); padding: 8px; border-radius: 5px; margin-top: 10px; font-weight: bold; font-size: 0.75rem; }
         footer { margin-top: 50px; padding: 20px; color: #888; font-size: 0.8rem; border-top: 1px solid #2a3a5a; text-align: center; }
+        
+        /* Yeni Eklenen Video Alanı Tasarımı */
+        .video-container { max-width: 800px; margin: 20px auto; background: var(--card); border: 1px solid #2a3a5a; border-radius: 10px; padding: 10px; overflow: hidden; }
+        .responsive-iframe { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .responsive-iframe iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 6px; }
     </style>
 </head>
 <body>
 
     <h1>MOTORSPORTS LIVE HUB</h1>
+
+    <div class="video-container">
+        <div class="responsive-iframe">
+            <iframe id="featured-video" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
 
     <h2>LIVE STREAMS / CANLI YAYINLAR</h2>
     <div class="grid">
@@ -33,6 +44,7 @@
         <a href="https://motorsport.tv/" class="card"><h3>Motorsport.tv</h3><div class="btn-small">LIVE / CANLI</div></a>
         <a href="https://www.twitch.tv/directory/category/racing" class="card"><h3>Twitch Racing</h3><div class="btn-small">INCELE / EXPLORE</div></a>
     </div>
+
     <h2>BRAND ENCYCLOPEDIA / MARKA ANSIKLOPEDİSİ</h2>
     <div class="grid">
         <div class="card">
@@ -70,5 +82,18 @@
         <p>Bu site resmi bir yayın kuruluşu değildir. Sadece resmi spor kanallarına yönlendirme sağlayan bir motor sporları rehberidir.</p>
     </footer>
 
+    <script>
+        // İzlenmesini istediğin GERÇEK YouTube video ID'lerini buraya ekle
+        const videoList = [
+            "1GgaC_dLTdI" // Macaristan GP Sprint Yarışı Özet Videosu
+        ];
+
+        // Sayfa her yüklendiğinde listeden rastgele bir video ID seçer
+        if (videoList.length > 0) {
+            const randomIndex = Math.floor(Math.random() * videoList.length);
+            const selectedVideoId = videoList[randomIndex];
+            document.getElementById('featured-video').src = "https://www.youtube.com/embed/" + selectedVideoId;
+        }
+    </script>
 </body>
 </html>
