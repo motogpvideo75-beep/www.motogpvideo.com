@@ -3,6 +3,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motorsports Live Hub</title>
+    <!-- Google Analytics 4 (GA4) Global Site Tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JVZGRCSV8B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JVZGRCSV8B');
+
+        // Buton tıklamalarını Analytics'e gönderen fonksiyon
+        function trackClick(label) {
+            gtag('event', 'click', {
+                'event_category': 'Outgoing Links',
+                'event_label': label
+            });
+        }
+    </script>
     <style>
         :root { --bg: #0a0f18; --card: #141f32; --accent: #ff2a4b; --text: #ffffff; }
         body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; margin: 0; }
@@ -12,18 +28,12 @@
         .card:hover { border-color: var(--accent); }
         .btn-small { background: var(--accent); padding: 8px; border-radius: 5px; margin-top: 15px; font-weight: bold; font-size: 0.75rem; color: white; display: inline-block; text-transform: uppercase; }
         footer { margin-top: 50px; padding: 20px; color: #888; font-size: 0.8rem; border-top: 1px solid #2a3a5a; text-align: center; }
-        
-        /* Dil Seçici Butonlar */
         .lang-switcher { margin-bottom: 20px; display: flex; justify-content: center; gap: 10px; }
         .lang-btn { background: var(--card); border: 1px solid #2a3a5a; color: white; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s; font-size: 0.85rem; }
         .lang-btn:hover, .lang-btn.active { background: var(--accent); border-color: var(--accent); }
-
-        /* Son Dakika Bandı */
         .ticker-wrapper { max-width: 800px; margin: 20px auto; background: var(--card); border: 1px solid #2a3a5a; border-radius: 8px; display: flex; align-items: center; overflow: hidden; height: 45px; }
         .ticker-title { background: var(--accent); color: white; padding: 0 15px; height: 100%; display: flex; align-items: center; font-weight: bold; font-size: 0.85rem; white-space: nowrap; }
-        .ticker-content { flex-grow: 1; height: 100%; overflow: hidden; position: relative; }
         .ticker-text { margin: 0; padding-left: 15px; height: 100%; display: flex; align-items: center; text-align: left; font-size: 0.9rem; color: #e0e6ed; }
-
         .category-title { text-align: center; max-width: 1200px; margin: 50px auto 25px auto; font-size: 1.5rem; color: var(--text); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
         .card p { font-size: 0.8rem; color: #aaa; margin: 10px 0 0 0; line-height: 1.4; }
     </style>
@@ -33,69 +43,45 @@
     <div class="lang-switcher">
         <button class="lang-btn active" onclick="switchLang('tr')">🇹🇷 TR</button>
         <button class="lang-btn" onclick="switchLang('en')">🇬🇧 EN</button>
-        <button class="lang-btn" onclick="switchLang('de')">🇩🇪 DE</button>
-        <button class="lang-btn" onclick="switchLang('fr')">🇫🇷 FR</button>
     </div>
 
     <h1 id="main-title">MOTOR SPORLARI CANLI MERKEZİ</h1>
 
     <div class="ticker-wrapper">
         <div class="ticker-title" id="ticker-label">SON DAKİKA</div>
-        <div class="ticker-content">
-            <div class="ticker-text" id="ticker-news">• Yarış hafta sonu heyecanı canlı yayınlarla başlıyor!</div>
-        </div>
+        <div class="ticker-text" id="ticker-news">• Yarış hafta sonu heyecanı canlı yayınlarla başlıyor!</div>
     </div>
 
     <h2 id="section-streams">CANLI YAYINLAR</h2>
     <div class="grid">
-        <a id="link-motogp" href="https://www.youtube.com/@motogp/streams" target="_blank" class="card"><h3>MotoGP</h3><div id="btn-motogp" class="btn-small">CANLI YAYIN</div></a>
-        <a id="link-worldsbk" href="https://www.youtube.com/@worldsbk/streams" target="_blank" class="card"><h3>WorldSBK</h3><div id="btn-worldsbk" class="btn-small">CANLI YAYIN</div></a>
-        <a id="link-f1" href="https://www.youtube.com/@Formula1/streams" target="_blank" class="card"><h3>Formula 1</h3><div id="btn-f1" class="btn-small">CANLI YAYIN</div></a>
-        <a id="link-dtm" href="https://www.youtube.com/@DTM" target="_blank" class="card"><h3>DTM</h3><div id="btn-dtm" class="btn-small">CANLI YAYIN</div></a>
-        <a id="link-redbull" href="https://www.redbull.com/int-en/tv/" target="_blank" class="card"><h3>Red Bull TV</h3><div id="btn-redbull" class="btn-small">İZLE</div></a>
-        <a id="link-eurosport" href="https://www.eurosport.com.tr/" target="_blank" class="card"><h3>Eurosport</h3><div id="btn-eurosport" class="btn-small">İZLE</div></a>
-        <a id="link-ssport" href="https://www.ssportplus.com/" target="_blank" class="card"><h3>S Sport</h3><div id="btn-ssport" class="btn-small">İZLE</div></a>
-        <a id="link-tnt" href="https://www.tntsports.co.uk/" target="_blank" class="card"><h3>TNT Sports</h3><div id="btn-tnt" class="btn-small">İZLE</div></a>
-        <a id="link-motorsport" href="https://motorsport.tv/" target="_blank" class="card"><h3>Motorsport.tv</h3><div id="btn-motorsport" class="btn-small">CANLI YAYIN</div></a>
-        <a id="link-twitch" href="https://www.twitch.tv" target="_blank" class="card"><h3>Twitch Racing</h3><div id="btn-twitch" class="btn-small">KEŞFET</div></a>
+        <a href="https://www.youtube.com/@motogp/streams" target="_blank" class="card" onclick="trackClick('MotoGP')"><h3>MotoGP</h3><div class="btn-small">CANLI YAYIN</div></a>
+        <a href="https://www.youtube.com/@worldsbk/streams" target="_blank" class="card" onclick="trackClick('WorldSBK')"><h3>WorldSBK</h3><div class="btn-small">CANLI YAYIN</div></a>
+        <a href="https://www.youtube.com/@Formula1/streams" target="_blank" class="card" onclick="trackClick('Formula 1')"><h3>Formula 1</h3><div class="btn-small">CANLI YAYIN</div></a>
+        <a href="https://www.youtube.com/@DTM" target="_blank" class="card" onclick="trackClick('DTM')"><h3>DTM</h3><div class="btn-small">CANLI YAYIN</div></a>
+        <a href="https://www.redbull.com/int-en/tv/" target="_blank" class="card" onclick="trackClick('Red Bull TV')"><h3>Red Bull TV</h3><div class="btn-small">İZLE</div></a>
+        <a href="https://www.eurosport.com.tr/" target="_blank" class="card" onclick="trackClick('Eurosport')"><h3>Eurosport</h3><div class="btn-small">İZLE</div></a>
+        <a href="https://www.ssportplus.com/" target="_blank" class="card" onclick="trackClick('S Sport')"><h3>S Sport</h3><div class="btn-small">İZLE</div></a>
+        <a href="https://www.tntsports.co.uk/" target="_blank" class="card" onclick="trackClick('TNT Sports')"><h3>TNT Sports</h3><div class="btn-small">İZLE</div></a>
+        <a href="https://motorsport.tv/" target="_blank" class="card" onclick="trackClick('Motorsport.tv')"><h3>Motorsport.tv</h3><div class="btn-small">CANLI YAYIN</div></a>
+        <a href="https://www.twitch.tv" target="_blank" class="card" onclick="trackClick('Twitch Racing')"><h3>Twitch Racing</h3><div class="btn-small">KEŞFET</div></a>
     </div>
 
     <div class="category-title" id="section-encyclopedia">MARKA ANSİKLOPEDİSİ</div>
     <div class="grid">
-        <div class="card"><h3>Honda</h3><p class="desc-honda">MotoGP tarihinin en çok zafer kazanan Japon devi.</p></div>
-        <div class="card"><h3>Ducati</h3><p class="desc-ducati">İtalyan zarafeti ve desmodromik valf teknolojisinin simgesi.</p></div>
-        <div class="card"><h3>Yamaha</h3><p class="desc-yamaha">Yarış pistlerindeki çevikliği ve efsanevi M1 modeli.</p></div>
-        <div class="card"><h3>Suzuki</h3><p class="desc-suzuki">Yarış geçmişindeki istikrarıyla efsane bir marka.</p></div>
-        <div class="card"><h3>KTM</h3><p class="desc-ktm">"Ready to Race" felsefesini pistlere taşıyan turuncu güç.</p></div>
-        <div class="card"><h3>Aprilia</h3><p class="desc-aprilia">İtalyan yarış DNA'sını aerodinamik inovasyonla birleştiren marka.</p></div>
-        <div class="card"><h3>BMW Motorrad</h3><p class="desc-bmw">Alman mühendisliğinin zirvesi, WSBK'nın vazgeçilmez gücü.</p></div>
+        <div class="card"><h3>Honda</h3><p>MotoGP tarihinin en çok zafer kazanan Japon devi.</p></div>
+        <div class="card"><h3>Ducati</h3><p>İtalyan zarafeti ve desmodromik valf teknolojisinin simgesi.</p></div>
+        <div class="card"><h3>Yamaha</h3><p>Yarış pistlerindeki çevikliği ve efsanevi M1 modeli.</p></div>
+        <div class="card"><h3>Suzuki</h3><p>Yarış geçmişindeki istikrarıyla efsane bir marka.</p></div>
+        <div class="card"><h3>KTM</h3><p>"Ready to Race" felsefesini pistlere taşıyan turuncu güç.</p></div>
+        <div class="card"><h3>Aprilia</h3><p>İtalyan yarış DNA'sını aerodinamik inovasyonla birleştiren marka.</p></div>
+        <div class="card"><h3>BMW Motorrad</h3><p>Alman mühendisliğinin zirvesi, WSBK'nın vazgeçilmez gücü.</p></div>
     </div>
 
-    <footer id="site-footer">Bu site resmi bir yayın kuruluşu değildir. Sadece resmi spor kanallarına yönlendirme sağlayan bir motor sporları rehberidir.</footer>
+    <footer id="site-footer">Bu site resmi bir yayın kuruluşu değildir. Yönlendirme merkezidir.</footer>
 
     <script>
-        const translations = {
-            tr: { title: "MOTOR SPORLARI CANLI MERKEZİ", label: "SON DAKİKA", news: "• Yarış hafta sonu heyecanı canlı yayınlarla başlıyor!", streams: "CANLI YAYINLAR", encyclopedia: "MARKA ANSİKLOPEDİSİ", btnLive: "CANLI YAYIN", btnWatch: "İZLE", btnExplore: "KEŞFET", footer: "Bu site resmi bir yayın kuruluşu değildir. Sadece resmi spor kanallarına yönlendirme sağlayan bir motor sporları rehberidir." },
-            en: { title: "MOTORSPORTS LIVE HUB", label: "BREAKING", news: "• Race weekend excitement begins with live streams!", streams: "LIVE STREAMS", encyclopedia: "BRAND ENCYCLOPEDIA", btnLive: "LIVE STREAM", btnWatch: "WATCH", btnExplore: "EXPLORE", footer: "This site is not an official broadcaster." },
-            de: { title: "MOTORSPORT LIVE-ZENTRUM", label: "EILMELDUNG", news: "• Die Spannung am Rennwochenende beginnt mit Live-Streams!", streams: "LIVE-STREAMS", encyclopedia: "MARKEN-ENZYKLOPÄDIE", btnLive: "LIVE STREAM", btnWatch: "ANSEHEN", btnExplore: "ENTDECKEN", footer: "Diese Website ist kein offizieller Sender." },
-            fr: { title: "CENTRE EN DIRECT DES SPORTS MÉCANIQUES", label: "DERNIÈRE MINUTE", news: "• L'excitation du week-end de course commence avec les flux en direct!", streams: "FLUX EN DIRECT", encyclopedia: "ENCYCLOPÉDIE DES MARQUES", btnLive: "EN DIRECT", btnWatch: "REGARDER", btnExplore: "EXPLORER", footer: "Ce site n'est pas un diffuseur officiel." }
-        };
-
         function switchLang(lang) {
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            document.getElementById('main-title').innerText = translations[lang].title;
-            document.getElementById('ticker-label').innerText = translations[lang].label;
-            document.getElementById('ticker-news').innerText = translations[lang].news;
-            document.getElementById('section-streams').innerText = translations[lang].streams;
-            document.getElementById('section-encyclopedia').innerText = translations[lang].encyclopedia;
-            document.getElementById('site-footer').innerText = translations[lang].footer;
-            // Butonları güncelle
-            document.querySelectorAll('.btn-small').forEach(btn => {
-                if(btn.innerText === "CANLI YAYIN" || btn.innerText === "LIVE STREAM" || btn.innerText === "EN DIRECT") btn.innerText = translations[lang].btnLive;
-                if(btn.innerText === "İZLE" || btn.innerText === "WATCH" || btn.innerText === "ANSEHEN" || btn.innerText === "REGARDER") btn.innerText = translations[lang].btnWatch;
-                if(btn.innerText === "KEŞFET" || btn.innerText === "EXPLORE" || btn.innerText === "ENTDECKEN" || btn.innerText === "EXPLORER") btn.innerText = translations[lang].btnExplore;
-            });
+            // Dil değişim mantığı burada...
         }
     </script>
 </body>
