@@ -1,21 +1,30 @@
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Motor Sporları Canlı Merkezi</title>
+    <title>Motor Sporları Merkezi</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JVZGRCSV8B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JVZGRCSV8B');
+    </script>
     <style>
         :root { --bg: #0a0f18; --card: #141f32; --accent: #ff2a4b; --text: #ffffff; }
         body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; }
-        .lang-switch { margin-bottom: 20px; cursor: pointer; color: var(--accent); font-weight: bold; }
+        .lang-switch { cursor: pointer; color: var(--accent); font-weight: bold; margin-bottom: 20px; }
+        h1, h2 { color: var(--text); margin-top: 40px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; max-width: 1100px; margin: 0 auto; }
         .card { background: var(--card); padding: 15px; border-radius: 10px; text-decoration: none; color: white; border: 1px solid #2a3a5a; }
         .btn-small { background: var(--accent); padding: 8px; border-radius: 5px; margin-top: 10px; font-weight: bold; font-size: 0.8rem; }
-        #history-modal { display:none; background:#141f32; padding:20px; margin: 20px auto; border-radius:10px; max-width: 800px; text-align: left; border: 1px solid var(--accent); }
     </style>
 </head>
 <body>
     <div class="lang-switch" onclick="toggleLang()">TR / EN</div>
     <h1 id="title">MOTOR SPORLARI MERKEZİ</h1>
-    
+
+    <h2>CANLI YAYINLAR</h2>
     <div class="grid">
         <a href="https://www.youtube.com/@motogp/streams" class="card"><h3>MotoGP</h3><div class="btn-small">CANLI</div></a>
         <a href="https://www.youtube.com/@worldsbk/streams" class="card"><h3>WorldSBK</h3><div class="btn-small">CANLI</div></a>
@@ -28,37 +37,17 @@
         <a href="https://www.twitch.tv/directory/category/racing" class="card"><h3>Twitch Racing</h3><div class="btn-small">İNCELE</div></a>
     </div>
 
-    <h2 style="margin-top:50px; color: white;">MARKALAR</h2>
-    <div class="grid" style="margin-bottom: 50px;">
-        <div class="card" onclick="showHistory('honda')" style="cursor: pointer;"><h3>Honda</h3><p>Tarihçeyi Gör</p></div>
-        <div class="card" onclick="showHistory('ducati')" style="cursor: pointer;"><h3>Ducati</h3><p>Tarihçeyi Gör</p></div>
-        <div class="card" onclick="showHistory('yamaha')" style="cursor: pointer;"><h3>Yamaha</h3><p>Tarihçeyi Gör</p></div>
-        <div class="card" onclick="showHistory('suzuki')" style="cursor: pointer;"><h3>Suzuki</h3><p>Tarihçeyi Gör</p></div>
-        <div class="card" onclick="showHistory('ktm')" style="cursor: pointer;"><h3>KTM</h3><p>Tarihçeyi Gör</p></div>
-        <div class="card" onclick="showHistory('aprilia')" style="cursor: pointer;"><h3>Aprilia</h3><p>Tarihçeyi Gör</p></div>
-    </div>
-
-    <div id="history-modal">
-        <h3 id="brand-name" style="color: var(--accent);"></h3>
-        <p id="brand-info"></p>
-        <button onclick="closeModal()" style="background:var(--accent); border:none; padding:10px; color:white; border-radius:5px; cursor:pointer;">Kapat</button>
+    <h2>MARKA ANSIKLOPEDİSİ</h2>
+    <div class="grid">
+        <div class="card"><h3>Honda</h3><div class="btn-small">Tarihçeyi Gör</div></div>
+        <div class="card"><h3>Ducati</h3><div class="btn-small">Tarihçeyi Gör</div></div>
+        <div class="card"><h3>Yamaha</h3><div class="btn-small">Tarihçeyi Gör</div></div>
+        <div class="card"><h3>Suzuki</h3><div class="btn-small">Tarihçeyi Gör</div></div>
+        <div class="card"><h3>KTM</h3><div class="btn-small">Tarihçeyi Gör</div></div>
+        <div class="card"><h3>Aprilia</h3><div class="btn-small">Tarihçeyi Gör</div></div>
     </div>
 
     <script>
-        const historyData = {
-            'honda': { name: 'HONDA', info: '1948 yılında Soichiro Honda tarafından kuruldu. Yarış dünyasında özellikle MotoGP\'deki başarılarıyla bilinir.' },
-            'ducati': { name: 'DUCATI', info: '1926 yılında İtalya\'da kurulan Ducati, yüksek performanslı motorları ve ikonik kırmızı rengiyle tanınır.' },
-            'yamaha': { name: 'YAMAHA', info: '1955 yılında kurulan Yamaha, sadece motorlarıyla değil, aynı zamanda MotoGP\'deki teknolojik inovasyonlarıyla efsaneleşmiştir.' },
-            'suzuki': { name: 'SUZUKI', info: '1909\'da kurulan Suzuki, hafif ve çevik motosiklet tasarımlarıyla yarış pistlerinde uzun yıllar büyük başarılar elde etmiştir.' },
-            'ktm': { name: 'KTM', info: 'Avusturya merkezli KTM, off-road ve MotoGP sahnesinde "Ready to Race" mottosuyla agresif ve hızlı motorlar üretir.' },
-            'aprilia': { name: 'APRILIA', info: 'İtalyan mühendislik dehası Aprilia, özellikle teknik detaylara verdiği önemle MotoGP\'de şampiyonlukların iddialı ismidir.' }
-        };
-        function showHistory(b) {
-            document.getElementById('brand-name').innerText = historyData[b].name;
-            document.getElementById('brand-info').innerText = historyData[b].info;
-            document.getElementById('history-modal').style.display = 'block';
-        }
-        function closeModal() { document.getElementById('history-modal').style.display = 'none'; }
         function toggleLang() {
             const lang = document.documentElement.lang === 'tr' ? 'en' : 'tr';
             document.documentElement.lang = lang;
