@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,7 +28,6 @@
 
     <div class="video-container">
         <div class="responsive-iframe">
-            <!-- Güvenli ve Engelsiz Oynatıcı Alanı -->
             <iframe id="featured-video" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
     </div>
@@ -84,17 +84,17 @@
     </footer>
 
     <script>
-        // Sitemizin alan adına (domain) engel koyamayacak, tamamen açık ve güvenli video listesi
+        // Streamable üzerindeki videoların sadece saf ID'lerini buraya yazıyoruz
         const videoList = [
-            "e/mupmhm", // Efsanevi Motor Sporları Viraj ve Hız Aksiyon Videosu
-            "e/5szp72"  // Alternatif Yarış ve Pist Atmosferi Videosu
+            "mupmhm", // Efsanevi Motor Sporları Viraj ve Hız Aksiyon Videosu
+            "5szp72"  // Alternatif Yarış ve Pist Atmosferi Videosu
         ];
 
         if (videoList.length > 0) {
             const randomIndex = Math.floor(Math.random() * videoList.length);
             const selectedVideo = videoList[randomIndex];
-            // Streamable alt yapısıyla engelleri tamamen aşarak videoyu yüklüyoruz
-            document.getElementById('featured-video').src = "https://streamable.com/" + selectedVideo;
+            // Doğru dış site embed link yapısı: /e/ yerine /embed/ kullanıyoruz
+            document.getElementById('featured-video').src = "https://streamable.com/embed/" + selectedVideo;
         }
     </script>
 </body>
