@@ -1,9 +1,9 @@
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motorsports Live Hub</title>
-    <!-- Google Analytics 4 (GA4) Global Site Tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JVZGRCSV8B"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -11,78 +11,66 @@
         gtag('js', new Date());
         gtag('config', 'G-JVZGRCSV8B');
 
-        // Buton tıklamalarını Analytics'e gönderen fonksiyon
-        function trackClick(label) {
-            gtag('event', 'click', {
-                'event_category': 'Outgoing Links',
-                'event_label': label
-            });
+        const data = {
+            tr: { title: "MOTOR SPORLARI CANLI MERKEZİ", label: "SON DAKİKA", news: "• Yarış heyecanı burada! Türkiye'nin merkezi.", pilots: "Türkiye: Kenan Sofuoğlu, Toprak Razgatlıoğlu" },
+            en: { title: "MOTORSPORTS LIVE HUB", label: "BREAKING", news: "• Race weekend excitement! Welcome to the global hub.", pilots: "Global Icons: Fabio Quartararo, Jack Miller" },
+            it: { title: "HUB LIVE MOTORSPORT", label: "ULTIM'ORA", news: "• Emozione pura! Benvenuti nella casa dei campioni.", pilots: "Italia: Francesco Bagnaia, Enea Bastianini" },
+            es: { title: "CENTRO DE MOTORSPORTS", label: "ÚLTIMA HORA", news: "• ¡Bienvenidos! Vive la pasión de las carreras con nosotros.", pilots: "España: Marc Márquez, Jorge Martín" },
+            fr: { title: "CENTRE LIVE SPORTS", label: "DERNIÈRE MINUTE", news: "• L'excitation du week-end de course commence ici.", pilots: "France: Johann Zarco, Fabio Quartararo" },
+            de: { title: "MOTORSPORT LIVE-ZENTRUM", label: "EILMELDUNG", news: "• Die Rennaction beginnt hier.", pilots: "Deutschland: Stefan Bradl" }
+        };
+
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('main-title').innerText = data[lang].title;
+            document.getElementById('ticker-label').innerText = data[lang].label;
+            document.getElementById('ticker-news').innerText = data[lang].news;
+            document.getElementById('pilot-info').innerText = data[lang].pilots;
+            gtag('event', 'language_change', { 'event_label': lang });
         }
     </script>
     <style>
         :root { --bg: #0a0f18; --card: #141f32; --accent: #ff2a4b; --text: #ffffff; }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; margin: 0; }
-        h1, h2 { color: var(--text); margin-top: 30px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1200px; margin: 0 auto; }
-        .card { background: var(--card); padding: 20px; border-radius: 10px; text-decoration: none; color: white; border: 1px solid #2a3a5a; transition: 0.3s; text-align: center; display: flex; flex-direction: column; justify-content: space-between; min-height: 120px; }
-        .card:hover { border-color: var(--accent); }
-        .btn-small { background: var(--accent); padding: 8px; border-radius: 5px; margin-top: 15px; font-weight: bold; font-size: 0.75rem; color: white; display: inline-block; text-transform: uppercase; }
-        footer { margin-top: 50px; padding: 20px; color: #888; font-size: 0.8rem; border-top: 1px solid #2a3a5a; text-align: center; }
-        .lang-switcher { margin-bottom: 20px; display: flex; justify-content: center; gap: 10px; }
-        .lang-btn { background: var(--card); border: 1px solid #2a3a5a; color: white; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s; font-size: 0.85rem; }
-        .lang-btn:hover, .lang-btn.active { background: var(--accent); border-color: var(--accent); }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; }
+        .lang-switcher { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+        .lang-btn { background: var(--card); border: 1px solid #2a3a5a; color: white; padding: 8px 15px; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+        .lang-btn.active { border-color: var(--accent); background: var(--accent); }
         .ticker-wrapper { max-width: 800px; margin: 20px auto; background: var(--card); border: 1px solid #2a3a5a; border-radius: 8px; display: flex; align-items: center; overflow: hidden; height: 45px; }
-        .ticker-title { background: var(--accent); color: white; padding: 0 15px; height: 100%; display: flex; align-items: center; font-weight: bold; font-size: 0.85rem; white-space: nowrap; }
-        .ticker-text { margin: 0; padding-left: 15px; height: 100%; display: flex; align-items: center; text-align: left; font-size: 0.9rem; color: #e0e6ed; }
-        .category-title { text-align: center; max-width: 1200px; margin: 50px auto 25px auto; font-size: 1.5rem; color: var(--text); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
-        .card p { font-size: 0.8rem; color: #aaa; margin: 10px 0 0 0; line-height: 1.4; }
+        .ticker-title { background: var(--accent); padding: 0 15px; height: 100%; display: flex; align-items: center; font-weight: bold; font-size: 0.8rem; }
+        .ticker-text { padding-left: 15px; font-size: 0.9rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1000px; margin: 0 auto; }
+        .card { background: var(--card); padding: 20px; border-radius: 10px; border: 1px solid #2a3a5a; text-decoration: none; color: white; }
+        #pilot-info { margin-top: 30px; color: #888; font-style: italic; }
     </style>
 </head>
 <body>
 
     <div class="lang-switcher">
-        <button class="lang-btn active" onclick="switchLang('tr')">🇹🇷 TR</button>
-        <button class="lang-btn" onclick="switchLang('en')">🇬🇧 EN</button>
+        <button class="lang-btn active" onclick="switchLang('tr')">🇹🇷</button>
+        <button class="lang-btn" onclick="switchLang('en')">🇬🇧</button>
+        <button class="lang-btn" onclick="switchLang('it')">🇮🇹</button>
+        <button class="lang-btn" onclick="switchLang('es')">🇪🇸</button>
+        <button class="lang-btn" onclick="switchLang('fr')">🇫🇷</button>
+        <button class="lang-btn" onclick="switchLang('de')">🇩🇪</button>
     </div>
 
     <h1 id="main-title">MOTOR SPORLARI CANLI MERKEZİ</h1>
 
     <div class="ticker-wrapper">
         <div class="ticker-title" id="ticker-label">SON DAKİKA</div>
-        <div class="ticker-text" id="ticker-news">• Yarış hafta sonu heyecanı canlı yayınlarla başlıyor!</div>
+        <div class="ticker-text" id="ticker-news">• Yarış heyecanı burada! Türkiye'nin merkezi.</div>
     </div>
 
-    <h2 id="section-streams">CANLI YAYINLAR</h2>
     <div class="grid">
-        <a href="https://www.youtube.com/@motogp/streams" target="_blank" class="card" onclick="trackClick('MotoGP')"><h3>MotoGP</h3><div class="btn-small">CANLI YAYIN</div></a>
-        <a href="https://www.youtube.com/@worldsbk/streams" target="_blank" class="card" onclick="trackClick('WorldSBK')"><h3>WorldSBK</h3><div class="btn-small">CANLI YAYIN</div></a>
-        <a href="https://www.youtube.com/@Formula1/streams" target="_blank" class="card" onclick="trackClick('Formula 1')"><h3>Formula 1</h3><div class="btn-small">CANLI YAYIN</div></a>
-        <a href="https://www.youtube.com/@DTM" target="_blank" class="card" onclick="trackClick('DTM')"><h3>DTM</h3><div class="btn-small">CANLI YAYIN</div></a>
-        <a href="https://www.redbull.com/int-en/tv/" target="_blank" class="card" onclick="trackClick('Red Bull TV')"><h3>Red Bull TV</h3><div class="btn-small">İZLE</div></a>
-        <a href="https://www.eurosport.com.tr/" target="_blank" class="card" onclick="trackClick('Eurosport')"><h3>Eurosport</h3><div class="btn-small">İZLE</div></a>
-        <a href="https://www.ssportplus.com/" target="_blank" class="card" onclick="trackClick('S Sport')"><h3>S Sport</h3><div class="btn-small">İZLE</div></a>
-        <a href="https://www.tntsports.co.uk/" target="_blank" class="card" onclick="trackClick('TNT Sports')"><h3>TNT Sports</h3><div class="btn-small">İZLE</div></a>
-        <a href="https://motorsport.tv/" target="_blank" class="card" onclick="trackClick('Motorsport.tv')"><h3>Motorsport.tv</h3><div class="btn-small">CANLI YAYIN</div></a>
-        <a href="https://www.twitch.tv" target="_blank" class="card" onclick="trackClick('Twitch Racing')"><h3>Twitch Racing</h3><div class="btn-small">KEŞFET</div></a>
+        <a href="https://www.youtube.com/@motogp/streams" target="_blank" class="card"><h3>MotoGP</h3></a>
+        <a href="https://www.youtube.com/@Formula1/streams" target="_blank" class="card"><h3>Formula 1</h3></a>
+        <a href="https://www.redbull.com/int-en/tv/" target="_blank" class="card"><h3>Red Bull TV</h3></a>
     </div>
 
-    <div class="category-title" id="section-encyclopedia">MARKA ANSİKLOPEDİSİ</div>
-    <div class="grid">
-        <div class="card"><h3>Honda</h3><p>MotoGP tarihinin en çok zafer kazanan Japon devi.</p></div>
-        <div class="card"><h3>Ducati</h3><p>İtalyan zarafeti ve desmodromik valf teknolojisinin simgesi.</p></div>
-        <div class="card"><h3>Yamaha</h3><p>Yarış pistlerindeki çevikliği ve efsanevi M1 modeli.</p></div>
-        <div class="card"><h3>Suzuki</h3><p>Yarış geçmişindeki istikrarıyla efsane bir marka.</p></div>
-        <div class="card"><h3>KTM</h3><p>"Ready to Race" felsefesini pistlere taşıyan turuncu güç.</p></div>
-        <div class="card"><h3>Aprilia</h3><p>İtalyan yarış DNA'sını aerodinamik inovasyonla birleştiren marka.</p></div>
-        <div class="card"><h3>BMW Motorrad</h3><p>Alman mühendisliğinin zirvesi, WSBK'nın vazgeçilmez gücü.</p></div>
-    </div>
+    <p id="pilot-info">Türkiye: Kenan Sofuoğlu, Toprak Razgatlıoğlu</p>
 
-    <footer id="site-footer">Bu site resmi bir yayın kuruluşu değildir. Yönlendirme merkezidir.</footer>
+    <footer>Bu site resmi bir yayın kuruluşu değildir.</footer>
 
-    <script>
-        function switchLang(lang) {
-            // Dil değişim mantığı burada...
-        }
-    </script>
 </body>
 </html>
