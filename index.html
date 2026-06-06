@@ -1,39 +1,256 @@
-<!DOCTYPE html>
 <html lang="tr">
 <head>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KSW3BQM');</script>
+<meta name="google-site-verification" content="eMBHdPqO39Y3X8JpjTz0YtrSsz0Gxpr8xWB6UbYt6Ew" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motorsports Live Hub</title>
     <style>
-        body { background: #0a0f18; color: #ffffff; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
-        h1 { margin-top: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; max-width: 1000px; margin: 20px auto; }
-        .card { background: #141f32; padding: 20px; border-radius: 8px; }
-        .btn { display: block; background: #ff2a4b; color: white; padding: 10px; margin-top: 10px; text-decoration: none; border-radius: 4px; font-weight: bold; }
+        :root { --bg: #0a0f18; --card: #141f32; --accent: #ff2a4b; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; margin: 0; }
+        h1, h2 { color: var(--text); margin-top: 30px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1200px; margin: 0 auto; }
+        .card { background: var(--card); padding: 20px; border-radius: 10px; text-decoration: none; color: white; border: 1px solid #2a3a5a; transition: 0.3s; text-align: center; display: flex; flex-direction: column; justify-content: space-between; min-height: 120px; }
+        .card:hover { border-color: var(--accent); }
+        .btn-small { background: var(--accent); padding: 8px; border-radius: 5px; margin-top: 15px; font-weight: bold; font-size: 0.75rem; color: white; display: inline-block; text-transform: uppercase; }
+        footer { margin-top: 50px; padding: 20px; color: #888; font-size: 0.8rem; border-top: 1px solid #2a3a5a; text-align: center; }
+        
+        /* Dil Seçici Butonlar */
+        .lang-switcher { margin-bottom: 20px; display: flex; justify-content: center; gap: 10px; }
+        .lang-btn { background: var(--card); border: 1px solid #2a3a5a; color: white; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s; font-size: 0.85rem; }
+        .lang-btn:hover, .lang-btn.active { background: var(--accent); border-color: var(--accent); }
+
+        /* Son Dakika Bandı */
+        .ticker-wrapper { max-width: 800px; margin: 20px auto; background: var(--card); border: 1px solid #2a3a5a; border-radius: 8px; display: flex; align-items: center; overflow: hidden; height: 45px; }
+        .ticker-title { background: var(--accent); color: white; padding: 0 15px; height: 100%; display: flex; align-items: center; font-weight: bold; font-size: 0.85rem; white-space: nowrap; }
+        .ticker-content { flex-grow: 1; height: 100%; overflow: hidden; position: relative; }
+        .ticker-text { margin: 0; padding-left: 15px; height: 100%; display: flex; align-items: center; text-align: left; font-size: 0.9rem; color: #e0e6ed; }
+
+        /* Kategori Başlık Tasarımı */
+        .category-title { text-align: center; max-width: 1200px; margin: 50px auto 25px auto; font-size: 1.5rem; color: var(--text); font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
+        .card p { font-size: 0.8rem; color: #aaa; margin: 10px 0 0 0; line-height: 1.4; }
     </style>
 </head>
-
 <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSW3BQM"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <h1>MOTOR SPORLARI CANLI MERKEZİ</h1>
-    
-    <div class="grid">
-        <div class="card"><h3>MotoGP</h3><a href="#" class="btn">CANLI YAYIN</a></div>
-        <div class="card"><h3>WorldSBK</h3><a href="#" class="btn">CANLI YAYIN</a></div>
-        <div class="card"><h3>Formula 1</h3><a href="#" class="btn">CANLI YAYIN</a></div>
-        <div class="card"><h3>DTM</h3><a href="#" class="btn">CANLI YAYIN</a></div>
-        <div class="card"><h3>Red Bull TV</h3><a href="#" class="btn">İZLE</a></div>
-        <div class="card"><h3>Eurosport</h3><a href="#" class="btn">İZLE</a></div>
-        <div class="card"><h3>S Sport</h3><a href="#" class="btn">İZLE</a></div>
-        <div class="card"><h3>TNT Sports</h3><a href="#" class="btn">İZLE</a></div>
-        <div class="card"><h3>Motorsport.tv</h3><a href="#" class="btn">CANLI YAYIN</a></div>
-        <div class="card"><h3>Twitch Racing</h3><a href="#" class="btn">KEŞFET</a></div>
+
+    <!-- Dil Seçim Alanı -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="switchLang('tr')">🇹🇷 TR</button>
+        <button class="lang-btn" onclick="switchLang('en')">🇬🇧 EN</button>
+        <button class="lang-btn" onclick="switchLang('de')">🇩🇪 DE</button>
+        <button class="lang-btn" onclick="switchLang('fr')">🇫🇷 FR</button>
     </div>
+
+    <h1 id="main-title">MOTOR SPORLARI CANLI MERKEZİ</h1>
+
+    <!-- Son Dakika Bandı -->
+    <div class="ticker-wrapper">
+        <div class="ticker-title" id="ticker-label">SON DAKİKA</div>
+        <div class="ticker-content">
+            <div class="ticker-text" id="ticker-news">• Yarış hafta sonu heyecanı canlı yayınlarla başlıyor!</div>
+        </div>
+    </div>
+
+    <!-- CANLI YAYINLAR SEKSİYONU -->
+    <h2 id="section-streams">CANLI YAYINLAR</h2>
+    <div class="grid">
+        <a id="link-motogp" href="https://www.youtube.com/@motogp/streams" target="_blank" class="card"><h3>MotoGP</h3><div id="btn-motogp" class="btn-small">CANLI YAYIN</div></a>
+        <a id="link-worldsbk" href="https://www.youtube.com/@worldsbk/streams" target="_blank" class="card"><h3>WorldSBK</h3><div id="btn-worldsbk" class="btn-small">CANLI YAYIN</div></a>
+        <a id="link-f1" href="https://www.youtube.com/@Formula1/streams" target="_blank" class="card"><h3>Formula 1</h3><div id="btn-f1" class="btn-small">CANLI YAYIN</div></a>
+        <a id="link-dtm" href="https://www.youtube.com/@DTM" target="_blank" class="card"><h3>DTM</h3><div id="btn-dtm" class="btn-small">CANLI YAYIN</div></a>
+        
+        <a id="link-redbull" href="https://www.redbull.com/int-en/tv/" target="_blank" class="card"><h3>Red Bull TV</h3><div id="btn-redbull" class="btn-small">İZLE</div></a>
+        <a id="link-eurosport" href="https://www.eurosport.com.tr/" target="_blank" class="card"><h3>Eurosport</h3><div id="btn-eurosport" class="btn-small">İZLE</div></a>
+        <a id="link-ssport" href="https://www.ssportplus.com/" target="_blank" class="card"><h3>S Sport</h3><div id="btn-ssport" class="btn-small">İZLE</div></a>
+        <a id="link-tnt" href="https://www.tntsports.co.uk/" target="_blank" class="card"><h3>TNT Sports</h3><div id="btn-tnt" class="btn-small">İZLE</div></a>
+        <a id="link-motorsport" href="https://motorsport.tv/" target="_blank" class="card"><h3>Motorsport.tv</h3><div id="btn-motorsport" class="btn-small">CANLI YAYIN</div></a>
+        <a id="link-twitch" href="https://www.twitch.tv" target="_blank" class="card"><h3>Twitch Racing</h3><div id="btn-twitch" class="btn-small">KEŞFET</div></a>
+    </div>
+
+    <!-- MARKA ANSİKLOPEDİSİ SEKSİYONU -->
+    <div class="category-title" id="section-encyclopedia">MARKA ANSİKLOPEDİSİ</div>
+    <div class="grid">
+        <div class="card">
+            <h3>Honda</h3>
+            <p class="desc-honda">MotoGP tarihinin en çok zafer kazanan Japon devi.</p>
+        </div>
+        <div class="card">
+            <h3>Ducati</h3>
+            <p class="desc-ducati">İtalyan zarafeti ve desmodromik valf teknolojisinin simgesi.</p>
+        </div>
+        <div class="card">
+            <h3>Yamaha</h3>
+            <p class="desc-yamaha">Yarış pistlerindeki çevikliği ve efsanevi M1 modeli.</p>
+        </div>
+        <div class="card">
+            <h3>Suzuki</h3>
+            <p class="desc-suzuki">Yarış geçmişindeki istikrarıyla efsane bir marka.</p>
+        </div>
+        <div class="card">
+            <h3>KTM</h3>
+            <p class="desc-ktm">"Ready to Race" felsefesini pistlere taşıyan turuncu güç.</p>
+        </div>
+        <div class="card">
+            <h3>Aprilia</h3>
+            <p class="desc-aprilia">İtalyan yarış DNA'sını aerodinamik inovasyonla birleştiren marka.</p>
+        </div>
+        <div class="card">
+            <h3>BMW Motorrad</h3>
+            <p class="desc-bmw">Alman mühendisliğinin zirvesi, WSBK'nın vazgeçilmez gücü.</p>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        Bu site resmi bir yayın kuruluşu değildir. Sadece resmi spor kanallarına yönlendirme sağlayan bir motor sporları rehberidir.
+    </footer>
+
+    <script>
+        const translations = {
+            tr: {
+                title: "MOTOR SPORLARI CANLI MERKEZİ", label: "SON DAKİKA", news: "• Yarış hafta sonu heyecanı canlı yayınlarla başlıyor!",
+                streams: "CANLI YAYINLAR", encyclopedia: "MARKA ANSİKLOPEDİSİ",
+                honda: "MotoGP tarihinin en çok zafer kazanan Japon devi.",
+                ducati: "İtalyan zarafeti ve desmodromik valf teknolojisinin simgesi.",
+                yamaha: "Yarış pistlerindeki çevikliği ve efsanevi M1 modeli.",
+                suzuki: "Yarış geçmişindeki istikrarıyla efsane bir marka.",
+                ktm: '"Ready to Race" felsefesini pistlere taşıyan turuncu güç.',
+                aprilia: "İtalyan yarış DNA'sını aerodinamik inovasyonla birleştiren marka.",
+                bmw: "Alman mühendisliğinin zirvesi, WSBK'nın vazgeçilmez gücü.",
+                btnLive: "CANLI YAYIN", btnWatch: "İZLE", btnExplore: "KEŞFET",
+                footer: "Bu site resmi bir yayın kuruluşu değildir. Sadece resmi spor kanallarına yönlendirme sağlayan bir motor sporları rehberidir.",
+                links: {
+                    motogp: "https://www.youtube.com/@motogp/streams",
+                    worldsbk: "https://www.youtube.com/@worldsbk/streams",
+                    f1: "https://www.youtube.com/@Formula1/streams",
+                    dtm: "https://www.youtube.com/@DTM",
+                    redbull: "https://www.redbull.com/int-en/tv/",
+                    eurosport: "https://www.eurosport.com.tr/",
+                    ssport: "https://www.ssportplus.com/",
+                    tnt: "https://www.tntsports.co.uk/",
+                    motorsport: "https://motorsport.tv/",
+                    twitch: "https://www.twitch.tv"
+                }
+            },
+            en: {
+                title: "MOTORSPORTS LIVE HUB", label: "BREAKING", news: "• Race weekend excitement begins with live streams!",
+                streams: "LIVE STREAMS", encyclopedia: "BRAND ENCYCLOPEDIA",
+                honda: "The Japanese giant with the most victories in MotoGP history.",
+                ducati: "The symbol of Italian elegance and desmodromic valve technology.",
+                yamaha: "Agility on the race tracks and the legendary M1 model.",
+                suzuki: "A legendary brand with its stability in racing history.",
+                ktm: 'The orange power bringing the "Ready to Race" philosophy to tracks.',
+                aprilia: "The brand combining Italian racing DNA with aerodynamic innovation.",
+                bmw: "The pinnacle of German engineering, the indispensable power of WSBK.",
+                btnLive: "LIVE STREAM", btnWatch: "WATCH", btnExplore: "EXPLORE",
+                footer: "This site is not an official broadcaster. It is a motorsports guide providing links to official channels.",
+                links: {
+                    motogp: "https://www.youtube.com/@motogp/streams",
+                    worldsbk: "https://www.youtube.com/@worldsbk/streams",
+                    f1: "https://www.youtube.com/@Formula1/streams",
+                    dtm: "https://www.youtube.com/@DTM",
+                    redbull: "https://www.redbull.com/int-en/tv/",
+                    eurosport: "https://www.eurosport.com/",
+                    ssport: "https://www.ssportplus.com/",
+                    tnt: "https://www.tntsports.co.uk/",
+                    motorsport: "https://motorsport.tv/",
+                    twitch: "https://www.twitch.tv"
+                }
+            },
+            de: {
+                title: "MOTORSPORT LIVE-ZENTRUM", label: "EILMELDUNG", news: "• Die Spannung am Rennwochenende beginnt mit Live-Streams!",
+                streams: "LIVE-STREAMS", encyclopedia: "MARKEN-ENZYKLOPÄDIE",
+                honda: "Der japanische Riese mit den meisten Siegen in der MotoGP-Geschichte.",
+                ducati: "Das Symbol italienischer Eleganz und desmodromischer Ventiltechnik.",
+                yamaha: "Agilität auf den Rennstrecken und das legendäre M1-Modell.",
+                suzuki: "Eine legendäre Marke mit Konstanz in der Rennsportgeschichte.",
+                ktm: 'Die orangefarbene Kraft, die die Philosophie "Ready to Race" auf die Strecken bringt.',
+                aprilia: "Die Marke, die italienische Renn-DNA mit aerodynamischer Innovation verbindet.",
+                bmw: "Der Gipfel deutscher Ingenieurskunst, die unverzichtbare Kraft der WSBK.",
+                btnLive: "LIVE STREAM", btnWatch: "ANSEHEN", btnExplore: "ENTDECKEN",
+                footer: "Diese Website ist kein offizieller Sender. Es ist ein Leitfaden, der Links zu offiziellen Kanälen bereitstellt.",
+                links: {
+                    motogp: "https://www.youtube.com/@motogp/streams",
+                    worldsbk: "https://www.youtube.com/@worldsbk/streams",
+                    f1: "https://www.youtube.com/@Formula1/streams",
+                    dtm: "https://www.youtube.com/@DTM",
+                    redbull: "https://www.redbull.com/int-en/tv/",
+                    eurosport: "https://www.eurosport.de/",
+                    ssport: "https://www.ssportplus.com/",
+                    tnt: "https://www.tntsports.co.uk/",
+                    motorsport: "https://motorsport.tv/",
+                    twitch: "https://www.twitch.tv"
+                }
+            },
+            fr: {
+                title: "CENTRE EN DIRECT DES SPORTS MÉCANIQUES", label: "DERNIÈRE MINUTE", news: "• L'excitation du week-end de course commence avec les flux en direct!",
+                streams: "FLUX EN DIRECT", encyclopedia: "ENCYCLOPÉDIE DES MARQUES",
+                honda: "Le géant japonais qui détient le plus de victoires dans l'histoire du MotoGP.",
+                ducati: "Le symbole de l'élégance italienne et de la technologie des soupapes desmodromiques.",
+                yamaha: "L'agilité sur les pistes de course et le modèle légendaire M1.",
+                suzuki: "Une marque légendaire grâce à sa régularité dans l'histoire des courses.",
+                ktm: 'La puissance orange qui apporte la philosophie "Ready to Race" sur les pistes.',
+                aprilia: "La marque combinant l'ADN de course italien avec l'innovation aérodynamique.",
+                bmw: "Le summum de l'ingénierie allemande, la puissance indispensable du WSBK.",
+                btnLive: "EN DIRECT", btnWatch: "REGARDER", btnExplore: "EXPLORER",
+                footer: "Ce site n'est pas un diffuseur officiel. C'est un guide fournissant des liens vers les chaînes officielles.",
+                links: {
+                    motogp: "https://www.youtube.com/@motogp/streams",
+                    worldsbk: "https://www.youtube.com/@worldsbk/streams",
+                    f1: "https://www.youtube.com/@Formula1/streams",
+                    dtm: "https://www.youtube.com/@DTM",
+                    redbull: "https://www.redbull.com/int-en/tv/",
+                    eurosport: "https://www.eurosport.fr/",
+                    ssport: "https://www.ssportplus.com/",
+                    tnt: "https://www.tntsports.co.uk/",
+                    motorsport: "https://motorsport.tv/",
+                    twitch: "https://www.twitch.tv"
+                }
+            }
+        };
+
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            if(event && event.target) { event.target.classList.add('active'); }
+
+            // Metin Değişimleri
+            document.getElementById('main-title').innerText = translations[lang].title;
+            document.getElementById('ticker-label').innerText = translations[lang].label;
+            document.getElementById('ticker-news').innerText = translations[lang].news;
+            document.getElementById('section-streams').innerText = translations[lang].streams;
+            document.getElementById('section-encyclopedia').innerText = translations[lang].encyclopedia;
+            document.getElementById('site-footer').innerText = translations[lang].footer;
+            
+            document.querySelector('.desc-honda').innerText = translations[lang].honda;
+            document.querySelector('.desc-ducati').innerText = translations[lang].ducati;
+            document.querySelector('.desc-yamaha').innerText = translations[lang].yamaha;
+            document.querySelector('.desc-suzuki').innerText = translations[lang].suzuki;
+            document.querySelector('.desc-ktm').innerText = translations[lang].ktm;
+            document.querySelector('.desc-aprilia').innerText = translations[lang].aprilia;
+            document.querySelector('.desc-bmw').innerText = translations[lang].bmw;
+
+            // Buton Yazı Güncellemeleri
+            document.getElementById('btn-motogp').innerText = translations[lang].btnLive;
+            document.getElementById('btn-worldsbk').innerText = translations[lang].btnLive;
+            document.getElementById('btn-f1').innerText = translations[lang].btnLive;
+            document.getElementById('btn-dtm').innerText = translations[lang].btnLive;
+            document.getElementById('btn-redbull').innerText = translations[lang].btnWatch;
+            document.getElementById('btn-eurosport').innerText = translations[lang].btnWatch;
+            document.getElementById('btn-ssport').innerText = translations[lang].btnWatch;
+            document.getElementById('btn-tnt').innerText = translations[lang].btnWatch;
+            document.getElementById('btn-motorsport').innerText = translations[lang].btnLive;
+            document.getElementById('btn-twitch').innerText = translations[lang].btnExplore;
+
+            // Dinamik Link Güncellemeleri
+            document.getElementById('link-motogp').href = translations[lang].links.motogp;
+            document.getElementById('link-worldsbk').href = translations[lang].links.worldsbk;
+            document.getElementById('link-f1').href = translations[lang].links.f1;
+            document.getElementById('link-dtm').href = translations[lang].links.dtm;
+            document.getElementById('link-redbull').href = translations[lang].links.redbull;
+            document.getElementById('link-eurosport').href = translations[lang].links.eurosport;
+            document.getElementById('link-ssport').href = translations[lang].links.ssport;
+            document.getElementById('link-tnt').href = translations[lang].links.tnt;
+            document.getElementById('link-motorsport').href = translations[lang].links.motorsport;
+            document.getElementById('link-twitch').href = translations[lang].links.twitch;
+        }
+    </script>
 </body>
 </html>
