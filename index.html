@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KSW3BQM');</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motorsports Live Hub</title>
     <style>
-        :root { --bg: #0a0f18; --card: #141f32; --accent: #ff2a4b; --text: #ffffff; }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; margin: 0; }
-        .btn-large { display: inline-block; background-color: var(--accent); color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 15px; }
-        .btn-large:hover { filter: brightness(1.2); }
-        .paddock-section { margin-top: 20px; border: 2px solid var(--accent); padding: 15px; text-align: center; border-radius: 10px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        body { background: #0a0f18; color: #ffffff; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
+        h1 { margin-top: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; max-width: 1000px; margin: 20px auto; }
+        .card { background: #141f32; padding: 20px; border-radius: 8px; }
+        .btn { display: block; background: #ff2a4b; color: white; padding: 10px; margin-top: 10px; text-decoration: none; border-radius: 4px; font-weight: bold; }
     </style>
 </head>
+
 <body>
-    <section class="paddock-section">
-        <h3>MotoGP Video Kaynakları</h3>
-        <p>Güncel videolar ve analizler için iş ortağımız Paddock-GP'yi ziyaret edebilirsiniz.</p>
-        <a href="https://www.paddock-gp.com/en/videos/" target="_blank" rel="noopener noreferrer" class="btn-large">
-            Paddock-GP Videolarını İzle
-        </a>
-    </section>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSW3BQM"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <h1>MOTOR SPORLARI CANLI MERKEZİ</h1>
+    
+    <div class="grid">
+        <div class="card"><h3>MotoGP</h3><a href="#" class="btn">CANLI YAYIN</a></div>
+        <div class="card"><h3>WorldSBK</h3><a href="#" class="btn">CANLI YAYIN</a></div>
+        <div class="card"><h3>Formula 1</h3><a href="#" class="btn">CANLI YAYIN</a></div>
+        <div class="card"><h3>DTM</h3><a href="#" class="btn">CANLI YAYIN</a></div>
+        <div class="card"><h3>Red Bull TV</h3><a href="#" class="btn">İZLE</a></div>
+        <div class="card"><h3>Eurosport</h3><a href="#" class="btn">İZLE</a></div>
+        <div class="card"><h3>S Sport</h3><a href="#" class="btn">İZLE</a></div>
+        <div class="card"><h3>TNT Sports</h3><a href="#" class="btn">İZLE</a></div>
+        <div class="card"><h3>Motorsport.tv</h3><a href="#" class="btn">CANLI YAYIN</a></div>
+        <div class="card"><h3>Twitch Racing</h3><a href="#" class="btn">KEŞFET</a></div>
+    </div>
 </body>
 </html>
