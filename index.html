@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +15,7 @@
         .btn-small { background: var(--accent); padding: 8px; border-radius: 5px; margin-top: 10px; font-weight: bold; font-size: 0.75rem; }
         footer { margin-top: 50px; padding: 20px; color: #888; font-size: 0.8rem; border-top: 1px solid #2a3a5a; text-align: center; }
         
-        /* Yeni Eklenen Video Alanı Tasarımı */
+        /* Video Alanı Tasarımı */
         .video-container { max-width: 800px; margin: 20px auto; background: var(--card); border: 1px solid #2a3a5a; border-radius: 10px; padding: 10px; overflow: hidden; }
         .responsive-iframe { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
         .responsive-iframe iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 6px; }
@@ -28,7 +27,8 @@
 
     <div class="video-container">
         <div class="responsive-iframe">
-            <iframe id="featured-video" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!-- Güvenli ve Engelsiz Oynatıcı Alanı -->
+            <iframe id="featured-video" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
         </div>
     </div>
 
@@ -84,18 +84,17 @@
     </footer>
 
     <script>
-        // Dış sitelerde oynatılmasına kesinlikle izin verilen güvenli video listesi
+        // Sitemizin alan adına (domain) engel koyamayacak, tamamen açık ve güvenli video listesi
         const videoList = [
-            "g3UisZun9bM", // Resmi Red Bull Motorsports - MotoGP Barcelona İncelemesi
-            "z_Wv_o7E4mI", // Resmi Michelin Motorsport - MotoGP Lastik Teknolojisi ve Analizleri
-            "XW9EunbS5Yg"  // Resmi Akrapovič - Racing Exhaust Sound & Test (MotoGP DNA)
+            "e/mupmhm", // Efsanevi Motor Sporları Viraj ve Hız Aksiyon Videosu
+            "e/5szp72"  // Alternatif Yarış ve Pist Atmosferi Videosu
         ];
 
-        // Sayfa her yüklendiğinde listeden rastgele bir video ID seçer
         if (videoList.length > 0) {
             const randomIndex = Math.floor(Math.random() * videoList.length);
-            const selectedVideoId = videoList[randomIndex];
-            document.getElementById('featured-video').src = "https://www.youtube.com/embed/" + selectedVideoId;
+            const selectedVideo = videoList[randomIndex];
+            // Streamable alt yapısıyla engelleri tamamen aşarak videoyu yüklüyoruz
+            document.getElementById('featured-video').src = "https://streamable.com/" + selectedVideo;
         }
     </script>
 </body>
