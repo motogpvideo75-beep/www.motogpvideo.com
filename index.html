@@ -1,6 +1,6 @@
-<!DOCTYPE html>
 <html lang="tr">
 <head>
+<meta name="google-site-verification" content="eMBHdPqO39Y3X8JpjTz0YtrSsz0Gxpr8xWB6UbYt6Ew" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motorsports Live Hub</title>
@@ -32,6 +32,7 @@
 </head>
 <body>
 
+    <!-- Dil Seçim Alanı -->
     <div class="lang-switcher">
         <button class="lang-btn active" onclick="switchLang('tr')">🇹🇷 TR</button>
         <button class="lang-btn" onclick="switchLang('en')">🇬🇧 EN</button>
@@ -41,6 +42,7 @@
 
     <h1 id="main-title">MOTOR SPORLARI CANLI MERKEZİ</h1>
 
+    <!-- Son Dakika Bandı -->
     <div class="ticker-wrapper">
         <div class="ticker-title" id="ticker-label">SON DAKİKA</div>
         <div class="ticker-content">
@@ -48,21 +50,23 @@
         </div>
     </div>
 
+    <!-- CANLI YAYINLAR SEKSİYONU -->
     <h2 id="section-streams">CANLI YAYINLAR</h2>
     <div class="grid">
         <a id="link-motogp" href="https://www.youtube.com/@motogp/streams" target="_blank" class="card"><h3>MotoGP</h3><div id="btn-motogp" class="btn-small">CANLI YAYIN</div></a>
         <a id="link-worldsbk" href="https://www.youtube.com/@worldsbk/streams" target="_blank" class="card"><h3>WorldSBK</h3><div id="btn-worldsbk" class="btn-small">CANLI YAYIN</div></a>
-        <a id="link-f1" href="https://www.youtube.com/channel/UCgBitIgXgWi6R9EgAh_vIFw/videos" target="_blank" class="card"><h3>Formula 1</h3><div id="btn-f1" class="btn-small">CANLI YAYIN</div></a>
+        <a id="link-f1" href="https://www.youtube.com/@Formula1/streams" target="_blank" class="card"><h3>Formula 1</h3><div id="btn-f1" class="btn-small">CANLI YAYIN</div></a>
         <a id="link-dtm" href="https://www.youtube.com/@DTM" target="_blank" class="card"><h3>DTM</h3><div id="btn-dtm" class="btn-small">CANLI YAYIN</div></a>
         
         <a id="link-redbull" href="https://www.redbull.com/int-en/tv/" target="_blank" class="card"><h3>Red Bull TV</h3><div id="btn-redbull" class="btn-small">İZLE</div></a>
-        <a id="link-eurosport" href="https://www.eurosport.com/" target="_blank" class="card"><h3>Eurosport</h3><div id="btn-eurosport" class="btn-small">İZLE</div></a>
+        <a id="link-eurosport" href="https://www.eurosport.com.tr/" target="_blank" class="card"><h3>Eurosport</h3><div id="btn-eurosport" class="btn-small">İZLE</div></a>
         <a id="link-ssport" href="https://www.ssportplus.com/" target="_blank" class="card"><h3>S Sport</h3><div id="btn-ssport" class="btn-small">İZLE</div></a>
         <a id="link-tnt" href="https://www.tntsports.co.uk/" target="_blank" class="card"><h3>TNT Sports</h3><div id="btn-tnt" class="btn-small">İZLE</div></a>
         <a id="link-motorsport" href="https://motorsport.tv/" target="_blank" class="card"><h3>Motorsport.tv</h3><div id="btn-motorsport" class="btn-small">CANLI YAYIN</div></a>
-        <a id="link-twitch" href="https://www.twitch.org/directory/category/sports" target="_blank" class="card"><h3>Twitch Racing</h3><div id="btn-twitch" class="btn-small">KEŞFET</div></a>
+        <a id="link-twitch" href="https://www.twitch.tv" target="_blank" class="card"><h3>Twitch Racing</h3><div id="btn-twitch" class="btn-small">KEŞFET</div></a>
     </div>
 
+    <!-- MARKA ANSİKLOPEDİSİ SEKSİYONU -->
     <div class="category-title" id="section-encyclopedia">MARKA ANSİKLOPEDİSİ</div>
     <div class="grid">
         <div class="card">
@@ -113,18 +117,17 @@
                 bmw: "Alman mühendisliğinin zirvesi, WSBK'nın vazgeçilmez gücü.",
                 btnLive: "CANLI YAYIN", btnWatch: "İZLE", btnExplore: "KEŞFET",
                 footer: "Bu site resmi bir yayın kuruluşu değildir. Sadece resmi spor kanallarına yönlendirme sağlayan bir motor sporları rehberidir.",
-                // Linkler dil bazlı özelleştirilebilir (İstenirse)
                 links: {
                     motogp: "https://www.youtube.com/@motogp/streams",
                     worldsbk: "https://www.youtube.com/@worldsbk/streams",
-                    f1: "https://www.youtube.com/channel/UCgBitIgXgWi6R9EgAh_vIFw/videos",
+                    f1: "https://www.youtube.com/@Formula1/streams",
                     dtm: "https://www.youtube.com/@DTM",
                     redbull: "https://www.redbull.com/int-en/tv/",
                     eurosport: "https://www.eurosport.com.tr/",
                     ssport: "https://www.ssportplus.com/",
                     tnt: "https://www.tntsports.co.uk/",
                     motorsport: "https://motorsport.tv/",
-                    twitch: "https://www.twitch.tv/directory/category/sports"
+                    twitch: "https://www.twitch.tv"
                 }
             },
             en: {
@@ -142,14 +145,14 @@
                 links: {
                     motogp: "https://www.youtube.com/@motogp/streams",
                     worldsbk: "https://www.youtube.com/@worldsbk/streams",
-                    f1: "https://www.youtube.com/f1",
+                    f1: "https://www.youtube.com/@Formula1/streams",
                     dtm: "https://www.youtube.com/@DTM",
                     redbull: "https://www.redbull.com/int-en/tv/",
                     eurosport: "https://www.eurosport.com/",
                     ssport: "https://www.ssportplus.com/",
                     tnt: "https://www.tntsports.co.uk/",
                     motorsport: "https://motorsport.tv/",
-                    twitch: "https://www.twitch.tv/directory/category/sports"
+                    twitch: "https://www.twitch.tv"
                 }
             },
             de: {
@@ -157,8 +160,8 @@
                 streams: "LIVE-STREAMS", encyclopedia: "MARKEN-ENZYKLOPÄDIE",
                 honda: "Der japanische Riese mit den meisten Siegen in der MotoGP-Geschichte.",
                 ducati: "Das Symbol italienischer Eleganz und desmodromischer Ventiltechnik.",
-                yamaha: "Agilität auf den Rennstrecken und das gegenwärtige M1-Modell.",
-                suzuki: "Eine legendary Marke mit Konstanz in der Rennsportgeschichte.",
+                yamaha: "Agilität auf den Rennstrecken und das legendäre M1-Modell.",
+                suzuki: "Eine legendäre Marke mit Konstanz in der Rennsportgeschichte.",
                 ktm: 'Die orangefarbene Kraft, die die Philosophie "Ready to Race" auf die Strecken bringt.',
                 aprilia: "Die Marke, die italienische Renn-DNA mit aerodynamischer Innovation verbindet.",
                 bmw: "Der Gipfel deutscher Ingenieurskunst, die unverzichtbare Kraft der WSBK.",
@@ -167,14 +170,14 @@
                 links: {
                     motogp: "https://www.youtube.com/@motogp/streams",
                     worldsbk: "https://www.youtube.com/@worldsbk/streams",
-                    f1: "https://www.youtube.com/f1",
+                    f1: "https://www.youtube.com/@Formula1/streams",
                     dtm: "https://www.youtube.com/@DTM",
                     redbull: "https://www.redbull.com/int-en/tv/",
                     eurosport: "https://www.eurosport.de/",
                     ssport: "https://www.ssportplus.com/",
                     tnt: "https://www.tntsports.co.uk/",
                     motorsport: "https://motorsport.tv/",
-                    twitch: "https://www.twitch.tv/directory/category/sports"
+                    twitch: "https://www.twitch.tv"
                 }
             },
             fr: {
@@ -192,14 +195,14 @@
                 links: {
                     motogp: "https://www.youtube.com/@motogp/streams",
                     worldsbk: "https://www.youtube.com/@worldsbk/streams",
-                    f1: "https://www.youtube.com/f1",
+                    f1: "https://www.youtube.com/@Formula1/streams",
                     dtm: "https://www.youtube.com/@DTM",
                     redbull: "https://www.redbull.com/int-en/tv/",
                     eurosport: "https://www.eurosport.fr/",
                     ssport: "https://www.ssportplus.com/",
                     tnt: "https://www.tntsports.co.uk/",
                     motorsport: "https://motorsport.tv/",
-                    twitch: "https://www.twitch.tv/directory/category/sports"
+                    twitch: "https://www.twitch.tv"
                 }
             }
         };
@@ -236,7 +239,7 @@
             document.getElementById('btn-motorsport').innerText = translations[lang].btnLive;
             document.getElementById('btn-twitch').innerText = translations[lang].btnExplore;
 
-            // Dinamik Link Güncellemeleri (Kullanıcı hangi dili seçerse link o dile göre yönlenir)
+            // Dinamik Link Güncellemeleri
             document.getElementById('link-motogp').href = translations[lang].links.motogp;
             document.getElementById('link-worldsbk').href = translations[lang].links.worldsbk;
             document.getElementById('link-f1').href = translations[lang].links.f1;
