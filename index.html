@@ -8,10 +8,10 @@
         :root { --bg: #0a0f18; --card: #141f32; --accent: #ff2a4b; --text: #ffffff; }
         body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; }
         h1, h2 { color: var(--text); margin-top: 30px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1100px; margin: 0 auto; }
-        .card { background: var(--card); padding: 15px; border-radius: 10px; text-decoration: none; color: white; border: 1px solid #2a3a5a; transition: 0.3s; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; max-width: 1200px; margin: 0 auto; }
+        .card { background: var(--card); padding: 15px; border-radius: 10px; text-decoration: none; color: white; border: 1px solid #2a3a5a; transition: 0.3s; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
         .card:hover { border-color: var(--accent); }
-        .btn-small { background: var(--accent); padding: 8px; border-radius: 5px; margin-top: 10px; font-weight: bold; font-size: 0.75rem; color: white; }
+        .btn-small { background: var(--accent); padding: 8px; border-radius: 5px; margin: 10px auto 0 auto; font-weight: bold; font-size: 0.75rem; color: white; display: inline-block; width: 80%; }
         footer { margin-top: 50px; padding: 20px; color: #888; font-size: 0.8rem; border-top: 1px solid #2a3a5a; text-align: center; }
         
         /* Dil Seçici Butonlar */
@@ -24,19 +24,54 @@
         .ticker-title { background: var(--accent); color: white; padding: 0 15px; height: 100%; display: flex; align-items: center; font-weight: bold; font-size: 0.85rem; white-space: nowrap; }
         .ticker-content { flex-grow: 1; height: 100%; overflow: hidden; position: relative; }
         .ticker-text { margin: 0; padding-left: 15px; height: 100%; display: flex; align-items: center; text-align: left; font-size: 0.9rem; color: #e0e6ed; font-weight: 500; }
+
+        /* 4 Ana Kategori Başlık Tasarımı */
+        .category-title { text-align: left; max-width: 1200px; margin: 40px auto 15px auto; font-size: 1.3rem; color: var(--accent); border-bottom: 2px solid #2a3a5a; padding-bottom: 8px; font-weight: bold; letter-spacing: 1px; }
+
+        /* Sürücü Kimlik Kartı Tasarımı */
+        .rider-badge {
+            background: #0a0f18;
+            border-left: 3px solid var(--accent);
+            padding: 6px 10px;
+            margin-top: 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .rider-number {
+            font-weight: bold;
+            color: var(--accent);
+            background: rgba(255, 42, 75, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+        }
+        .bike-tag {
+            font-size: 0.7rem;
+            color: #ff2a4b;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Dil Seçim Alanı -->
     <div class="lang-switcher">
-        <button class="lang-btn active" onclick="switchLang('tr')">🇹🇷 TR</button>
-        <button class="lang-btn" onclick="switchLang('en')">🇬🇧 EN</button>
-        <button class="lang-btn" onclick="switchLang('de')">🇩🇪 DE</button>
-        <button class="lang-btn" onclick="switchLang('fr')">🇫🇷 FR</button>
+        <button class="lang-btn active" onclick="switchLang('tr', event)">🇹🇷 TR</button>
+        <button class="lang-btn" onclick="switchLang('en', event)">🇬🇧 EN</button>
+        <button class="lang-btn" onclick="switchLang('de', event)">🇩🇪 DE</button>
+        <button class="lang-btn" onclick="switchLang('fr', event)">🇫🇷 FR</button>
     </div>
 
     <h1 id="main-title">MOTOR SPORLARI CANLI MERKEZİ</h1>
 
+    <!-- Son Dakika Bandı -->
     <div class="ticker-wrapper">
         <div class="ticker-title" id="ticker-label">SON DAKİKA</div>
         <div class="ticker-content">
@@ -58,15 +93,199 @@
         <a href="https://www.twitch.tv/directory/category/racing" class="card"><h3>Twitch Racing</h3><div class="btn-small class-explore-btn">KEŞFET</div></a>
     </div>
 
-    <h2 id="section-encyclopedia">MARKA ANSİKLOPEDİSİ</h2>
+
+    <!-- 1. ANA KATEGORİ: MOTOGP -->
+    <div class="category-title" id="cat-title-motogp">🏁 1. KATAGORİ: RESMİ YARIŞ PLATFORMU - MOTOGP</div>
     <div class="grid">
-        <div class="card"><h3>Honda</h3><p id="desc-honda" style="font-size: 0.8rem;">MotoGP tarihinin en çok zafer kazanan Japon devi.</p></div>
-        <div class="card"><h3>Ducati</h3><p id="desc-ducati" style="font-size: 0.8rem;">İtalyan zarafeti ve desmodromik valf teknolojisinin simgesi.</p></div>
-        <div class="card"><h3>Yamaha</h3><p id="desc-yamaha" style="font-size: 0.8rem;">Yarış pistlerindeki çevikliği ve efsanevi M1 modeli.</p></div>
-        <div class="card"><h3>Suzuki</h3><p id="desc-suzuki" style="font-size: 0.8rem;">Yarış geçmişindeki istikrarıyla efsane bir marka.</p></div>
-        <div class="card"><h3>KTM</h3><p id="desc-ktm" style="font-size: 0.8rem;">"Ready to Race" felsefesini pistlere taşıyan turuncu güç.</p></div>
-        <div class="card"><h3>Aprilia</h3><p id="desc-aprilia" style="font-size: 0.8rem;">İtalyan yarış DNA'sını aerodinamik inovasyonla birleştiren marka.</p></div>
-        <div class="card"><h3>BMW Motorrad</h3><p id="desc-bmw" style="font-size: 0.8rem;">Alman mühendisliğinin zirvesi, WSBK'nın vazgeçilmez gücü.</p></div>
+        
+        <!-- PRIMA PRAMAC YAMAHA (TOPRAK) -->
+        <div class="card" style="border-color: #ff2a4b;">
+            <div>
+                <div class="bike-tag" id="tag-yamaha-1">Motosiklet: Yamaha</div>
+                <h3>Prima Pramac Yamaha MotoGP</h3>
+                <p id="desc-toprak-pramac" style="font-size: 0.8rem; color: #aaa;">Milli gururumuz Toprak Razgatlıoğlu, Pramac Yamaha ile MotoGP arenasında!</p>
+            </div>
+            <div>
+                <div class="rider-badge" style="background: rgba(255, 42, 75, 0.15);"><span style="font-weight: bold; color: #fff;">Toprak Razgatlıoğlu</span><span class="rider-number">#7</span></div>
+                <div class="rider-badge"><span>Jack Miller</span><span class="rider-number">#43</span></div>
+            </div>
+        </div>
+
+        <!-- DUCATI LENOVO EKİBİ -->
+        <div class="card">
+            <div>
+                <div class="bike-tag" id="tag-ducati-1">Motosiklet: Ducati</div>
+                <h3>Ducati Lenovo Ekibi</h3>
+                <p id="desc-ducati" style="font-size: 0.8rem; color: #aaa;">İtalyan zarafeti ve desmodromik valf teknolojisinin simgesi.</p>
+            </div>
+            <div>
+                <div class="rider-badge"><span>Marc Márquez</span><span class="rider-number">#93</span></div>
+                <div class="rider-badge"><span>Francesco Bagnaia</span><span class="rider-number">#1</span></div>
+            </div>
+        </div>
+
+        <!-- APRILIA YARIŞ -->
+        <div class="card">
+            <div>
+                <div class="bike-tag" id="tag-aprilia-1">Motosiklet: Aprilia</div>
+                <h3>Aprilia Yarış</h3>
+                <p id="desc-aprilia" style="font-size: 0.8rem; color: #aaa;">İtalyan yarış DNA'sını aerodinamik inovasyonla birleştiren marka.</p>
+            </div>
+            <div>
+                <div class="rider-badge"><span>Jorge Martín</span><span class="rider-number">#89</span></div>
+                <div class="rider-badge"><span>Marco Bezzecchi</span><span class="rider-number">#72</span></div>
+            </div>
+        </div>
+
+        <!-- MONSTER ENERGY YAMAHA MOTOGP -->
+        <div class="card">
+            <div>
+                <div class="bike-tag" id="tag-yamaha-2">Motosiklet: Yamaha</div>
+                <h3>Monster Energy Yamaha MotoGP</h3>
+                <p id="desc-yamaha-motogp" style="font-size: 0.8rem; color: #aaa;">Yarış pistlerindeki çevikliği ve efsanevi M1 modeli.</p>
+            </div>
+            <div>
+                <div class="rider-badge"><span>Fabio Quartararo</span><span class="rider-number">#20</span></div>
+                <div class="rider-badge"><span>Alex Rins</span><span class="rider-number">#42</span></div>
+            </div>
+        </div>
+
+        <!-- RED BULL KTM FABRİKA YARIŞLARI -->
+        <div class="card">
+            <div>
+                <div class="bike-tag" id="tag-ktm-1">Motosiklet: KTM</div>
+                <h3>Red Bull KTM Fabrika Yarışları</h3>
+                <p id="desc-ktm" style="font-size: 0.8rem; color: #aaa;">"Ready to Race" felsefesiyle agresif ve saf güç üreten Avusturyalı.</p>
+            </div>
+            <div>
+                <div class="rider-badge"><span>Pedro Acosta</span><span class="rider-number">#31</span></div>
+                <div class="rider-badge"><span>Brad Binder</span><span class="rider-number">#33</span></div>
+            </div>
+        </div>
+
+        <!-- RED BULL KTM TECH3 -->
+        <div class="card">
+            <div>
+                <div class="bike-tag" id="tag-ktm-2">Motosiklet: KTM</div>
+                <h3>Red Bull KTM Tech3</h3>
+                <p id="desc-tech3" style="font-size: 0.8rem; color: #aaa;">KTM gücünü genç ve dinamik yapısıyla destekleyen iddialı ekip.</p>
+            </div>
+            <div>
+                <div class="rider-badge"><span>Maverick Viñales</span><span class="rider-number">#12</span></div>
+                <div class="rider-badge"><span>Enea Bastianini</span><span class="rider-number">#23</span></div>
+            </div>
+        </div>
+
+        <!-- BK8 GRESINI RACING MOTOGP -->
+        <div class="card">
+            <div>
+                <div class="bike-tag" id="tag-ducati-2">Motosiklet: Ducati</div>
+                <h3>BK8 Gresini Racing MotoGP</h3>
+                <p id="desc-gresini" style="font-size: 0.8rem; color: #aaa;">Köklü geçmişiyle Ducati gücünü harmanlayan iddialı takım.</p>
+            </div>
+            <div>
+                <div class="rider-badge"><span>Alex Márquez</span><span class="rider-number">#73</span></div>
+                <div class="rider-badge"><span>Fermín Aldeguer</span><span class="rider-number">#54</span></div>
+            </div>
+        </div>
+
+        <!-- PERTAMINA ENDURO VR46 YARIŞ TAKIMI -->
+        <div class="card">
+            <div>
+                <div class="bike-tag" id="tag-ducati-3">Motosiklet: Ducati</div>
+                <h3>Pertamina Enduro VR46 Yarış Takımı</h3>
+                <p id="desc-vr46" style="font-size: 0.8rem; color: #aaa;">Efsane Valentino Rossi'nin genç yetenekleri parlatan takımı.</p>
+            </div>
+            <div>
+                <div class="rider-badge"><span>Fabio Di Giannantonio</span><span class="rider-number">#49</span></div>
+                <div class="rider-badge"><span>Franco Morbidelli</span><span class="rider-number">#21</span></div>
+            </div>
+        </div>
+
+        <!-- SUPERFILE TRACKHOUSE MOTOGP TAKIMI -->
+        <div class="card">
+            <div>
+                <div class="bike-tag" id="tag-aprilia-2">Motosiklet: Aprilia</div>
+                <h3>SuperFile Trackhouse MotoGP Takımı</h3>
+                <p id="desc-trackhouse" style="font-size: 0.8rem; color: #aaa;">NASCAR kökenli Amerikan ruhunu Aprilia motorlarıyla piste taşıyan ekip.</p>
+            </div>
+            <div>
+                <div class="rider-badge"><span>Raul Fernandez</span><span class="rider-number">#25</span></div>
+                <div class="rider-badge"><span>Ai Ogura</span><span class="rider-number">#79</span></div>
+            </div>
+        </div>
+
+        <!-- HONDA HRC CASTROL -->
+        <div class="card">
+            <div>
+                <div class="bike-tag" id="tag-honda-1">Motosiklet: Honda</div>
+                <h3>Honda HRC Castrol</h3>
+                <p id="desc-honda" style="font-size: 0.8rem; color: #aaa;">MotoGP tarihinin efsanevi sponsorluk ve teknoloji iş birliği.</p>
+            </div>
+            <div>
+                <div class="rider-badge"><span>Joan Mir</span><span class="rider-number">#36</span></div>
+                <div class="rider-badge"><span>Luca Marini</span><span class="rider-number">#10</span></div>
+            </div>
+        </div>
+
+        <!-- LCR HONDA -->
+        <div class="card">
+            <div>
+                <div class="bike-tag" id="tag-honda-2">Motosiklet: Honda</div>
+                <h3>LCR Honda</h3>
+                <p id="desc-lcr" style="font-size: 0.8rem; color: #aaa;">Lucio Cecchinello önderliğindeki deneyimli ve köklü Japon uydu ortağı.</p>
+            </div>
+            <div>
+                <div class="rider-badge"><span>Johann Zarco</span><span class="rider-number">#5</span></div>
+                <div class="rider-badge"><span>Diogo Moreira</span><span class="rider-number">#17</span></div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- 2. ANA KATEGORİ: WORLD SUPERBIKE -->
+    <div class="category-title" id="cat-title-wsbk">🏍️ 2. KATAGORİ: RESMİ YARIŞ PLATFORMU - WORLDSBK</div>
+    <div class="grid">
+        <div class="card">
+            <h3>BMW Motorrad</h3>
+            <p id="desc-bmw" style="font-size: 0.8rem; color: #aaa;">Alman mühendisliğinin zirvesi, WSBK'nın vazgeçilmez gücü.</p>
+            <div class="rider-badge"><span>Michael van der Mark</span><span class="rider-number">#60</span></div>
+            <div class="rider-badge"><span>Garrett Gerloff</span><span class="rider-number">#31</span></div>
+        </div>
+        <div class="card">
+            <h3>Pata Prometeon Yamaha</h3>
+            <p id="desc-yamaha-wsbk" style="font-size: 0.8rem; color: #aaa;">Superbike arenasının iddialı ve çevik R1 temsilcisi.</p>
+            <div class="rider-badge"><span>Jonathan Rea</span><span class="rider-number">#65</span></div>
+            <div class="rider-badge"><span>Andrea Locatelli</span><span class="rider-number">#55</span></div>
+        </div>
+    </div>
+
+
+    <!-- 3. ANA KATEGORİ: FORMULA 1 -->
+    <div class="category-title" id="cat-title-f1">🏎️ 3. KATAGORİ: RESMİ YARIŞ PLATFORMU - FORMULA 1</div>
+    <div class="grid">
+        <div class="card">
+            <h3>Red Bull Racing</h3>
+            <p id="desc-f1-rb" style="font-size: 0.8rem; color: #aaa;">Aerodinamik dehası ve hızı birleştiren son yılların şampiyonu.</p>
+            <div class="rider-badge"><span>Max Verstappen</span><span class="rider-number">#1</span></div>
+        </div>
+        <div class="card">
+            <h3>Scuderia Ferrari</h3>
+            <p id="desc-f1-ferrari" style="font-size: 0.8rem; color: #aaa;">Formula 1 tarihinin en köklü, en efsanevi şahlanan atı.</p>
+            <div class="rider-badge"><span>Lewis Hamilton</span><span class="rider-number">#44</span></div>
+        </div>
+    </div>
+
+
+    <!-- 4. ANA KATEGORİ: DTM -->
+    <div class="category-title" id="cat-title-dtm">🚗 4. KATAGORİ: RESMİ YARIŞ PLATFORMU - DTM</div>
+    <div class="grid">
+        <div class="card">
+            <h3>Abt Sportsline (Audi)</h3>
+            <p id="desc-dtm-audi" style="font-size: 0.8rem; color: #aaa;">Alman binek otomobil şampiyonasının efsanevi Audi temsilcisi.</p>
+            <div class="rider-badge"><span>Kelvin van der Linde</span><span class="rider-number">#3</span></div>
+        </div>
     </div>
 
     <footer id="site-footer">
@@ -74,22 +293,34 @@
     </footer>
 
     <script>
-        // Tüm dillerin veritabanı
         const translations = {
             tr: {
                 title: "MOTOR SPORLARI CANLI MERKEZİ",
                 label: "SON DAKİKA",
                 news: "• Yarış hafta sonu heyecanı canlı yayınlarla başlıyor!",
                 streams: "CANLI YAYINLAR",
-                encyclopedia: "MARKA ANSİKLOPEDİSİ",
-                btnLive: "CANLI YAYIN", btnWatch: "İZLE", btnExplore: "KEŞFET",
-                honda: "MotoGP tarihinin en çok zafer kazanan Japon devi.",
+                catMotogp: "🏁 1. KATAGORİ: RESMİ YARIŞ PLATFORMU - MOTOGP",
+                catWsbk: "🏍️ 2. KATAGORİ: RESMİ YARIŞ PLATFORMU - WORLDSBK",
+                catF1: "🏎️ 3. KATAGORİ: RESMİ YARIŞ PLATFORMU - FORMULA 1",
+                catDtm: "🚗 4. KATAGORİ: RESMİ YARIŞ PLATFORMU - DTM",
+                toprakPramac: "Milli gururumuz Toprak Razgatlıoğlu, Pramac Yamaha ile MotoGP arenasında!",
+                honda: "MotoGP tarihinin efsanevi sponsorluk ve teknoloji iş birliği.",
                 ducati: "İtalyan zarafeti ve desmodromik valf teknolojisinin simgesi.",
-                yamaha: "Yarış pistlerindeki çevikliği ve efsanevi M1 modeli.",
-                suzuki: "Yarış geçmişindeki istikrarıyla efsane bir marka.",
-                ktm: "\"Ready to Race\" felsefesini pistlere taşıyan turuncu güç.",
                 aprilia: "İtalyan yarış DNA'sını aerodinamik inovasyonla birleştiren marka.",
+                yamahaMotogp: "Yarış pistlerindeki çevikliği ve efsanevi M1 modeli.",
+                ktm: "'Ready to Race' felsefesiyle agresif ve saf güç üreten Avusturyalı.",
+                tech3: "KTM gücünü genç ve dinamik yapısıyla destekleyen iddialı ekip.",
+                vr46: "Efsane Valentino Rossi'nin genç yetenekleri parlatan takımı.",
+                gresini: "Köklü geçmişiyle Ducati gücünü harmanlayan iddialı takım.",
+                trackhouse: "NASCAR kökenli Amerikan ruhunu Aprilia motorlarıyla piste taşıyan ekip.",
+                lcr: "Lucio Cecchinello önderliğindeki deneyimli ve köklü Japon uydu ortağı.",
                 bmw: "Alman mühendisliğinin zirvesi, WSBK'nın vazgeçilmez gücü.",
+                yamahaWsbk: "Superbike arenasının iddialı ve çevik R1 temsilcisi.",
+                f1Rb: "Aerodinamik dehası ve hızı birleştiren son yılların şampiyonu.",
+                f1Ferrari: "Formula 1 tarihinin en köklü, en efsanevi şahlanan atı.",
+                dtmAudi: "Alman binek otomobil şampiyonasının efsanevi Audi temsilcisi.",
+                btnLive: "CANLI YAYIN", btnWatch: "İZLE", btnExplore: "KEŞFET",
+                bikeYamaha: "Motosiklet: Yamaha", bikeDucati: "Motosiklet: Ducati", bikeAprilia: "Motosiklet: Aprilia", bikeKtm: "Motosiklet: KTM", bikeHonda: "Motosiklet: Honda",
                 footer: "Bu site resmi bir yayın kuruluşu değildir. Sadece resmi spor kanallarına yönlendirme sağlayan bir motor sporları rehberidir."
             },
             en: {
@@ -97,15 +328,28 @@
                 label: "BREAKING",
                 news: "• Race weekend excitement begins with live streams!",
                 streams: "LIVE STREAMS",
-                encyclopedia: "BRAND ENCYCLOPEDIA",
-                btnLive: "LIVE STREAM", btnWatch: "WATCH", btnExplore: "EXPLORE",
-                honda: "The most victorious Japanese giant in MotoGP history.",
+                catMotogp: "🏁 CATEGORY 1: OFFICIAL RACING PLATFORM - MOTOGP",
+                catWsbk: "🏍️ CATEGORY 2: OFFICIAL RACING PLATFORM - WORLDSBK",
+                catF1: "🏎️ CATEGORY 3: OFFICIAL RACING PLATFORM - FORMULA 1",
+                catDtm: "🚗 CATEGORY 4: OFFICIAL RACING PLATFORM - DTM",
+                toprakPramac: "Our national pride Toprak Razgatlıoğlu is in the MotoGP arena with Pramac Yamaha!",
+                honda: "Legendary sponsorship and technology partnership in MotoGP history.",
                 ducati: "The symbol of Italian elegance and desmodromic valve tech.",
-                yamaha: "Agility on the race tracks and the legendary M1 model.",
-                suzuki: "A legendary brand with stability in its racing history.",
-                ktm: "The orange power bringing 'Ready to Race' philosophy to tracks.",
                 aprilia: "Combining Italian racing DNA with aerodynamic innovation.",
+                yamahaMotogp: "Agility on the race tracks and the legendary M1 model.",
+                ktm: "Austrian machine producing aggressive and pure power with 'Ready to Race' philosophy.",
+                tech3: "Ambitious team supporting KTM power with its young and dynamic structure.",
+                vr46: "Legend Valentino Rossi's team, shining the young talents.",
+                gresini: "Ambitious team blending Ducati power with deep history.",
+                trackhouse: "The squad bringing American NASCAR roots to the track with Aprilia bikes.",
+                lcr: "Experienced and deep-rooted Japanese satellite partner under Lucio Cecchinello.",
                 bmw: "The pinnacle of German engineering, indispensable power of WSBK.",
+                yamahaWsbk: "The ambitious and agile R1 representative in the Superbike arena.",
+                f1Rb: "Combining aerodynamic genius and speed, the champion of recent years.",
+                f1Ferrari: "The most rooted, legendary prancing horse in Formula 1 history.",
+                dtmAudi: "The legendary Audi representative of the German touring car championship.",
+                btnLive: "LIVE STREAM", btnWatch: "WATCH", btnExplore: "EXPLORE",
+                bikeYamaha: "Bike: Yamaha", bikeDucati: "Bike: Ducati", bikeAprilia: "Bike: Aprilia", bikeKtm: "Bike: KTM", bikeHonda: "Bike: Honda",
                 footer: "This site is not an official broadcaster. It is a motorsports guide providing links to official channels."
             },
             de: {
@@ -113,15 +357,28 @@
                 label: "EILMELDUNG",
                 news: "• Die Spannung am Rennwochenende beginnt mit Live-Streams!",
                 streams: "LIVE-STREAMS",
-                encyclopedia: "MARKEN-ENZYKLOPÄDIE",
-                btnLive: "LIVE STREAM", btnWatch: "ANSEHEN", btnExplore: "ENTDECKEN",
-                honda: "Der siegreichste japanische Riese in der MotoGP-Geschichte.",
+                catMotogp: "🏁 KATEGORIE 1: OFFIZIELLE RENNPPLATTFORM - MOTOGP",
+                catWsbk: "🏍️ KATEGORIE 2: OFFIZIELLE RENNPPLATTFORM - WORLDSBK",
+                catF1: "🏎️ KATEGORIE 3: OFFIZIELLE RENNPPLATTFORM - FORMULA 1",
+                catDtm: "🚗 KATEGORIE 4: OFFIZIELLE RENNPPLATTFORM - DTM",
+                toprakPramac: "Stolz Toprak Razgatlıoğlu ist mit Pramac Yamaha in der MotoGP-Arena!",
+                honda: "Legendäre Sponsoring- und Technologiepartnerschaft in der MotoGP-Geschichte.",
                 ducati: "Das Symbol italienischer Eleganz und desmodromischer Ventiltechnik.",
-                yamaha: "Agilität auf den Rennstrecken und das legendäre M1-Modell.",
-                suzuki: "Eine legendäre Marke mit Stabilität in ihrer Renngeschichte.",
-                ktm: "Die orangefarbene Kraft, die die 'Ready to Race'-Philosophie auf die Rennstrecke bringt.",
                 aprilia: "Verbindung italienischer Renn-DNA mit aerodynamischer Innovation.",
+                yamahaMotogp: "Agilität auf den Rennstrecken und das legendäre M1-Modell.",
+                ktm: "Österreichische Maschine mit aggressive und pure Power.",
+                tech3: "Ambitioniertes Team, das die KTM-Power mit seiner jungen und dynamischen Struktur unterstützt.",
+                vr46: "Das Team der Legende Valentino Rossi, das junge Talente zum Strahlen bringt.",
+                gresini: "Ambitioniertes Team, das Ducati-Power mit tiefer Geschichte verbindet.",
+                trackhouse: "Das Team, das amerikanische NASCAR-Wurzeln mit Aprilia-Bikes auf die Strecke bringt.",
+                lcr: "Erfahrener und tief verwurzelter japanischer Satellitenpartner unter Lucio Cecchinello.",
                 bmw: "Die Unverzichtbare Kraft der WSBK, die Spitze deutscher Ingenieurskunst.",
+                yamahaWsbk: "Der ehrgeizige und agile R1-Vertreter in der Superbike-Arena.",
+                f1Rb: "Der Champion der letzten Jahre, der aerodynamisches Genie und Geschwindigkeit vereint.",
+                f1Ferrari: "Das älteste und legendary springende Pferd in der Geschichte der Formel 1.",
+                dtmAudi: "Der legendary Audi-Vertreter der Deutschen Tourenwagen-Meisterschaft.",
+                btnLive: "LIVE STREAM", btnWatch: "ANSEHEN", btnExplore: "ENTDECKEN",
+                bikeYamaha: "Motorrad: Yamaha", bikeDucati: "Motorrad: Ducati", bikeAprilia: "Motorrad: Aprilia", bikeKtm: "Motorrad: KTM", bikeHonda: "Motorrad: Honda",
                 footer: "Diese Website ist kein offizieller Sender. Es ist ein Leitfaden, der Links zu offiziellen Kanälen bereitstellt."
             },
             fr: {
@@ -129,42 +386,81 @@
                 label: "DERNIÈRE MINUTE",
                 news: "• L'excitation du week-end de course commence avec les flux en direct!",
                 streams: "FLUX EN DIRECT",
-                encyclopedia: "ENCYCLOPÉDIE DES MARQUES",
-                btnLive: "EN DIRECT", btnWatch: "REGARDER", btnExplore: "EXPLORER",
-                honda: "Le géant japonais le plus victorieux de l'histoire du MotoGP.",
+                catMotogp: "🏁 CATÉGORIE 1: PLATEFORME OFFICIELLE DE COURSE - MOTOGP",
+                catWsbk: "🏍️ CATÉGORIE 2: PLATEFORME OFFICIELLE DE COURSE - WORLDSBK",
+                catF1: "🏎️ CATÉGORIE 3: PLATEFORME OFFICIELLE DE COURSE - FORMULA 1",
+                catDtm: "🚗 CATÉGORIE 4: PLATEFORME OFFICIELLE DE COURSE - DTM",
+                toprakPramac: "Notre fierté nationale Toprak Razgatlıoğlu est dans l'arène MotoGP avec Pramac Yamaha!",
+                honda: "Partenariat légendaire de parrainage et de technologie dans l'histoire du MotoGP.",
                 ducati: "Le symbole de l'élégance italienne et de la technologie des soupapes desmodromiques.",
-                yamaha: "Agilité sur les pistes de course et le modèle légendaire M1.",
-                suzuki: "Une marque légendaire avec une stabilité dans son histoire de course.",
-                ktm: "La puissance orange apporte la philosophie 'Ready to Race' sur les pistes.",
                 aprilia: "Allier l'ADN de la course italienne à l'innovation aérodynamique.",
+                yamahaMotogp: "Le modèle légendaire M1 et son agilité sur piste.",
+                ktm: "Machine autrichienne produisant une puissance agressive et pure.",
+                tech3: "Équipe ambitieuse soutenant la puissance de KTM grâce à sa structure jeune et dynamique.",
+                vr46: "L'équipe de la légende Valentino Rossi, qui fait briller les jeunes talents.",
+                gresini: "Équipe ambitieuse mêlant la puissance de Ducati à une histoire profonde.",
+                trackhouse: "L'équipe qui apporte les racines américaines de la NASCAR sur la piste avec des motos Aprilia.",
+                lcr: "Partenaire satellite japonais expérimenté et enraciné sous la direction de Lucio Cecchinello.",
                 bmw: "Le sommet de l'ingénierie allemande, puissance indispensable du WSBK.",
+                yamahaWsbk: "Le représentant R1 ambitieux et agile dans l'arène Superbike.",
+                f1Rb: "Alliant génie aérodynamique et vitesse, le champion de ces dernières années.",
+                f1Ferrari: "Le cheval cabré le plus enracined et le plus légendaire de l'histoire de la Formel 1.",
+                dtmAudi: "Le légendaire représentant Audi du championnat allemand des voitures de tourisme.",
+                btnLive: "EN DIRECT", btnWatch: "REGARDER", btnExplore: "EXPLORER",
+                bikeYamaha: "Moto: Yamaha", bikeDucati: "Moto: Ducati", bikeAprilia: "Moto: Aprilia", bikeKtm: "Moto: KTM", bikeHonda: "Moto: Honda",
                 footer: "Ce site n'est pas un diffuseur officiel. C'est un guide fournissant des liens vers les chaînes officielles."
             }
         };
 
-        function switchLang(lang) {
-            // Aktif buton görselini güncelle
+        function switchLang(lang, event) {
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if(event && event.target) {
+                event.target.classList.add('active');
+            }
 
-            // Sayfa metinlerini değiştir
             document.getElementById('main-title').innerText = translations[lang].title;
             document.getElementById('ticker-label').innerText = translations[lang].label;
             document.getElementById('ticker-news').innerText = translations[lang].news;
             document.getElementById('section-streams').innerText = translations[lang].streams;
-            document.getElementById('section-encyclopedia').innerText = translations[lang].encyclopedia;
             document.getElementById('site-footer').innerText = translations[lang].footer;
             
-            // Markaları değiştir
+            // Kategori başlıkları
+            document.getElementById('cat-title-motogp').innerText = translations[lang].catMotogp;
+            document.getElementById('cat-title-wsbk').innerText = translations[lang].catWsbk;
+            document.getElementById('cat-title-f1').innerText = translations[lang].catF1;
+            document.getElementById('cat-title-dtm').innerText = translations[lang].catDtm;
+
+            // Kart metinleri
+            document.getElementById('desc-toprak-pramac').innerText = translations[lang].toprakPramac;
             document.getElementById('desc-honda').innerText = translations[lang].honda;
             document.getElementById('desc-ducati').innerText = translations[lang].ducati;
-            document.getElementById('desc-yamaha').innerText = translations[lang].yamaha;
-            document.getElementById('desc-suzuki').innerText = translations[lang].suzuki;
-            document.getElementById('desc-ktm').innerText = translations[lang].ktm;
             document.getElementById('desc-aprilia').innerText = translations[lang].aprilia;
+            document.getElementById('desc-yamaha-motogp').innerText = translations[lang].yamahaMotogp;
+            document.getElementById('desc-ktm').innerText = translations[lang].ktm;
+            document.getElementById('desc-tech3').innerText = translations[lang].tech3;
+            document.getElementById('desc-vr46').innerText = translations[lang].vr46;
+            document.getElementById('desc-gresini').innerText = translations[lang].gresini;
+            document.getElementById('desc-trackhouse').innerText = translations[lang].trackhouse;
+            document.getElementById('desc-lcr').innerText = translations[lang].lcr;
             document.getElementById('desc-bmw').innerText = translations[lang].bmw;
+            document.getElementById('desc-yamaha-wsbk').innerText = translations[lang].yamahaWsbk;
+            document.getElementById('desc-f1-rb').innerText = translations[lang].f1Rb;
+            document.getElementById('desc-f1-ferrari').innerText = translations[lang].f1Ferrari;
+            document.getElementById('desc-dtm-audi').innerText = translations[lang].dtmAudi;
 
-            // Buton gruplarını toplu değiştir
+            // Motosiklet Etiketleri Çevirileri
+            document.getElementById('tag-yamaha-1').innerText = translations[lang].bikeYamaha;
+            document.getElementById('tag-yamaha-2').innerText = translations[lang].bikeYamaha;
+            document.getElementById('tag-ducati-1').innerText = translations[lang].bikeDucati;
+            document.getElementById('tag-ducati-2').innerText = translations[lang].bikeDucati;
+            document.getElementById('tag-ducati-3').innerText = translations[lang].bikeDucati;
+            document.getElementById('tag-aprilia-1').innerText = translations[lang].bikeAprilia;
+            document.getElementById('tag-aprilia-2').innerText = translations[lang].bikeAprilia;
+            document.getElementById('tag-ktm-1').innerText = translations[lang].bikeKtm;
+            document.getElementById('tag-ktm-2').innerText = translations[lang].bikeKtm;
+            document.getElementById('tag-honda-1').innerText = translations[lang].bikeHonda;
+            document.getElementById('tag-honda-2').innerText = translations[lang].bikeHonda;
+
             document.querySelectorAll('.class-live-btn').forEach(btn => btn.innerText = translations[lang].btnLive);
             document.querySelectorAll('.class-watch-btn').forEach(btn => btn.innerText = translations[lang].btnWatch);
             document.querySelectorAll('.class-explore-btn').forEach(btn => btn.innerText = translations[lang].btnExplore);
