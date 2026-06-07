@@ -11,7 +11,7 @@
         gtag('js', new Date());
         gtag('config', 'G-JVZGRCSV8B');
         const data = {
-            tr: { title: "MOTOR SPORLARI CANLI MERKEZİ", label: "SON DAKİKA", news: "• Yarış heyecanı burada! Türkiye'nin merkezi.", pilots: "Türkiye: Kenan Sofuoğlu, Toprak Razgatlıoğlu" },
+            tr: { title: "MOTOR SPORLARI CANLI MERKEZİ", label: "SON DAKİKA", news: "• Yarış hafta sonu heyecanı canlı yayınlarla başlıyor!", pilots: "Türkiye: Kenan Sofuoğlu, Toprak Razgatlıoğlu" },
             en: { title: "MOTORSPORTS LIVE HUB", label: "BREAKING", news: "• Race weekend excitement! Welcome to the global hub.", pilots: "Global Icons: Fabio Quartararo, Jack Miller" },
             it: { title: "HUB LIVE MOTORSPORT", label: "ULTIM'ORA", news: "• Emozione pura! Benvenuti nella casa dei campioni.", pilots: "Italia: Francesco Bagnaia, Enea Bastianini" },
             es: { title: "CENTRO DE MOTORSPORTS", label: "ÚLTIMA HORA", news: "• ¡Bienvenidos! Vive la pasión de las carreras con nosotros.", pilots: "España: Marc Márquez, Jorge Martín" },
@@ -29,43 +29,257 @@
     </script>
     <style>
         :root { --bg: #0a0f18; --card: #141f32; --accent: #ff2a4b; --text: #ffffff; }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px; }
-        .lang-switcher { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
-        .lang-btn { background: var(--card); border: 1px solid #2a3a5a; color: white; padding: 8px 15px; border-radius: 5px; cursor: pointer; }
-        .lang-btn.active { border-color: var(--accent); background: var(--accent); }
-        .ticker-wrapper { max-width: 800px; margin: 20px auto; background: var(--card); border: 1px solid #2a3a5a; border-radius: 8px; display: flex; align-items: center; overflow: hidden; height: 45px; }
-        .ticker-title { background: var(--accent); padding: 0 15px; height: 100%; display: flex; align-items: center; font-weight: bold; font-size: 0.8rem; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px 20px 40px; }
+
+        /* LANG SWITCHER */
+        .lang-switcher { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .lang-btn { background: var(--card); border: 1px solid #2a3a5a; color: white; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 1rem; transition: all 0.2s; }
+        .lang-btn.active, .lang-btn:hover { border-color: var(--accent); background: var(--accent); }
+
+        /* TITLE */
+        h1 { font-size: 2rem; letter-spacing: 2px; margin-bottom: 15px; }
+
+        /* TICKER */
+        .ticker-wrapper { max-width: 800px; margin: 0 auto 30px; background: var(--card); border: 1px solid #2a3a5a; border-radius: 8px; display: flex; align-items: center; overflow: hidden; height: 45px; }
+        .ticker-title { background: var(--accent); padding: 0 15px; height: 100%; display: flex; align-items: center; font-weight: bold; font-size: 0.8rem; white-space: nowrap; }
         .ticker-text { padding-left: 15px; font-size: 0.9rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1000px; margin: 0 auto; }
-        .card { background: var(--card); padding: 20px; border-radius: 10px; border: 1px solid #2a3a5a; text-decoration: none; color: white; }
-        #pilot-info { margin-top: 30px; color: #888; font-style: italic; }
+
+        /* SECTION TITLES */
+        .section-title { font-size: 1.1rem; font-weight: 700; letter-spacing: 3px; color: #aabbcc; margin: 30px 0 15px; text-transform: uppercase; }
+
+        /* GRID */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 15px; max-width: 1100px; margin: 0 auto; }
+
+        /* CARD */
+        .card {
+            background: var(--card);
+            padding: 22px 15px 18px;
+            border-radius: 10px;
+            border: 1px solid #2a3a5a;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            transition: border-color 0.2s, transform 0.15s;
+        }
+        .card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .card h3 { font-size: 1rem; font-weight: 700; }
+        .card .flag { font-size: 1.1rem; color: #aabbcc; font-weight: 400; }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: #cc1f3a; }
+        .btn.outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+        .btn.outline:hover { background: var(--accent); color: white; }
+
+        #pilot-info { margin-top: 30px; color: #888; font-style: italic; font-size: 0.9rem; }
+        footer { margin-top: 20px; color: #555; font-size: 0.8rem; }
     </style>
-</head> 
-    <body>
+</head>
+<body>
+
     <div class="lang-switcher">
-        <button class="lang-btn active" onclick="switchLang('tr')">🇹🇷</button>
-        <button class="lang-btn" onclick="switchLang('en')">🇬🇧</button>
-        <button class="lang-btn" onclick="switchLang('it')">🇮🇹</button>
-        <button class="lang-btn" onclick="switchLang('es')">🇪🇸</button>
-        <button class="lang-btn" onclick="switchLang('fr')">🇫🇷</button>
-        <button class="lang-btn" onclick="switchLang('de')">🇩🇪</button>
+        <button class="lang-btn active" onclick="switchLang('tr')">🇹🇷 TR</button>
+        <button class="lang-btn" onclick="switchLang('en')">🇬🇧 EN</button>
+        <button class="lang-btn" onclick="switchLang('de')">🇩🇪 DE</button>
+        <button class="lang-btn" onclick="switchLang('fr')">🇫🇷 FR</button>
     </div>
 
     <h1 id="main-title">MOTOR SPORLARI CANLI MERKEZİ</h1>
 
     <div class="ticker-wrapper">
         <div class="ticker-title" id="ticker-label">SON DAKİKA</div>
-        <div class="ticker-text" id="ticker-news">• Yarış heyecanı burada! Türkiye'nin merkezi.</div>
+        <div class="ticker-text" id="ticker-news">• Yarış hafta sonu heyecanı canlı yayınlarla başlıyor!</div>
     </div>
 
+    <!-- CANLI YAYINLAR -->
+    <div class="section-title">CANLI YAYINLAR</div>
     <div class="grid">
-        <a href="https://www.youtube.com/@motogp/streams" target="_blank" class="card"><h3>MotoGP</h3></a>
-        <a href="https://www.youtube.com/@Formula1/streams" target="_blank" class="card"><h3>Formula 1</h3></a>
-        <a href="https://www.redbull.com/int-en/tv/" target="_blank" class="card"><h3>Red Bull TV</h3></a>
+
+        <div class="card">
+            <h3>MotoGP</h3>
+            <a href="https://www.motogp.com/en/live" target="_blank" class="btn">CANLI YAYIN</a>
+        </div>
+
+        <div class="card">
+            <h3>WorldSBK</h3>
+            <a href="https://www.worldsbk.com/en/live" target="_blank" class="btn">CANLI YAYIN</a>
+        </div>
+
+        <div class="card">
+            <h3>Formula 1</h3>
+            <a href="https://www.formula1.com/en/live" target="_blank" class="btn">CANLI YAYIN</a>
+        </div>
+
+        <div class="card">
+            <h3>DTM</h3>
+            <a href="https://www.dtm.com/en/live" target="_blank" class="btn">CANLI YAYIN</a>
+        </div>
+
+        <div class="card">
+            <h3>Red Bull TV</h3>
+            <a href="https://www.redbull.com/int-en/tv/" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>Motorsport.tv</h3>
+            <a href="https://motorsport.tv/live" target="_blank" class="btn">CANLI YAYIN</a>
+        </div>
+
     </div>
 
+    <!-- TV KANALLARI -->
+    <div class="section-title">TV KANALLARI</div>
+    <div class="grid">
+
+        <div class="card">
+            <h3>S Sport</h3>
+            <span class="flag">🇹🇷 Türkiye</span>
+            <a href="https://www.ssport.com.tr" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>S Sport Plus</h3>
+            <span class="flag">🇹🇷 Türkiye</span>
+            <a href="https://www.ssportplus.com" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>TNT Sports</h3>
+            <span class="flag">🇬🇧 Birleşik Krallık</span>
+            <a href="https://www.tntsports.co.uk" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>DAZN España</h3>
+            <span class="flag">🇪🇸 İspanya</span>
+            <a href="https://www.dazn.com" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>Sky Sport Italia</h3>
+            <span class="flag">🇮🇹 İtalya</span>
+            <a href="https://sport.sky.it" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>Canal+ France</h3>
+            <span class="flag">🇫🇷 Fransa</span>
+            <a href="https://www.canalplus.com" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>ServusTV</h3>
+            <span class="flag">🇩🇪🇦🇹 Almanya / Avusturya</span>
+            <a href="https://www.servustv.com" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>ServusTV On</h3>
+            <span class="flag">🇦🇹 Avusturya</span>
+            <a href="https://www.servustv.com/on" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>FOX Sports USA</h3>
+            <span class="flag">🇺🇸 ABD</span>
+            <a href="https://www.foxsports.com" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>REV TV Canada</h3>
+            <span class="flag">🇨🇦 Kanada</span>
+            <a href="https://www.revtv.ca" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>Fox Sports Australia</h3>
+            <span class="flag">🇦🇺 Avustralya</span>
+            <a href="https://www.foxsports.com.au" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>Sky Sport NZ</h3>
+            <span class="flag">🇳🇿 Yeni Zelanda</span>
+            <a href="https://www.skysport.co.nz" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>Trans7</h3>
+            <span class="flag">🇮🇩 Endonezya</span>
+            <a href="https://www.trans7.co.id" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>Band Sports</h3>
+            <span class="flag">🇧🇷 Brezilya</span>
+            <a href="https://www.band.uol.com.br/bandsports" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>SSC Sports</h3>
+            <span class="flag">🌍 Orta Doğu & Kuzey Afrika</span>
+            <a href="https://www.ssc.com.sa" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>RTBF</h3>
+            <span class="flag">🇧🇪 Belçika</span>
+            <a href="https://www.rtbf.be/auvio" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>RTL Zwee</h3>
+            <span class="flag">🇱🇺 Lüksemburg</span>
+            <a href="https://www.rtl.lu" target="_blank" class="btn">İZLE</a>
+        </div>
+
+        <div class="card">
+            <h3>Eurosport</h3>
+            <span class="flag">🌍 Avrupa</span>
+            <a href="https://www.eurosport.com" target="_blank" class="btn">İZLE</a>
+        </div>
+
+    </div>
+
+    <!-- ÖZEL PLATFORMLAR -->
+    <div class="section-title">ÖZEL PLATFORMLAR</div>
+    <div class="grid">
+
+        <div class="card">
+            <h3>MotoGP VideoPass</h3>
+            <span class="flag">🌐 Dünya Geneli</span>
+            <a href="https://www.motogp.com/en/videopass" target="_blank" class="btn">ABONE OL</a>
+        </div>
+
+        <div class="card">
+            <h3>Twitch Racing</h3>
+            <span class="flag">🌐 Global</span>
+            <a href="https://www.twitch.tv/directory/game/Motorsport" target="_blank" class="btn">KEŞFET</a>
+        </div>
+
+    </div>
+
+    <!-- MARKA ANSİKLOPEDİSİ (eski alan) -->
     <p id="pilot-info">Türkiye: Kenan Sofuoğlu, Toprak Razgatlıoğlu</p>
 
     <footer>Bu site resmi bir yayın kuruluşu değildir.</footer>
+
 </body>
 </html>
