@@ -1,30 +1,24 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-@@ -10,276 +9,613 @@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motorsports Live Hub</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JVZGRCSV8B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-JVZGRCSV8B');
-        const data = {
 
         const langData = {
             tr: { title: "MOTOR SPORLARI CANLI MERKEZİ", label: "SON DAKİKA", news: "• Yarış hafta sonu heyecanı canlı yayınlarla başlıyor!", pilots: "Türkiye: Kenan Sofuoğlu, Toprak Razgatlıoğlu" },
             en: { title: "MOTORSPORTS LIVE HUB", label: "BREAKING", news: "• Race weekend excitement! Welcome to the global hub.", pilots: "Global Icons: Fabio Quartararo, Jack Miller" },
-            it: { title: "HUB LIVE MOTORSPORT", label: "ULTIM'ORA", news: "• Emozione pura! Benvenuti nella casa dei campioni.", pilots: "Italia: Francesco Bagnaia, Enea Bastianini" },
-            es: { title: "CENTRO DE MOTORSPORTS", label: "ÚLTIMA HORA", news: "• ¡Bienvenidos! Vive la pasión de las carreras con nosotros.", pilots: "España: Marc Márquez, Jorge Martín" },
-            fr: { title: "CENTRE LIVE SPORTS", label: "DERNIÈRE MINUTE", news: "• L'excitation du week-end de course commence ici.", pilots: "France: Johann Zarco, Fabio Quartararo" },
-            de: { title: "MOTORSPORT LIVE-ZENTRUM", label: "EILMELDUNG", news: "• Die Rennaction beginnt hier.", pilots: "Deutschland: Stefan Bradl" }
             de: { title: "MOTORSPORT LIVE-ZENTRUM", label: "EILMELDUNG", news: "• Die Rennaction beginnt hier.", pilots: "Deutschland: Stefan Bradl" },
             fr: { title: "CENTRE LIVE SPORTS", label: "DERNIÈRE MINUTE", news: "• L'excitation du week-end de course commence ici.", pilots: "France: Johann Zarco, Fabio Quartararo" }
         };
 
         function switchLang(lang) {
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            document.getElementById('main-title').innerText = data[lang].title;
-            document.getElementById('ticker-label').innerText = data[lang].label;
-            document.getElementById('ticker-news').innerText = data[lang].news;
-            document.getElementById('pilot-info').innerText = data[lang].pilots;
             event.target.closest('.lang-btn').classList.add('active');
             document.getElementById('main-title').innerText = langData[lang].title;
             document.getElementById('ticker-label').innerText = langData[lang].label;
@@ -133,7 +127,6 @@
         ];
     </script>
     <style>
-        :root { --bg: #0a0f18; --card: #141f32; --accent: #ff2a4b; --text: #ffffff; }
         :root {
             --bg: #0a0f18;
             --card: #141f32;
@@ -146,7 +139,6 @@
             --sidebar-w: 240px;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; text-align: center; padding: 20px 20px 40px; }
         body {
             background: var(--bg);
             color: var(--text);
@@ -154,10 +146,6 @@
             min-height: 100vh;
         }
 
-        /* LANG SWITCHER */
-        .lang-switcher { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        .lang-btn { background: var(--card); border: 1px solid #2a3a5a; color: white; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 1rem; transition: all 0.2s; }
-        .lang-btn.active, .lang-btn:hover { border-color: var(--accent); background: var(--accent); }
         /* ── TOP BAR ── */
         .topbar {
             background: #0d1526;
@@ -246,20 +234,12 @@
         }
         .overlay.show { display: block; }
 
-        /* TITLE */
-        h1 { font-size: 2rem; letter-spacing: 2px; margin-bottom: 15px; }
         /* ── MAIN CONTENT ── */
         .main { flex: 1; padding: 25px 20px 40px; max-width: 1100px; }
 
-        /* TICKER */
-        .ticker-wrapper { max-width: 800px; margin: 0 auto 30px; background: var(--card); border: 1px solid #2a3a5a; border-radius: 8px; display: flex; align-items: center; overflow: hidden; height: 45px; }
-        .ticker-title { background: var(--accent); padding: 0 15px; height: 100%; display: flex; align-items: center; font-weight: bold; font-size: 0.8rem; white-space: nowrap; }
-        .ticker-text { padding-left: 15px; font-size: 0.9rem; }
         .section { display: none; }
         .section.active { display: block; }
 
-        /* SECTION TITLES */
-        .section-title { font-size: 1.1rem; font-weight: 700; letter-spacing: 3px; color: #aabbcc; margin: 30px 0 15px; text-transform: uppercase; }
         /* ── TICKER ── */
         .ticker-wrapper {
             max-width: 100%;
@@ -285,8 +265,6 @@
         }
         .ticker-text { padding-left: 14px; font-size: 0.88rem; color: #ccd; }
 
-        /* GRID */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 15px; max-width: 1100px; margin: 0 auto; }
         /* ── SECTION TITLE ── */
         .sec-title {
             font-size: 0.72rem;
@@ -298,7 +276,6 @@
         }
         .sec-title:first-child { margin-top: 0; }
 
-        /* CARD */
         /* ── CARD GRID ── */
         .grid {
             display: grid;
@@ -307,25 +284,18 @@
         }
         .card {
             background: var(--card);
-            padding: 22px 15px 18px;
             padding: 20px 14px 16px;
             border-radius: 10px;
-            border: 1px solid #2a3a5a;
             border: 1px solid var(--border);
             text-decoration: none;
             color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 14px;
             gap: 12px;
             transition: border-color 0.2s, transform 0.15s;
         }
         .card:hover { border-color: var(--accent); transform: translateY(-3px); }
-        .card h3 { font-size: 1rem; font-weight: 700; }
-        .card .flag { font-size: 1.1rem; color: #aabbcc; font-weight: 400; }
-
-        /* BUTTON */
         .card h3 { font-size: 0.95rem; font-weight: 700; text-align: center; }
         .card .flag { font-size: 0.82rem; color: var(--muted); }
         .btn {
@@ -333,10 +303,8 @@
             background: var(--accent);
             color: white;
             border: none;
-            padding: 8px 20px;
             padding: 7px 18px;
             border-radius: 5px;
-            font-size: 0.78rem;
             font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 1px;
@@ -344,13 +312,8 @@
             text-decoration: none;
             transition: background 0.2s;
         }
-        .btn:hover { background: #cc1f3a; }
-        .btn.outline { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
-        .btn.outline:hover { background: var(--accent); color: white; }
         .btn:hover { background: var(--accent2); }
 
-        #pilot-info { margin-top: 30px; color: #888; font-style: italic; font-size: 0.9rem; }
-        footer { margin-top: 20px; color: #555; font-size: 0.8rem; }
         /* ── BRAND CARDS ── */
         .brand-grid {
             display: grid;
@@ -449,164 +412,51 @@
     </div>
 </div>
 
-    <h1 id="main-title">MOTOR SPORLARI CANLI MERKEZİ</h1>
-
-    <div class="ticker-wrapper">
-        <div class="ticker-title" id="ticker-label">SON DAKİKA</div>
-        <div class="ticker-text" id="ticker-news">• Yarış hafta sonu heyecanı canlı yayınlarla başlıyor!</div>
-    </div>
-
-    <!-- CANLI YAYINLAR -->
-    <div class="section-title">CANLI YAYINLAR</div>
-    <div class="grid">
-
-        <div class="card">
-            <h3>MotoGP</h3>
-            <a href="https://www.motogp.com/en/live" target="_blank" class="btn">CANLI YAYIN</a>
-        </div>
-
-        <div class="card">
-            <h3>WorldSBK</h3>
-            <a href="https://www.worldsbk.com/en/live" target="_blank" class="btn">CANLI YAYIN</a>
-        </div>
-
-        <div class="card">
-            <h3>Formula 1</h3>
-            <a href="https://www.formula1.com/en/live" target="_blank" class="btn">CANLI YAYIN</a>
-        </div>
-
-        <div class="card">
-            <h3>DTM</h3>
-            <a href="https://www.dtm.com/en/live" target="_blank" class="btn">CANLI YAYIN</a>
-        </div>
-
-        <div class="card">
-            <h3>Red Bull TV</h3>
-            <a href="https://www.redbull.com/int-en/tv/" target="_blank" class="btn">İZLE</a>
-        </div>
-
-        <div class="card">
-            <h3>Motorsport.tv</h3>
-            <a href="https://motorsport.tv/live" target="_blank" class="btn">CANLI YAYIN</a>
-        </div>
-
-    </div>
-
-    <!-- TV KANALLARI -->
-    <div class="section-title">TV KANALLARI</div>
-    <div class="grid">
-
-        <div class="card">
-            <h3>S Sport</h3>
-            <span class="flag">🇹🇷 Türkiye</span>
-            <a href="https://www.ssport.com.tr" target="_blank" class="btn">İZLE</a>
-        </div>
-
-        <div class="card">
-            <h3>S Sport Plus</h3>
-            <span class="flag">🇹🇷 Türkiye</span>
-            <a href="https://www.ssportplus.com" target="_blank" class="btn">İZLE</a>
-        </div>
 <!-- OVERLAY -->
 <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
 
-        <div class="card">
-            <h3>TNT Sports</h3>
-            <span class="flag">🇬🇧 Birleşik Krallık</span>
-            <a href="https://www.tntsports.co.uk" target="_blank" class="btn">İZLE</a>
-        </div>
 <div class="layout">
 
-        <div class="card">
-            <h3>DAZN España</h3>
-            <span class="flag">🇪🇸 İspanya</span>
-            <a href="https://www.dazn.com" target="_blank" class="btn">İZLE</a>
     <!-- SIDEBAR -->
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-section-label">Yayınlar</div>
         <div class="nav-item active" onclick="showSection('sec-canli')">
             <span class="icon">📺</span> Canlı Yayınlar
         </div>
-
-        <div class="card">
-            <h3>Sky Sport Italia</h3>
-            <span class="flag">🇮🇹 İtalya</span>
-            <a href="https://sport.sky.it" target="_blank" class="btn">İZLE</a>
         <div class="nav-item" onclick="showSection('sec-tv')">
             <span class="icon">🌍</span> TV Kanalları
         </div>
-
-        <div class="card">
-            <h3>Canal+ France</h3>
-            <span class="flag">🇫🇷 Fransa</span>
-            <a href="https://www.canalplus.com" target="_blank" class="btn">İZLE</a>
         <div class="nav-item" onclick="showSection('sec-platform')">
             <span class="icon">🌐</span> Özel Platformlar
         </div>
 
-        <div class="card">
-            <h3>ServusTV</h3>
-            <span class="flag">🇩🇪🇦🇹 Almanya / Avusturya</span>
-            <a href="https://www.servustv.com" target="_blank" class="btn">İZLE</a>
         <div class="sidebar-section-label">Bilgi</div>
         <div class="nav-item" onclick="showSection('sec-markalar')">
             <span class="icon">🏍️</span> Marka Ansiklopedisi
         </div>
 
-        <div class="card">
-            <h3>ServusTV On</h3>
-            <span class="flag">🇦🇹 Avusturya</span>
-            <a href="https://www.servustv.com/on" target="_blank" class="btn">İZLE</a>
         <div class="sidebar-section-label">Yarışlar</div>
         <div class="nav-item" onclick="showSection('sec-takvim')">
             <span class="icon">📅</span> 2026 Takvimi
         </div>
-
-        <div class="card">
-            <h3>FOX Sports USA</h3>
-            <span class="flag">🇺🇸 ABD</span>
-            <a href="https://www.foxsports.com" target="_blank" class="btn">İZLE</a>
         <div class="nav-item" onclick="showSection('sec-biniciler')">
             <span class="icon">🏆</span> Biniciler & Takımlar
         </div>
-
-        <div class="card">
-            <h3>REV TV Canada</h3>
-            <span class="flag">🇨🇦 Kanada</span>
-            <a href="https://www.revtv.ca" target="_blank" class="btn">İZLE</a>
         <div class="nav-item" onclick="showSection('sec-haberler')">
             <span class="icon">📰</span> Haberler
         </div>
     </nav>
 
-        <div class="card">
-            <h3>Fox Sports Australia</h3>
-            <span class="flag">🇦🇺 Avustralya</span>
-            <a href="https://www.foxsports.com.au" target="_blank" class="btn">İZLE</a>
-        </div>
     <!-- MAIN -->
     <main class="main">
 
-        <div class="card">
-            <h3>Sky Sport NZ</h3>
-            <span class="flag">🇳🇿 Yeni Zelanda</span>
-            <a href="https://www.skysport.co.nz" target="_blank" class="btn">İZLE</a>
-        </div>
         <h1 id="main-title" style="font-size:1.6rem; letter-spacing:2px; margin-bottom:16px;">MOTOR SPORLARI CANLI MERKEZİ</h1>
 
-        <div class="card">
-            <h3>Trans7</h3>
-            <span class="flag">🇮🇩 Endonezya</span>
-            <a href="https://www.trans7.co.id" target="_blank" class="btn">İZLE</a>
         <div class="ticker-wrapper">
             <div class="ticker-title" id="ticker-label">SON DAKİKA</div>
             <div class="ticker-text" id="ticker-news">• Yarış hafta sonu heyecanı canlı yayınlarla başlıyor!</div>
         </div>
 
-        <div class="card">
-            <h3>Band Sports</h3>
-            <span class="flag">🇧🇷 Brezilya</span>
-            <a href="https://www.band.uol.com.br/bandsports" target="_blank" class="btn">İZLE</a>
         <!-- CANLI YAYINLAR -->
         <div class="section active" id="sec-canli">
             <div class="sec-title">Canlı Yayınlar</div>
@@ -639,10 +489,6 @@
             <p id="pilot-info">Türkiye: Kenan Sofuoğlu, Toprak Razgatlıoğlu</p>
         </div>
 
-        <div class="card">
-            <h3>SSC Sports</h3>
-            <span class="flag">🌍 Orta Doğu & Kuzey Afrika</span>
-            <a href="https://www.ssc.com.sa" target="_blank" class="btn">İZLE</a>
         <!-- TV KANALLARI -->
         <div class="section" id="sec-tv">
             <div class="sec-title">TV Kanalları — Ülkeye Göre</div>
@@ -668,10 +514,6 @@
             </div>
         </div>
 
-        <div class="card">
-            <h3>RTBF</h3>
-            <span class="flag">🇧🇪 Belçika</span>
-            <a href="https://www.rtbf.be/auvio" target="_blank" class="btn">İZLE</a>
         <!-- ÖZEL PLATFORMLAR -->
         <div class="section" id="sec-platform">
             <div class="sec-title">Özel Platformlar</div>
@@ -681,20 +523,12 @@
             </div>
         </div>
 
-        <div class="card">
-            <h3>RTL Zwee</h3>
-            <span class="flag">🇱🇺 Lüksemburg</span>
-            <a href="https://www.rtl.lu" target="_blank" class="btn">İZLE</a>
         <!-- MARKA ANSİKLOPEDİSİ -->
         <div class="section" id="sec-markalar">
             <div class="sec-title">Marka Ansiklopedisi</div>
             <div class="brand-grid" id="brand-grid"></div>
         </div>
 
-        <div class="card">
-            <h3>Eurosport</h3>
-            <span class="flag">🌍 Avrupa</span>
-            <a href="https://www.eurosport.com" target="_blank" class="btn">İZLE</a>
         <!-- TAKVİM -->
         <div class="section" id="sec-takvim">
             <div class="sec-title">2026 MotoGP Takvimi</div>
@@ -714,16 +548,6 @@
             </div>
         </div>
 
-    </div>
-
-    <!-- ÖZEL PLATFORMLAR -->
-    <div class="section-title">ÖZEL PLATFORMLAR</div>
-    <div class="grid">
-
-        <div class="card">
-            <h3>MotoGP VideoPass</h3>
-            <span class="flag">🌐 Dünya Geneli</span>
-            <a href="https://www.motogp.com/en/videopass" target="_blank" class="btn">ABONE OL</a>
         <!-- BİNİCİLER -->
         <div class="section" id="sec-biniciler">
             <div class="sec-title">Öne Çıkan Biniciler</div>
@@ -737,10 +561,6 @@
             </div>
         </div>
 
-        <div class="card">
-            <h3>Twitch Racing</h3>
-            <span class="flag">🌐 Global</span>
-            <a href="https://www.twitch.tv/directory/game/Motorsport" target="_blank" class="btn">KEŞFET</a>
         <!-- HABERLER -->
         <div class="section" id="sec-haberler">
             <div class="sec-title">Son Haberler</div>
@@ -762,13 +582,6 @@
                 </div>
             </div>
         </div>
-
-    </div>
-
-    <!-- MARKA ANSİKLOPEDİSİ (eski alan) -->
-    <p id="pilot-info">Türkiye: Kenan Sofuoğlu, Toprak Razgatlıoğlu</p>
-
-    <footer>Bu site resmi bir yayın kuruluşu değildir.</footer>
 
         <footer>Bu site resmi bir yayın kuruluşu değildir. Tüm yayın hakları ilgili kuruluşlara aittir.</footer>
     </main>
