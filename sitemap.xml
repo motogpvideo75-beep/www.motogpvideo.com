@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://sitemaps.org"
-        xmlns:xsi="http://w3.org"
-        xsi:schemaLocation="http://sitemaps.org
-        http://sitemaps.org/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
       <loc>https://motogpvideo.com/</loc>
       <lastmod>2026-06-08</lastmod>
