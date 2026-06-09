@@ -145,12 +145,6 @@
                 footer: "Ce site n'est pas un diffuseur officiel. Tous les droits de diffusion appartiennent aux organisations concernées."
             }
         };
-    function yasalYonlendir(hedefUrl) {
-        const yeniSekme = window.open(hedefUrl, '_blank', 'noopener,noreferrer');
-        if (yeniSekme) {
-            yeniSekme.opener = null; 
-        }
-    }
 
         function switchLang(lang) {
             document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
