@@ -972,4 +972,1090 @@ async function loadRSS(btn){
 window.addEventListener("DOMContentLoaded",startCountdown);
 </script>
 </body>
+</html>      
+
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Motor Sporları Merkezi</title>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-KSW3BQM");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JVZGRCSV8B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag("js", new Date());
+        gtag("config", "G-JVZGRCSV8B");
+
+        const langData = {
+            tr: {
+                title: "MOTOR SPORLARI MERKEZİ",
+                label: "SON DAKİKA",
+                news: "• Yarış hafta sonu heyecanı başlıyor!",
+                pilots: "Türkiye: Kenan Sofuoğlu, Toprak Razgatlıoğlu",
+                live: "YAYIN BİLGİLERİ VE PROGRAMI!",
+                cdLabel: " TÜRKİYE GRAND PRIX 2036'YA KALAN SÜRE:",
+                sidebar: {
+                    sec1: "Yayınlar",
+                    canli: "Motor Sporları Yeri",
+                    tv: "TV Kanalları",
+                    platform: "Özel Platformlar",
+                    sec2: "Bilgi",
+                    markalar: "Marka Ansiklopedisi",
+                    sec3: "Yarışlar",
+                    takvim: "2026 Takvimi",
+                    biniciler: "Biniciler & Takımlar",
+                    haberler: "Haberler",
+                    global: "Global Hit Sporlar",
+                    mission: "Misyonumuz",
+                    missionText: "Amatörden motor sporları dünyasını desteklemek ve izleyicileri güçlü, kaliteli yayınlarla buluşturmaktır. Herkese Hoş!",
+                    missionLink: "Racimu ve Yasal Canlı Yayın Rehberi"
+                },
+                nav: ["Ana Sayfa","Yarışlar ▾","Galeri","Resmi Siteler","İletişim"],
+                secTitles: {
+                    canli: "Resmi Siteler", tv: "TV Kanalları — Ülkeye Göre",
+                    platform: "Özel Platformlar", markalar: "Marka Ansiklopedisi",
+                    takvim: "2026 MotoGP Takvimi", biniciler: "Öne Çıkan Biniciler",
+                    haberler: "Son Haberler", global: "Global Hit Sporlar"
+                },
+                rssTabs: ["MotoGP","WorldSBK","Formula 1"],
+                footer: "Bu site resmi bir yayın kuruluşu değildir. Tüm yayın hakları ilgili kuruluşlara aittir."
+            },
+            en: {
+                title: "MOTORSPORTS CENTER",
+                label: "LATEST",
+                news: "• Race weekend is coming! Welcome to the global hub.",
+                pilots: "Global Icons: Fabio Quartararo, Jack Miller",
+                live: "BROADCAST INFO & SCHEDULE",
+                cdLabel: "TIME LEFT TO MOTO GP TURKEY GRAND PRIX 2036:",
+                sidebar: {
+                    sec1: "Broadcasts",
+                    canli: "Motorsports Info",
+                    tv: "TV Channels",
+                    platform: "Special Platforms",
+                    sec2: "Info",
+                    markalar: "Brand Encyclopedia",
+                    sec3: "Races",
+                    takvim: "2026 Calendar",
+                    biniciler: "Riders & Teams",
+                    haberler: "News",
+                    global: "Global Hit Sports",
+                    mission: "Our Mission",
+                    missionText: "To support the motorsports world and connect fans with high-quality, legal broadcasts. Welcome everyone!",
+                    missionLink: "Legal Live Streaming Guide"
+                },
+                nav: ["Home","Races ▾","Gallery","Official Sites","Contact"],
+                secTitles: {
+                    canli: "Official Sites", tv: "TV Channels by Country",
+                    platform: "Special Platforms", markalar: "Brand Encyclopedia",
+                    takvim: "2026 MotoGP Calendar", biniciler: "Featured Riders",
+                    haberler: "Latest News", global: "Global Hit Sports"
+                },
+                rssTabs: ["MotoGP","WorldSBK","Formula 1"],
+                footer: "This site is not an official broadcaster. All broadcasting rights belong to their respective organizations."
+            },
+            de: {
+                title: "MOTORSPORT ZENTRUM",
+                news: "• Das Rennwochenende kommt bald!",
+                pilots: "Deutschland: Stefan Bradl",
+                live: "SENDUNG INFO & PROGRAMM",
+                cdLabel: "VERBLEIBENDE ZEIT BIS MOTO GP TÜRKEI GP 2036:",
+                sidebar: {
+                    sec1: "Übertragungen",
+                    canli: "Motorsport Info",
+                    tv: "TV-Sender",
+                    platform: "Spezielle Plattformen",
+                    sec2: "Info",
+                    markalar: "Marken-Enzyklopädie",
+                    sec3: "Rennen",
+                    takvim: "Kalender 2026",
+                    biniciler: "Fahrer & Teams",
+                    haberler: "Nachrichten",
+                    global: "Globale Top-Sports",
+                    mission: "Unsere Mission",
+                    missionText: "Die Motorsportwelt unterstützen und Fans mit hochwertigen, legalen Übertragungen verbinden.",
+                    missionLink: "Offizieller Live-Streaming-Leitfaden"
+                },
+                nav: ["Startseite","Rennen ▾","Galerie","Offizielle Seiten","Kontakt"],
+                secTitles: {
+                    canli: "Offizielle Seiten", tv: "TV-Sender nach Land",
+                    platform: "Spezielle Plattformen", markalar: "Marken-Enzyklopädie",
+                    takvim: "MotoGP Kalender 2026", biniciler: "Top-Fahrer",
+                    haberler: "Aktuelle Nachrichten", global: "Globale Top-Sports"
+                },
+                rssTabs: ["MotoGP","WorldSBK","Formel 1"],
+                footer: "Diese Seite ist kein offizieller Sender. Alle Übertragungsrechte liegen bei den jeweiligen Organisationen."
+            },
+            fr: {
+                title: "CENTRE SPORTS MOTO",
+                news: "• Le week-end de course arrive bientôt!",
+                pilots: "France: Johann Zarco, Fabio Quartararo",
+                live: "INFO & PROGRAMME DES ÉMISSIONS",
+                cdLabel: "TEMPS RESTANT AVANT LE GP DE TURQUIE 2036:",
+                sidebar: {
+                    sec1: "Diffusions",
+                    canli: "Motorsport Info",
+                    tv: "Chaînes TV",
+                    platform: "Plateformes Spéciales",
+                    sec2: "Info",
+                    markalar: "Encyclopédie des Marques",
+                    sec3: "Courses",
+                    takvim: "Calendrier 2026",
+                    biniciler: "Pilotes & Équipes",
+                    haberler: "Actualités",
+                    global: "Sports Mondiaux",
+                    mission: "Notre Mission",
+                    missionText: "Soutenir le monde du motorsport et connecter les fans aux diffusions légales et de qualité.",
+                    missionLink: "Guide de Streaming Légal"
+                },
+                nav: ["Accueil","Courses ▾","Galerie","Sites Officiels","Contact"],
+                secTitles: {
+                    canli: "Sites Officiels", tv: "Chaînes TV par Pays",
+                    platform: "Plateformes Spéciales", markalar: "Encyclopédie des Marques",
+                    takvim: "Calendrier MotoGP 2026", biniciler: "Pilotes Vedettes",
+                    haberler: "Dernières Actualités", global: "Sports Mondiaux"
+                },
+                rssTabs: ["MotoGP","WorldSBK","Formule 1"],
+                footer: "Ce site n'est pas un diffuseur officiel. Tous les droits de diffusion appartiennent aux organisations concernées."
+            }
+        };
+
+        function switchLang(lang) {
+            document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
+            event.target.closest(".lang-btn").classList.add("active");
+            const d = langData[lang];
+
+            document.getElementById("main-title").innerText = d.title;
+            document.getElementById("ticker-label").innerText = d.label;
+            document.getElementById("ticker-news").innerText = d.news;
+            const pi = document.getElementById("pilot-info");
+            if (pi) pi.innerText = d.pilots;
+
+            const cdl = document.getElementById("cd-label-text");
+            if (cdl) cdl.innerText = d.cdLabel;
+
+            const lp = document.getElementById("live-pill-text");
+            if (lp) lp.innerText = d.live;
+
+            document.getElementById("sb-sec1").innerText = d.sidebar.sec1;
+            document.getElementById("sb-canli").innerText = d.sidebar.canli;
+            document.getElementById("sb-tv").innerText = d.sidebar.tv;
+            document.getElementById("sb-platform").innerText = d.sidebar.platform;
+            document.getElementById("sb-sec2").innerText = d.sidebar.sec2;
+            document.getElementById("sb-markalar").innerText = d.sidebar.markalar;
+            document.getElementById("sb-sec3").innerText = d.sidebar.sec3;
+            document.getElementById("sb-takvim").innerText = d.sidebar.takvim;
+            document.getElementById("sb-biniciler").innerText = d.sidebar.biniciler;
+            document.getElementById("sb-haberler").innerText = d.sidebar.haberler;
+            document.getElementById("sb-global").innerText = d.sidebar.global;
+            document.getElementById("sb-mission").innerText = d.sidebar.mission;
+            document.getElementById("sb-mission-text").innerText = d.sidebar.missionText;
+            document.getElementById("sb-mission-link").innerText = d.sidebar.missionLink;
+
+            const navLinks = document.querySelectorAll(".topnav-link");
+            d.nav.forEach((txt, i) => { if (navLinks[i]) navLinks[i].innerText = txt; });
+
+            const st = d.secTitles;
+            const map = {
+                "st-canli": st.canli, "st-tv": st.tv, "st-platform": st.platform,
+                "st-markalar": st.markalar, "st-takvim": st.takvim,
+                "st-biniciler": st.biniciler, "st-haberler": st.haberler, "st-global": st.global
+            };
+            Object.entries(map).forEach(([id, txt]) => {
+                const el = document.getElementById(id);
+                if (el) el.innerText = txt;
+            });
+
+            const tabs = document.querySelectorAll(".rss-tab");
+            d.rssTabs.forEach((txt, i) => { if (tabs[i]) tabs[i].innerText = txt; });
+
+            const footer = document.querySelector("footer");
+            if (footer) footer.innerText = d.footer;
+
+            document.documentElement.lang = lang;
+        }
+
+        function showSection(id) {
+            document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+            document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+            document.getElementById(id).classList.add("active");
+            event.target.closest(".nav-item").classList.add("active");
+            if (window.innerWidth <= 768) closeSidebar();
+            if (id === "sec-haberler") {
+                const activeTab = document.querySelector(".rss-tab.active");
+                if (activeTab && document.getElementById("news-grid").querySelector(".skeleton")) {
+                    loadRSS(activeTab);
+                }
+            }
+        }
+
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("open");
+            document.getElementById("overlay").classList.toggle("show");
+        }
+        function closeSidebar() {
+            document.getElementById("sidebar").classList.remove("open");
+            document.getElementById("overlay").classList.remove("show");
+        }
+
+        function startCountdown() {
+            const target = new Date("2036-08-01T00:00:00");
+            function tick() {
+                const now = new Date();
+                const diff = target - now;
+                if (diff <= 0) return;
+                const d = Math.floor(diff / 86400000);
+                const h = Math.floor((diff % 86400000) / 3600000);
+                const m = Math.floor((diff % 3600000) / 60000);
+                const s = Math.floor((diff % 60000) / 1000);
+                document.getElementById("cd-gun").textContent   = String(d).padStart(2,"0");
+                document.getElementById("cd-saat").textContent  = String(h).padStart(2,"0");
+                document.getElementById("cd-dak").textContent   = String(m).padStart(2,"0");
+                document.getElementById("cd-san").textContent   = String(s).padStart(2,"0");
+            }
+            tick(); setInterval(tick, 1000);
+        }
+
+        const brands = [
+            { name: "Honda", logo: "🔴", country: "🇯🇵 Japonya", founded: "1959", championships: 16, riders: "Mick Doohan (5), Valentino Rossi (1), Marc Márquez (6)", history: "Honda, MotoGP tarihinin en başarılı üreticisidir. RC211V ile başlayan ve RC213V ile süren prototip yolculuğunda 16 üretici şampiyonluğu kazandı." },
+            { name: "Yamaha", logo: "🔵", country: "🇯🇵 Japonya", founded: "1961", championships: 9, riders: "Valentino Rossi (4), Jorge Lorenzo (3), Fabio Quartararo (1)", history: "Yamaha, 1961'de GP sahnesine çıktı. YZR-M1, esnek motor karakteri ve sürücü dostu yapısıyla efsane oldu." },
+            { name: "Ducati", logo: "🏆", country: "🇮🇹 İtalya", founded: "2003", championships: 5, riders: "Casey Stoner (1), Francesco Bagnaia (2), Jorge Martín (1)", history: "Ducati, İtalyan tutkusunun mühendislikle buluşması. 2022-2024 arasında üst üste unvanlar kazanan günümüzün en dominant markası." },
+            { name: "KTM", logo: "🟠", country: "🇦🇹 Avusturya", founded: "2017", championships: 0, riders: "Brad Binder, Jack Miller, Pedro Acosta", history: "KTM, 2017'de MotoGP'ye girdi. RC16, agresif motor karakteriyle kısa sürede rekabetçi güce dönüştü." },
+            { name: "Aprilia", logo: "⚡", country: "🇮🇹 İtalya", founded: "2015", championships: 0, riders: "Aleix Espargaró, Maverick Viñales, Marco Bezzecchi", history: "Aprilia, modern MotoGP'de RS-GP ile yeniden boy gösterdi. 2026 itibarıyla şampiyonluk mücadelesinin tam ortasında." },
+            { name: "Suzuki", logo: "🔷", country: "🇯🇵 Japonya", founded: "1974", championships: 3, riders: "Barry Sheene (2), Kenny Roberts Jr. (1), Joan Mir (1)", history: "Suzuki 2022'de MotoGP'den çekildi. 2020'de Joan Mir'in GSX-RR ile elde ettiği şampiyonluk büyük sürpriz oldu." },
+            { name: "Pramac Racing", logo: "🏁", country: "🇮🇹 İtalya (Yamaha uydu)", founded: "2002", championships: 0, riders: "Jorge Martín, Franco Morbidelli, Toprak Razgatlıoğlu", history: "Pramac, 2025'ten itibaren Yamaha ile yeni sayfa açtı. Toprak Razgatlıoğlu da bu takımda yarışmaktadır." },
+            { name: "Gresini Racing", logo: "🌀", country: "🇮🇹 İtalya", founded: "1997", championships: 0, riders: "Alex Márquez, Enea Bastianini", history: "Fausto Gresini'nin kurduğu köklü bağımsız takım. Enea Bastianini 2022'de 4 zafer kazandı." }
+        ];
+    </script>
+    <style>
+        :root {
+            --bg: #0d1220;
+            --topbar-bg: #080e1a;
+            --nav-bg: #0d1424;
+            --sidebar-bg: #0a1020;
+            --card: #131d30;
+            --card2: #192438;
+            --accent: #e8001d;
+            --accent2: #b50016;
+            --green: #00c853;
+            --border: #1e2d4a;
+            --text: #ffffff;
+            --muted: #7a90b8;
+            --sidebar-w: 220px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--bg); color: var(--text); font-family: "Segoe UI", Arial, sans-serif; min-height: 100vh; }
+
+        .countdown-bar {
+            background: var(--accent);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 20px; height: 36px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px;
+        }
+        .cd-left { display: flex; align-items: center; gap: 10px; }
+        .cd-label { color: rgba(255,255,255,0.85); font-size: 0.72rem; }
+        .cd-units { display: flex; align-items: center; gap: 6px; }
+        .cd-unit { display: flex; align-items: center; gap: 3px; }
+        .cd-num {
+            background: white; color: var(--accent);
+            font-size: 0.85rem; font-weight: 900;
+            padding: 2px 6px; border-radius: 4px; min-width: 28px; text-align: center;
+        }
+        .cd-txt { font-size: 0.62rem; color: rgba(255,255,255,0.8); text-transform: uppercase; }
+        .cd-right { display: flex; align-items: center; gap: 12px; }
+        .live-pill {
+            display: flex; align-items: center; gap: 6px;
+            background: rgba(0,0,0,0.3); border: 1px solid rgba(0,200,80,0.6);
+            border-radius: 20px; padding: 3px 12px; font-size: 0.72rem; color: var(--green);
+        }
+        .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: blink 1s infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .lang-flags { display: flex; gap: 4px; }
+        .lang-flags span {
+            font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 3px;
+            cursor: pointer; color: rgba(255,255,255,0.6);
+        }
+        .lang-flags span.active { background: white; color: var(--accent); }
+
+        .topnav {
+            background: var(--nav-bg); border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; height: 54px; padding: 0 20px;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .hamburger { background: none; border: none; color: var(--text); font-size: 1.4rem; cursor: pointer; margin-right: 14px; padding: 4px 6px; border-radius: 4px; }
+        .hamburger:hover { background: var(--card2); }
+        .topnav-logo { display: flex; align-items: center; margin-right: 30px; }
+        .topnav-logo img { height: 34px; width: auto; display: block; }
+        .topnav-links { display: flex; align-items: center; gap: 2px; }
+        .topnav-link {
+            padding: 6px 14px; font-size: 0.85rem; font-weight: 500;
+            color: rgba(255,255,255,0.75); cursor: pointer; border-radius: 4px;
+            transition: color 0.15s, background 0.15s; white-space: nowrap;
+        }
+        .topnav-link:hover { color: #fff; background: var(--card2); }
+        .topnav-link.active { color: #fff; }
+        .topnav-lang { margin-left: auto; display: flex; gap: 6px; }
+        .lang-btn {
+            background: var(--card); border: 1px solid var(--border);
+            color: rgba(255,255,255,0.7); padding: 4px 10px; border-radius: 4px;
+            cursor: pointer; font-size: 0.75rem; font-weight: 700; transition: all 0.15s;
+        }
+        .lang-btn.active, .lang-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+        .layout { display: flex; min-height: calc(100vh - 90px); }
+        .sidebar {
+            width: var(--sidebar-w); background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            padding: 18px 0; flex-shrink: 0;
+            position: sticky; top: 90px; height: calc(100vh - 90px); overflow-y: auto;
+            transition: transform 0.3s;
+        }
+        .sidebar-section-label {
+            font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; color: var(--muted);
+            text-transform: uppercase; padding: 14px 18px 5px;
+        }
+        .nav-item {
+            display: flex; align-items: center; gap: 10px;
+            padding: 9px 18px; cursor: pointer;
+            color: #9aadcc; font-size: 0.85rem;
+            border-left: 3px solid transparent; transition: all 0.15s;
+        }
+        .nav-item:hover { background: var(--card2); color: white; }
+        .nav-item.active { background: var(--card2); color: white; border-left-color: var(--accent); }
+        .nav-item .icon { font-size: 1rem; width: 18px; text-align: center; }
+        .nav-mission {
+            padding: 12px 18px; font-size: 0.72rem; color: #4a6080; line-height: 1.6;
+        }
+        .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 90; }
+        .overlay.show { display: block; }
+
+        .main { flex: 1; padding: 22px 20px 40px; max-width: 1100px; }
+        .section { display: none; }
+        .section.active { display: block; }
+        .page-title { font-size: 1.4rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 14px; }
+
+        .ticker-wrapper {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 6px; display: flex; align-items: center;
+            overflow: hidden; height: 40px; margin-bottom: 22px;
+        }
+        .ticker-tag {
+            background: var(--accent); padding: 0 14px; height: 100%;
+            display: flex; align-items: center; font-weight: 800; font-size: 0.7rem;
+            letter-spacing: 1.5px; white-space: nowrap;
+        }
+        .ticker-text { padding: 0 14px; font-size: 0.85rem; color: #c8d8ee; }
+        .sec-title {
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 3px;
+            color: var(--muted); text-transform: uppercase; margin: 24px 0 12px;
+        }
+        .sec-title:first-child { margin-top: 0; }
+
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+        .channel-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 10px; overflow: hidden;
+            display: flex; flex-direction: column;
+            cursor: pointer; transition: border-color 0.2s, transform 0.15s;
+            text-decoration: none; color: white;
+        }
+        .channel-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .channel-logo {
+            width: 100%; height: 70px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .channel-logo svg { width: auto; height: 52px; }
+        .channel-logo img { height: 52px; width: auto; object-fit: contain; }
+        .channel-info { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 4px; }
+        .channel-name { font-size: 0.78rem; font-weight: 700; color: #e0ecff; }
+        .channel-badge {
+            display: flex; align-items: center; gap: 4px;
+            font-size: 0.62rem; font-weight: 700; color: var(--green);
+        }
+        .channel-badge.orange { color: #ffa500; }
+        .ch-btn {
+            margin: 0 10px 10px; background: var(--accent); color: white; border: none;
+            border-radius: 4px; padding: 6px 0; font-size: 0.65rem; font-weight: 800;
+            letter-spacing: 1px; cursor: pointer; text-align: center; text-decoration: none;
+            display: block; transition: background 0.2s;
+        }
+        .ch-btn:hover { background: var(--accent2); }
+        .ch-btn.secondary { background: #1a2840; border: 1px solid var(--border); }
+        .ch-btn.secondary:hover { background: var(--card2); }
+
+        .flag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 8px;
+        }
+        .flag-card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 10px; overflow: hidden;
+            display: flex; flex-direction: column; align-items: center;
+            padding: 10px 6px 8px; gap: 6px;
+            transition: border-color 0.2s, transform 0.15s; cursor: default;
+        }
+        .flag-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .flag-box { font-size: 2.2rem; line-height: 1; }
+        .flag-name {
+            font-size: 0.55rem; font-weight: 800; letter-spacing: 0.5px;
+            color: #8aaccc; text-align: center; text-transform: uppercase;
+        }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap: 12px; }
+        .card {
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 10px; padding: 18px 14px 14px;
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
+            text-decoration: none; color: white; transition: border-color 0.2s, transform 0.15s;
+        }
+        .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .card h3 { font-size: 0.9rem; font-weight: 700; text-align: center; }
+        .card .flag { font-size: 0.78rem; color: var(--muted); }
+        .btn {
+            display: block; background: var(--accent); color: white; border: none;
+            padding: 7px 0; border-radius: 4px; font-size: 0.67rem; font-weight: 800;
+            letter-spacing: 1px; cursor: pointer; text-align: center; text-decoration: none;
+            width: 100%; transition: background 0.2s;
+        }
+        .btn:hover { background: var(--accent2); }
+
+        .brand-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 16px; }
+        .brand-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: border-color 0.2s, transform 0.15s; }
+        .brand-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .brand-header { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+        .brand-logo-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; background: var(--card2); border: 2px solid var(--border); flex-shrink: 0; }
+        .brand-name { font-size: 1.05rem; font-weight: 800; }
+        .brand-country { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+        .brand-body { padding: 14px 16px; }
+        .brand-stats { display: flex; gap: 20px; margin-bottom: 12px; }
+        .stat-label { font-size: 0.62rem; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+        .stat-value { font-size: 1rem; font-weight: 800; color: var(--accent); }
+        .brand-riders { font-size: 0.76rem; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+        .brand-riders strong { color: #aaccee; }
+        .brand-history { font-size: 0.8rem; color: #b0c4de; line-height: 1.65; }
+
+        .rss-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+        .rss-tab { background: var(--card); border: 1px solid var(--border); color: #9aadcc; padding: 5px 14px; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; transition: all 0.2s; }
+        .rss-tab:hover, .rss-tab.active { background: var(--accent); border-color: var(--accent); color: white; }
+        .rss-status { font-size: 0.78rem; color: var(--muted); margin-bottom: 10px; min-height: 18px; display: flex; align-items: center; gap: 8px; }
+        .rss-spinner { width: 12px; height: 12px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; flex-shrink: 0; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 12px; }
+        .news-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 12px; display: flex; flex-direction: column; gap: 7px; transition: border-color 0.2s, transform 0.15s; }
+        .news-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .news-card.skeleton { height: 150px; background: linear-gradient(90deg, var(--card) 25%, var(--card2) 50%, var(--card) 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
+        @keyframes shimmer { to { background-position: -200% 0; } }
+        .news-thumb { width: 100%; height: 95px; object-fit: cover; border-radius: 5px; }
+        .news-cat { font-size: 0.6rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); }
+        .news-title { font-size: 0.84rem; font-weight: 700; line-height: 1.35; flex: 1; }
+        .news-date { font-size: 0.68rem; color: var(--muted); }
+        .news-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 4px; }
+        footer { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--border); color: #445566; font-size: 0.75rem; text-align: center; }
+
+        @media (max-width: 900px) {
+            .channel-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .sidebar { position: fixed; top: 90px; left: 0; height: calc(100vh - 90px); transform: translateX(-100%); z-index: 95; }
+            .sidebar.open { transform: translateX(0); }
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .topnav-links { display: none; }
+        }
+        @media (max-width: 480px) {
+            .channel-grid { grid-template-columns: repeat(2, 1fr); }
+            .cd-label { display: none; }
+        }
+    </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSW3BQM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- COUNTDOWN BAR -->
+<div class="countdown-bar">
+    <div class="cd-left">
+        <span class="cd-label" id="cd-label-text">MOTO GP TÜRKİYE GRAND PRIX 2036'YA KALAN SÜRE:</span>
+        <div class="cd-units">
+            <div class="cd-unit"><span class="cd-num" id="cd-gun">--</span><span class="cd-txt">GÜN</span></div>
+            <div class="cd-unit"><span class="cd-num" id="cd-saat">--</span><span class="cd-txt">SAAT</span></div>
+            <div class="cd-unit"><span class="cd-num" id="cd-dak">--</span><span class="cd-txt">DAKİKA</span></div>
+            <div class="cd-unit"><span class="cd-num" id="cd-san">--</span><span class="cd-txt">SANİYE</span></div>
+        </div>
+    </div>
+    <div class="cd-right">
+        <div class="live-pill"><span class="live-dot"></span><span id="live-pill-text">YAYIN BİLGİLERİ VE PROGRAMI!</span></div>
+        <div class="lang-flags">
+            <span class="active">TR</span>
+            <span>GB EN</span>
+            <span>FR FR</span>
+        </div>
+    </div>
+</div>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+    <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
+    <div class="topnav-logo">
+        <svg viewBox="0 0 220 44" xmlns="http://www.w3.org/2000/svg" style="height:36px;width:auto;">
+            <ellipse cx="18" cy="22" rx="14" ry="14" fill="none" stroke="#e8001d" stroke-width="2.5"/>
+            <polygon points="12,16 12,28 24,22" fill="#e8001d"/>
+            <text x="36" y="30" font-family="Arial Black,sans-serif" font-size="20" font-weight="900" font-style="italic" fill="white" letter-spacing="-0.5">MOTOGP</text>
+            <text x="140" y="30" font-family="Arial Black,sans-serif" font-size="20" font-weight="900" font-style="italic" fill="#e8001d" letter-spacing="-0.5">VIDEO</text>
+            <text x="196" y="30" font-family="Arial Black,sans-serif" font-size="20" font-weight="900" font-style="italic" fill="white">.COM</text>
+        </svg>
+    </div>
+    <div class="topnav-links" id="topnav-links">
+        <span class="topnav-link active"    onclick="topNav('sec-canli',this)">Ana Sayfa</span>
+        <span class="topnav-link"           onclick="topNav('sec-takvim',this)">Yarışlar ▾</span>
+        <span class="topnav-link"           onclick="topNav('sec-galeri',this)">Galeri</span>
+        <span class="topnav-link"           onclick="topNav('sec-canli',this)">Resmi Siteler</span>
+        <span class="topnav-link"           onclick="topNav('sec-iletisim',this)">İletişim</span>
+    </div>
+    <div class="topnav-lang">
+        <button class="lang-btn active" onclick="switchLang('tr')">🇹🇷 TR</button>
+        <button class="lang-btn" onclick="switchLang('en')">🇬🇧 EN</button>
+        <button class="lang-btn" onclick="switchLang('de')">🇩🇪 DE</button>
+        <button class="lang-btn" onclick="switchLang('fr')">🇫🇷 FR</button>
+    </div>
+</nav>
+
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<div class="layout">
+    <!-- SIDEBAR -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-section-label" id="sb-sec1">Yayınlar</div>
+        <div class="nav-item active" onclick="showSection('sec-canli')"><span class="icon">📺</span> <span id="sb-canli">Motor Sporları Canlı</span></div>
+        <div class="nav-item" onclick="showSection('sec-tv')"><span class="icon">🌍</span> <span id="sb-tv">TV Kanalları</span></div>
+        <div class="nav-item" onclick="showSection('sec-platform')"><span class="icon">🌐</span> <span id="sb-platform">Özel Platformlar</span></div>
+        <div class="sidebar-section-label" id="sb-sec2">Bilgi</div>
+        <div class="nav-item" onclick="showSection('sec-markalar')"><span class="icon">🏍</span> <span id="sb-markalar">Marka Ansiklopedisi</span></div>
+        <div class="sidebar-section-label" id="sb-sec3">Yarışlar</div>
+        <div class="nav-item" onclick="showSection('sec-takvim')"><span class="icon">📅</span> <span id="sb-takvim">2026 Takvimi</span></div>
+        <div class="nav-item" onclick="showSection('sec-biniciler')"><span class="icon">🏆</span> <span id="sb-biniciler">Biniciler & Takımlar</span></div>
+        <div class="nav-item" onclick="showSection('sec-global')"><span class="icon">⚡</span> <span id="sb-global">Global Hit Sporlar</span></div>
+        <div class="sidebar-section-label" id="sb-mission" style="margin-top:8px;">Misyonumuz</div>
+        <div class="nav-mission" id="sb-mission-text">Amatörden motor sporları dünyasını desteklemek ve izleyicileri güçlü, kaliteli yayınlarla buluşturmaktır. Herkese Hoş!</div>
+        <div style="padding:4px 18px;font-size:0.72rem;color:var(--accent);cursor:pointer;" id="sb-mission-link">Racimu ve Yasal Canlı Yayın Rehberi</div>
+    </nav>
+
+    <!-- MAIN -->
+    <main class="main">
+        <h1 class="page-title" id="main-title">MOTOR SPORLARI MERKEZİ</h1>
+        <div class="ticker-wrapper">
+            <div class="ticker-tag" id="ticker-label">SON DAKİKA</div>
+            <div class="ticker-text" id="ticker-news">•Yayın Programı ve Bilgi !</div>
+        </div>
+
+        <!-- CANLI YAYINLAR -->
+        <div class="section active" id="sec-canli">
+            <div class="sec-title" id="st-canli">Yayın Bilgisi</div>
+            <div class="channel-grid">
+
+                <div class="channel-card">
+                    <div class="channel-logo" style="background:#100a0a;">
+                        <svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="160" height="60" fill="#100a0a"/>
+                            <rect x="6" y="8" width="10" height="10" fill="white"/><rect x="16" y="8" width="10" height="10" fill="#c00"/>
+                            <rect x="6" y="18" width="10" height="10" fill="#c00"/><rect x="16" y="18" width="10" height="10" fill="white"/>
+                            <rect x="6" y="28" width="10" height="10" fill="white"/><rect x="16" y="28" width="10" height="10" fill="#c00"/>
+                            <text x="32" y="30" font-family="Arial Black" font-size="17" font-weight="900" font-style="italic" fill="white">Moto</text>
+                            <text x="76" y="30" font-family="Arial Black" font-size="17" font-weight="900" font-style="italic" fill="#c00">GP</text>
+                            <text x="32" y="46" font-family="Arial" font-size="9" fill="#666" letter-spacing="2">CHANNEL</text>
+                        </svg>
+                    </div>
+                    <div class="channel-info">
+                        <div class="channel-name">MotoGP Official</div>
+                        <div class="channel-badge">✔ RESMİ YAPIMCI</div>
+                    </div>
+                    <a class="ch-btn" href="https://www.motogp.com/en/live" target="_blank">RESMİ YAPIMCI</a>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-logo" style="background:#0a0d18;">
+                        <svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="160" height="60" fill="#0a0d18"/>
+                            <text x="80" y="26" font-family="Arial Black" font-size="15" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">World</text>
+                            <line x1="20" y1="30" x2="140" y2="30" stroke="#0066cc" stroke-width="1.5"/>
+                            <text x="80" y="48" font-family="Arial Black" font-size="18" font-weight="900" fill="#0099ff" text-anchor="middle" letter-spacing="2">SBK</text>
+                        </svg>
+                    </div>
+                    <div class="channel-info">
+                        <div class="channel-name">WorldSBK Official</div>
+                        <div class="channel-badge">✔ RESMİ YAYINCI</div>
+                    </div>
+                    <a class="ch-btn" href="https://www.worldsbk.com/en/live" target="_blank">RESMİ YAYIN KURULUŞU</a>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-logo" style="background:#0a0808;">
+                        <svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="160" height="60" fill="#0a0808"/>
+                            <rect x="24" y="10" width="46" height="40" rx="4" fill="#e10600"/>
+                            <text x="47" y="38" font-family="Arial Black" font-size="22" font-weight="900" fill="white" text-anchor="middle">F</text>
+                            <polygon points="68,10 74,10 68,50 62,50" fill="white"/>
+                            <rect x="72" y="10" width="64" height="40" rx="4" fill="white"/>
+                            <text x="104" y="38" font-family="Arial Black" font-size="22" font-weight="900" fill="#e10600" text-anchor="middle">1</text>
+                        </svg>
+                    </div>
+                    <div class="channel-info">
+                        <div class="channel-name">Formula 1 Official</div>
+                        <div class="channel-badge">✔ RESMİ YAYINCI</div>
+                    </div>
+                    <a class="ch-btn" href="https://www.formula1.com/en/live" target="_blank">RESMİ YAYIN KURULUŞU</a>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-logo" style="background:#060c1a;">
+                        <svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="160" height="60" fill="#060c1a"/>
+                            <circle cx="44" cy="30" r="22" fill="none" stroke="#0099ff" stroke-width="2.5"/>
+                            <text x="44" y="38" font-family="Arial Black" font-size="24" font-weight="900" fill="#0099ff" text-anchor="middle">S</text>
+                            <text x="90" y="26" font-family="Arial Black" font-size="13" font-weight="900" fill="white" letter-spacing="1">SPORT</text>
+                            <text x="90" y="44" font-family="Arial" font-size="11" fill="#0099ff" letter-spacing="2">PLUS</text>
+                        </svg>
+                    </div>
+                    <div class="channel-info">
+                        <div class="channel-name">S Sport Plus</div>
+                        <div class="channel-badge">✔ RESMİ YAYINCI</div>
+                    </div>
+                    <a class="ch-btn" href="https://www.ssportplus.com" target="_blank">RESMİ YAYIN KURULUŞU</a>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-logo" style="background:#080c10;">
+                        <svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="160" height="60" fill="#080c10"/>
+                            <circle cx="80" cy="30" r="20" fill="none" stroke="#555" stroke-width="2"/>
+                            <text x="80" y="36" font-family="Arial" font-size="22" fill="#aaa" text-anchor="middle">★</text>
+                            <text x="80" y="56" font-family="Arial" font-size="8" fill="#555" text-anchor="middle" letter-spacing="1">UEFA, C, SEA</text>
+                        </svg>
+                    </div>
+                    <div class="channel-info">
+                        <div class="channel-name">Global Mega Elitanşılar</div>
+                        <div class="channel-badge orange">◈ UEFA, C, SEA</div>
+                    </div>
+                    <a class="ch-btn secondary" href="#" target="_blank">İZLE</a>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-logo" style="background:#003da5;">
+                        <svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="160" height="60" fill="#003da5"/>
+                            <text x="80" y="24" font-family="Arial Black" font-size="11" font-weight="900" fill="white" text-anchor="middle" letter-spacing="3">EURO</text>
+                            <rect x="16" y="28" width="128" height="3" fill="#ffcc00"/>
+                            <text x="80" y="50" font-family="Arial Black" font-size="15" font-weight="900" fill="#ffcc00" text-anchor="middle" letter-spacing="3">SPORT</text>
+                        </svg>
+                    </div>
+                    <div class="channel-info">
+                        <div class="channel-name">Eurosport</div>
+                        <div class="channel-badge" style="color:var(--muted);">🌍 Avrupa</div>
+                    </div>
+                    <a class="ch-btn" href="https://www.eurosport.com" target="_blank">RESMİ YAYINCI</a>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-logo" style="background:#111;">
+                        <svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="160" height="60" fill="#111"/>
+                            <rect x="12" y="12" width="136" height="36" rx="6" fill="#ff4d00"/>
+                            <text x="80" y="38" font-family="Arial Black" font-size="22" font-weight="900" fill="white" text-anchor="middle" letter-spacing="2">TNT</text>
+                        </svg>
+                    </div>
+                    <div class="channel-info">
+                        <div class="channel-name">TNT Sports</div>
+                        <div class="channel-badge" style="color:var(--muted);">🇬🇧 BT / Right, Kişilik</div>
+                    </div>
+                    <a class="ch-btn" href="https://www.tntsports.co.uk" target="_blank">RESMİ YAYINCI</a>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-logo" style="background:#cc0000;">
+                        <svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="160" height="60" fill="#cc0000"/>
+                            <text x="80" y="16" font-family="Arial Black" font-size="9" font-weight="900" fill="rgba(255,255,255,0.7)" text-anchor="middle" letter-spacing="2">RED BULL</text>
+                            <ellipse cx="60" cy="36" rx="18" ry="14" fill="#ffcc00" opacity="0.85"/>
+                            <ellipse cx="100" cy="36" rx="18" ry="14" fill="#ffcc00" opacity="0.85"/>
+                            <ellipse cx="80" cy="44" rx="12" ry="9" fill="#ff8800" opacity="0.9"/>
+                            <text x="80" y="57" font-family="Arial Black" font-size="9" font-weight="900" fill="rgba(255,255,255,0.7)" text-anchor="middle" letter-spacing="3">TV</text>
+                        </svg>
+                    </div>
+                    <div class="channel-info">
+                        <div class="channel-name">Red Bull TV</div>
+                        <div class="channel-badge" style="color:var(--muted);">🌐 Official</div>
+                    </div>
+                    <a class="ch-btn secondary" href="https://www.redbull.com/int-en/tv/" target="_blank">İZLE</a>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-logo" style="background:#040c18;">
+                        <svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="160" height="60" fill="#040c18"/>
+                            <rect x="8" y="10" width="68" height="40" rx="6" fill="#00a8e0"/>
+                            <text x="42" y="37" font-family="Arial Black" font-size="18" font-weight="900" fill="white" text-anchor="middle">sky</text>
+                            <text x="98" y="28" font-family="Arial Black" font-size="12" font-weight="900" fill="white" letter-spacing="1">SPORT</text>
+                            <text x="98" y="46" font-family="Arial Black" font-size="12" font-weight="900" fill="#00a8e0" letter-spacing="1">ITALIA</text>
+                        </svg>
+                    </div>
+                    <div class="channel-info">
+                        <div class="channel-name">Sky Sport Italia</div>
+                        <div class="channel-badge" style="color:var(--muted);">🇮🇹 İtalya</div>
+                    </div>
+                    <a class="ch-btn" href="https://sport.sky.it" target="_blank">RESMİ YAYINCI</a>
+                </div>
+
+                <div class="channel-card">
+                    <div class="channel-logo" style="background:#08101a;">
+                        <svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="160" height="60" fill="#08101a"/>
+                            <text x="80" y="18" font-family="Arial Black" font-size="8" font-weight="700" fill="#aaa" text-anchor="middle" letter-spacing="1">ŞAMPİYONLAR</text>
+                            <text x="80" y="32" font-family="Arial Black" font-size="10" font-weight="900" fill="#ffcc00" text-anchor="middle" letter-spacing="1">LİGİ FİNALİ</text>
+                            <text x="80" y="48" font-family="Arial" font-size="18" fill="#ffcc00" text-anchor="middle">★★★</text>
+                        </svg>
+                    </div>
+                    <div class="channel-info">
+                        <div class="channel-name">Şampiyonlar Ligi Finali</div>
+                        <div class="channel-badge">▶ RESMİ YAYINCI</div>
+                    </div>
+                    <a class="ch-btn" href="https://www.uefa.com" target="_blank">VV RESMİ YAYINCI</a>
+                </div>
+
+            </div>
+            <p id="pilot-info" style="margin-top:18px;color:var(--muted);font-style:italic;font-size:0.82rem;text-align:center;">Türkiye: Kenan Sofuoğlu, Toprak Razgatlıoğlu</p>
+        </div>
+
+        <!-- TV KANALLARI -->
+        <div class="section" id="sec-tv">
+            <div class="sec-title" id="st-tv">TV Kanalları — Ülkeye Göre</div>
+            <div class="grid">
+                <div class="card"><h3>S Sport</h3><span class="flag">🇹🇷 Türkiye</span><a href="https://www.ssport.com.tr" target="_blank" class="btn">İZLE</a></div>
+                <div class="card"><h3>S Sport Plus</h3><span class="flag">🇹🇷 Türkiye</span><a href="https://www.ssportplus.com" target="_blank" class="btn">İZLE</a></div>
+                <div class="card"><h3>TNT Sports</h3><span class="flag">🇬🇧 Birleşik Krallık</span><a href="https://www.tntsports.co.uk" target="_blank" class="btn">İZLE</a></div>
+                <div class="card"><h3>DAZN España</h3><span class="flag">🇪🇸 İspanya</span><a href="https://www.dazn.com" target="_blank" class="btn">İZLE</a></div>
+                <div class="card"><h3>Sky Sport Italia</h3><span class="flag">🇮🇹 İtalya</span><a href="https://sport.sky.it" target="_blank" class="btn">İZLE</a></div>
+                <div class="card"><h3>Canal+ France</h3><span class="flag">🇫🇷 Fransa</span><a href="https://www.canalplus.com" target="_blank" class="btn">İZLE</a></div>
+                <div class="card"><h3>ServusTV</h3><span class="flag">🇩🇪 Almanya/Avusturya</span><a href="https://www.servustv.com" target="_blank" class="btn">İZLE</a></div>
+                <div class="card"><h3>FOX Sports USA</h3><span class="flag">🇺🇸 ABD</span><a href="https://www.foxsports.com" target="_blank" class="btn">İZLE</a></div>
+                <div class="card"><h3>REV TV Canada</h3><span class="flag">🇨🇦 Kanada</span><a href="https://www.revtv.ca" target="_blank" class="btn">İZLE</a></div>
+                <div class="card"><h3>Fox Sports Australia</h3><span class="flag">🇦🇺 Avustralya</span><a href="https://www.foxsports.com.au" target="_blank" class="btn">İZLE</a></div>
+                <div class="card"><h3>Eurosport</h3><span class="flag">🌍 Avrupa</span><a href="https://www.eurosport.com" target="_blank" class="btn">İZLE</a></div>
+                <div class="card"><h3>SSC Sports</h3><span class="flag">🌍 Orta Doğu</span><a href="https://www.ssc.com.sa" target="_blank" class="btn">İZLE</a></div>
+            </div>
+        </div>
+
+        <!-- ÖZEL PLATFORMLAR -->
+        <div class="section" id="sec-platform">
+            <div class="sec-title" id="st-platform">Özel Platformlar</div>
+            <div class="grid">
+                <div class="card"><h3>MotoGP VideoPass</h3><span class="flag">🌐 Dünya Geneli (Ücretli)</span><a href="https://www.motogp.com/en/videopass" target="_blank" class="btn">ABONE OL</a></div>
+                <div class="card"><h3>Motorsport.tv</h3><span class="flag">🌐 Global</span><a href="https://motorsport.tv/live" target="_blank" class="btn">İZLE</a></div>
+                <div class="card"><h3>Twitch Racing</h3><span class="flag">🌐 Global</span><a href="https://www.twitch.tv/directory/game/Motorsport" target="_blank" class="btn">KEŞFET</a></div>
+            </div>
+        </div>
+
+        <!-- MARKA ANSİKLOPEDİSİ -->
+        <div class="section" id="sec-markalar">
+            <div class="sec-title" id="st-markalar">Marka Ansiklopedisi</div>
+            <div class="brand-grid" id="brand-grid"></div>
+        </div>
+
+        <!-- TAKVİM -->
+        <div class="section" id="sec-takvim">
+            <div class="sec-title" id="st-takvim">2026 MotoGP & WorldSBK Yarış Ülkeleri</div>
+            <div style="font-family:'Arial Black',sans-serif;font-size:1.1rem;font-weight:900;letter-spacing:1px;margin:0 0 14px;color:#fff;">🏍 MotoGP — YARIŞ ÜLKELERİ</div>
+            <div class="flag-grid">
+                <div class="flag-card"><div class="flag-box">🇹🇭</div><div class="flag-name">THAILAND</div></div>
+                <div class="flag-card"><div class="flag-box">🇧🇷</div><div class="flag-name">BRAZIL</div></div>
+                <div class="flag-card"><div class="flag-box">🇺🇸</div><div class="flag-name">USA</div></div>
+                <div class="flag-card"><div class="flag-box">🇶🇦</div><div class="flag-name">QATAR</div></div>
+                <div class="flag-card"><div class="flag-box">🇶🇦</div><div class="flag-name">QATAR</div></div>
+                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">SPAIN</div></div>
+                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">SPAIN</div></div>
+                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">SPAIN</div></div>
+                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">JEREZ</div></div>
+                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">CATALONIA</div></div>
+                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">ARAGON</div></div>
+                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">VALENCIA</div></div>
+                <div class="flag-card"><div class="flag-box">🇫🇷</div><div class="flag-name">FRANCE</div></div>
+                <div class="flag-card"><div class="flag-box">🇫🇷</div><div class="flag-name">FRANCE</div></div>
+                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
+                <div class="flag-card"><div class="flag-box">🇭🇺</div><div class="flag-name">HUNGARY</div></div>
+                <div class="flag-card"><div class="flag-box">🇨🇿</div><div class="flag-name">CZECH</div></div>
+                <div class="flag-card"><div class="flag-box">🇳🇱</div><div class="flag-name">NETHERLANDS</div></div>
+                <div class="flag-card"><div class="flag-box">🇩🇪</div><div class="flag-name">GERMANY</div></div>
+                <div class="flag-card"><div class="flag-box">🇩🇪</div><div class="flag-name">GERMANY</div></div>
+                <div class="flag-card"><div class="flag-box">🇬🇧</div><div class="flag-name">UK</div></div>
+                <div class="flag-card"><div class="flag-box">🇸🇲</div><div class="flag-name">SAN MARINO</div></div>
+                <div class="flag-card"><div class="flag-box">🇦🇹</div><div class="flag-name">AUSTRIA</div></div>
+                <div class="flag-card"><div class="flag-box">🇦🇹</div><div class="flag-name">AUSTRIA</div></div>
+                <div class="flag-card"><div class="flag-box">🇯🇵</div><div class="flag-name">JAPAN</div></div>
+                <div class="flag-card"><div class="flag-box">🇹🇷</div><div class="flag-name">TÜRKİYE</div></div>
+                <div class="flag-card"><div class="flag-box">🇮🇩</div><div class="flag-name">INDONESIA</div></div>
+                <div class="flag-card"><div class="flag-box">🇳🇱</div><div class="flag-name">NETHERLANDS</div></div>
+                <div class="flag-card"><div class="flag-box">🇳🇱</div><div class="flag-name">NETHERLANDS</div></div>
+                <div class="flag-card"><div class="flag-box">🇱🇹</div><div class="flag-name">LITHUANIA</div></div>
+                <div class="flag-card"><div class="flag-box">🇱🇹</div><div class="flag-name">LITHUANIA</div></div>
+                <div class="flag-card"><div class="flag-box">🇭🇺</div><div class="flag-name">HUNGARY</div></div>
+                <div class="flag-card"><div class="flag-box">🇧🇫</div><div class="flag-name">BURKINA F.</div></div>
+                <div class="flag-card"><div class="flag-box">🇯🇵</div><div class="flag-name">JAPAN</div></div>
+                <div class="flag-card"><div class="flag-box">🇯🇵</div><div class="flag-name">JAPAN</div></div>
+                <div class="flag-card"><div class="flag-box">🇦🇺</div><div class="flag-name">MALAYSIA</div></div>
+                <div class="flag-card"><div class="flag-box">🇲🇾</div><div class="flag-name">MALAYSIA</div></div>
+                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTUGAL</div></div>
+            </div>
+            <div style="font-family:'Arial Black',sans-serif;font-size:1.1rem;font-weight:900;letter-spacing:1px;margin:28px 0 14px;color:#fff;">🏁 WORLDSBK — SUPERBIKE YARIŞ ÜLKELERİ</div>
+            <div class="flag-grid">
+                <div class="flag-card"><div class="flag-box">🇦🇺</div><div class="flag-name">AUSTRALIA</div></div>
+                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTUGAL</div></div>
+                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTUGAL</div></div>
+                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTUGAL</div></div>
+                <div class="flag-card"><div class="flag-box">🇳🇱</div><div class="flag-name">NETHERLANDS</div></div>
+                <div class="flag-card"><div class="flag-box">🇳🇱</div><div class="flag-name">NETHERLANDS</div></div>
+                <div class="flag-card"><div class="flag-box">🇭🇺</div><div class="flag-name">HUNGARY</div></div>
+                <div class="flag-card"><div class="flag-box">🇨🇿</div><div class="flag-name">CZECH</div></div>
+                <div class="flag-card"><div class="flag-box">🇨🇿</div><div class="flag-name">CZECH</div></div>
+                <div class="flag-card"><div class="flag-box">🇨🇿</div><div class="flag-name">CZECH</div></div>
+                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">ARAGON</div></div>
+                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">JEREZ</div></div>
+                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">JEREZ</div></div>
+                <div class="flag-card"><div class="flag-box">🇦🇺</div><div class="flag-name">PHILLIP IS.</div></div>
+                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTIMÃO</div></div>
+                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">ESTORIL</div></div>
+                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTIMÃO</div></div>
+                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">ESTORIL</div></div>
+                <div class="flag-card"><div class="flag-box">🇭🇺</div><div class="flag-name">BALATON PK</div></div>
+                <div class="flag-card"><div class="flag-box">🇭🇺</div><div class="flag-name">HUNGARY</div></div>
+                <div class="flag-card"><div class="flag-box">🇨🇿</div><div class="flag-name">CZECH</div></div>
+                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">ARAGON</div></div>
+                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">JEREZ</div></div>
+                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
+                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
+                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
+                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
+                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
+                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">MISANO</div></div>
+                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">CREMONA</div></div>
+                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
+                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
+                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
+                <div class="flag-card"><div class="flag-box">🇬🇧</div><div class="flag-name">UK</div></div>
+                <div class="flag-card"><div class="flag-box">🇫🇷</div><div class="flag-name">FRANCE</div></div>
+                <div class="flag-card"><div class="flag-box">🇫🇷</div><div class="flag-name">FRANCE</div></div>
+            </div>
+            <p style="margin-top:14px;font-size:0.7rem;color:var(--muted);text-align:right;">MOTOGPVIDEO.COM ASSET PACK · 2026 RACE COUNTRIES</p>
+        </div>
+
+        <!-- BİNİCİLER -->
+        <div class="section" id="sec-biniciler">
+            <div class="sec-title" id="st-biniciler">2026 MotoGP Öne Çıkan Sürücüler</div>
+            <div class="grid">
+                <div class="card"><h3>Toprak Razgatlıoğlu</h3><span class="flag">🇹🇷 Prima Pramac Yamaha</span></div>
+                <div class="card"><h3>Marc Márquez</h3><span class="flag">🇪🇸 Ducati Lenovo Team</span></div>
+                <div class="card"><h3>Francesco Bagnaia</h3><span class="flag">🇮🇹 Ducati Lenovo Team</span></div>
+                <div class="card"><h3>Jorge Martín</h3><span class="flag">🇪🇸 Aprilia Racing</span></div>
+                <div class="card"><h3>Marco Bezzecchi</h3><span class="flag">🇮🇹 Aprilia Racing</span></div>
+                <div class="card"><h3>Fabio Quartararo</h3><span class="flag">🇫🇷 Monster Energy Yamaha</span></div>
+                <div class="card"><h3>Alex Rins</h3><span class="flag">🇪🇸 Monster Energy Yamaha</span></div>
+                <div class="card"><h3>Pedro Acosta</h3><span class="flag">🇪🇸 Red Bull KTM Factory</span></div>
+                <div class="card"><h3>Brad Binder</h3><span class="flag">🇿🇦 Red Bull KTM Factory</span></div>
+                <div class="card"><h3>Jack Miller</h3><span class="flag">🇦🇺 Prima Pramac Yamaha</span></div>
+                <div class="card"><h3>Fabio Di Giannantonio</h3><span class="flag">🇮🇹 Pertamina Enduro VR46</span></div>
+                <div class="card"><h3>Franco Morbidelli</h3><span class="flag">🇮🇹 Pertamina Enduro VR46</span></div>
+                <div class="card"><h3>Fermín Aldeguer</h3><span class="flag">🇪🇸 BK8 Gresini Racing</span></div>
+                <div class="card"><h3>Alex Márquez</h3><span class="flag">🇪🇸 BK8 Gresini Racing</span></div>
+                <div class="card"><h3>Maverick Viñales</h3><span class="flag">🇪🇸 Red Bull KTM Tech3</span></div>
+                <div class="card"><h3>Enea Bastianini</h3><span class="flag">🇮🇹 Red Bull KTM Tech3</span></div>
+                <div class="card"><h3>Raúl Fernández</h3><span class="flag">🇪🇸 Trackhouse MotoGP</span></div>
+                <div class="card"><h3>Ai Ogura</h3><span class="flag">🇯🇵 Trackhouse MotoGP</span></div>
+                <div class="card"><h3>Johann Zarco</h3><span class="flag">🇫🇷 Castrol Honda LCR</span></div>
+                <div class="card"><h3>Diogo Moreira</h3><span class="flag">🇧🇷 Pro Honda LCR</span></div>
+                <div class="card"><h3>Luca Marini</h3><span class="flag">🇮🇹 Honda HRC Castrol</span></div>
+                <div class="card"><h3>Joan Mir</h3><span class="flag">🇪🇸 Honda HRC Castrol</span></div>
+            </div>
+        </div>
+
+        <!-- GLOBAL HIT SPORLAR -->
+        <div class="section" id="sec-global">
+            <div class="sec-title" id="st-global">Global Hit Sporlar</div>
+            <div class="grid">
+                <div class="card"><h3>Formula 1</h3><span class="flag">🌐 Dünya Geneli</span><a href="https://www.formula1.com" target="_blank" class="btn">GİT</a></div>
+                <div class="card"><h3>WorldSBK</h3><span class="flag">🌐 Dünya Geneli</span><a href="https://www.worldsbk.com" target="_blank" class="btn">GİT</a></div>
+                <div class="card"><h3>Şampiyonlar Ligi</h3><span class="flag">🌍 Avrupa</span><a href="https://www.uefa.com" target="_blank" class="btn">GİT</a></div>
+                <div class="card"><h3>NBA</h3><span class="flag">🇺🇸 ABD</span><a href="https://www.nba.com" target="_blank" class="btn">GİT</a></div>
+            </div>
+        </div>
+
+        <!-- GALERİ -->
+        <div class="section" id="sec-galeri">
+            <div class="sec-title">Galeri</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;">
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+                    <div style="height:140px;background:linear-gradient(135deg,#e8001d,#600010);display:flex;align-items:center;justify-content:center;font-size:3rem;">🏍</div>
+                    <div style="padding:12px;font-size:0.85rem;font-weight:700;">MotoGP 2025 — Sezon Kareleri</div>
+                    <div style="padding:0 12px 12px;font-size:0.75rem;color:var(--muted);">En iyi anlara dair fotoğraf arşivi</div>
+                </div>
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+                    <div style="height:140px;background:linear-gradient(135deg,#0066cc,#003366);display:flex;align-items:center;justify-content:center;font-size:3rem;">🏁</div>
+                    <div style="padding:12px;font-size:0.85rem;font-weight:700;">WorldSBK — Pist Fotoğrafları</div>
+                    <div style="padding:0 12px 12px;font-size:0.75rem;color:var(--muted);">Dünya pistlerinden kareler</div>
+                </div>
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+                    <div style="height:140px;background:linear-gradient(135deg,#e10600,#6600cc);display:flex;align-items:center;justify-content:center;font-size:3rem;">🚀</div>
+                    <div style="padding:12px;font-size:0.85rem;font-weight:700;">Formula 1 — 2025 Araçları</div>
+                    <div style="padding:0 12px 12px;font-size:0.75rem;color:var(--muted);">Sezonun en hızlı araçları</div>
+                </div>
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+                    <div style="height:140px;background:linear-gradient(135deg,#cc0000,#330000);display:flex;align-items:center;justify-content:center;font-size:3rem;">🇹🇷</div>
+                    <div style="padding:12px;font-size:0.85rem;font-weight:700;">Türk Biniciler — Özel Albüm</div>
+                    <div style="padding:0 12px 12px;font-size:0.75rem;color:var(--muted);">Toprak, Kenan ve diğerleri</div>
+                </div>
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+                    <div style="height:140px;background:linear-gradient(135deg,#ff6600,#993300);display:flex;align-items:center;justify-content:center;font-size:3rem;">🏆</div>
+                    <div style="padding:12px;font-size:0.85rem;font-weight:700;">Kupa Törenleri</div>
+                    <div style="padding:0 12px 12px;font-size:0.75rem;color:var(--muted);">Şampiyonluk anları</div>
+                </div>
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;">
+                    <div style="height:140px;background:linear-gradient(135deg,#005500,#002200);display:flex;align-items:center;justify-content:center;font-size:3rem;">⚙️</div>
+                    <div style="padding:12px;font-size:0.85rem;font-weight:700;">Garaj & Teknik</div>
+                    <div style="padding:0 12px 12px;font-size:0.75rem;color:var(--muted);">Perde arkası teknik kareler</div>
+                </div>
+            </div>
+            <p style="margin-top:16px;color:var(--muted);font-size:0.8rem;text-align:center;">📸 Galeri içerikleri yakında genişletilecektir.</p>
+        </div>
+
+        <!-- İLETİŞİM -->
+        <div class="section" id="sec-iletisim">
+            <div class="sec-title">İletişim</div>
+            <div style="max-width:560px;">
+                <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;">
+                    <h2 style="font-size:1.1rem;font-weight:800;margin-bottom:6px;">Bize Ulaşın</h2>
+                    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:22px;line-height:1.6;">Öneri, hata bildirimi veya işbirliği talepleriniz için aşağıdaki formu kullanabilirsiniz.</p>
+                    <div style="display:flex;flex-direction:column;gap:14px;">
+                        <div>
+                            <label style="font-size:0.72rem;color:var(--muted);display:block;margin-bottom:5px;letter-spacing:1px;text-transform:uppercase;">Adınız</label>
+                            <input type="text" placeholder="Adınız Soyadınız" style="width:100%;background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:white;font-size:0.85rem;outline:none;">
+                        </div>
+                        <div>
+                            <label style="font-size:0.72rem;color:var(--muted);display:block;margin-bottom:5px;letter-spacing:1px;text-transform:uppercase;">E-posta</label>
+                            <input type="email" placeholder="ornek@email.com" style="width:100%;background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:white;font-size:0.85rem;outline:none;">
+                        </div>
+                        <div>
+                            <label style="font-size:0.72rem;color:var(--muted);display:block;margin-bottom:5px;letter-spacing:1px;text-transform:uppercase;">Konu</label>
+                            <select style="width:100%;background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:white;font-size:0.85rem;outline:none;">
+                                <option>Öneri / Geri Bildirim</option>
+                                <option>Hata Bildirimi</option>
+                                <option>Yayın Linki Ekleme Talebi</option>
+                                <option>İşbirliği</option>
+                                <option>Diğer</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-size:0.72rem;color:var(--muted);display:block;margin-bottom:5px;letter-spacing:1px;text-transform:uppercase;">Mesajınız</label>
+                            <textarea rows="5" placeholder="Mesajınızı buraya yazın..." style="width:100%;background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:10px 14px;color:white;font-size:0.85rem;outline:none;resize:vertical;font-family:inherit;"></textarea>
+                        </div>
+                        <button onclick="alert('Mesajınız alındı! En kısa sürede dönüş yapacağız.')" style="background:var(--accent);color:white;border:none;border-radius:6px;padding:12px;font-size:0.85rem;font-weight:800;letter-spacing:1px;cursor:pointer;transition:background 0.2s;" onmouseover="this.style.background='var(--accent2)'" onmouseout="this.style.background='var(--accent)'">GÖNDER →</button>
+                    </div>
+                </div>
+                <div style="margin-top:16px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;display:flex;gap:20px;flex-wrap:wrap;">
+                    <div><div style="font-size:0.65rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Misyon</div><div style="font-size:0.8rem;">Yasal Canlı Yayın Rehberi</div></div>
+                    <div><div style="font-size:0.65rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Yanıt Süresi</div><div style="font-size:0.8rem;">24-48 saat</div></div>
+                    <div><div style="font-size:0.65rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Dil</div><div style="font-size:0.8rem;">TR / EN / DE / FR</div></div>
+                </div>
+            </div>
+        </div>
+
+        <footer>Bu site resmi bir yayın kuruluşu değildir. Tüm yayın hakları ilgili kuruluşlara aittir.</footer>
+    </main>
+</div>
+
+<script>
+    function topNav(sectionId, el) {
+        document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+        document.getElementById(sectionId).classList.add("active");
+        document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+        document.querySelectorAll(".topnav-link").forEach(n => n.classList.remove("active"));
+        el.classList.add("active");
+        if (sectionId === "sec-haberler") {
+            const activeTab = document.querySelector(".rss-tab.active");
+            if (activeTab && document.getElementById("news-grid").querySelector(".skeleton")) {
+                loadRSS(activeTab);
+            }
+        }
+    }
+
+    const grid = document.getElementById("brand-grid");
+    brands.forEach(b => {
+        grid.innerHTML += `<div class="brand-card">
+            <div class="brand-header">
+                <div class="brand-logo-icon">${b.logo}</div>
+                <div><div class="brand-name">${b.name}</div><div class="brand-country">${b.country}</div></div>
+            </div>
+            <div class="brand-body">
+                <div class="brand-stats">
+                    <div><div class="stat-label">GP Girişi</div><div class="stat-value">${b.founded}</div></div>
+                    <div><div class="stat-label">Şampiyonluk</div><div class="stat-value">${b.championships > 0 ? b.championships : "—"}</div></div>
+                </div>
+                <div class="brand-riders"><strong>Öne Çıkan İsimler:</strong> ${b.riders}</div>
+                <div class="brand-history">${b.history}</div>
+            </div>
+        </div>`;
+    });
+
+    function fmtDate(str) {
+        if (!str) return "";
+        const d = new Date(str);
+        if (isNaN(d)) return str;
+        return d.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" });
+    }
+    function stripHtml(html) {
+        const t = document.createElement("div");
+        t.innerHTML = html || "";
+        return t.textContent || "";
+    }
+    async function loadRSS(btn) {
+        document.querySelectorAll(".rss-tab").forEach(t => t.classList.remove("active"));
+        btn.classList.add("active");
+        const url = btn.dataset.feed;
+        const statusEl = document.getElementById("rss-status");
+        const gridEl = document.getElementById("news-grid");
+        statusEl.className = "rss-status";
+        statusEl.innerHTML = '<div class="rss-spinner"></div> Haberler yükleniyor…';
+        gridEl.innerHTML = Array(6).fill('<div class="news-card skeleton"></div>').join("");
+        try {
+            const res = await fetch(url);
+            const data = await res.json();
+            if (!data.items || data.items.length === 0) throw new Error("Haber bulunamadı");
+            const items = data.items.slice(0, 12);
+            statusEl.innerHTML = `<span style="color:#8aaccc">${items.length} haber yüklendi</span>`;
+            gridEl.innerHTML = items.map(item => {
+                const thumb = item.thumbnail || item.enclosure?.link || "";
+                const cat = item.categories?.[0] || "Haber";
+                const desc = stripHtml(item.description).slice(0, 80).trim();
+                return `<div class="news-card">
+                    ${thumb ? `<img class="news-thumb" src="${thumb}" alt="" loading="lazy" onerror="this.remove()">` : ""}
+                    <div class="news-cat">${cat}</div>
+                    <div class="news-title">${item.title}</div>
+                    ${desc ? `<div style="font-size:0.72rem;color:var(--muted);line-height:1.5">${desc}…</div>` : ""}
+                    <div class="news-footer">
+                        <span class="news-date">${fmtDate(item.pubDate)}</span>
+                        <a href="${item.link}" target="_blank" class="btn" style="padding:5px 10px;font-size:0.62rem;width:auto">OKU</a>
+                    </div>
+                </div>`;
+            }).join("");
+        } catch(err) {
+            statusEl.style.color = "#ff6680";
+            statusEl.innerHTML = "⚠ RSS yüklenemedi — doğrudan bağlantıları deneyin.";
+            gridEl.innerHTML = `
+                <div class="card" style="align-items:flex-start;gap:8px"><h3>MotoGP Haberleri</h3><a href="https://www.motogp.com/en/news" target="_blank" class="btn">Siteye Git</a></div>
+                <div class="card" style="align-items:flex-start;gap:8px"><h3>WorldSBK Haberleri</h3><a href="https://www.worldsbk.com/en/news" target="_blank" class="btn">Siteye Git</a></div>
+                <div class="card" style="align-items:flex-start;gap:8px"><h3>Motorsport.com</h3><a href="https://www.motorsport.com/motogp/news/" target="_blank" class="btn">Siteye Git</a></div>`;
+        }
+    }
+
+    window.addEventListener("DOMContentLoaded", startCountdown);
+</script>
+</body>
 </html>
