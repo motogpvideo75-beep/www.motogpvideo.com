@@ -533,7 +533,6 @@
         <div class="sidebar-section-label" id="sb-sec3">Yarışlar</div>
         <div class="nav-item" onclick="showSection('sec-takvim')"><span class="icon">📅</span> <span id="sb-takvim">2026 Takvimi</span></div>
         <div class="nav-item" onclick="showSection('sec-biniciler')"><span class="icon">🏆</span> <span id="sb-biniciler">Biniciler & Takımlar</span></div>
-        <div class="nav-item" onclick="showSection('sec-f1canli')"><span class="icon">🚀</span> <span>F1 Sonuçları</span></div>
         <div class="nav-item" onclick="showSection('sec-haberler')"><span class="icon">📰</span> <span id="sb-haberler">Haberler</span></div>
         <div class="nav-item" onclick="showSection('sec-global')"><span class="icon">⚡</span> <span id="sb-global">Global Hit Sporlar</span></div>
         <div class="sidebar-section-label" style="margin-top:8px;">Sosyal Medya</div>
@@ -858,28 +857,6 @@
         </div>
 
 
-        <!-- F1 CANLI SONUÇLAR -->
-        <div class="section" id="sec-f1canli">
-            <div class="sec-title">🚀 Formula 1 — Canlı Sonuçlar & Puan Tablosu</div>
-            <div class="cat-tabs" id="f1-result-tabs">
-                <button class="cat-tab active" style="background:#e10600;border-color:#e10600;" onclick="showF1Tab('f1-standings',this)">🏆 Sürücü Şampiyonluğu</button>
-                <button class="cat-tab" onclick="showF1Tab('f1-lastrace',this)">🏁 Son Yarış</button>
-                <button class="cat-tab" onclick="showF1Tab('f1-constructor',this)">🔧 Takım Şampiyonluğu</button>
-            </div>
-            <div id="f1-standings">
-                <div class="rss-status" id="f1-stand-status"><div class="rss-spinner"></div> Yükleniyor…</div>
-                <div id="f1-stand-content"></div>
-            </div>
-            <div id="f1-lastrace" style="display:none;">
-                <div class="rss-status" id="f1-race-status"><div class="rss-spinner"></div> Yükleniyor…</div>
-                <div id="f1-race-content"></div>
-            </div>
-            <div id="f1-constructor" style="display:none;">
-                <div class="rss-status" id="f1-con-status"><div class="rss-spinner"></div> Yükleniyor…</div>
-                <div id="f1-con-content"></div>
-            </div>
-        </div>
-
         <!-- GALERİ -->
         <div class="section" id="sec-galeri">
             <div class="sec-title">Galeri</div>
@@ -1087,108 +1064,7 @@
     }
 
 
-    /* F1 API SEKME */
-    function showF1Tab(id, btn) {
-        document.querySelectorAll("#f1-result-tabs .cat-tab").forEach(function(b) {
-            b.classList.remove("active");
-            b.style.background = "";
-            b.style.borderColor = "";
-        });
-        btn.classList.add("active");
-        btn.style.background = "#e10600";
-        btn.style.borderColor = "#e10600";
-        ["f1-standings","f1-lastrace","f1-constructor"].forEach(function(i) {
-            document.getElementById(i).style.display = "none";
-        });
-        document.getElementById(id).style.display = "block";
-    }
-
-    function getFlagEmoji(nat) {
-        var map = {"British":"🇬🇧","Dutch":"🇳🇱","Spanish":"🇪🇸","Mexican":"🇲🇽","Australian":"🇦🇺","Finnish":"🇫🇮","French":"🇫🇷","Canadian":"🇨🇦","German":"🇩🇪","Japanese":"🇯🇵","Italian":"🇮🇹","Thai":"🇹🇭","American":"🇺🇸","Argentine":"🇦🇷","New Zealander":"🇳🇿","Danish":"🇩🇰","Brazilian":"🇧🇷","Swedish":"🇸🇪","Austrian":"🇦🇹","Monegasque":"🇲🇨","Turkish":"🇹🇷","Chinese":"🇨🇳"};
-        return map[nat] || "🏁";
-    }
-
-    function posColor(p) {
-        if(p==="1") return "#ffd700";
-        if(p==="2") return "#c0c0c0";
-        if(p==="3") return "#cd7f32";
-        return "var(--accent)";
-    }
-
-    async function loadF1Standings() {
-        try {
-            var res = await fetch("https://api.jolpi.ca/ergast/f1/2025/driverStandings.json");
-            var data = await res.json();
-            var st = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-            document.getElementById("f1-stand-status").innerHTML = "";
-            var html = '<div class="takvim-list">';
-            st.slice(0,20).forEach(function(s) {
-                html += '<div class="takvim-row">' +
-                    '<span class="takvim-rnd" style="color:' + posColor(s.position) + '">P' + s.position + '</span>' +
-                    '<span style="font-size:1rem">' + getFlagEmoji(s.Driver.nationality) + '</span>' +
-                    '<span class="takvim-name">' + s.Driver.givenName + ' ' + s.Driver.familyName + '</span>' +
-                    '<span style="font-size:.7rem;color:#aaccee">' + (s.Constructors[0]?s.Constructors[0].name:"") + '</span>' +
-                    '<span class="takvim-date" style="color:#ffd700;font-weight:800">' + s.points + ' puan</span>' +
-                    '</div>';
-            });
-            html += '</div>';
-            document.getElementById("f1-stand-content").innerHTML = html;
-        } catch(e) {
-            document.getElementById("f1-stand-status").innerHTML = "⚠ Yüklenemedi";
-        }
-    }
-
-    async function loadF1LastRace() {
-        try {
-            var res = await fetch("https://api.jolpi.ca/ergast/f1/2025/last/results.json");
-            var data = await res.json();
-            var race = data.MRData.RaceTable.Races[0];
-            var results = race.Results;
-            document.getElementById("f1-race-status").innerHTML = "";
-            var html = '<div style="font-size:.85rem;font-weight:800;color:#e10600;margin-bottom:12px;">🏁 ' + race.raceName + ' — ' + race.date + '</div><div class="takvim-list">';
-            results.slice(0,10).forEach(function(r) {
-                html += '<div class="takvim-row">' +
-                    '<span class="takvim-rnd" style="color:' + posColor(r.position) + '">P' + r.position + '</span>' +
-                    '<span style="font-size:1rem">' + getFlagEmoji(r.Driver.nationality) + '</span>' +
-                    '<span class="takvim-name">' + r.Driver.givenName + ' ' + r.Driver.familyName + '</span>' +
-                    '<span style="font-size:.7rem;color:#aaccee">' + r.Constructor.name + '</span>' +
-                    '<span class="takvim-date">' + (r.Time?r.Time.time:r.status) + '</span>' +
-                    '</div>';
-            });
-            html += '</div>';
-            document.getElementById("f1-race-content").innerHTML = html;
-        } catch(e) {
-            document.getElementById("f1-race-status").innerHTML = "⚠ Yüklenemedi";
-        }
-    }
-
-    async function loadF1Constructors() {
-        try {
-            var res = await fetch("https://api.jolpi.ca/ergast/f1/2025/constructorStandings.json");
-            var data = await res.json();
-            var st = data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
-            document.getElementById("f1-con-status").innerHTML = "";
-            var html = '<div class="takvim-list">';
-            st.forEach(function(s) {
-                html += '<div class="takvim-row">' +
-                    '<span class="takvim-rnd" style="color:' + posColor(s.position) + '">P' + s.position + '</span>' +
-                    '<span class="takvim-name">' + s.Constructor.name + '</span>' +
-                    '<span class="takvim-date" style="color:#ffd700;font-weight:800">' + s.points + ' puan</span>' +
-                    '</div>';
-            });
-            html += '</div>';
-            document.getElementById("f1-con-content").innerHTML = html;
-        } catch(e) {
-            document.getElementById("f1-con-status").innerHTML = "⚠ Yüklenemedi";
-        }
-    }
-
-    window.addEventListener("DOMContentLoaded", function() {
-        startCountdown();
-        loadF1Standings();
-        loadF1LastRace();
-        loadF1Constructors();
-    });
+    window.addEventListener("DOMContentLoaded", startCountdown);
 
 </script>
 </body>
