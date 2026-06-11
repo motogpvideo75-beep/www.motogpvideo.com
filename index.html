@@ -569,44 +569,6 @@
         <button class="lang-btn" onclick="switchLang('fr')">🇫🇷 FR</button>
     </div>
 </nav>
-<script>
-    // Default language: English
-    document.addEventListener("DOMContentLoaded", function() {
-        const d = langData["en"];
-        const mt = document.getElementById("main-title"); if (mt) mt.innerText = d.title;
-        const pi = document.getElementById("pilot-info"); if (pi) pi.innerText = d.pilots;
-        const cdl = document.getElementById("cd-label-text"); if (cdl) cdl.innerText = d.cdLabel;
-        document.getElementById("sb-sec1").innerText = d.sidebar.sec1;
-        document.getElementById("sb-canli").innerText = d.sidebar.canli;
-        document.getElementById("sb-tv").innerText = d.sidebar.tv;
-        document.getElementById("sb-platform").innerText = d.sidebar.platform;
-        document.getElementById("sb-sec2").innerText = d.sidebar.sec2;
-        document.getElementById("sb-markalar").innerText = d.sidebar.markalar;
-        document.getElementById("sb-sec3").innerText = d.sidebar.sec3;
-        document.getElementById("sb-takvim").innerText = d.sidebar.takvim;
-        document.getElementById("sb-biniciler").innerText = d.sidebar.biniciler;
-        document.getElementById("sb-haberler").innerText = d.sidebar.haberler;
-        document.getElementById("sb-global").innerText = d.sidebar.global;
-        document.getElementById("sb-mission").innerText = d.sidebar.mission;
-        document.getElementById("sb-mission-text").innerText = d.sidebar.missionText;
-        document.getElementById("sb-mission-link").innerText = d.sidebar.missionLink;
-        const navLinks = document.querySelectorAll(".topnav-link");
-        d.nav.forEach((txt, i) => { if (navLinks[i]) navLinks[i].innerText = txt; });
-        const st = d.secTitles;
-        const map = { "st-canli":st.canli,"st-tv":st.tv,"st-platform":st.platform,"st-markalar":st.markalar,"st-takvim":st.takvim,"st-biniciler":st.biniciler,"st-haberler":st.haberler,"st-global":st.global };
-        Object.entries(map).forEach(([id, txt]) => { const el = document.getElementById(id); if (el) el.innerText = txt; });
-        const tabs = document.querySelectorAll(".rss-tab");
-        d.rssTabs.forEach((txt, i) => { if (tabs[i]) tabs[i].innerText = txt; });
-        const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
-        if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
-        if (d.platform) {
-            const ids = ["title","p1","p2","p3","p4","p5","p6","disc"];
-            ids.forEach(k => { const el = document.getElementById("plat-"+k); if (el) el.innerHTML = d.platform[k]; });
-        }
-        document.documentElement.lang = "en";
-    });
-</script>
-
 <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
 
 <div class="layout" style="position:relative;">
@@ -1045,6 +1007,41 @@
     }
 
     window.addEventListener("DOMContentLoaded", startCountdown);
+    window.addEventListener("DOMContentLoaded", function() { switchLangSilent("en"); });
+
+    function switchLangSilent(lang) {
+        document.querySelectorAll(".lang-btn").forEach(btn => { btn.classList.remove("active"); });
+        document.querySelectorAll(".lang-btn").forEach(btn => { if (btn.textContent.includes(lang.toUpperCase())) btn.classList.add("active"); });
+        const d = langData[lang];
+        const mt = document.getElementById("main-title"); if (mt) mt.innerText = d.title;
+        const pi = document.getElementById("pilot-info"); if (pi) pi.innerText = d.pilots;
+        const cdl = document.getElementById("cd-label-text"); if (cdl) cdl.innerText = d.cdLabel;
+        document.getElementById("sb-sec1").innerText = d.sidebar.sec1;
+        document.getElementById("sb-canli").innerText = d.sidebar.canli;
+        document.getElementById("sb-tv").innerText = d.sidebar.tv;
+        document.getElementById("sb-platform").innerText = d.sidebar.platform;
+        document.getElementById("sb-sec2").innerText = d.sidebar.sec2;
+        document.getElementById("sb-markalar").innerText = d.sidebar.markalar;
+        document.getElementById("sb-sec3").innerText = d.sidebar.sec3;
+        document.getElementById("sb-takvim").innerText = d.sidebar.takvim;
+        document.getElementById("sb-biniciler").innerText = d.sidebar.biniciler;
+        document.getElementById("sb-haberler").innerText = d.sidebar.haberler;
+        document.getElementById("sb-global").innerText = d.sidebar.global;
+        document.getElementById("sb-mission").innerText = d.sidebar.mission;
+        document.getElementById("sb-mission-text").innerText = d.sidebar.missionText;
+        document.getElementById("sb-mission-link").innerText = d.sidebar.missionLink;
+        const navLinks = document.querySelectorAll(".topnav-link");
+        d.nav.forEach((txt, i) => { if (navLinks[i]) navLinks[i].innerText = txt; });
+        const st = d.secTitles;
+        const map = { "st-canli":st.canli,"st-tv":st.tv,"st-platform":st.platform,"st-markalar":st.markalar,"st-takvim":st.takvim,"st-biniciler":st.biniciler,"st-haberler":st.haberler,"st-global":st.global };
+        Object.entries(map).forEach(([id, txt]) => { const el = document.getElementById(id); if (el) el.innerText = txt; });
+        const tabs = document.querySelectorAll(".rss-tab");
+        d.rssTabs.forEach((txt, i) => { if (tabs[i]) tabs[i].innerText = txt; });
+        const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
+        if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
+        if (d.platform) { const ids = ["title","p1","p2","p3","p4","p5","p6","disc"]; ids.forEach(k => { const el = document.getElementById("plat-"+k); if (el) el.innerHTML = d.platform[k]; }); }
+        document.documentElement.lang = lang;
+    }
 </script>
 
 <!-- Botpress Webchat -->
