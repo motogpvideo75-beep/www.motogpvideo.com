@@ -145,12 +145,7 @@
             const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
             const trt = document.getElementById("tv-race-channels-title"); if (trt && d.tvRaceTitle) trt.innerText = d.tvRaceTitle;
             document.querySelectorAll(".btn-git").forEach(el => { if (d.btnGit) el.innerText = d.btnGit; });
-            if (d.brandLabels) {
-                document.querySelectorAll(".brand-founded-lbl").forEach(el => el.innerText = d.brandLabels.founded);
-                document.querySelectorAll(".brand-champ-lbl").forEach(el => el.innerText = d.brandLabels.champ);
-                document.querySelectorAll(".brand-riders-lbl").forEach(el => el.innerText = d.brandLabels.riders + ":");
-                document.querySelectorAll(".brand-site-btn").forEach(el => el.innerText = d.brandLabels.site);
-            }
+            buildBrandGrid();
             if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
             const ht = document.getElementById("hero-title"); if (ht && d.heroTitle) ht.innerText = d.heroTitle;
             const hd = document.getElementById("hero-desc"); if (hd && d.heroDesc) hd.innerText = d.heroDesc;
@@ -941,25 +936,27 @@
         el.classList.add("active");
     }
 
-    const grid = document.getElementById("brand-grid");
-    brands.forEach(b => {
-        function getBrandLabels() {
+    function buildBrandGrid() {
             const lang = document.documentElement.lang || 'tr';
-            const d = langData[lang];
-            return d && d.brandLabels ? d.brandLabels : {founded:"GP Girişi", champ:"Şampiyonluk", riders:"Öne Çıkan İsimler", site:"🌐 RESMİ SİTE"};
+            const ld = langData[lang];
+            const bl = ld && ld.brandLabels ? ld.brandLabels : {founded:"GP Girişi", champ:"Şampiyonluk", riders:"Öne Çıkan İsimler", site:"🌐 RESMİ SİTE"};
+            const grid = document.getElementById("brand-grid");
+            grid.innerHTML = "";
+            brands.forEach(b => {
+                grid.innerHTML += `<div class="brand-card">
+                    <div class="brand-header"><div class="brand-logo-icon">${b.logo}</div><div><div class="brand-name">${b.name}</div><div class="brand-country">${b.country}</div></div></div>
+                    <div class="brand-body">
+                        <div class="brand-stats"><div><div class="stat-label">${bl.founded}</div><div class="stat-value">${b.founded}</div></div><div><div class="stat-label">${bl.champ}</div><div class="stat-value">${b.championships > 0 ? b.championships : "—"}</div></div></div>
+                        <div class="brand-riders"><strong>${bl.riders}:</strong> ${b.riders}</div>
+                        <div class="brand-history">${b.history}</div>
+                        <a href="${b.url}" target="_blank" style="display:inline-block;margin-top:10px;background:var(--accent);color:white;padding:5px 14px;border-radius:4px;font-size:.65rem;font-weight:800;letter-spacing:1px;text-decoration:none;">${bl.site}</a>
+                    </div>
+                </div>`;
+            });
         }
-        grid.innerHTML += `<div class="brand-card">
-            <div class="brand-header"><div class="brand-logo-icon">${b.logo}</div><div><div class="brand-name">${b.name}</div><div class="brand-country">${b.country}</div></div></div>
-            <div class="brand-body">
-                <div class="brand-stats"><div><div class="stat-label brand-founded-lbl">GP Girişi</div><div class="stat-value">${b.founded}</div></div><div><div class="stat-label brand-champ-lbl">Şampiyonluk</div><div class="stat-value">${b.championships > 0 ? b.championships : "—"}</div></div></div>
-                <div class="brand-riders"><strong class="brand-riders-lbl">Öne Çıkan İsimler:</strong> ${b.riders}</div>
-                <div class="brand-history">${b.history}</div>
-                <a href="${b.url}" target="_blank" class="brand-site-btn" style="display:inline-block;margin-top:10px;background:var(--accent);color:white;padding:5px 14px;border-radius:4px;font-size:.65rem;font-weight:800;letter-spacing:1px;text-decoration:none;">🌐 RESMİ SİTE</a>
-            </div>
-        </div>`;
-    });
+        buildBrandGrid();
 
-    const bikeColors = {
+        const bikeColors = {
         Ducati:"#cc0000", Yamaha:"#0055cc", KTM:"#e55a00", Honda:"#e8001d",
         Aprilia:"#1a1a6e", BMW:"#0066cc", Kawasaki:"#00aa00", Bimota:"#336600",
         Moto2:"#0099ff", Moto3:"#00cc66", SSP:"#ff6600", WCR:"#cc44aa", F1:"#e10600"
@@ -1084,12 +1081,7 @@
         const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
         const trt2 = document.getElementById("tv-race-channels-title"); if (trt2 && d.tvRaceTitle) trt2.innerText = d.tvRaceTitle;
         document.querySelectorAll(".btn-git").forEach(el => { if (d.btnGit) el.innerText = d.btnGit; });
-        if (d.brandLabels) {
-            document.querySelectorAll(".brand-founded-lbl").forEach(el => el.innerText = d.brandLabels.founded);
-            document.querySelectorAll(".brand-champ-lbl").forEach(el => el.innerText = d.brandLabels.champ);
-            document.querySelectorAll(".brand-riders-lbl").forEach(el => el.innerText = d.brandLabels.riders + ":");
-            document.querySelectorAll(".brand-site-btn").forEach(el => el.innerText = d.brandLabels.site);
-        }
+        buildBrandGrid();
         if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
         const ht2 = document.getElementById("hero-title"); if (ht2 && d.heroTitle) ht2.innerText = d.heroTitle;
         const hd2 = document.getElementById("hero-desc"); if (hd2 && d.heroDesc) hd2.innerText = d.heroDesc;
