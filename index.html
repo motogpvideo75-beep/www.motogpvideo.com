@@ -58,9 +58,9 @@
             document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
             event.target.closest(".lang-btn").classList.add("active");
             const d = langData[lang];
-            document.getElementById("main-title").innerText = d.title;
-            document.getElementById("ticker-label").innerText = d.label;
-            document.getElementById("ticker-news").innerText = d.news;
+            const mt = document.getElementById("main-title"); if (mt) mt.innerText = d.title;
+            const tl = document.getElementById("ticker-label"); if (tl) tl.innerText = d.label;
+            const tn = document.getElementById("ticker-news"); if (tn) tn.innerText = d.news;
             const pi = document.getElementById("pilot-info"); if (pi) pi.innerText = d.pilots;
             const cdl = document.getElementById("cd-label-text"); if (cdl) cdl.innerText = d.cdLabel;
             const lp = document.getElementById("live-pill-text"); if (lp) lp.innerText = d.live;
