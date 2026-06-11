@@ -32,8 +32,10 @@
                 nav: ["Ana Sayfa","Yarışlar ▾","Galeri","Resmi Siteler","İletişim"],
                 secTitles: { canli:"Resmi Siteler", tv:"TV Kanalları — Ülkeye Göre", platform:"Özel Platformlar", markalar:"Marka Ansiklopedisi", takvim:"2026 MotoGP Takvimi", biniciler:"Biniciler & Takımlar", haberler:"Son Haberler", global:"Global Hit Sporlar" },
                 rssTabs: ["MotoGP","WorldSBK","Formula 1"],
-                footer: "Bu site resmi bir yayın kuruluşu değildir. Tüm yayın hakları ilgili kuruluşlara aittir.",
-                chBtn: "RESMİ YAYIN KURULUŞU"
+                footer: "BU SİTE RESMİ BİR YAYIN KURULUŞU DEĞİLDİR. TÜM YAYIN HAKLARI İLGİLİ KURULUŞLARA AİTTİR.",
+                chBtn: "RESMİ YAYIN KURULUŞU",
+                heroTitle: "🏍️ MOTOR SPORLARI DÜNYASINA HOŞ GELDİNİZ!",
+                heroDesc: "MotoGP, WorldSBK ve Formula 1 yarışlarını takip edebileceğiniz, güncel haberler, sürücü kadroları ve yarış takvimlerine ulaşabileceğiniz merkezi platformunuz."
             },
             en: {
                 title: "MOTORSPORTS CENTER", label: "LATEST",
@@ -55,8 +57,10 @@
                 nav: ["Home","Races ▾","Gallery","Official Sites","Contact"],
                 secTitles: { canli:"Official Sites", tv:"TV Channels by Country", platform:"Special Platforms", markalar:"Brand Encyclopedia", takvim:"2026 MotoGP Calendar", biniciler:"Riders & Teams", haberler:"Latest News", global:"Global Hit Sports" },
                 rssTabs: ["MotoGP","WorldSBK","Formula 1"],
-                footer: "This site is not an official broadcaster. All broadcasting rights belong to their respective organizations.",
-                chBtn: "OFFICIAL BROADCASTER"
+                footer: "THIS SITE IS NOT AN OFFICIAL BROADCASTER. ALL BROADCASTING RIGHTS BELONG TO THEIR RESPECTIVE ORGANIZATIONS.",
+                chBtn: "OFFICIAL BROADCASTER",
+                heroTitle: "🏍️ WELCOME TO THE WORLD OF MOTORSPORTS!",
+                heroDesc: "Your central platform to follow MotoGP, WorldSBK and Formula 1 races, latest news, rider lineups and race calendars."
             },
             de: {
                 title: "MOTORSPORT ZENTRUM", news: "• Das Rennwochenende kommt bald!", pilots: "Deutschland: Stefan Bradl", live: "SENDUNG INFO & PROGRAMM", cdLabel: "VERBLEIBENDE ZEIT BIS MOTO GP TÜRKEI GP 2036:",
@@ -74,8 +78,10 @@
                 nav: ["Startseite","Rennen ▾","Galerie","Offizielle Seiten","Kontakt"],
                 secTitles: { canli:"Offizielle Seiten", tv:"TV-Sender nach Land", platform:"Spezielle Plattformen", markalar:"Marken-Enzyklopädie", takvim:"MotoGP Kalender 2026", biniciler:"Fahrer & Teams", haberler:"Aktuelle Nachrichten", global:"Globale Top-Sports" },
                 rssTabs: ["MotoGP","WorldSBK","Formel 1"],
-                footer: "Diese Seite ist kein offizieller Sender. Alle Übertragungsrechte liegen bei den jeweiligen Organisationen.",
-                chBtn: "OFFIZIELLER SENDER"
+                footer: "DIESE SEITE IST KEIN OFFIZIELLER SENDER. ALLE ÜBERTRAGUNGSRECHTE LIEGEN BEI DEN JEWEILIGEN ORGANISATIONEN.",
+                chBtn: "OFFIZIELLER SENDER",
+                heroTitle: "🏍️ WILLKOMMEN IN DER WELT DES MOTORSPORTS!",
+                heroDesc: "Ihre zentrale Plattform für MotoGP, WorldSBK und Formel 1 Rennen, aktuelle Nachrichten, Fahrer und Rennkalender."
             },
             fr: {
                 title: "CENTRE SPORTS MOTO", news: "• Le week-end de course arrive bientôt!", pilots: "France: Johann Zarco, Fabio Quartararo", live: "INFO & PROGRAMME DES ÉMISSIONS", cdLabel: "TEMPS RESTANT AVANT LE GP DE TURQUIE 2036:",
@@ -93,8 +99,10 @@
                 nav: ["Accueil","Courses ▾","Galerie","Sites Officiels","Contact"],
                 secTitles: { canli:"Sites Officiels", tv:"Chaînes TV par Pays", platform:"Plateformes Spéciales", markalar:"Encyclopédie des Marques", takvim:"Calendrier MotoGP 2026", biniciler:"Pilotes & Équipes", haberler:"Dernières Actualités", global:"Sports Mondiaux" },
                 rssTabs: ["MotoGP","WorldSBK","Formule 1"],
-                footer: "Ce site n'est pas un diffuseur officiel. Tous les droits de diffusion appartiennent aux organisations concernées.",
-                chBtn: "DIFFUSEUR OFFICIEL"
+                footer: "CE SITE N'EST PAS UN DIFFUSEUR OFFICIEL. TOUS LES DROITS DE DIFFUSION APPARTIENNENT AUX ORGANISATIONS CONCERNÉES.",
+                chBtn: "DIFFUSEUR OFFICIEL",
+                heroTitle: "🏍️ BIENVENUE DANS LE MONDE DU MOTORSPORT!",
+                heroDesc: "Votre plateforme centrale pour suivre MotoGP, WorldSBK et Formule 1, actualités, pilotes et calendriers."
             }
         };
 
@@ -132,6 +140,8 @@
             d.rssTabs.forEach((txt, i) => { if (tabs[i]) tabs[i].innerText = txt; });
             const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
             if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
+            const ht = document.getElementById("hero-title"); if (ht && d.heroTitle) ht.innerText = d.heroTitle;
+            const hd = document.getElementById("hero-desc"); if (hd && d.heroDesc) hd.innerText = d.heroDesc;
             if (d.platform) {
                 const ids = ["title","p1","p2","p3","p4","p5","p6","disc"];
                 ids.forEach(k => { const el = document.getElementById("plat-"+k); if (el) el.innerHTML = d.platform[k]; });
@@ -503,7 +513,7 @@
         .right-panel .rflag { font-size:1.3rem; line-height:1; cursor:default; transition:transform .15s; }
         .right-panel .rflag:hover { transform:scale(1.3); }
         @media (max-width:900px) { .right-panel { display:none; } }
-        footer { margin-top:28px; padding-top:14px; border-top:1px solid var(--border); color:#445566; font-size:.75rem; text-align:center; }
+        footer { margin-top:28px; padding-top:14px; border-top:1px solid var(--border); color:#ffffff; font-size:.8rem; font-weight:700; text-align:center; letter-spacing:.5px; }
         .cat-tabs { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
         .cat-tab { background:var(--card); border:1px solid var(--border); color:#9aadcc; padding:6px 14px; border-radius:6px; cursor:pointer; font-size:.75rem; font-weight:700; transition:all .2s; }
         .cat-tab:hover { background:var(--card2); color:white; }
@@ -609,10 +619,10 @@
             <div style="background:linear-gradient(135deg,#0d1220 0%,#1a0505 50%,#0d1220 100%);border:1px solid #e8001d44;border-radius:12px;padding:22px;margin-bottom:18px;text-align:center;">
                 <div style="font-size:1.3rem;font-weight:900;letter-spacing:1.5px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:12px;animation:titleBlink 2s infinite;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 36 24"><rect width="36" height="24" fill="#E30A17"/><circle cx="13" cy="12" r="6" fill="white"/><circle cx="15" cy="12" r="4.8" fill="#E30A17"/><polygon points="19.5,9.5 22.5,12 19.5,14.5 20.5,12" fill="white"/><circle cx="22.5" cy="10.5" r="0.8" fill="white"/></svg>
-                    🏍️ MOTOR SPORLARI DÜNYASINA HOŞ GELDİNİZ!
+                    <span id="hero-title">🏍️ MOTOR SPORLARI DÜNYASINA HOŞ GELDİNİZ!</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 36 24"><rect width="36" height="24" fill="#E30A17"/><circle cx="13" cy="12" r="6" fill="white"/><circle cx="15" cy="12" r="4.8" fill="#E30A17"/><polygon points="19.5,9.5 22.5,12 19.5,14.5 20.5,12" fill="white"/><circle cx="22.5" cy="10.5" r="0.8" fill="white"/></svg>
                 </div>
-                <div style="font-size:.85rem;color:#aaccee;line-height:1.8;">MotoGP, WorldSBK ve Formula 1 yarışlarını takip edebileceğiniz, güncel haberler, sürücü kadroları ve yarış takvimlerine ulaşabileceğiniz merkezi platformunuz.</div>
+                <div id="hero-desc" style="font-size:.85rem;color:#aaccee;line-height:1.8;">MotoGP, WorldSBK ve Formula 1 yarışlarını takip edebileceğiniz, güncel haberler, sürücü kadroları ve yarış takvimlerine ulaşabileceğiniz merkezi platformunuz.</div>
             </div>
             <div class="channel-grid">
                 <div class="channel-card"><div class="channel-logo" style="background:#100a0a;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#100a0a"/><rect x="6" y="8" width="10" height="10" fill="white"/><rect x="16" y="8" width="10" height="10" fill="#c00"/><rect x="6" y="18" width="10" height="10" fill="#c00"/><rect x="16" y="18" width="10" height="10" fill="white"/><rect x="6" y="28" width="10" height="10" fill="white"/><rect x="16" y="28" width="10" height="10" fill="#c00"/><text x="32" y="30" font-family="Arial Black" font-size="17" font-weight="900" font-style="italic" fill="white">Moto</text><text x="76" y="30" font-family="Arial Black" font-size="17" font-weight="900" font-style="italic" fill="#c00">GP</text><text x="32" y="46" font-family="Arial" font-size="9" fill="#666" letter-spacing="2">CHANNEL</text></svg></div><div class="channel-info"><div class="channel-name">MotoGP Official</div><div class="channel-badge">✔ RESMİ YAYIN KURULUŞU</div></div><a class="ch-btn ch-label" href="https://www.motogp.com/en/live" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
@@ -1047,6 +1057,8 @@
         d.rssTabs.forEach((txt, i) => { if (tabs[i]) tabs[i].innerText = txt; });
         const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
         if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
+        const ht2 = document.getElementById("hero-title"); if (ht2 && d.heroTitle) ht2.innerText = d.heroTitle;
+        const hd2 = document.getElementById("hero-desc"); if (hd2 && d.heroDesc) hd2.innerText = d.heroDesc;
         if (d.platform) { const ids = ["title","p1","p2","p3","p4","p5","p6","disc"]; ids.forEach(k => { const el = document.getElementById("plat-"+k); if (el) el.innerHTML = d.platform[k]; }); }
         document.documentElement.lang = lang;
     }
