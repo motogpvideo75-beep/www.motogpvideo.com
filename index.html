@@ -30,6 +30,7 @@
                 },
                 sidebar: { sec1:"Yayınlar", canli:"Motor Sporları Yeri", tv:"TV Kanalları", platform:"Özel Platformlar", sec2:"Bilgi", markalar:"Marka Ansiklopedisi", sec3:"Yarışlar", takvim:"2026 Takvimi", biniciler:"Biniciler & Takımlar", haberler:"Haberler", global:"Global Hit Sporlar", mission:"Misyonumuz", missionText:"Amatörden motor sporları dünyasını desteklemek ve izleyicileri güçlü, kaliteli yayınlarla buluşturmaktır. Herkese Hoş!", missionLink:"Racimu ve Yasal Canlı Yayın Rehberi" },
                 nav: ["Ana Sayfa","Yarışlar ▾","Galeri","Resmi Siteler","İletişim"],
+                tvRaceTitle:"MOTOR SPORLARI YARISI KANALLARI", btnGit:"RESMİ YAYIN KURULUŞU",
                 secTitles: { canli:"Resmi Siteler", tv:"TV Kanalları — Ülkeye Göre", platform:"Özel Platformlar", markalar:"Marka Ansiklopedisi", takvim:"2026 MotoGP Takvimi", biniciler:"Biniciler & Takımlar", haberler:"Son Haberler", global:"Global Hit Sporlar" },
                 rssTabs: ["MotoGP","WorldSBK","Formula 1"],
                 footer: "BU SİTE RESMİ BİR YAYIN KURULUŞU DEĞİLDİR. TÜM YAYIN HAKLARI İLGİLİ KURULUŞLARA AİTTİR.",
@@ -55,6 +56,7 @@
                 },
                 sidebar: { sec1:"Broadcasts", canli:"Motorsports Info", tv:"TV Channels", platform:"Special Platforms", sec2:"Info", markalar:"Brand Encyclopedia", sec3:"Races", takvim:"2026 Calendar", biniciler:"Riders & Teams", haberler:"News", global:"Global Hit Sports", mission:"Our Mission", missionText:"To support the motorsports world and connect fans with high-quality, legal broadcasts. Welcome everyone!", missionLink:"Legal Live Streaming Guide" },
                 nav: ["Home","Races ▾","Gallery","Official Sites","Contact"],
+                tvRaceTitle:"MOTORSPORT RACE CHANNELS", btnGit:"OFFICIAL BROADCASTER",
                 secTitles: { canli:"Official Sites", tv:"TV Channels by Country", platform:"Special Platforms", markalar:"Brand Encyclopedia", takvim:"2026 MotoGP Calendar", biniciler:"Riders & Teams", haberler:"Latest News", global:"Global Hit Sports" },
                 rssTabs: ["MotoGP","WorldSBK","Formula 1"],
                 footer: "THIS SITE IS NOT AN OFFICIAL BROADCASTER. ALL BROADCASTING RIGHTS BELONG TO THEIR RESPECTIVE ORGANIZATIONS.",
@@ -76,6 +78,7 @@
                     disc:"⚠️ Diese Seite ist kein offizieller Sender. Alle Übertragungsrechte liegen bei den jeweiligen Organisationen."
                 },
                 nav: ["Startseite","Rennen ▾","Galerie","Offizielle Seiten","Kontakt"],
+                tvRaceTitle:"MOTORSPORT RENNKANÄLE", btnGit:"OFFIZIELLER SENDER",
                 secTitles: { canli:"Offizielle Seiten", tv:"TV-Sender nach Land", platform:"Spezielle Plattformen", markalar:"Marken-Enzyklopädie", takvim:"MotoGP Kalender 2026", biniciler:"Fahrer & Teams", haberler:"Aktuelle Nachrichten", global:"Globale Top-Sports" },
                 rssTabs: ["MotoGP","WorldSBK","Formel 1"],
                 footer: "DIESE SEITE IST KEIN OFFIZIELLER SENDER. ALLE ÜBERTRAGUNGSRECHTE LIEGEN BEI DEN JEWEILIGEN ORGANISATIONEN.",
@@ -97,6 +100,7 @@
                     disc:"⚠️ Ce site n'est pas un diffuseur officiel. Tous les droits de diffusion appartiennent aux organisations concernées."
                 },
                 nav: ["Accueil","Courses ▾","Galerie","Sites Officiels","Contact"],
+                tvRaceTitle:"CHAÎNES DE COURSE MOTORSPORT", btnGit:"DIFFUSEUR OFFICIEL",
                 secTitles: { canli:"Sites Officiels", tv:"Chaînes TV par Pays", platform:"Plateformes Spéciales", markalar:"Encyclopédie des Marques", takvim:"Calendrier MotoGP 2026", biniciler:"Pilotes & Équipes", haberler:"Dernières Actualités", global:"Sports Mondiaux" },
                 rssTabs: ["MotoGP","WorldSBK","Formule 1"],
                 footer: "CE SITE N'EST PAS UN DIFFUSEUR OFFICIEL. TOUS LES DROITS DE DIFFUSION APPARTIENNENT AUX ORGANISATIONS CONCERNÉES.",
@@ -139,6 +143,8 @@
             const tabs = document.querySelectorAll(".rss-tab");
             d.rssTabs.forEach((txt, i) => { if (tabs[i]) tabs[i].innerText = txt; });
             const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
+            const trt = document.getElementById("tv-race-channels-title"); if (trt && d.tvRaceTitle) trt.innerText = d.tvRaceTitle;
+            document.querySelectorAll(".btn-git").forEach(el => { if (d.btnGit) el.innerText = d.btnGit; });
             if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
             const ht = document.getElementById("hero-title"); if (ht && d.heroTitle) ht.innerText = d.heroTitle;
             const hd = document.getElementById("hero-desc"); if (hd && d.heroDesc) hd.innerText = d.heroDesc;
@@ -642,22 +648,22 @@
         <div class="section" id="sec-tv">
             <div class="sec-title" id="st-tv">TV Kanalları — Ülkeye Göre</div>
             <div style="margin-bottom:28px;">
-                <div style="font-size:.9rem;font-weight:900;color:#e8001d;letter-spacing:2px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e8001d;">🏍️ MOTOR SPORLARI YARISI KANALLARI</div>
+                <div style="font-size:.9rem;font-weight:900;color:#e8001d;letter-spacing:2px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e8001d;">🏍️ <span id="tv-race-channels-title">MOTOR SPORLARI YARISI KANALLARI</span></div>
                 <div style="font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:2px;margin:12px 0 8px;">🇺🇸 ABD</div>
                 <div class="grid">
-                    <div class="card"><h3>Fox Sports</h3><span class="flag">ABD</span><a href="https://www.foxsports.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>ESPN</h3><span class="flag">ABD</span><a href="https://www.espn.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>NBC Sports</h3><span class="flag">ABD</span><a href="https://www.nbcsports.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>Peacock</h3><span class="flag">ABD</span><a href="https://www.peacocktv.com" target="_blank" class="btn">GİT</a></div>
+                    <div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Fox_Sports_logo_2019.svg/200px-Fox_Sports_logo_2019.svg.png" style="width:80px;height:40px;object-fit:contain;margin-bottom:4px;"><h3>Fox Sports</h3><span class="flag">ABD</span><a href="https://www.foxsports.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/ESPN_wordmark.svg/200px-ESPN_wordmark.svg.png" style="width:80px;height:40px;object-fit:contain;margin-bottom:4px;"><h3>ESPN</h3><span class="flag">ABD</span><a href="https://www.espn.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>NBC Sports</h3><span class="flag">ABD</span><a href="https://www.nbcsports.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>Peacock</h3><span class="flag">ABD</span><a href="https://www.peacocktv.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
                 </div>
                 <div style="font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:2px;margin:16px 0 8px;">🇪🇺 AVRUPA</div>
                 <div class="grid">
-                    <div class="card"><h3>Sky Sport</h3><span class="flag">İngiltere / İtalya</span><a href="https://www.skysports.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>Eurosport</h3><span class="flag">Avrupa</span><a href="https://www.eurosport.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>Canal+</h3><span class="flag">Fransa</span><a href="https://www.canalplus.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>TNT Sports</h3><span class="flag">İngiltere</span><a href="https://www.tntsports.co.uk" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>DAZN</h3><span class="flag">Avrupa</span><a href="https://www.dazn.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>ServusTV</h3><span class="flag">Almanya / Avusturya</span><a href="https://www.servustv.com" target="_blank" class="btn">GİT</a></div>
+                    <div class="card"><h3>Sky Sport</h3><span class="flag">İngiltere / İtalya</span><a href="https://www.skysports.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>Eurosport</h3><span class="flag">Avrupa</span><a href="https://www.eurosport.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>Canal+</h3><span class="flag">Fransa</span><a href="https://www.canalplus.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>TNT Sports</h3><span class="flag">İngiltere</span><a href="https://www.tntsports.co.uk" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>DAZN</h3><span class="flag">Avrupa</span><a href="https://www.dazn.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>ServusTV</h3><span class="flag">Almanya / Avusturya</span><a href="https://www.servustv.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
                 </div>
             </div>
         </div>
@@ -829,10 +835,10 @@
         <div class="section" id="sec-global">
             <div class="sec-title" id="st-global">Global Hit Sporlar</div>
             <div class="grid">
-                <div class="card"><h3>Formula 1</h3><span class="flag">🌐 Dünya Geneli</span><a href="https://www.formula1.com" target="_blank" class="btn">GİT</a></div>
-                <div class="card"><h3>WorldSBK</h3><span class="flag">🌐 Dünya Geneli</span><a href="https://www.worldsbk.com" target="_blank" class="btn">GİT</a></div>
-                <div class="card"><h3>Şampiyonlar Ligi</h3><span class="flag">🌍 Avrupa</span><a href="https://www.uefa.com" target="_blank" class="btn">GİT</a></div>
-                <div class="card"><h3>NBA</h3><span class="flag">🇺🇸 ABD</span><a href="https://www.nba.com" target="_blank" class="btn">GİT</a></div>
+                <div class="card"><h3>Formula 1</h3><span class="flag">🌐 Dünya Geneli</span><a href="https://www.formula1.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="card"><h3>WorldSBK</h3><span class="flag">🌐 Dünya Geneli</span><a href="https://www.worldsbk.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="card"><h3>Şampiyonlar Ligi</h3><span class="flag">🌍 Avrupa</span><a href="https://www.uefa.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="card"><h3>NBA</h3><span class="flag">🇺🇸 ABD</span><a href="https://www.nba.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
             </div>
         </div>
 
@@ -1056,6 +1062,8 @@
         const tabs = document.querySelectorAll(".rss-tab");
         d.rssTabs.forEach((txt, i) => { if (tabs[i]) tabs[i].innerText = txt; });
         const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
+        const trt2 = document.getElementById("tv-race-channels-title"); if (trt2 && d.tvRaceTitle) trt2.innerText = d.tvRaceTitle;
+        document.querySelectorAll(".btn-git").forEach(el => { if (d.btnGit) el.innerText = d.btnGit; });
         if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
         const ht2 = document.getElementById("hero-title"); if (ht2 && d.heroTitle) ht2.innerText = d.heroTitle;
         const hd2 = document.getElementById("hero-desc"); if (hd2 && d.heroDesc) hd2.innerText = d.heroDesc;
