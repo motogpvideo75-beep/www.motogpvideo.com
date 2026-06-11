@@ -154,6 +154,7 @@
                 ids.forEach(k => { const el = document.getElementById("plat-"+k); if (el) el.innerHTML = d.platform[k]; });
             }
             document.documentElement.lang = lang;
+            if(typeof buildBrandGrid === "function") buildBrandGrid();
         }
 
         function showSection(id) {
@@ -1087,6 +1088,7 @@
         const hd2 = document.getElementById("hero-desc"); if (hd2 && d.heroDesc) hd2.innerText = d.heroDesc;
         if (d.platform) { const ids = ["title","p1","p2","p3","p4","p5","p6","disc"]; ids.forEach(k => { const el = document.getElementById("plat-"+k); if (el) el.innerHTML = d.platform[k]; }); }
         document.documentElement.lang = lang;
+        if(typeof buildBrandGrid === "function") buildBrandGrid();
     }
 </script>
 
