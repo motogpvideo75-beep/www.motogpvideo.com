@@ -154,8 +154,7 @@
                 ids.forEach(k => { const el = document.getElementById("plat-"+k); if (el) el.innerHTML = d.platform[k]; });
             }
             document.documentElement.lang = lang;
-            if(typeof buildBrandGrid === "function") buildBrandGrid();
-        }
+            if(typeof buildBrandGrid === "function") buildBrandGrid();}
 
         function showSection(id) {
             document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
