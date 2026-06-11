@@ -145,6 +145,12 @@
             const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
             const trt = document.getElementById("tv-race-channels-title"); if (trt && d.tvRaceTitle) trt.innerText = d.tvRaceTitle;
             document.querySelectorAll(".btn-git").forEach(el => { if (d.btnGit) el.innerText = d.btnGit; });
+            if (d.brandLabels) {
+                document.querySelectorAll(".brand-founded-lbl").forEach(el => el.innerText = d.brandLabels.founded);
+                document.querySelectorAll(".brand-champ-lbl").forEach(el => el.innerText = d.brandLabels.champ);
+                document.querySelectorAll(".brand-riders-lbl").forEach(el => el.innerText = d.brandLabels.riders + ":");
+                document.querySelectorAll(".brand-site-btn").forEach(el => el.innerText = d.brandLabels.site);
+            }
             if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
             const ht = document.getElementById("hero-title"); if (ht && d.heroTitle) ht.innerText = d.heroTitle;
             const hd = document.getElementById("hero-desc"); if (hd && d.heroDesc) hd.innerText = d.heroDesc;
@@ -191,7 +197,7 @@
             { name:"Suzuki", logo:"🔷", country:"🇯🇵 Japonya", founded:"1974", championships:3, riders:"Barry Sheene (2), Kenny Roberts Jr. (1), Joan Mir (1)", history:"Suzuki 2022'de MotoGP'den çekildi. 2020'de Joan Mir'in GSX-RR ile elde ettiği şampiyonluk büyük sürpriz oldu.", url:"https://www.suzuki-racing.com" },
             { name:"Pramac Racing", logo:"🏁", country:"🇮🇹 İtalya (Yamaha uydu)", founded:"2002", championships:0, riders:"Jorge Martín, Franco Morbidelli, Toprak Razgatlıoğlu", history:"Pramac, 2025'ten itibaren Yamaha ile yeni sayfa açtı. Toprak Razgatlıoğlu da bu takımda yarışmaktadır.", url:"https://www.pramacracing.com" },
             { name:"Gresini Racing", logo:"🌀", country:"🇮🇹 İtalya", founded:"1997", championships:0, riders:"Alex Márquez, Enea Bastianini", history:"Fausto Gresini'nin kurduğu köklü bağımsız takım. Enea Bastianini 2022'de 4 zafer kazandı.", url:"https://www.gresiniracing.com/en/" },
-            { name:"BMW Motorrad", logo:"🔵", country:"🇩🇪 Almanya", founded:"2019", championships:3, riders:"Toprak Razgatlıoğlu (3), Michael van der Mark, Danilo Petrucci", history:"BMW, 2019'da WorldSBK'ya döndü. M1000RR ile 2023'ten itibaren ciddi güce kavuştu. Toprak Razgatlıoğlu ile 2024 ve 2025 şampiyonluklarını kazandı.", url:"https://www.bmw-motorrad-motorsport.com/en/racing/worldsbk.html" },
+            { name:"BMW Motorrad", logo:"🔵", country:"🇩🇪 Almanya", founded:"2019", championships:3, riders:"Toprak Razgatlıoğlu (3), Michael van der Mark, Danilo Petrucci", history:"BMW, 2019'da WorldSBK'ya döndü. M1000RR ile 2023'ten itibaren ciddi güce kavuştu. Toprak Razgatlıoğlu ile 2024 ve 2025 şampiyonluklarını kazandı.", url:"https://www.bmw-motorrad.com/en/racing/worldsbk.html" },
             { name:"Kawasaki / Bimota", logo:"🟩", country:"🇯🇵 Japonya / 🇮🇹 İtalya", founded:"2000", championships:6, riders:"Jonathan Rea (6), Alex Lowes, Axel Bassani", history:"Kawasaki, WorldSBK'nın en başarılı markalarından biri. Jonathan Rea ile 2015-2020 arası 6 üst üste şampiyonluk kazandı. 2025'te Bimota iş birliğiyle yeni sayfa açtı.", url:"https://www.kawasaki.com/en-us/motorsports/racing/worldsbk" },
             { name:"Honda HRC (WorldSBK)", logo:"🔴", country:"🇯🇵 Japonya", founded:"2020", championships:0, riders:"Jonathan Rea, Iker Lecuona, Xavi Vierge, Jake Dixon", history:"Honda, CBR1000RR-R ile WorldSBK'da mücadele ediyor. HRC fabrika desteğiyle grid'e dönen Honda 2026'da güçlü bir kadroyla sahaya çıktı.", url:"https://www.worldsbk.com/en/teams/hrc" },
             { name:"VR46 Racing", logo:"🌟", country:"🇮🇹 İtalya", founded:"2022", championships:0, riders:"Fabio Di Giannantonio, Franco Morbidelli", history:"Valentino Rossi'nin kurduğu takım. 2022'de MotoGP'ye giren VR46, Ducati ile çalışarak kısa sürede rekabetçi bir güce dönüştü.", url:"https://www.vr46.it" },
@@ -937,13 +943,18 @@
 
     const grid = document.getElementById("brand-grid");
     brands.forEach(b => {
+        function getBrandLabels() {
+            const lang = document.documentElement.lang || 'tr';
+            const d = langData[lang];
+            return d && d.brandLabels ? d.brandLabels : {founded:"GP Girişi", champ:"Şampiyonluk", riders:"Öne Çıkan İsimler", site:"🌐 RESMİ SİTE"};
+        }
         grid.innerHTML += `<div class="brand-card">
             <div class="brand-header"><div class="brand-logo-icon">${b.logo}</div><div><div class="brand-name">${b.name}</div><div class="brand-country">${b.country}</div></div></div>
             <div class="brand-body">
-                <div class="brand-stats"><div><div class="stat-label">GP Girişi</div><div class="stat-value">${b.founded}</div></div><div><div class="stat-label">Şampiyonluk</div><div class="stat-value">${b.championships > 0 ? b.championships : "—"}</div></div></div>
-                <div class="brand-riders"><strong>Öne Çıkan İsimler:</strong> ${b.riders}</div>
+                <div class="brand-stats"><div><div class="stat-label brand-founded-lbl">GP Girişi</div><div class="stat-value">${b.founded}</div></div><div><div class="stat-label brand-champ-lbl">Şampiyonluk</div><div class="stat-value">${b.championships > 0 ? b.championships : "—"}</div></div></div>
+                <div class="brand-riders"><strong class="brand-riders-lbl">Öne Çıkan İsimler:</strong> ${b.riders}</div>
                 <div class="brand-history">${b.history}</div>
-                <a href="${b.url}" target="_blank" style="display:inline-block;margin-top:10px;background:var(--accent);color:white;padding:5px 14px;border-radius:4px;font-size:.65rem;font-weight:800;letter-spacing:1px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='var(--accent2)'" onmouseout="this.style.background='var(--accent)'">🌐 RESMİ SİTE</a>
+                <a href="${b.url}" target="_blank" class="brand-site-btn" style="display:inline-block;margin-top:10px;background:var(--accent);color:white;padding:5px 14px;border-radius:4px;font-size:.65rem;font-weight:800;letter-spacing:1px;text-decoration:none;">🌐 RESMİ SİTE</a>
             </div>
         </div>`;
     });
@@ -1073,6 +1084,12 @@
         const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
         const trt2 = document.getElementById("tv-race-channels-title"); if (trt2 && d.tvRaceTitle) trt2.innerText = d.tvRaceTitle;
         document.querySelectorAll(".btn-git").forEach(el => { if (d.btnGit) el.innerText = d.btnGit; });
+        if (d.brandLabels) {
+            document.querySelectorAll(".brand-founded-lbl").forEach(el => el.innerText = d.brandLabels.founded);
+            document.querySelectorAll(".brand-champ-lbl").forEach(el => el.innerText = d.brandLabels.champ);
+            document.querySelectorAll(".brand-riders-lbl").forEach(el => el.innerText = d.brandLabels.riders + ":");
+            document.querySelectorAll(".brand-site-btn").forEach(el => el.innerText = d.brandLabels.site);
+        }
         if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
         const ht2 = document.getElementById("hero-title"); if (ht2 && d.heroTitle) ht2.innerText = d.heroTitle;
         const hd2 = document.getElementById("hero-desc"); if (hd2 && d.heroDesc) hd2.innerText = d.heroDesc;
