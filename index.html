@@ -112,7 +112,7 @@
 
         function switchLang(lang) {
             document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
-            event.target.closest(".lang-btn").classList.add("active");
+            document.querySelectorAll(".lang-btn").forEach(btn => { if(btn.textContent.includes(lang.toUpperCase())) btn.classList.add("active"); });
             const d = langData[lang];
             const mt = document.getElementById("main-title"); if (mt) mt.innerText = d.title;
             const tl = document.getElementById("ticker-label"); if (tl) tl.innerText = d.label;
