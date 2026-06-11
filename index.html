@@ -127,6 +127,10 @@
             const tabs = document.querySelectorAll(".rss-tab");
             d.rssTabs.forEach((txt, i) => { if (tabs[i]) tabs[i].innerText = txt; });
             const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
+            if (d.platform) {
+                const ids = ["title","p1","p2","p3","p4","p5","p6","disc"];
+                ids.forEach(k => { const el = document.getElementById("plat-"+k); if (el) el.innerHTML = d.platform[k]; });
+            }
             document.documentElement.lang = lang;
         }
 
@@ -1038,39 +1042,39 @@
     </main>
 
     <!-- SAĞ PANEL -->
-    <div class="right-panel" style="width:160px;padding:8px 6px;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;gap:8px;">
-        <div style="font-size:.55rem;font-weight:800;color:var(--muted);letter-spacing:2px;text-align:center;padding-bottom:6px;border-bottom:1px solid var(--border);">🇹🇷 TÜRK SÜRÜCÜLER</div>
+    <div class="right-panel" style="width:160px;padding:0;overflow:hidden;display:flex;flex-direction:column;position:sticky;top:90px;height:calc(100vh - 90px);">
+        <div style="font-size:.55rem;font-weight:800;color:var(--muted);letter-spacing:2px;text-align:center;padding:8px 4px;border-bottom:1px solid var(--border);flex-shrink:0;">🇹🇷 TÜRK SÜRÜCÜLER</div>
 
         <!-- Toprak -->
-        <div style="background:linear-gradient(135deg,#1a0040,#4a0066,#cc0080);border-radius:10px;padding:10px 8px;text-align:center;border:1px solid #cc0080;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-            <div style="font-size:.6rem;font-weight:900;color:#ff44cc;">MotoGP · #7</div>
-            <div style="font-size:.78rem;font-weight:900;color:white;margin-top:4px;line-height:1.3;">Toprak<br>Razgatlıoğlu</div>
-            <div style="font-size:.5rem;color:rgba(255,255,255,.6);margin-top:4px;">Prima Pramac Yamaha</div>
-            <div style="margin-top:5px;font-size:1.1rem;">🇹🇷</div>
+        <div style="background:linear-gradient(135deg,#1a0040,#4a0066,#cc0080);border-bottom:1px solid #cc0080;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;width:100%;">
+            <div style="font-size:.55rem;font-weight:900;color:#ff44cc;">MotoGP · #7</div>
+            <div style="font-size:.72rem;font-weight:900;color:white;line-height:1.3;">Toprak<br>Razgatlıoğlu</div>
+            <div style="font-size:.48rem;color:rgba(255,255,255,.6);">Prima Pramac Yamaha</div>
+            <div style="font-size:1rem;">🇹🇷</div>
         </div>
 
         <!-- Bahattin -->
-        <div style="background:linear-gradient(135deg,#001a40,#003366,#0066cc);border-radius:10px;padding:10px 8px;text-align:center;border:1px solid #0066cc;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-            <div style="font-size:.6rem;font-weight:900;color:#44aaff;">WorldSBK · #54</div>
-            <div style="font-size:.78rem;font-weight:900;color:white;margin-top:4px;line-height:1.3;">Bahattin<br>Sofuoğlu</div>
-            <div style="font-size:.5rem;color:rgba(255,255,255,.6);margin-top:4px;">Motox Racing</div>
-            <div style="margin-top:5px;font-size:1.1rem;">🇹🇷</div>
+        <div style="background:linear-gradient(135deg,#001a40,#003366,#0066cc);border-bottom:1px solid #0066cc;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;width:100%;">
+            <div style="font-size:.55rem;font-weight:900;color:#44aaff;">WorldSBK · #54</div>
+            <div style="font-size:.72rem;font-weight:900;color:white;line-height:1.3;">Bahattin<br>Sofuoğlu</div>
+            <div style="font-size:.48rem;color:rgba(255,255,255,.6);">Motox Racing</div>
+            <div style="font-size:1rem;">🇹🇷</div>
         </div>
 
         <!-- Can Öncü -->
-        <div style="background:linear-gradient(135deg,#001a10,#004400,#008800);border-radius:10px;padding:10px 8px;text-align:center;border:1px solid #008800;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-            <div style="font-size:.6rem;font-weight:900;color:#44ff88;">Dünya SSP · #61</div>
-            <div style="font-size:.78rem;font-weight:900;color:white;margin-top:4px;line-height:1.3;">Can<br>Öncü</div>
-            <div style="font-size:.5rem;color:rgba(255,255,255,.6);margin-top:4px;">Pata Yamaha Ten Kate</div>
-            <div style="margin-top:5px;font-size:1.1rem;">🇹🇷</div>
+        <div style="background:linear-gradient(135deg,#001a10,#004400,#008800);border-bottom:1px solid #008800;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;width:100%;">
+            <div style="font-size:.55rem;font-weight:900;color:#44ff88;">Dünya SSP · #61</div>
+            <div style="font-size:.72rem;font-weight:900;color:white;line-height:1.3;">Can<br>Öncü</div>
+            <div style="font-size:.48rem;color:rgba(255,255,255,.6);">Pata Yamaha Ten Kate</div>
+            <div style="font-size:1rem;">🇹🇷</div>
         </div>
 
         <!-- Deniz Öncü -->
-        <div style="background:linear-gradient(135deg,#1a1000,#443300,#886600);border-radius:10px;padding:10px 8px;text-align:center;border:1px solid #886600;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-            <div style="font-size:.6rem;font-weight:900;color:#ffcc44;">Moto2 · #53</div>
-            <div style="font-size:.78rem;font-weight:900;color:white;margin-top:4px;line-height:1.3;">Deniz<br>Öncü</div>
-            <div style="font-size:.5rem;color:rgba(255,255,255,.6);margin-top:4px;">ELF Marc VDS</div>
-            <div style="margin-top:5px;font-size:1.1rem;">🇹🇷</div>
+        <div style="background:linear-gradient(135deg,#1a1000,#443300,#886600);flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-align:center;width:100%;">
+            <div style="font-size:.55rem;font-weight:900;color:#ffcc44;">Moto2 · #53</div>
+            <div style="font-size:.72rem;font-weight:900;color:white;line-height:1.3;">Deniz<br>Öncü</div>
+            <div style="font-size:.48rem;color:rgba(255,255,255,.6);">ELF Marc VDS</div>
+            <div style="font-size:1rem;">🇹🇷</div>
         </div>
 
     </div>
