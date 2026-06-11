@@ -32,9 +32,8 @@
                 nav: ["Ana Sayfa","Yarışlar ▾","Galeri","Resmi Siteler","İletişim"],
                 secTitles: { canli:"Resmi Siteler", tv:"TV Kanalları — Ülkeye Göre", platform:"Özel Platformlar", markalar:"Marka Ansiklopedisi", takvim:"2026 MotoGP Takvimi", biniciler:"Biniciler & Takımlar", haberler:"Son Haberler", global:"Global Hit Sporlar" },
                 rssTabs: ["MotoGP","WorldSBK","Formula 1"],
-                footer: "Bu site resmi bir yayın kuruluşu değildir. Tüm yayın hakları ilgili kuruluşlara aittir."
-            },
-            en: {
+                footer: "Bu site resmi bir yayın kuruluşu değildir. Tüm yayın hakları ilgili kuruluşlara aittir.",
+                chBtn: "RESMİ YAYIN KURULUŞU"
                 title: "MOTORSPORTS CENTER", label: "LATEST",
                 news: "• Race weekend is coming! Welcome to the global hub.",
                 pilots: "Global Icons: Fabio Quartararo, Jack Miller",
@@ -54,9 +53,8 @@
                 nav: ["Home","Races ▾","Gallery","Official Sites","Contact"],
                 secTitles: { canli:"Official Sites", tv:"TV Channels by Country", platform:"Special Platforms", markalar:"Brand Encyclopedia", takvim:"2026 MotoGP Calendar", biniciler:"Riders & Teams", haberler:"Latest News", global:"Global Hit Sports" },
                 rssTabs: ["MotoGP","WorldSBK","Formula 1"],
-                footer: "This site is not an official broadcaster. All broadcasting rights belong to their respective organizations."
-            },
-            de: {
+                footer: "This site is not an official broadcaster. All broadcasting rights belong to their respective organizations.",
+                chBtn: "OFFICIAL BROADCASTER"
                 title: "MOTORSPORT ZENTRUM", news: "• Das Rennwochenende kommt bald!", pilots: "Deutschland: Stefan Bradl", live: "SENDUNG INFO & PROGRAMM", cdLabel: "VERBLEIBENDE ZEIT BIS MOTO GP TÜRKEI GP 2036:",
                 sidebar: { sec1:"Übertragungen", canli:"Motorsport Info", tv:"TV-Sender", platform:"Spezielle Plattformen", sec2:"Info", markalar:"Marken-Enzyklopädie", sec3:"Rennen", takvim:"Kalender 2026", biniciler:"Fahrer & Teams", haberler:"Nachrichten", global:"Globale Top-Sports", mission:"Unsere Mission", missionText:"Die Motorsportwelt unterstützen und Fans mit hochwertigen, legalen Übertragungen verbinden.", missionLink:"Offizieller Live-Streaming-Leitfaden" },
                 platform: {
@@ -72,9 +70,8 @@
                 nav: ["Startseite","Rennen ▾","Galerie","Offizielle Seiten","Kontakt"],
                 secTitles: { canli:"Offizielle Seiten", tv:"TV-Sender nach Land", platform:"Spezielle Plattformen", markalar:"Marken-Enzyklopädie", takvim:"MotoGP Kalender 2026", biniciler:"Fahrer & Teams", haberler:"Aktuelle Nachrichten", global:"Globale Top-Sports" },
                 rssTabs: ["MotoGP","WorldSBK","Formel 1"],
-                footer: "Diese Seite ist kein offizieller Sender. Alle Übertragungsrechte liegen bei den jeweiligen Organisationen."
-            },
-            fr: {
+                footer: "Diese Seite ist kein offizieller Sender. Alle Übertragungsrechte liegen bei den jeweiligen Organisationen.",
+                chBtn: "OFFIZIELLER SENDER"
                 title: "CENTRE SPORTS MOTO", news: "• Le week-end de course arrive bientôt!", pilots: "France: Johann Zarco, Fabio Quartararo", live: "INFO & PROGRAMME DES ÉMISSIONS", cdLabel: "TEMPS RESTANT AVANT LE GP DE TURQUIE 2036:",
                 sidebar: { sec1:"Diffusions", canli:"Motorsport Info", tv:"Chaînes TV", platform:"Plateformes Spéciales", sec2:"Info", markalar:"Encyclopédie des Marques", sec3:"Courses", takvim:"Calendrier 2026", biniciler:"Pilotes & Équipes", haberler:"Actualités", global:"Sports Mondiaux", mission:"Notre Mission", missionText:"Soutenir le monde du motorsport et connecter les fans aux diffusions légales et de qualité.", missionLink:"Guide de Streaming Légal" },
                 platform: {
@@ -90,9 +87,8 @@
                 nav: ["Accueil","Courses ▾","Galerie","Sites Officiels","Contact"],
                 secTitles: { canli:"Sites Officiels", tv:"Chaînes TV par Pays", platform:"Plateformes Spéciales", markalar:"Encyclopédie des Marques", takvim:"Calendrier MotoGP 2026", biniciler:"Pilotes & Équipes", haberler:"Dernières Actualités", global:"Sports Mondiaux" },
                 rssTabs: ["MotoGP","WorldSBK","Formule 1"],
-                footer: "Ce site n'est pas un diffuseur officiel. Tous les droits de diffusion appartiennent aux organisations concernées."
-            }
-        };
+                footer: "Ce site n'est pas un diffuseur officiel. Tous les droits de diffusion appartiennent aux organisations concernées.",
+                chBtn: "DIFFUSEUR OFFICIEL"
 
         function switchLang(lang) {
             document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
@@ -127,6 +123,7 @@
             const tabs = document.querySelectorAll(".rss-tab");
             d.rssTabs.forEach((txt, i) => { if (tabs[i]) tabs[i].innerText = txt; });
             const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
+            if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
             if (d.platform) {
                 const ids = ["title","p1","p2","p3","p4","p5","p6","disc"];
                 ids.forEach(k => { const el = document.getElementById("plat-"+k); if (el) el.innerHTML = d.platform[k]; });
@@ -564,13 +561,51 @@
         <a href="https://www.youtube.com/motogp" target="_blank" title="MotoGP YouTube" style="width:30px;height:30px;border-radius:6px;background:#ff0000;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1rem;transition:opacity .2s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">▶</a>
         <a href="https://www.facebook.com/MotoGP/" target="_blank" title="MotoGP Facebook" style="width:30px;height:30px;border-radius:6px;background:#1877f2;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.75rem;font-weight:900;color:white;transition:opacity .2s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">f</a>
     </div>
-    <div class="topnav-lang">
-        <button class="lang-btn active" onclick="switchLang('tr')">🇹🇷 TR</button>
-        <button class="lang-btn" onclick="switchLang('en')">🇬🇧 EN</button>
+    <div class="topnav-lang" style="display:flex;align-items:center;gap:4px;">
+        <span style="font-size:.62rem;color:#7a90b8;font-weight:700;margin-right:4px;letter-spacing:1px;">LANG</span>
+        <button class="lang-btn" onclick="switchLang('tr')">🇹🇷 TR</button>
+        <button class="lang-btn active" onclick="switchLang('en')">🇬🇧 EN</button>
         <button class="lang-btn" onclick="switchLang('de')">🇩🇪 DE</button>
         <button class="lang-btn" onclick="switchLang('fr')">🇫🇷 FR</button>
     </div>
 </nav>
+<script>
+    // Default language: English
+    document.addEventListener("DOMContentLoaded", function() {
+        const d = langData["en"];
+        const mt = document.getElementById("main-title"); if (mt) mt.innerText = d.title;
+        const pi = document.getElementById("pilot-info"); if (pi) pi.innerText = d.pilots;
+        const cdl = document.getElementById("cd-label-text"); if (cdl) cdl.innerText = d.cdLabel;
+        document.getElementById("sb-sec1").innerText = d.sidebar.sec1;
+        document.getElementById("sb-canli").innerText = d.sidebar.canli;
+        document.getElementById("sb-tv").innerText = d.sidebar.tv;
+        document.getElementById("sb-platform").innerText = d.sidebar.platform;
+        document.getElementById("sb-sec2").innerText = d.sidebar.sec2;
+        document.getElementById("sb-markalar").innerText = d.sidebar.markalar;
+        document.getElementById("sb-sec3").innerText = d.sidebar.sec3;
+        document.getElementById("sb-takvim").innerText = d.sidebar.takvim;
+        document.getElementById("sb-biniciler").innerText = d.sidebar.biniciler;
+        document.getElementById("sb-haberler").innerText = d.sidebar.haberler;
+        document.getElementById("sb-global").innerText = d.sidebar.global;
+        document.getElementById("sb-mission").innerText = d.sidebar.mission;
+        document.getElementById("sb-mission-text").innerText = d.sidebar.missionText;
+        document.getElementById("sb-mission-link").innerText = d.sidebar.missionLink;
+        const navLinks = document.querySelectorAll(".topnav-link");
+        d.nav.forEach((txt, i) => { if (navLinks[i]) navLinks[i].innerText = txt; });
+        const st = d.secTitles;
+        const map = { "st-canli":st.canli,"st-tv":st.tv,"st-platform":st.platform,"st-markalar":st.markalar,"st-takvim":st.takvim,"st-biniciler":st.biniciler,"st-haberler":st.haberler,"st-global":st.global };
+        Object.entries(map).forEach(([id, txt]) => { const el = document.getElementById(id); if (el) el.innerText = txt; });
+        const tabs = document.querySelectorAll(".rss-tab");
+        d.rssTabs.forEach((txt, i) => { if (tabs[i]) tabs[i].innerText = txt; });
+        const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
+        if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
+        if (d.platform) {
+            const ids = ["title","p1","p2","p3","p4","p5","p6","disc"];
+            ids.forEach(k => { const el = document.getElementById("plat-"+k); if (el) el.innerHTML = d.platform[k]; });
+        }
+        document.documentElement.lang = "en";
+    });
+</script>
 
 <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
 
@@ -610,14 +645,16 @@
                 <div style="font-size:.85rem;color:#aaccee;line-height:1.8;">MotoGP, WorldSBK ve Formula 1 yarışlarını takip edebileceğiniz, güncel haberler, sürücü kadroları ve yarış takvimlerine ulaşabileceğiniz merkezi platformunuz.</div>
             </div>
             <div class="channel-grid">
-                <div class="channel-card"><div class="channel-logo" style="background:#100a0a;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#100a0a"/><rect x="6" y="8" width="10" height="10" fill="white"/><rect x="16" y="8" width="10" height="10" fill="#c00"/><rect x="6" y="18" width="10" height="10" fill="#c00"/><rect x="16" y="18" width="10" height="10" fill="white"/><rect x="6" y="28" width="10" height="10" fill="white"/><rect x="16" y="28" width="10" height="10" fill="#c00"/><text x="32" y="30" font-family="Arial Black" font-size="17" font-weight="900" font-style="italic" fill="white">Moto</text><text x="76" y="30" font-family="Arial Black" font-size="17" font-weight="900" font-style="italic" fill="#c00">GP</text><text x="32" y="46" font-family="Arial" font-size="9" fill="#666" letter-spacing="2">CHANNEL</text></svg></div><div class="channel-info"><div class="channel-name">MotoGP Official</div><div class="channel-badge">✔ RESMİ YAPIMCI</div></div><a class="ch-btn" href="https://www.motogp.com/en/live" target="_blank">RESMİ YAPIMCI</a></div>
-                <div class="channel-card"><div class="channel-logo" style="background:#0a0d18;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#0a0d18"/><text x="80" y="26" font-family="Arial Black" font-size="15" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">World</text><line x1="20" y1="30" x2="140" y2="30" stroke="#0066cc" stroke-width="1.5"/><text x="80" y="48" font-family="Arial Black" font-size="18" font-weight="900" fill="#0099ff" text-anchor="middle" letter-spacing="2">SBK</text></svg></div><div class="channel-info"><div class="channel-name">WorldSBK Official</div><div class="channel-badge">✔ RESMİ YAYINCI</div></div><a class="ch-btn" href="https://www.worldsbk.com/en/live" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
-                <div class="channel-card"><div class="channel-logo" style="background:#0a0808;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#0a0808"/><rect x="24" y="10" width="46" height="40" rx="4" fill="#e10600"/><text x="47" y="38" font-family="Arial Black" font-size="22" font-weight="900" fill="white" text-anchor="middle">F</text><polygon points="68,10 74,10 68,50 62,50" fill="white"/><rect x="72" y="10" width="64" height="40" rx="4" fill="white"/><text x="104" y="38" font-family="Arial Black" font-size="22" font-weight="900" fill="#e10600" text-anchor="middle">1</text></svg></div><div class="channel-info"><div class="channel-name">Formula 1 Official</div><div class="channel-badge">✔ RESMİ YAYINCI</div></div><a class="ch-btn" href="https://www.formula1.com/en/live" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
-                <div class="channel-card"><div class="channel-logo" style="background:#060c1a;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#060c1a"/><circle cx="44" cy="30" r="22" fill="none" stroke="#0099ff" stroke-width="2.5"/><text x="44" y="38" font-family="Arial Black" font-size="24" font-weight="900" fill="#0099ff" text-anchor="middle">S</text><text x="90" y="26" font-family="Arial Black" font-size="13" font-weight="900" fill="white" letter-spacing="1">SPORT</text><text x="90" y="44" font-family="Arial" font-size="11" fill="#0099ff" letter-spacing="2">PLUS</text></svg></div><div class="channel-info"><div class="channel-name">S Sport Plus</div><div class="channel-badge">✔ RESMİ YAYINCI</div></div><a class="ch-btn" href="https://www.ssportplus.com" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
-                <div class="channel-card"><div class="channel-logo" style="background:#003da5;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#003da5"/><text x="80" y="24" font-family="Arial Black" font-size="11" font-weight="900" fill="white" text-anchor="middle" letter-spacing="3">EURO</text><rect x="16" y="28" width="128" height="3" fill="#ffcc00"/><text x="80" y="50" font-family="Arial Black" font-size="15" font-weight="900" fill="#ffcc00" text-anchor="middle" letter-spacing="3">SPORT</text></svg></div><div class="channel-info"><div class="channel-name">Eurosport</div><div class="channel-badge" style="color:var(--muted);">🌍 Avrupa</div></div><a class="ch-btn" href="https://www.eurosport.com" target="_blank">RESMİ YAYINCI</a></div>
-                <div class="channel-card"><div class="channel-logo" style="background:#111;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#111"/><rect x="12" y="12" width="136" height="36" rx="6" fill="#ff4d00"/><text x="80" y="38" font-family="Arial Black" font-size="22" font-weight="900" fill="white" text-anchor="middle" letter-spacing="2">TNT</text></svg></div><div class="channel-info"><div class="channel-name">TNT Sports</div><div class="channel-badge" style="color:var(--muted);">🇬🇧 İngiltere</div></div><a class="ch-btn" href="https://www.tntsports.co.uk" target="_blank">RESMİ YAYINCI</a></div>
-                <div class="channel-card"><div class="channel-logo" style="background:#cc0000;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#cc0000"/><text x="80" y="16" font-family="Arial Black" font-size="9" font-weight="900" fill="rgba(255,255,255,0.7)" text-anchor="middle" letter-spacing="2">RED BULL</text><ellipse cx="60" cy="36" rx="18" ry="14" fill="#ffcc00" opacity="0.85"/><ellipse cx="100" cy="36" rx="18" ry="14" fill="#ffcc00" opacity="0.85"/><ellipse cx="80" cy="44" rx="12" ry="9" fill="#ff8800" opacity="0.9"/><text x="80" y="57" font-family="Arial Black" font-size="9" font-weight="900" fill="rgba(255,255,255,0.7)" text-anchor="middle" letter-spacing="3">TV</text></svg></div><div class="channel-info"><div class="channel-name">Red Bull TV</div><div class="channel-badge" style="color:var(--muted);">🌐 Official</div></div><a class="ch-btn secondary" href="https://www.redbull.com/int-en/tv/" target="_blank">İZLE</a></div>
-                <div class="channel-card"><div class="channel-logo" style="background:#040c18;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#040c18"/><rect x="8" y="10" width="68" height="40" rx="6" fill="#00a8e0"/><text x="42" y="37" font-family="Arial Black" font-size="18" font-weight="900" fill="white" text-anchor="middle">sky</text><text x="98" y="28" font-family="Arial Black" font-size="12" font-weight="900" fill="white" letter-spacing="1">SPORT</text><text x="98" y="46" font-family="Arial Black" font-size="12" font-weight="900" fill="#00a8e0" letter-spacing="1">ITALIA</text></svg></div><div class="channel-info"><div class="channel-name">Sky Sport Italia</div><div class="channel-badge" style="color:var(--muted);">🇮🇹 İtalya</div></div><a class="ch-btn" href="https://sport.sky.it" target="_blank">RESMİ YAYINCI</a></div>
+                <div class="channel-card"><div class="channel-logo" style="background:#100a0a;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#100a0a"/><rect x="6" y="8" width="10" height="10" fill="white"/><rect x="16" y="8" width="10" height="10" fill="#c00"/><rect x="6" y="18" width="10" height="10" fill="#c00"/><rect x="16" y="18" width="10" height="10" fill="white"/><rect x="6" y="28" width="10" height="10" fill="white"/><rect x="16" y="28" width="10" height="10" fill="#c00"/><text x="32" y="30" font-family="Arial Black" font-size="17" font-weight="900" font-style="italic" fill="white">Moto</text><text x="76" y="30" font-family="Arial Black" font-size="17" font-weight="900" font-style="italic" fill="#c00">GP</text><text x="32" y="46" font-family="Arial" font-size="9" fill="#666" letter-spacing="2">CHANNEL</text></svg></div><div class="channel-info"><div class="channel-name">MotoGP Official</div><div class="channel-badge">✔ RESMİ YAYIN KURULUŞU</div></div><a class="ch-btn ch-label" href="https://www.motogp.com/en/live" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="channel-card"><div class="channel-logo" style="background:#0a0d18;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#0a0d18"/><text x="80" y="26" font-family="Arial Black" font-size="15" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">World</text><line x1="20" y1="30" x2="140" y2="30" stroke="#0066cc" stroke-width="1.5"/><text x="80" y="48" font-family="Arial Black" font-size="18" font-weight="900" fill="#0099ff" text-anchor="middle" letter-spacing="2">SBK</text></svg></div><div class="channel-info"><div class="channel-name">WorldSBK Official</div><div class="channel-badge">✔ RESMİ YAYIN KURULUŞU</div></div><a class="ch-btn ch-label" href="https://www.worldsbk.com/en/live" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="channel-card"><div class="channel-logo" style="background:#0a0808;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#0a0808"/><rect x="24" y="10" width="46" height="40" rx="4" fill="#e10600"/><text x="47" y="38" font-family="Arial Black" font-size="22" font-weight="900" fill="white" text-anchor="middle">F</text><polygon points="68,10 74,10 68,50 62,50" fill="white"/><rect x="72" y="10" width="64" height="40" rx="4" fill="white"/><text x="104" y="38" font-family="Arial Black" font-size="22" font-weight="900" fill="#e10600" text-anchor="middle">1</text></svg></div><div class="channel-info"><div class="channel-name">Formula 1 Official</div><div class="channel-badge">✔ RESMİ YAYIN KURULUŞU</div></div><a class="ch-btn ch-label" href="https://www.formula1.com/en/live" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="channel-card"><div class="channel-logo" style="background:#060c1a;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#060c1a"/><circle cx="44" cy="30" r="22" fill="none" stroke="#0099ff" stroke-width="2.5"/><text x="44" y="38" font-family="Arial Black" font-size="24" font-weight="900" fill="#0099ff" text-anchor="middle">S</text><text x="90" y="26" font-family="Arial Black" font-size="13" font-weight="900" fill="white" letter-spacing="1">SPORT</text><text x="90" y="44" font-family="Arial" font-size="11" fill="#0099ff" letter-spacing="2">PLUS</text></svg></div><div class="channel-info"><div class="channel-name">S Sport Plus</div><div class="channel-badge">✔ RESMİ YAYIN KURULUŞU</div></div><a class="ch-btn ch-label" href="https://www.ssportplus.com" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="channel-card"><div class="channel-logo" style="background:#003da5;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#003da5"/><text x="80" y="24" font-family="Arial Black" font-size="11" font-weight="900" fill="white" text-anchor="middle" letter-spacing="3">EURO</text><rect x="16" y="28" width="128" height="3" fill="#ffcc00"/><text x="80" y="50" font-family="Arial Black" font-size="15" font-weight="900" fill="#ffcc00" text-anchor="middle" letter-spacing="3">SPORT</text></svg></div><div class="channel-info"><div class="channel-name">Eurosport</div><div class="channel-badge">✔ RESMİ YAYIN KURULUŞU</div></div><a class="ch-btn ch-label" href="https://www.eurosport.com" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="channel-card"><div class="channel-logo" style="background:#111;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#111"/><rect x="12" y="12" width="136" height="36" rx="6" fill="#ff4d00"/><text x="80" y="38" font-family="Arial Black" font-size="22" font-weight="900" fill="white" text-anchor="middle" letter-spacing="2">TNT</text></svg></div><div class="channel-info"><div class="channel-name">TNT Sports</div><div class="channel-badge">✔ RESMİ YAYIN KURULUŞU</div></div><a class="ch-btn ch-label" href="https://www.tntsports.co.uk" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="channel-card"><div class="channel-logo" style="background:#cc0000;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#cc0000"/><text x="80" y="16" font-family="Arial Black" font-size="9" font-weight="900" fill="rgba(255,255,255,0.7)" text-anchor="middle" letter-spacing="2">RED BULL</text><ellipse cx="60" cy="36" rx="18" ry="14" fill="#ffcc00" opacity="0.85"/><ellipse cx="100" cy="36" rx="18" ry="14" fill="#ffcc00" opacity="0.85"/><ellipse cx="80" cy="44" rx="12" ry="9" fill="#ff8800" opacity="0.9"/><text x="80" y="57" font-family="Arial Black" font-size="9" font-weight="900" fill="rgba(255,255,255,0.7)" text-anchor="middle" letter-spacing="3">TV</text></svg></div><div class="channel-info"><div class="channel-name">Red Bull TV</div><div class="channel-badge">✔ RESMİ YAYIN KURULUŞU</div></div><a class="ch-btn ch-label" href="https://www.redbull.com/int-en/tv/" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="channel-card"><div class="channel-logo" style="background:#040c18;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#040c18"/><rect x="8" y="10" width="68" height="40" rx="6" fill="#00a8e0"/><text x="42" y="37" font-family="Arial Black" font-size="18" font-weight="900" fill="white" text-anchor="middle">sky</text><text x="98" y="28" font-family="Arial Black" font-size="12" font-weight="900" fill="white" letter-spacing="1">SPORT</text><text x="98" y="46" font-family="Arial Black" font-size="12" font-weight="900" fill="#00a8e0" letter-spacing="1">ITALIA</text></svg></div><div class="channel-info"><div class="channel-name">Sky Sport Italia</div><div class="channel-badge">✔ RESMİ YAYIN KURULUŞU</div></div><a class="ch-btn ch-label" href="https://sport.sky.it" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="channel-card"><div class="channel-logo" style="background:#080c10;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#080c10"/><circle cx="80" cy="30" r="20" fill="none" stroke="#555" stroke-width="2"/><text x="80" y="36" font-family="Arial" font-size="22" fill="#aaa" text-anchor="middle">★</text></svg></div><div class="channel-info"><div class="channel-name">Global Sports</div><div class="channel-badge">✔ RESMİ YAYIN KURULUŞU</div></div><a class="ch-btn ch-label" href="https://www.uefa.com" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="channel-card"><div class="channel-logo" style="background:#08101a;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#08101a"/><text x="80" y="18" font-family="Arial Black" font-size="8" font-weight="700" fill="#aaa" text-anchor="middle" letter-spacing="1">ŞAMPİYONLAR</text><text x="80" y="32" font-family="Arial Black" font-size="10" font-weight="900" fill="#ffcc00" text-anchor="middle" letter-spacing="1">LİGİ FİNALİ</text><text x="80" y="48" font-family="Arial" font-size="18" fill="#ffcc00" text-anchor="middle">★★★</text></svg></div><div class="channel-info"><div class="channel-name">Şampiyonlar Ligi</div><div class="channel-badge">✔ RESMİ YAYIN KURULUŞU</div></div><a class="ch-btn ch-label" href="https://www.uefa.com/uefachampionsleague" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
             </div>
             <p id="pilot-info" style="margin-top:18px;color:var(--muted);font-style:italic;font-size:.82rem;text-align:center;">Türkiye: Kenan Sofuoğlu, Toprak Razgatlıoğlu</p>
         </div>
