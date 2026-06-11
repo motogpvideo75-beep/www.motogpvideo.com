@@ -179,7 +179,6 @@
             { name:"Barni Spark Racing", logo:"⚡", country:"🇮🇹 İtalya", founded:"2004", championships:0, riders:"Alvaro Bautista", history:"Marco Barnabo'nun kurduğu köklü WorldSBK özel takımı. Ducati Panigale V4R ile yarışan takım, Alvaro Bautista ile 2026'da sahaya çıktı.", url:"https://www.worldsbk.com/en/teams/barni" }
         ];
 
-        /* ── TÜM SÜRÜCÜ VERİLERİ ── */
         const allRiders = {
             motogp: {
                 label:"🏁 MotoGP 2026", color:"#e8001d",
@@ -441,9 +440,14 @@
         .ch-btn.secondary { background:#1a2840; border:1px solid var(--border); }
         .ch-btn.secondary:hover { background:var(--card2); }
         .flag-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); gap:10px; }
-        .flag-card { background:var(--card); border:1px solid var(--border); border-radius:10px; overflow:hidden; display:flex; flex-direction:column; align-items:center; padding:14px 8px 12px; gap:8px; transition:border-color .2s,transform .15s; cursor:default; }
+
+        /* ✅ DÜZELTİLDİ: overflow:hidden -> overflow:visible */
+        .flag-card { background:var(--card); border:1px solid var(--border); border-radius:10px; overflow:visible; display:flex; flex-direction:column; align-items:center; padding:14px 8px 12px; gap:8px; transition:border-color .2s,transform .15s; cursor:default; }
         .flag-card:hover { border-color:var(--accent); transform:translateY(-2px); }
-        .flag-box { font-size:2.2rem; line-height:1; }
+
+        /* ✅ DÜZELTİLDİ: flex centering ve min-height eklendi */
+        .flag-box { font-size:2.2rem; line-height:1; display:flex; align-items:center; justify-content:center; min-height:44px; overflow:visible; }
+
         .flag-name { font-size:.65rem; font-weight:800; letter-spacing:.5px; color:#aaccee; text-align:center; text-transform:uppercase; margin-top:2px; }
         .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; }
         .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px 14px 14px; display:flex; flex-direction:column; align-items:center; gap:10px; text-decoration:none; color:white; transition:border-color .2s,transform .15s; }
@@ -482,10 +486,7 @@
         .news-title { font-size:.84rem; font-weight:700; line-height:1.35; flex:1; }
         .news-date { font-size:.68rem; color:var(--muted); }
         .news-footer { display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:4px; }
-        @keyframes titleBlink {
-            0%,100% { opacity:1; }
-            50% { opacity:0.3; }
-        }
+        @keyframes titleBlink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
         .takvim-list { display:flex; flex-direction:column; gap:6px; }
         .takvim-row { display:flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:10px 14px; transition:border-color .2s; }
         .takvim-row:hover { border-color:var(--accent); }
@@ -498,8 +499,6 @@
         .right-panel .rflag:hover { transform:scale(1.3); }
         @media (max-width:900px) { .right-panel { display:none; } }
         footer { margin-top:28px; padding-top:14px; border-top:1px solid var(--border); color:#445566; font-size:.75rem; text-align:center; }
-
-        /* ── RIDER CARDS ── */
         .cat-tabs { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
         .cat-tab { background:var(--card); border:1px solid var(--border); color:#9aadcc; padding:6px 14px; border-radius:6px; cursor:pointer; font-size:.75rem; font-weight:700; transition:all .2s; }
         .cat-tab:hover { background:var(--card2); color:white; }
@@ -518,7 +517,6 @@
         .rider-country { font-size:.58rem; color:var(--muted); margin-bottom:4px; }
         .rider-team { font-size:.56rem; color:#7a90b8; line-height:1.4; border-left:2px solid; padding-left:5px; }
         .rider-bike { display:inline-block; font-size:.5rem; font-weight:700; letter-spacing:1px; padding:2px 5px; border-radius:3px; margin-top:4px; text-transform:uppercase; color:#fff; }
-
         @media (max-width:900px) { .channel-grid { grid-template-columns:repeat(3,1fr); } .rider-grid { grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); } }
         @media (max-width:768px) { .sidebar { position:fixed; top:90px; left:0; height:calc(100vh - 90px); transform:translateX(-100%); z-index:95; } .sidebar.open { transform:translateX(0); } .channel-grid { grid-template-columns:repeat(2,1fr); } .topnav-links { display:none; } .rider-grid { grid-template-columns:repeat(3,1fr); } }
         @media (max-width:480px) { .channel-grid { grid-template-columns:repeat(2,1fr); } .cd-label { display:none; } .rider-grid { grid-template-columns:repeat(2,1fr); } }
@@ -538,7 +536,6 @@
         </div>
     </div>
     <div class="cd-right">
-        
         <div class="lang-flags"><span class="active">TR</span><span>GB EN</span><span>FR FR</span></div>
     </div>
 </div>
@@ -603,56 +600,32 @@
     </nav>
 
     <main class="main">
-
-
-
-        <!-- CANLI -->
         <div class="section active" id="sec-canli">
-
-            <!-- KARŞILAMA YAZISI -->
             <div style="background:linear-gradient(135deg,#0d1220 0%,#1a0505 50%,#0d1220 100%);border:1px solid #e8001d44;border-radius:12px;padding:22px;margin-bottom:18px;text-align:center;">
                 <div style="font-size:1.3rem;font-weight:900;letter-spacing:1.5px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:12px;animation:titleBlink 2s infinite;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 36 24"><rect width="36" height="24" fill="#E30A17"/><circle cx="13" cy="12" r="6" fill="white"/><circle cx="15" cy="12" r="4.8" fill="#E30A17"/><polygon points="19.5,9.5 22.5,12 19.5,14.5 20.5,12" fill="white"/><circle cx="22.5" cy="10.5" r="0.8" fill="white"/></svg>
                     🏍️ MOTOR SPORLARI DÜNYASINA HOŞ GELDİNİZ!
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 36 24"><rect width="36" height="24" fill="#E30A17"/><circle cx="13" cy="12" r="6" fill="white"/><circle cx="15" cy="12" r="4.8" fill="#E30A17"/><polygon points="19.5,9.5 22.5,12 19.5,14.5 20.5,12" fill="white"/><circle cx="22.5" cy="10.5" r="0.8" fill="white"/></svg>
                 </div>
-                <div style="font-size:.85rem;color:#aaccee;line-height:1.8;">
-                    MotoGP, WorldSBK ve Formula 1 yarışlarını takip edebileceğiniz, güncel haberler, sürücü kadroları ve yarış takvimlerine ulaşabileceğiniz merkezi platformunuz.
-                </div>
+                <div style="font-size:.85rem;color:#aaccee;line-height:1.8;">MotoGP, WorldSBK ve Formula 1 yarışlarını takip edebileceğiniz, güncel haberler, sürücü kadroları ve yarış takvimlerine ulaşabileceğiniz merkezi platformunuz.</div>
             </div>
-
             <div class="channel-grid">
-
                 <div class="channel-card"><div class="channel-logo" style="background:#100a0a;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#100a0a"/><rect x="6" y="8" width="10" height="10" fill="white"/><rect x="16" y="8" width="10" height="10" fill="#c00"/><rect x="6" y="18" width="10" height="10" fill="#c00"/><rect x="16" y="18" width="10" height="10" fill="white"/><rect x="6" y="28" width="10" height="10" fill="white"/><rect x="16" y="28" width="10" height="10" fill="#c00"/><text x="32" y="30" font-family="Arial Black" font-size="17" font-weight="900" font-style="italic" fill="white">Moto</text><text x="76" y="30" font-family="Arial Black" font-size="17" font-weight="900" font-style="italic" fill="#c00">GP</text><text x="32" y="46" font-family="Arial" font-size="9" fill="#666" letter-spacing="2">CHANNEL</text></svg></div><div class="channel-info"><div class="channel-name">MotoGP Official</div><div class="channel-badge">✔ RESMİ YAPIMCI</div></div><a class="ch-btn" href="https://www.motogp.com/en/live" target="_blank">RESMİ YAPIMCI</a></div>
-
                 <div class="channel-card"><div class="channel-logo" style="background:#0a0d18;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#0a0d18"/><text x="80" y="26" font-family="Arial Black" font-size="15" font-weight="900" fill="white" text-anchor="middle" letter-spacing="1">World</text><line x1="20" y1="30" x2="140" y2="30" stroke="#0066cc" stroke-width="1.5"/><text x="80" y="48" font-family="Arial Black" font-size="18" font-weight="900" fill="#0099ff" text-anchor="middle" letter-spacing="2">SBK</text></svg></div><div class="channel-info"><div class="channel-name">WorldSBK Official</div><div class="channel-badge">✔ RESMİ YAYINCI</div></div><a class="ch-btn" href="https://www.worldsbk.com/en/live" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
-
                 <div class="channel-card"><div class="channel-logo" style="background:#0a0808;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#0a0808"/><rect x="24" y="10" width="46" height="40" rx="4" fill="#e10600"/><text x="47" y="38" font-family="Arial Black" font-size="22" font-weight="900" fill="white" text-anchor="middle">F</text><polygon points="68,10 74,10 68,50 62,50" fill="white"/><rect x="72" y="10" width="64" height="40" rx="4" fill="white"/><text x="104" y="38" font-family="Arial Black" font-size="22" font-weight="900" fill="#e10600" text-anchor="middle">1</text></svg></div><div class="channel-info"><div class="channel-name">Formula 1 Official</div><div class="channel-badge">✔ RESMİ YAYINCI</div></div><a class="ch-btn" href="https://www.formula1.com/en/live" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
-
                 <div class="channel-card"><div class="channel-logo" style="background:#060c1a;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#060c1a"/><circle cx="44" cy="30" r="22" fill="none" stroke="#0099ff" stroke-width="2.5"/><text x="44" y="38" font-family="Arial Black" font-size="24" font-weight="900" fill="#0099ff" text-anchor="middle">S</text><text x="90" y="26" font-family="Arial Black" font-size="13" font-weight="900" fill="white" letter-spacing="1">SPORT</text><text x="90" y="44" font-family="Arial" font-size="11" fill="#0099ff" letter-spacing="2">PLUS</text></svg></div><div class="channel-info"><div class="channel-name">S Sport Plus</div><div class="channel-badge">✔ RESMİ YAYINCI</div></div><a class="ch-btn" href="https://www.ssportplus.com" target="_blank">RESMİ YAYIN KURULUŞU</a></div>
-
-                <div class="channel-card"><div class="channel-logo" style="background:#080c10;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#080c10"/><circle cx="80" cy="30" r="20" fill="none" stroke="#555" stroke-width="2"/><text x="80" y="36" font-family="Arial" font-size="22" fill="#aaa" text-anchor="middle">★</text></svg></div><div class="channel-info"><div class="channel-name">Global Mega Elitanşılar</div><div class="channel-badge orange">◈ UEFA, C, SEA</div></div><a class="ch-btn secondary" href="#" target="_blank">İZLE</a></div>
-
                 <div class="channel-card"><div class="channel-logo" style="background:#003da5;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#003da5"/><text x="80" y="24" font-family="Arial Black" font-size="11" font-weight="900" fill="white" text-anchor="middle" letter-spacing="3">EURO</text><rect x="16" y="28" width="128" height="3" fill="#ffcc00"/><text x="80" y="50" font-family="Arial Black" font-size="15" font-weight="900" fill="#ffcc00" text-anchor="middle" letter-spacing="3">SPORT</text></svg></div><div class="channel-info"><div class="channel-name">Eurosport</div><div class="channel-badge" style="color:var(--muted);">🌍 Avrupa</div></div><a class="ch-btn" href="https://www.eurosport.com" target="_blank">RESMİ YAYINCI</a></div>
-
-                <div class="channel-card"><div class="channel-logo" style="background:#111;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#111"/><rect x="12" y="12" width="136" height="36" rx="6" fill="#ff4d00"/><text x="80" y="38" font-family="Arial Black" font-size="22" font-weight="900" fill="white" text-anchor="middle" letter-spacing="2">TNT</text></svg></div><div class="channel-info"><div class="channel-name">TNT Sports</div><div class="channel-badge" style="color:var(--muted);">🇬🇧 BT / Right, Kişilik</div></div><a class="ch-btn" href="https://www.tntsports.co.uk" target="_blank">RESMİ YAYINCI</a></div>
-
+                <div class="channel-card"><div class="channel-logo" style="background:#111;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#111"/><rect x="12" y="12" width="136" height="36" rx="6" fill="#ff4d00"/><text x="80" y="38" font-family="Arial Black" font-size="22" font-weight="900" fill="white" text-anchor="middle" letter-spacing="2">TNT</text></svg></div><div class="channel-info"><div class="channel-name">TNT Sports</div><div class="channel-badge" style="color:var(--muted);">🇬🇧 İngiltere</div></div><a class="ch-btn" href="https://www.tntsports.co.uk" target="_blank">RESMİ YAYINCI</a></div>
                 <div class="channel-card"><div class="channel-logo" style="background:#cc0000;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#cc0000"/><text x="80" y="16" font-family="Arial Black" font-size="9" font-weight="900" fill="rgba(255,255,255,0.7)" text-anchor="middle" letter-spacing="2">RED BULL</text><ellipse cx="60" cy="36" rx="18" ry="14" fill="#ffcc00" opacity="0.85"/><ellipse cx="100" cy="36" rx="18" ry="14" fill="#ffcc00" opacity="0.85"/><ellipse cx="80" cy="44" rx="12" ry="9" fill="#ff8800" opacity="0.9"/><text x="80" y="57" font-family="Arial Black" font-size="9" font-weight="900" fill="rgba(255,255,255,0.7)" text-anchor="middle" letter-spacing="3">TV</text></svg></div><div class="channel-info"><div class="channel-name">Red Bull TV</div><div class="channel-badge" style="color:var(--muted);">🌐 Official</div></div><a class="ch-btn secondary" href="https://www.redbull.com/int-en/tv/" target="_blank">İZLE</a></div>
-
                 <div class="channel-card"><div class="channel-logo" style="background:#040c18;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#040c18"/><rect x="8" y="10" width="68" height="40" rx="6" fill="#00a8e0"/><text x="42" y="37" font-family="Arial Black" font-size="18" font-weight="900" fill="white" text-anchor="middle">sky</text><text x="98" y="28" font-family="Arial Black" font-size="12" font-weight="900" fill="white" letter-spacing="1">SPORT</text><text x="98" y="46" font-family="Arial Black" font-size="12" font-weight="900" fill="#00a8e0" letter-spacing="1">ITALIA</text></svg></div><div class="channel-info"><div class="channel-name">Sky Sport Italia</div><div class="channel-badge" style="color:var(--muted);">🇮🇹 İtalya</div></div><a class="ch-btn" href="https://sport.sky.it" target="_blank">RESMİ YAYINCI</a></div>
-
-                <div class="channel-card"><div class="channel-logo" style="background:#08101a;"><svg viewBox="0 0 160 60" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="60" fill="#08101a"/><text x="80" y="18" font-family="Arial Black" font-size="8" font-weight="700" fill="#aaa" text-anchor="middle" letter-spacing="1">ŞAMPİYONLAR</text><text x="80" y="32" font-family="Arial Black" font-size="10" font-weight="900" fill="#ffcc00" text-anchor="middle" letter-spacing="1">LİGİ FİNALİ</text><text x="80" y="48" font-family="Arial" font-size="18" fill="#ffcc00" text-anchor="middle">★★★</text></svg></div><div class="channel-info"><div class="channel-name">Şampiyonlar Ligi Finali</div><div class="channel-badge">▶ RESMİ YAYINCI</div></div><a class="ch-btn" href="https://www.uefa.com" target="_blank">VV RESMİ YAYINCI</a></div>
-
             </div>
             <p id="pilot-info" style="margin-top:18px;color:var(--muted);font-style:italic;font-size:.82rem;text-align:center;">Türkiye: Kenan Sofuoğlu, Toprak Razgatlıoğlu</p>
         </div>
 
         <div class="section" id="sec-tv">
-            <div class="sec-title" id="st-tv">TV Kanallari Katalogu</div>
-
+            <div class="sec-title" id="st-tv">TV Kanalları — Ülkeye Göre</div>
             <div style="margin-bottom:28px;">
                 <div style="font-size:.9rem;font-weight:900;color:#e8001d;letter-spacing:2px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e8001d;">🏍️ MOTOR SPORLARI YARISI KANALLARI</div>
-
                 <div style="font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:2px;margin:12px 0 8px;">🇺🇸 ABD</div>
                 <div class="grid">
                     <div class="card"><h3>Fox Sports</h3><span class="flag">ABD</span><a href="https://www.foxsports.com" target="_blank" class="btn">GİT</a></div>
@@ -660,7 +633,6 @@
                     <div class="card"><h3>NBC Sports</h3><span class="flag">ABD</span><a href="https://www.nbcsports.com" target="_blank" class="btn">GİT</a></div>
                     <div class="card"><h3>Peacock</h3><span class="flag">ABD</span><a href="https://www.peacocktv.com" target="_blank" class="btn">GİT</a></div>
                 </div>
-
                 <div style="font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:2px;margin:16px 0 8px;">🇪🇺 AVRUPA</div>
                 <div class="grid">
                     <div class="card"><h3>Sky Sport</h3><span class="flag">İngiltere / İtalya</span><a href="https://www.skysports.com" target="_blank" class="btn">GİT</a></div>
@@ -670,50 +642,6 @@
                     <div class="card"><h3>DAZN</h3><span class="flag">Avrupa</span><a href="https://www.dazn.com" target="_blank" class="btn">GİT</a></div>
                     <div class="card"><h3>ServusTV</h3><span class="flag">Almanya / Avusturya</span><a href="https://www.servustv.com" target="_blank" class="btn">GİT</a></div>
                 </div>
-
-                <div style="font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:2px;margin:16px 0 8px;">🌏 ASYA</div>
-                <div class="grid">
-                    <div class="card"><h3>beIN Sports</h3><span class="flag">Orta Dogu / Asya</span><a href="https://www.beinsports.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>Fox Sports Asia</h3><span class="flag">Asya</span><a href="https://www.foxsportsasia.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>Star Sports</h3><span class="flag">Hindistan / Asya</span><a href="https://www.hotstar.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>J Sports</h3><span class="flag">Japonya</span><a href="https://www.jsports.co.jp" target="_blank" class="btn">GİT</a></div>
-                </div>
-            </div>
-
-            <div>
-                <div style="font-size:.9rem;font-weight:900;color:#0066cc;letter-spacing:2px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #0066cc;">🌍 DUNYA SPORLARI KANALLARI</div>
-
-                <div style="font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:2px;margin:12px 0 8px;">⚽ FUTBOL</div>
-                <div class="grid">
-                    <div class="card"><h3>UEFA TV</h3><span class="flag">Sampiyonlar Ligi</span><a href="https://www.uefa.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>Premier League</h3><span class="flag">İngiltere</span><a href="https://www.premierleague.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>La Liga TV</h3><span class="flag">İspanya</span><a href="https://www.laliga.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>Serie A</h3><span class="flag">İtalya</span><a href="https://www.legaseriea.it" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>Bundesliga</h3><span class="flag">Almanya</span><a href="https://www.bundesliga.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>Süper Lig</h3><span class="flag">Türkiye</span><a href="https://www.tff.org" target="_blank" class="btn">GİT</a></div>
-                </div>
-
-                <div style="font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:2px;margin:16px 0 8px;">🏀 BASKETBOL</div>
-                <div class="grid">
-                    <div class="card"><h3>NBA TV</h3><span class="flag">ABD</span><a href="https://www.nba.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>EuroLeague TV</h3><span class="flag">Avrupa</span><a href="https://www.euroleague.net" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>FIBA TV</h3><span class="flag">Dünya</span><a href="https://www.fiba.basketball" target="_blank" class="btn">GİT</a></div>
-                </div>
-
-                <div style="font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:2px;margin:16px 0 8px;">🎾 TENİS</div>
-                <div class="grid">
-                    <div class="card"><h3>Wimbledon</h3><span class="flag">İngiltere</span><a href="https://www.wimbledon.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>Roland Garros</h3><span class="flag">Fransa</span><a href="https://www.rolandgarros.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>US Open</h3><span class="flag">ABD</span><a href="https://www.usopen.org" target="_blank" class="btn">GİT</a></div>
-                </div>
-
-                <div style="font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:2px;margin:16px 0 8px;">🥊 BOKS &amp; 🏉 RUGBY &amp; 🏏 KRİKET &amp; 🏊 YÜZME</div>
-                <div class="grid">
-                    <div class="card"><h3>UFC Fight Pass</h3><span class="flag">MMA / Boks</span><a href="https://www.ufc.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>World Rugby</h3><span class="flag">Rugby</span><a href="https://www.world.rugby" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>ICC TV</h3><span class="flag">Kriket</span><a href="https://www.icc-cricket.com" target="_blank" class="btn">GİT</a></div>
-                    <div class="card"><h3>World Aquatics</h3><span class="flag">Yüzme</span><a href="https://www.worldaquatics.com" target="_blank" class="btn">GİT</a></div>
-                </div>
             </div>
         </div>
 
@@ -721,19 +649,13 @@
             <div class="sec-title" id="st-platform">Hakkımızda</div>
             <div style="max-width:700px;line-height:1.9;font-size:.88rem;color:#c8d8ee;">
                 <p style="font-size:1.1rem;font-weight:900;color:white;margin-bottom:18px;" id="plat-title">🏍️ Motor Sporları Dünyasına Hoş Geldiniz!</p>
-                <p id="plat-p1">🌍 <strong style="color:white;">motogpvideo.com</strong>, dünyanın dört bir yanındaki motor sporu severleri için kurulmuş <strong style="color:white;">bağımsız bir bilgi ve yayın rehberi platformudur.</strong></p>
-                <br>
-                <p id="plat-p2">📺 MotoGP, WorldSBK, Moto2, Moto3, Dünya SSP ve Formula 1 yarışlarını <strong style="color:white;">nerede, hangi kanalda, hangi platformda izleyeceğinizi</strong> tek bir çatı altında bulabilirsiniz.</p>
-                <br>
-                <p id="plat-p3">🇹🇷 Türkiye'nin motor sporlarındaki gururu olan <strong style="color:white;">Toprak Razgatlıoğlu, Bahattin Sofuoğlu, Can Öncü ve Deniz Öncü</strong> başta olmak üzere tüm kategorilerin sürücü kadrolarını takip edebilirsiniz.</p>
-                <br>
-                <p id="plat-p4">📰 Güncel haberler, <strong style="color:white;">2026 yarış takvimleri</strong>, pist bilgileri ve marka ansiklopedisi ile motor sporları hakkında merak ettiğiniz her şey burada.</p>
-                <br>
-                <p id="plat-p5">⚡ Amacımız basit: <strong style="color:white;">Motor sporlarını seven herkese, dil farkı gözetmeksizin, ücretsiz ve erişilebilir bir platform sunmak.</strong></p>
-                <br>
-                <p id="plat-p6">🏁 Yarış başlasın!</p>
-                <br>
-                <div style="border-top:1px solid var(--border);padding-top:14px;font-size:.72rem;color:var(--muted);" id="plat-disc">⚠️ Bu site resmi bir yayın kuruluşu değildir. Tüm yayın hakları ilgili kuruluşlara aittir. Sitemizdeki linkler yalnızca bilgilendirme amaçlıdır.</div>
+                <p id="plat-p1">🌍 <strong style="color:white;">motogpvideo.com</strong>, dünyanın dört bir yanındaki motor sporu severleri için kurulmuş <strong style="color:white;">bağımsız bir bilgi ve yayın rehberi platformudur.</strong></p><br>
+                <p id="plat-p2">📺 MotoGP, WorldSBK, Moto2, Moto3, Dünya SSP ve Formula 1 yarışlarını <strong style="color:white;">nerede, hangi kanalda, hangi platformda izleyeceğinizi</strong> tek bir çatı altında bulabilirsiniz.</p><br>
+                <p id="plat-p3">🇹🇷 Türkiye'nin motor sporlarındaki gururu olan <strong style="color:white;">Toprak Razgatlıoğlu, Bahattin Sofuoğlu, Can Öncü ve Deniz Öncü</strong> başta olmak üzere tüm kategorilerin sürücü kadrolarını takip edebilirsiniz.</p><br>
+                <p id="plat-p4">📰 Güncel haberler, <strong style="color:white;">2026 yarış takvimleri</strong>, pist bilgileri ve marka ansiklopedisi ile motor sporları hakkında merak ettiğiniz her şey burada.</p><br>
+                <p id="plat-p5">⚡ Amacımız basit: <strong style="color:white;">Motor sporlarını seven herkese, dil farkı gözetmeksizin, ücretsiz ve erişilebilir bir platform sunmak.</strong></p><br>
+                <p id="plat-p6">🏁 Yarış başlasın!</p><br>
+                <div style="border-top:1px solid var(--border);padding-top:14px;font-size:.72rem;color:var(--muted);" id="plat-disc">⚠️ Bu site resmi bir yayın kuruluşu değildir. Tüm yayın hakları ilgili kuruluşlara aittir.</div>
             </div>
         </div>
 
@@ -742,177 +664,122 @@
             <div class="brand-grid" id="brand-grid"></div>
         </div>
 
-        <!-- TAKVİM -->
         <div class="section" id="sec-takvim">
-            <div class="sec-title" id="st-takvim">2026 MotoGP & WorldSBK Yarış Ülkeleri</div>
-            <!-- TAKVİM SEKMELERİ -->
+            <div class="sec-title" id="st-takvim">2026 MotoGP &amp; WorldSBK Yarış Ülkeleri</div>
             <div class="cat-tabs" id="takvim-tabs" style="margin-bottom:18px;">
                 <button class="cat-tab active" style="background:#e8001d;border-color:#e8001d;" onclick="showTakvim('motogp-takvim',this)">🏍 MotoGP 2026</button>
                 <button class="cat-tab" onclick="showTakvim('wsbk-takvim',this)">🏁 WorldSBK 2026</button>
                 <button class="cat-tab" onclick="showTakvim('f1-takvim',this)">🚀 Formula 1 2026</button>
             </div>
-
-            <!-- MOTOGP TAKVİM -->
             <div id="motogp-takvim">
-            <div style="font-family:'Arial Black',sans-serif;font-size:1.1rem;font-weight:900;letter-spacing:1px;margin:0 0 14px;color:#fff;">🏍 MotoGP — YARIŞ ÜLKELERİ</div>
-            <div class="flag-grid">
-                <div class="flag-card"><div class="flag-box">🇹🇭</div><div class="flag-name">THAILAND</div></div>
-                <div class="flag-card"><div class="flag-box">🇧🇷</div><div class="flag-name">BRAZIL</div></div>
-                <div class="flag-card"><div class="flag-box">🇺🇸</div><div class="flag-name">USA</div></div>
-                <div class="flag-card"><div class="flag-box">🇶🇦</div><div class="flag-name">QATAR</div></div>
-                <div class="flag-card"><div class="flag-box">🇶🇦</div><div class="flag-name">QATAR</div></div>
-                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">SPAIN</div></div>
-                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">SPAIN</div></div>
-                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">SPAIN</div></div>
-                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">JEREZ</div></div>
-                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">CATALONIA</div></div>
-                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">ARAGON</div></div>
-                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">VALENCIA</div></div>
-                <div class="flag-card"><div class="flag-box">🇫🇷</div><div class="flag-name">FRANCE</div></div>
-                <div class="flag-card"><div class="flag-box">🇫🇷</div><div class="flag-name">FRANCE</div></div>
-                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
-                <div class="flag-card"><div class="flag-box">🇭🇺</div><div class="flag-name">HUNGARY</div></div>
-                <div class="flag-card"><div class="flag-box">🇨🇿</div><div class="flag-name">CZECH</div></div>
-                <div class="flag-card"><div class="flag-box">🇳🇱</div><div class="flag-name">NETHERLANDS</div></div>
-                <div class="flag-card"><div class="flag-box">🇩🇪</div><div class="flag-name">GERMANY</div></div>
-                <div class="flag-card"><div class="flag-box">🇩🇪</div><div class="flag-name">GERMANY</div></div>
-                <div class="flag-card"><div class="flag-box">🇬🇧</div><div class="flag-name">UK</div></div>
-                <div class="flag-card"><div class="flag-box">🇸🇲</div><div class="flag-name">SAN MARINO</div></div>
-                <div class="flag-card"><div class="flag-box">🇦🇹</div><div class="flag-name">AUSTRIA</div></div>
-                <div class="flag-card"><div class="flag-box">🇦🇹</div><div class="flag-name">AUSTRIA</div></div>
-                <div class="flag-card"><div class="flag-box">🇯🇵</div><div class="flag-name">JAPAN</div></div>
-                <div class="flag-card"><div class="flag-box">🇹🇷</div><div class="flag-name">TÜRKİYE</div></div>
-                <div class="flag-card"><div class="flag-box">🇮🇩</div><div class="flag-name">INDONESIA</div></div>
-                <div class="flag-card"><div class="flag-box">🇳🇱</div><div class="flag-name">NETHERLANDS</div></div>
-                <div class="flag-card"><div class="flag-box">🇳🇱</div><div class="flag-name">NETHERLANDS</div></div>
-                <div class="flag-card"><div class="flag-box">🇱🇹</div><div class="flag-name">LITHUANIA</div></div>
-                <div class="flag-card"><div class="flag-box">🇱🇹</div><div class="flag-name">LITHUANIA</div></div>
-                <div class="flag-card"><div class="flag-box">🇭🇺</div><div class="flag-name">HUNGARY</div></div>
-                <div class="flag-card"><div class="flag-box">🇧🇫</div><div class="flag-name">BURKINA F.</div></div>
-                <div class="flag-card"><div class="flag-box">🇯🇵</div><div class="flag-name">JAPAN</div></div>
-                <div class="flag-card"><div class="flag-box">🇯🇵</div><div class="flag-name">JAPAN</div></div>
-                <div class="flag-card"><div class="flag-box">🇲🇾</div><div class="flag-name">MALAYSIA</div></div>
-                <div class="flag-card"><div class="flag-box">🇲🇾</div><div class="flag-name">MALAYSIA</div></div>
-                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTUGAL</div></div>
+                <div style="font-family:'Arial Black',sans-serif;font-size:1.1rem;font-weight:900;letter-spacing:1px;margin:0 0 14px;color:#fff;">🏍 MotoGP — YARIŞ ÜLKELERİ</div>
+                <div class="flag-grid">
+                    <div class="flag-card"><div class="flag-box">🇹🇭</div><div class="flag-name">THAILAND</div></div>
+                    <div class="flag-card"><div class="flag-box">🇧🇷</div><div class="flag-name">BRAZIL</div></div>
+                    <div class="flag-card"><div class="flag-box">🇺🇸</div><div class="flag-name">USA</div></div>
+                    <div class="flag-card"><div class="flag-box">🇶🇦</div><div class="flag-name">QATAR</div></div>
+                    <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">JEREZ</div></div>
+                    <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">CATALONIA</div></div>
+                    <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">ARAGON</div></div>
+                    <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">VALENCIA</div></div>
+                    <div class="flag-card"><div class="flag-box">🇫🇷</div><div class="flag-name">FRANCE</div></div>
+                    <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
+                    <div class="flag-card"><div class="flag-box">🇩🇪</div><div class="flag-name">GERMANY</div></div>
+                    <div class="flag-card"><div class="flag-box">🇳🇱</div><div class="flag-name">NETHERLANDS</div></div>
+                    <div class="flag-card"><div class="flag-box">🇬🇧</div><div class="flag-name">UK</div></div>
+                    <div class="flag-card"><div class="flag-box">🇦🇹</div><div class="flag-name">AUSTRIA</div></div>
+                    <div class="flag-card"><div class="flag-box">🇸🇲</div><div class="flag-name">SAN MARINO</div></div>
+                    <div class="flag-card"><div class="flag-box">🇯🇵</div><div class="flag-name">JAPAN</div></div>
+                    <div class="flag-card"><div class="flag-box">🇹🇷</div><div class="flag-name">TÜRKİYE</div></div>
+                    <div class="flag-card"><div class="flag-box">🇮🇩</div><div class="flag-name">INDONESIA</div></div>
+                    <div class="flag-card"><div class="flag-box">🇲🇾</div><div class="flag-name">MALAYSIA</div></div>
+                    <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTUGAL</div></div>
+                </div>
+                <div class="takvim-list" style="margin-top:16px;">
+                    <div class="takvim-row"><span class="takvim-rnd">R01</span><span class="takvim-flag">🇹🇭</span><span class="takvim-name">Tayland GP — Chang Circuit</span><span class="takvim-date">28 Şub-2 Mar</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R02</span><span class="takvim-flag">🇧🇷</span><span class="takvim-name">Brezilya GP — Rio</span><span class="takvim-date">14-16 Mar</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R03</span><span class="takvim-flag">🇺🇸</span><span class="takvim-name">Amerika GP — COTA</span><span class="takvim-date">28-30 Mar</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R04</span><span class="takvim-flag">🇶🇦</span><span class="takvim-name">Katar GP — Lusail</span><span class="takvim-date">11-13 Nis</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R05</span><span class="takvim-flag">🇪🇸</span><span class="takvim-name">İspanya GP — Jerez</span><span class="takvim-date">1-3 May</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R06</span><span class="takvim-flag">🇫🇷</span><span class="takvim-name">Fransa GP — Le Mans</span><span class="takvim-date">15-17 May</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R07</span><span class="takvim-flag">🇮🇹</span><span class="takvim-name">İtalya GP — Mugello</span><span class="takvim-date">29-31 May</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R08</span><span class="takvim-flag">🇩🇪</span><span class="takvim-name">Almanya GP — Sachsenring</span><span class="takvim-date">19-21 Haz</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R09</span><span class="takvim-flag">🇳🇱</span><span class="takvim-name">Hollanda GP — Assen</span><span class="takvim-date">26-28 Haz</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R10</span><span class="takvim-flag">🇬🇧</span><span class="takvim-name">Britanya GP — Silverstone</span><span class="takvim-date">3-5 Tem</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R11</span><span class="takvim-flag">🇦🇹</span><span class="takvim-name">Avusturya GP — Red Bull Ring</span><span class="takvim-date">10-12 Tem</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R12</span><span class="takvim-flag">🇸🇲</span><span class="takvim-name">San Marino GP — Misano</span><span class="takvim-date">7-9 Ağu</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R13</span><span class="takvim-flag">🇪🇸</span><span class="takvim-name">Aragon GP — MotorLand</span><span class="takvim-date">21-23 Ağu</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R14</span><span class="takvim-flag">🇯🇵</span><span class="takvim-name">Japonya GP — Motegi</span><span class="takvim-date">18-20 Eyl</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R15</span><span class="takvim-flag">🇹🇷</span><span class="takvim-name">Türkiye GP — İstanbul Park</span><span class="takvim-date">25-27 Eyl</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R16</span><span class="takvim-flag">🇮🇩</span><span class="takvim-name">Endonezya GP — Mandalika</span><span class="takvim-date">9-11 Eki</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R17</span><span class="takvim-flag">🇲🇾</span><span class="takvim-name">Malezya GP — Sepang</span><span class="takvim-date">23-25 Eki</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R18</span><span class="takvim-flag">🇵🇹</span><span class="takvim-name">Portekiz GP — Portimão</span><span class="takvim-date">6-8 Kas</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R19</span><span class="takvim-flag">🇪🇸</span><span class="takvim-name">Valencia GP — Ricardo Tormo</span><span class="takvim-date">20-22 Kas</span></div>
+                </div>
             </div>
-            <div class="takvim-list" style="margin-top:16px;">
-                <div class="takvim-row"><span class="takvim-rnd">R01</span><span class="takvim-flag">🇹🇭</span><span class="takvim-name">Tayland GP — Chang Circuit</span><span class="takvim-date">28 Şub-2 Mar</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R02</span><span class="takvim-flag">🇧🇷</span><span class="takvim-name">Brezilya GP — Rio</span><span class="takvim-date">14-16 Mar</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R03</span><span class="takvim-flag">🇺🇸</span><span class="takvim-name">Amerika GP — COTA</span><span class="takvim-date">28-30 Mar</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R04</span><span class="takvim-flag">🇶🇦</span><span class="takvim-name">Katar GP — Lusail</span><span class="takvim-date">11-13 Nis</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R05</span><span class="takvim-flag">🇪🇸</span><span class="takvim-name">İspanya GP — Jerez</span><span class="takvim-date">1-3 May</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R06</span><span class="takvim-flag">🇫🇷</span><span class="takvim-name">Fransa GP — Le Mans</span><span class="takvim-date">15-17 May</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R07</span><span class="takvim-flag">🇮🇹</span><span class="takvim-name">İtalya GP — Mugello</span><span class="takvim-date">29-31 May</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R08</span><span class="takvim-flag">🇩🇪</span><span class="takvim-name">Almanya GP — Sachsenring</span><span class="takvim-date">19-21 Haz</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R09</span><span class="takvim-flag">🇳🇱</span><span class="takvim-name">Hollanda GP — Assen</span><span class="takvim-date">26-28 Haz</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R10</span><span class="takvim-flag">🇬🇧</span><span class="takvim-name">Britanya GP — Silverstone</span><span class="takvim-date">3-5 Tem</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R11</span><span class="takvim-flag">🇦🇹</span><span class="takvim-name">Avusturya GP — Red Bull Ring</span><span class="takvim-date">10-12 Tem</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R12</span><span class="takvim-flag">🇸🇲</span><span class="takvim-name">San Marino GP — Misano</span><span class="takvim-date">7-9 Ağu</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R13</span><span class="takvim-flag">🇪🇸</span><span class="takvim-name">Aragon GP — MotorLand</span><span class="takvim-date">21-23 Ağu</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R14</span><span class="takvim-flag">🇯🇵</span><span class="takvim-name">Japonya GP — Motegi</span><span class="takvim-date">18-20 Eyl</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R15</span><span class="takvim-flag">🇹🇷</span><span class="takvim-name">Türkiye GP — İstanbul Park</span><span class="takvim-date">25-27 Eyl</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R16</span><span class="takvim-flag">🇮🇩</span><span class="takvim-name">Endonezya GP — Mandalika</span><span class="takvim-date">9-11 Eki</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R17</span><span class="takvim-flag">🇲🇾</span><span class="takvim-name">Malezya GP — Sepang</span><span class="takvim-date">23-25 Eki</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R18</span><span class="takvim-flag">🇵🇹</span><span class="takvim-name">Portekiz GP — Portimão</span><span class="takvim-date">6-8 Kas</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R19</span><span class="takvim-flag">🇪🇸</span><span class="takvim-name">Valencia GP — Ricardo Tormo</span><span class="takvim-date">20-22 Kas</span></div>
-            </div>
-            </div><!-- /motogp-takvim -->
-
-            <!-- WORLDSBK TAKVİM -->
             <div id="wsbk-takvim" style="display:none;">
-            <div style="font-family:'Arial Black',sans-serif;font-size:1.1rem;font-weight:900;letter-spacing:1px;margin:0 0 14px;color:#fff;">🏁 WorldSBK — SUPERBIKE YARIŞ ÜLKELERİ</div>
-            <div class="flag-grid">
-                <div class="flag-card"><div class="flag-box">🇦🇺</div><div class="flag-name">AUSTRALIA</div></div>
-                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTUGAL</div></div>
-                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTUGAL</div></div>
-                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTUGAL</div></div>
-                <div class="flag-card"><div class="flag-box">🇳🇱</div><div class="flag-name">NETHERLANDS</div></div>
-                <div class="flag-card"><div class="flag-box">🇳🇱</div><div class="flag-name">NETHERLANDS</div></div>
-                <div class="flag-card"><div class="flag-box">🇭🇺</div><div class="flag-name">HUNGARY</div></div>
-                <div class="flag-card"><div class="flag-box">🇨🇿</div><div class="flag-name">CZECH</div></div>
-                <div class="flag-card"><div class="flag-box">🇨🇿</div><div class="flag-name">CZECH</div></div>
-                <div class="flag-card"><div class="flag-box">🇨🇿</div><div class="flag-name">CZECH</div></div>
-                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">ARAGON</div></div>
-                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">JEREZ</div></div>
-                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">JEREZ</div></div>
-                <div class="flag-card"><div class="flag-box">🇦🇺</div><div class="flag-name">PHILLIP IS.</div></div>
-                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTIMÃO</div></div>
-                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">ESTORIL</div></div>
-                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTIMÃO</div></div>
-                <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">ESTORIL</div></div>
-                <div class="flag-card"><div class="flag-box">🇭🇺</div><div class="flag-name">BALATON PK</div></div>
-                <div class="flag-card"><div class="flag-box">🇭🇺</div><div class="flag-name">HUNGARY</div></div>
-                <div class="flag-card"><div class="flag-box">🇨🇿</div><div class="flag-name">CZECH</div></div>
-                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">ARAGON</div></div>
-                <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">JEREZ</div></div>
-                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
-                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
-                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
-                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
-                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
-                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">MISANO</div></div>
-                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">CREMONA</div></div>
-                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
-                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
-                <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">ITALY</div></div>
-                <div class="flag-card"><div class="flag-box">🇬🇧</div><div class="flag-name">UK</div></div>
-                <div class="flag-card"><div class="flag-box">🇫🇷</div><div class="flag-name">FRANCE</div></div>
-                <div class="flag-card"><div class="flag-box">🇫🇷</div><div class="flag-name">FRANCE</div></div>
+                <div style="font-family:'Arial Black',sans-serif;font-size:1.1rem;font-weight:900;letter-spacing:1px;margin:0 0 14px;color:#fff;">🏁 WorldSBK — SUPERBIKE YARIŞ ÜLKELERİ</div>
+                <div class="flag-grid">
+                    <div class="flag-card"><div class="flag-box">🇦🇺</div><div class="flag-name">AUSTRALIA</div></div>
+                    <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">PORTUGAL</div></div>
+                    <div class="flag-card"><div class="flag-box">🇳🇱</div><div class="flag-name">NETHERLANDS</div></div>
+                    <div class="flag-card"><div class="flag-box">🇭🇺</div><div class="flag-name">HUNGARY</div></div>
+                    <div class="flag-card"><div class="flag-box">🇨🇿</div><div class="flag-name">CZECH</div></div>
+                    <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">JEREZ</div></div>
+                    <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">CREMONA</div></div>
+                    <div class="flag-card"><div class="flag-box">🇮🇹</div><div class="flag-name">MISANO</div></div>
+                    <div class="flag-card"><div class="flag-box">🇪🇸</div><div class="flag-name">ARAGON</div></div>
+                    <div class="flag-card"><div class="flag-box">🇬🇧</div><div class="flag-name">UK</div></div>
+                    <div class="flag-card"><div class="flag-box">🇫🇷</div><div class="flag-name">FRANCE</div></div>
+                    <div class="flag-card"><div class="flag-box">🇵🇹</div><div class="flag-name">ESTORIL</div></div>
+                </div>
+                <div class="takvim-list" style="margin-top:16px;">
+                    <div class="takvim-row"><span class="takvim-rnd">R01</span><span class="takvim-flag">🇦🇺</span><span class="takvim-name">Avustralya — Phillip Island</span><span class="takvim-date">28 Şub-2 Mar</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R02</span><span class="takvim-flag">🇵🇹</span><span class="takvim-name">Portekiz — Portimão</span><span class="takvim-date">4-6 Nis</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R03</span><span class="takvim-flag">🇳🇱</span><span class="takvim-name">Hollanda — Assen</span><span class="takvim-date">25-27 Nis</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R04</span><span class="takvim-flag">🇭🇺</span><span class="takvim-name">Macaristan — Balaton Park</span><span class="takvim-date">16-18 May</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R05</span><span class="takvim-flag">🇨🇿</span><span class="takvim-name">Çekya — Most</span><span class="takvim-date">20-22 Haz</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R06</span><span class="takvim-flag">🇪🇸</span><span class="takvim-name">İspanya — Jerez</span><span class="takvim-date">4-6 Tem</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R07</span><span class="takvim-flag">🇮🇹</span><span class="takvim-name">İtalya — Cremona</span><span class="takvim-date">1-3 Ağu</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R08</span><span class="takvim-flag">🇮🇹</span><span class="takvim-name">San Marino — Misano</span><span class="takvim-date">5-7 Eyl</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R09</span><span class="takvim-flag">🇪🇸</span><span class="takvim-name">İspanya — Aragon</span><span class="takvim-date">19-21 Eyl</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R10</span><span class="takvim-flag">🇬🇧</span><span class="takvim-name">Britanya — Donington Park</span><span class="takvim-date">3-5 Eki</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R11</span><span class="takvim-flag">🇫🇷</span><span class="takvim-name">Fransa — Magny-Cours</span><span class="takvim-date">17-19 Eki</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R12</span><span class="takvim-flag">🇵🇹</span><span class="takvim-name">Portekiz — Estoril</span><span class="takvim-date">14-16 Kas</span></div>
+                </div>
             </div>
-            <div class="takvim-list" style="margin-top:16px;">
-                <div class="takvim-row"><span class="takvim-rnd">R01</span><span class="takvim-flag">🇦🇺</span><span class="takvim-name">Avustralya — Phillip Island</span><span class="takvim-date">28 Şub-2 Mar</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R02</span><span class="takvim-flag">🇵🇹</span><span class="takvim-name">Portekiz — Portimão</span><span class="takvim-date">4-6 Nis</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R03</span><span class="takvim-flag">🇳🇱</span><span class="takvim-name">Hollanda — Assen</span><span class="takvim-date">25-27 Nis</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R04</span><span class="takvim-flag">🇭🇺</span><span class="takvim-name">Macaristan — Balaton Park</span><span class="takvim-date">16-18 May</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R05</span><span class="takvim-flag">🇨🇿</span><span class="takvim-name">Çekya — Most</span><span class="takvim-date">20-22 Haz</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R06</span><span class="takvim-flag">🇪🇸</span><span class="takvim-name">İspanya — Jerez</span><span class="takvim-date">4-6 Tem</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R07</span><span class="takvim-flag">🇮🇹</span><span class="takvim-name">İtalya — Cremona</span><span class="takvim-date">1-3 Ağu</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R08</span><span class="takvim-flag">🇮🇹</span><span class="takvim-name">San Marino — Misano</span><span class="takvim-date">5-7 Eyl</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R09</span><span class="takvim-flag">🇪🇸</span><span class="takvim-name">İspanya — Aragon</span><span class="takvim-date">19-21 Eyl</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R10</span><span class="takvim-flag">🇬🇧</span><span class="takvim-name">Britanya — Donington Park</span><span class="takvim-date">3-5 Eki</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R11</span><span class="takvim-flag">🇫🇷</span><span class="takvim-name">Fransa — Magny-Cours</span><span class="takvim-date">17-19 Eki</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R12</span><span class="takvim-flag">🇵🇹</span><span class="takvim-name">Portekiz — Estoril</span><span class="takvim-date">14-16 Kas</span></div>
-            </div>
-            </div><!-- /wsbk-takvim -->
-
-            <!-- F1 TAKVİM -->
             <div id="f1-takvim" style="display:none;">
-            <div style="font-family:'Arial Black',sans-serif;font-size:1.1rem;font-weight:900;letter-spacing:1px;margin:0 0 14px;color:#fff;">🚀 Formula 1 — YARIŞ TAKVİMİ 2026</div>
-            <div class="takvim-list">
-                <div class="takvim-row"><span class="takvim-rnd">R01</span><span class="takvim-flag">🇦🇺</span><span class="takvim-name">Avustralya GP</span><span class="takvim-date">15-16 Mar</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R02</span><span class="takvim-flag">🇨🇳</span><span class="takvim-name">Çin GP</span><span class="takvim-date">22-23 Mar</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R03</span><span class="takvim-flag">🇯🇵</span><span class="takvim-name">Japonya GP</span><span class="takvim-date">5-6 Nis</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R04</span><span class="takvim-flag">🇧🇭</span><span class="takvim-name">Bahreyn GP</span><span class="takvim-date">19-20 Nis</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R05</span><span class="takvim-flag">🇸🇦</span><span class="takvim-name">Suudi Arabistan GP</span><span class="takvim-date">26-27 Nis</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R06</span><span class="takvim-flag">🇺🇸</span><span class="takvim-name">Miami GP</span><span class="takvim-date">3-4 May</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R07</span><span class="takvim-flag">🇮🇹</span><span class="takvim-name">Emilia Romagna GP</span><span class="takvim-date">17-18 May</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R08</span><span class="takvim-flag">🇲🇨</span><span class="takvim-name">Monako GP</span><span class="takvim-date">24-25 May</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R09</span><span class="takvim-flag">🇪🇸</span><span class="takvim-name">İspanya GP</span><span class="takvim-date">31 May-1 Haz</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R10</span><span class="takvim-flag">🇨🇦</span><span class="takvim-name">Kanada GP</span><span class="takvim-date">14-15 Haz</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R11</span><span class="takvim-flag">🇦🇹</span><span class="takvim-name">Avusturya GP</span><span class="takvim-date">28-29 Haz</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R12</span><span class="takvim-flag">🇬🇧</span><span class="takvim-name">Britanya GP</span><span class="takvim-date">5-6 Tem</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R13</span><span class="takvim-flag">🇧🇪</span><span class="takvim-name">Belçika GP</span><span class="takvim-date">26-27 Tem</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R14</span><span class="takvim-flag">🇭🇺</span><span class="takvim-name">Macaristan GP</span><span class="takvim-date">2-3 Ağu</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R15</span><span class="takvim-flag">🇳🇱</span><span class="takvim-name">Hollanda GP</span><span class="takvim-date">30-31 Ağu</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R16</span><span class="takvim-flag">🇮🇹</span><span class="takvim-name">İtalya GP (Monza)</span><span class="takvim-date">6-7 Eyl</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R17</span><span class="takvim-flag">🇸🇬</span><span class="takvim-name">Singapur GP</span><span class="takvim-date">20-21 Eyl</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R18</span><span class="takvim-flag">🇺🇸</span><span class="takvim-name">ABD GP (Austin)</span><span class="takvim-date">18-19 Eki</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R19</span><span class="takvim-flag">🇲🇽</span><span class="takvim-name">Meksika GP</span><span class="takvim-date">25-26 Eki</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R20</span><span class="takvim-flag">🇧🇷</span><span class="takvim-name">Brezilya GP</span><span class="takvim-date">8-9 Kas</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R21</span><span class="takvim-flag">🇺🇸</span><span class="takvim-name">Las Vegas GP</span><span class="takvim-date">21-22 Kas</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R22</span><span class="takvim-flag">🇶🇦</span><span class="takvim-name">Katar GP</span><span class="takvim-date">28-29 Kas</span></div>
-                <div class="takvim-row"><span class="takvim-rnd">R23</span><span class="takvim-flag">🇦🇪</span><span class="takvim-name">Abu Dhabi GP</span><span class="takvim-date">5-6 Ara</span></div>
+                <div style="font-family:'Arial Black',sans-serif;font-size:1.1rem;font-weight:900;letter-spacing:1px;margin:0 0 14px;color:#fff;">🚀 Formula 1 — YARIŞ TAKVİMİ 2026</div>
+                <div class="takvim-list">
+                    <div class="takvim-row"><span class="takvim-rnd">R01</span><span class="takvim-flag">🇦🇺</span><span class="takvim-name">Avustralya GP</span><span class="takvim-date">15-16 Mar</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R02</span><span class="takvim-flag">🇨🇳</span><span class="takvim-name">Çin GP</span><span class="takvim-date">22-23 Mar</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R03</span><span class="takvim-flag">🇯🇵</span><span class="takvim-name">Japonya GP</span><span class="takvim-date">5-6 Nis</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R04</span><span class="takvim-flag">🇧🇭</span><span class="takvim-name">Bahreyn GP</span><span class="takvim-date">19-20 Nis</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R05</span><span class="takvim-flag">🇸🇦</span><span class="takvim-name">Suudi Arabistan GP</span><span class="takvim-date">26-27 Nis</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R06</span><span class="takvim-flag">🇺🇸</span><span class="takvim-name">Miami GP</span><span class="takvim-date">3-4 May</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R07</span><span class="takvim-flag">🇮🇹</span><span class="takvim-name">Emilia Romagna GP</span><span class="takvim-date">17-18 May</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R08</span><span class="takvim-flag">🇲🇨</span><span class="takvim-name">Monako GP</span><span class="takvim-date">24-25 May</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R09</span><span class="takvim-flag">🇪🇸</span><span class="takvim-name">İspanya GP</span><span class="takvim-date">31 May-1 Haz</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R10</span><span class="takvim-flag">🇨🇦</span><span class="takvim-name">Kanada GP</span><span class="takvim-date">14-15 Haz</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R11</span><span class="takvim-flag">🇦🇹</span><span class="takvim-name">Avusturya GP</span><span class="takvim-date">28-29 Haz</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R12</span><span class="takvim-flag">🇬🇧</span><span class="takvim-name">Britanya GP</span><span class="takvim-date">5-6 Tem</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R13</span><span class="takvim-flag">🇧🇪</span><span class="takvim-name">Belçika GP</span><span class="takvim-date">26-27 Tem</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R14</span><span class="takvim-flag">🇭🇺</span><span class="takvim-name">Macaristan GP</span><span class="takvim-date">2-3 Ağu</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R15</span><span class="takvim-flag">🇳🇱</span><span class="takvim-name">Hollanda GP</span><span class="takvim-date">30-31 Ağu</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R16</span><span class="takvim-flag">🇮🇹</span><span class="takvim-name">İtalya GP (Monza)</span><span class="takvim-date">6-7 Eyl</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R17</span><span class="takvim-flag">🇸🇬</span><span class="takvim-name">Singapur GP</span><span class="takvim-date">20-21 Eyl</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R18</span><span class="takvim-flag">🇺🇸</span><span class="takvim-name">ABD GP (Austin)</span><span class="takvim-date">18-19 Eki</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R19</span><span class="takvim-flag">🇲🇽</span><span class="takvim-name">Meksika GP</span><span class="takvim-date">25-26 Eki</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R20</span><span class="takvim-flag">🇧🇷</span><span class="takvim-name">Brezilya GP</span><span class="takvim-date">8-9 Kas</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R21</span><span class="takvim-flag">🇺🇸</span><span class="takvim-name">Las Vegas GP</span><span class="takvim-date">21-22 Kas</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R22</span><span class="takvim-flag">🇶🇦</span><span class="takvim-name">Katar GP</span><span class="takvim-date">28-29 Kas</span></div>
+                    <div class="takvim-row"><span class="takvim-rnd">R23</span><span class="takvim-flag">🇦🇪</span><span class="takvim-name">Abu Dhabi GP</span><span class="takvim-date">5-6 Ara</span></div>
+                </div>
             </div>
-            </div><!-- /f1-takvim -->
-
-            <p style="margin-top:14px;font-size:.7rem;color:var(--muted);text-align:right;">MOTOGPVIDEO.COM ASSET PACK · 2026 RACE CALENDAR</p>
         </div>
 
-        <!-- ══ BİNİCİLER — TÜM KATEGORİLER ══ -->
         <div class="section" id="sec-biniciler">
-            <div class="sec-title" id="st-biniciler">Biniciler & Takımlar — 2026</div>
-
-            <!-- Kategori sekmeleri -->
+            <div class="sec-title" id="st-biniciler">Biniciler &amp; Takımlar — 2026</div>
             <div class="cat-tabs" id="cat-tabs">
                 <button class="cat-tab active" style="background:#e8001d;border-color:#e8001d;" onclick="showCat('motogp',this)">🏁 MotoGP</button>
                 <button class="cat-tab" onclick="showCat('moto2',this)">🔵 Moto2</button>
@@ -922,11 +789,9 @@
                 <button class="cat-tab" onclick="showCat('wwcr',this)">👩 Dünya WCR</button>
                 <button class="cat-tab" onclick="showCat('f1',this)">🚀 Formula 1</button>
             </div>
-
             <div id="rider-content"></div>
         </div>
 
-        <!-- HABERLER -->
         <div class="section" id="sec-haberler">
             <div class="sec-title" id="st-haberler">Son Haberler</div>
             <div class="rss-tabs">
@@ -934,19 +799,14 @@
                 <button class="rss-tab" data-feed="https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.worldsbk.com%2Fen%2Frss%2Fnews" onclick="loadRSS(this)">WorldSBK</button>
                 <button class="rss-tab" data-feed="https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.autosport.com%2Frss%2Ff1%2Fnews%2F" onclick="loadRSS(this)">Formula 1</button>
             </div>
-            <p style="font-size:.7rem;color:var(--muted);margin-bottom:12px;">📡 Haberler otomatik olarak Motorsport.com'dan çekilmektedir. Kaynak her zaman gösterilir.</p>
             <div class="rss-status" id="rss-status"></div>
             <div class="news-grid" id="news-grid">
-                <div class="news-card skeleton"></div>
-                <div class="news-card skeleton"></div>
-                <div class="news-card skeleton"></div>
-                <div class="news-card skeleton"></div>
-                <div class="news-card skeleton"></div>
-                <div class="news-card skeleton"></div>
+                <div class="news-card skeleton"></div><div class="news-card skeleton"></div>
+                <div class="news-card skeleton"></div><div class="news-card skeleton"></div>
+                <div class="news-card skeleton"></div><div class="news-card skeleton"></div>
             </div>
         </div>
 
-        <!-- GLOBAL -->
         <div class="section" id="sec-global">
             <div class="sec-title" id="st-global">Global Hit Sporlar</div>
             <div class="grid">
@@ -957,20 +817,13 @@
             </div>
         </div>
 
-
-        <!-- GALERİ -->
         <div class="section" id="sec-galeri">
-            <div class="sec-title">Pist Galeris</div>
-
-            <!-- Kategori sekmeleri -->
+            <div class="sec-title">Pist Galerisi</div>
             <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
                 <button onclick="showGaleri('g-motogp',this)" style="background:#e8001d;border:1px solid #e8001d;color:white;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:700;">🏍️ MotoGP</button>
                 <button onclick="showGaleri('g-wsbk',this)" style="background:var(--card);border:1px solid var(--border);color:#9aadcc;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:700;">🏁 WorldSBK</button>
                 <button onclick="showGaleri('g-f1',this)" style="background:var(--card);border:1px solid var(--border);color:#9aadcc;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:700;">🚀 Formula 1</button>
-                <button onclick="showGaleri('g-dtm',this)" style="background:var(--card);border:1px solid var(--border);color:#9aadcc;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:700;">🏎️ WRS / DTM</button>
             </div>
-
-            <!-- MotoGP Pistleri -->
             <div id="g-motogp">
                 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;">
                     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#e8001d,#600010);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇹🇷 Istanbul Park</div><a href="https://en.wikipedia.org/wiki/Istanbul_Park" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
@@ -979,64 +832,26 @@
                     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#004400,#002200);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇬🇧 Silverstone</div><a href="https://en.wikipedia.org/wiki/Silverstone_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
                     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#440044,#220022);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇳🇱 Assen TT</div><a href="https://en.wikipedia.org/wiki/TT_Circuit_Assen" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
                     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#664400,#332200);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇪🇸 Jerez</div><a href="https://en.wikipedia.org/wiki/Circuito_de_Jerez" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#004466,#002233);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇶🇦 Lusail</div><a href="https://en.wikipedia.org/wiki/Lusail_International_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#006644,#003322);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇮🇩 Mandalika</div><a href="https://en.wikipedia.org/wiki/Mandalika_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#440000,#220000);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇯🇵 Motegi</div><a href="https://en.wikipedia.org/wiki/Twin_Ring_Motegi" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#003344,#001122);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇲🇾 Sepang</div><a href="https://en.wikipedia.org/wiki/Sepang_International_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#664422,#332211);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇵🇹 Portimão</div><a href="https://en.wikipedia.org/wiki/Algarve_International_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#446600,#223300);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇦🇺 Phillip Island</div><a href="https://en.wikipedia.org/wiki/Phillip_Island_Grand_Prix_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
                 </div>
             </div>
-
-            <!-- WorldSBK Pistleri -->
             <div id="g-wsbk" style="display:none;">
                 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;">
                     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#0055aa,#002255);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇦🇺 Phillip Island</div><a href="https://en.wikipedia.org/wiki/Phillip_Island_Grand_Prix_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
                     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#005500,#002200);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇳🇱 Assen TT</div><a href="https://en.wikipedia.org/wiki/TT_Circuit_Assen" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
                     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#550055,#220022);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇭🇺 Balaton Park</div><a href="https://en.wikipedia.org/wiki/Balaton_Park_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#554400,#332200);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇨🇿 Most</div><a href="https://en.wikipedia.org/wiki/Autodrom_Most" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#550000,#220000);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇪🇸 Jerez</div><a href="https://en.wikipedia.org/wiki/Circuito_de_Jerez" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#005544,#002222);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇮🇹 Cremona</div><a href="https://en.wikipedia.org/wiki/Cremona_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#004455,#002233);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇮🇹 Misano</div><a href="https://en.wikipedia.org/wiki/Misano_World_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#440055,#220033);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇫🇷 Magny-Cours</div><a href="https://en.wikipedia.org/wiki/Circuit_de_Nevers_Magny-Cours" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#334400,#112200);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇵🇹 Estoril</div><a href="https://en.wikipedia.org/wiki/Estoril_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
                 </div>
             </div>
-
-            <!-- F1 Pistleri -->
             <div id="g-f1" style="display:none;">
                 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;">
                     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#aa0000,#550000);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇲🇨 Monaco</div><a href="https://en.wikipedia.org/wiki/Circuit_de_Monaco" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
                     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#006600,#003300);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇬🇧 Silverstone</div><a href="https://en.wikipedia.org/wiki/Silverstone_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
                     <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#660000,#330000);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇮🇹 Monza</div><a href="https://en.wikipedia.org/wiki/Autodromo_Nazionale_Monza" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#004400,#002200);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇧🇪 Spa</div><a href="https://en.wikipedia.org/wiki/Circuit_de_Spa-Francorchamps" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#440044,#220022);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇳🇱 Zandvoort</div><a href="https://en.wikipedia.org/wiki/Circuit_Zandvoort" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#004466,#002233);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇸🇬 Marina Bay</div><a href="https://en.wikipedia.org/wiki/Marina_Bay_Street_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#664400,#332200);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇦🇺 Melbourne</div><a href="https://en.wikipedia.org/wiki/Albert_Park_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#006644,#003322);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇯🇵 Suzuka</div><a href="https://en.wikipedia.org/wiki/Suzuka_International_Racing_Course" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#550044,#220022);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇦🇪 Yas Marina</div><a href="https://en.wikipedia.org/wiki/Yas_Marina_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#334466,#112233);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇺🇸 COTA Austin</div><a href="https://en.wikipedia.org/wiki/Circuit_of_the_Americas" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
                 </div>
             </div>
-
-            <!-- WRS / DTM Pistleri -->
-            <div id="g-dtm" style="display:none;">
-                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;">
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#aa6600,#553300);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇩🇪 Nürburgring</div><a href="https://en.wikipedia.org/wiki/N%C3%BCrburgring" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#006600,#003300);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇩🇪 Hockenheim</div><a href="https://en.wikipedia.org/wiki/Hockenheimring" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#004488,#002244);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇦🇹 Red Bull Ring</div><a href="https://en.wikipedia.org/wiki/Red_Bull_Ring" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#660066,#330033);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇧🇪 Spa</div><a href="https://en.wikipedia.org/wiki/Circuit_de_Spa-Francorchamps" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#446600,#223300);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇫🇷 Paul Ricard</div><a href="https://en.wikipedia.org/wiki/Circuit_Paul_Ricard" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;"><div style="height:50px;background:linear-gradient(135deg,#004466,#002233);display:flex;align-items:center;padding:0 14px;font-size:.8rem;font-weight:800;">🇮🇹 Misano</div><a href="https://en.wikipedia.org/wiki/Misano_World_Circuit" target="_blank" style="display:block;padding:8px 14px;font-size:.7rem;color:var(--accent);text-decoration:none;">Wikipedia →</a></div>
-                </div>
-            </div>
-
-            <p style="margin-top:16px;font-size:.65rem;color:var(--muted);">📸 Pist bilgileri Wikipedia kaynaklıdır. Resimler için pist sayfasını ziyaret edin.</p>
         </div>
 
         <div class="section" id="sec-iletisim"></div>
 
-        
         <footer>
             <div style="display:flex;justify-content:center;gap:14px;margin-bottom:10px;flex-wrap:wrap;">
                 <a href="https://www.instagram.com/motogp/" target="_blank" style="color:#fd1d1d;text-decoration:none;font-size:.75rem;font-weight:700;">📷 MotoGP Instagram</a>
@@ -1048,42 +863,32 @@
         </footer>
     </main>
 
-    <!-- SAĞ PANEL -->
     <div class="right-panel" style="width:160px;padding:0;overflow:hidden;display:flex;flex-direction:column;position:sticky;top:90px;height:calc(100vh - 90px);">
         <div style="font-size:.55rem;font-weight:800;color:var(--muted);letter-spacing:2px;text-align:center;padding:8px 4px;border-bottom:1px solid var(--border);flex-shrink:0;">🇹🇷 TÜRK SÜRÜCÜLER</div>
-
-        <!-- Toprak -->
         <a href="https://www.instagram.com/toprakrazgatlioglu7/" target="_blank" style="text-decoration:none;background:linear-gradient(135deg,#1a0040,#4a0066,#cc0080);border-bottom:1px solid #cc0080;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;width:100%;cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
             <div style="font-size:.65rem;font-weight:900;color:#ff44cc;">MotoGP · #7</div>
             <div style="font-size:.85rem;font-weight:900;color:white;line-height:1.3;">Toprak<br>Razgatlıoğlu</div>
             <div style="font-size:.58rem;color:rgba(255,255,255,.7);">Prima Pramac Yamaha</div>
             <div style="font-size:1.2rem;">🇹🇷</div>
         </a>
-
-        <!-- Bahattin -->
         <a href="https://www.instagram.com/bahattinsofuoglu/" target="_blank" style="text-decoration:none;background:linear-gradient(135deg,#001a40,#003366,#0066cc);border-bottom:1px solid #0066cc;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;width:100%;cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
             <div style="font-size:.65rem;font-weight:900;color:#44aaff;">WorldSBK · #54</div>
             <div style="font-size:.85rem;font-weight:900;color:white;line-height:1.3;">Bahattin<br>Sofuoğlu</div>
             <div style="font-size:.58rem;color:rgba(255,255,255,.7);">Motox Racing</div>
             <div style="font-size:1.2rem;">🇹🇷</div>
         </a>
-
-        <!-- Can Öncü -->
         <a href="https://www.instagram.com/canoncu61/" target="_blank" style="text-decoration:none;background:linear-gradient(135deg,#001a10,#004400,#008800);border-bottom:1px solid #008800;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;width:100%;cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
             <div style="font-size:.65rem;font-weight:900;color:#44ff88;">Dünya SSP · #61</div>
             <div style="font-size:.85rem;font-weight:900;color:white;line-height:1.3;">Can<br>Öncü</div>
             <div style="font-size:.58rem;color:rgba(255,255,255,.7);">Pata Yamaha Ten Kate</div>
             <div style="font-size:1.2rem;">🇹🇷</div>
         </a>
-
-        <!-- Deniz Öncü -->
         <a href="https://www.instagram.com/deniz_oncu53/" target="_blank" style="text-decoration:none;background:linear-gradient(135deg,#1a1000,#443300,#886600);flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;width:100%;cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
             <div style="font-size:.65rem;font-weight:900;color:#ffcc44;">Moto2 · #53</div>
             <div style="font-size:.85rem;font-weight:900;color:white;line-height:1.3;">Deniz<br>Öncü</div>
             <div style="font-size:.58rem;color:rgba(255,255,255,.7);">ELF Marc VDS</div>
             <div style="font-size:1.2rem;">🇹🇷</div>
         </a>
-
     </div>
 </div>
 
@@ -1096,7 +901,6 @@
         el.classList.add("active");
     }
 
-    /* Marka kartları */
     const grid = document.getElementById("brand-grid");
     brands.forEach(b => {
         grid.innerHTML += `<div class="brand-card">
@@ -1110,7 +914,6 @@
         </div>`;
     });
 
-    /* ── Sürücü kategorileri ── */
     const bikeColors = {
         Ducati:"#cc0000", Yamaha:"#0055cc", KTM:"#e55a00", Honda:"#e8001d",
         Aprilia:"#1a1a6e", BMW:"#0066cc", Kawasaki:"#00aa00", Bimota:"#336600",
@@ -1139,29 +942,23 @@
                 </div>
             </div>`;
         }).join("");
-
         return `<div class="rider-cat-header" style="color:${cat.color}">${cat.label} <span style="font-size:.65rem;color:var(--muted);font-weight:400;margin-left:8px;">${cat.list.length} sürücü</span></div>
                 <div class="rider-grid">${cards}</div>`;
     }
 
     function showCat(catKey, btn) {
-        document.querySelectorAll(".cat-tab").forEach(b => {
-            b.classList.remove("active");
-            b.style.background = "";
-            b.style.borderColor = "";
-        });
+        document.querySelectorAll(".cat-tab").forEach(b => { b.classList.remove("active"); b.style.background = ""; b.style.borderColor = ""; });
         btn.classList.add("active");
         const color = allRiders[catKey]?.color || "var(--accent)";
-        btn.style.background = color;
-        btn.style.borderColor = color;
+        btn.style.background = color; btn.style.borderColor = color;
         document.getElementById("rider-content").innerHTML = buildRiderGrid(catKey);
     }
 
-    /* İlk yükleme — MotoGP */
     document.getElementById("rider-content").innerHTML = buildRiderGrid("motogp");
 
     function fmtDate(str) { if (!str) return ""; const d = new Date(str); if (isNaN(d)) return str; return d.toLocaleDateString("tr-TR",{day:"numeric",month:"long",year:"numeric"}); }
     function stripHtml(html) { const t = document.createElement("div"); t.innerHTML = html||""; return t.textContent||""; }
+
     async function loadRSS(btn) {
         document.querySelectorAll(".rss-tab[data-feed]").forEach(t => t.classList.remove("active"));
         btn.classList.add("active");
@@ -1169,96 +966,53 @@
         const gridEl = document.getElementById("news-grid");
         statusEl.innerHTML = '<div class="rss-spinner"></div> Haberler yükleniyor…';
         gridEl.innerHTML = Array(6).fill('<div class="news-card skeleton"></div>').join("");
-
-        /* Her sekme için yedek feed listesi */
         const feedGroups = {
-            "MotoGP": [
-                "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.gpone.com%2Fen%2Frss.xml",
-                "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.motorsport.com%2Frss%2Fmoto-gp%2Fnews%2F",
-                "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.crash.net%2Frss%2Fmotogp"
-            ],
-            "WorldSBK": [
-                "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.worldsbk.com%2Fen%2Frss%2Fnews",
-                "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.motorsport.com%2Frss%2Fsbk%2Fnews%2F",
-                "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.crash.net%2Frss%2Fwsbk"
-            ],
-            "Formula 1": [
-                "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.autosport.com%2Frss%2Ff1%2Fnews%2F",
-                "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.motorsport.com%2Frss%2Ff1%2Fnews%2F",
-                "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.crash.net%2Frss%2Ff1"
-            ]
+            "MotoGP": ["https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.gpone.com%2Fen%2Frss.xml","https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.motorsport.com%2Frss%2Fmoto-gp%2Fnews%2F"],
+            "WorldSBK": ["https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.worldsbk.com%2Fen%2Frss%2Fnews","https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.motorsport.com%2Frss%2Fsbk%2Fnews%2F"],
+            "Formula 1": ["https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.autosport.com%2Frss%2Ff1%2Fnews%2F","https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.motorsport.com%2Frss%2Ff1%2Fnews%2F"]
         };
-
         const label = btn.innerText.trim();
         const feeds = feedGroups[label] || [btn.dataset.feed];
-
         let items = null;
         for (const url of feeds) {
-            try {
-                const res = await fetch(url);
-                const data = await res.json();
-                if (data.items && data.items.length > 0) { items = data.items; break; }
-            } catch(e) { continue; }
+            try { const res = await fetch(url); const data = await res.json(); if (data.items && data.items.length > 0) { items = data.items; break; } } catch(e) { continue; }
         }
-
-        if (!items) {
-            statusEl.style.color = "#ff6680";
-            statusEl.innerHTML = "⚠ Haberler şu an yüklenemiyor — lütfen birkaç dakika sonra tekrar deneyin.";
-            gridEl.innerHTML = `
-                <div class="card" style="align-items:flex-start;gap:8px"><h3>MotoGP Haberleri</h3><a href="https://www.motogp.com/en/news" target="_blank" class="btn">Siteye Git</a></div>
-                <div class="card" style="align-items:flex-start;gap:8px"><h3>WorldSBK Haberleri</h3><a href="https://www.worldsbk.com/en/news" target="_blank" class="btn">Siteye Git</a></div>
-                <div class="card" style="align-items:flex-start;gap:8px"><h3>Motorsport.com</h3><a href="https://www.motorsport.com/motogp/news/" target="_blank" class="btn">Siteye Git</a></div>`;
-            return;
-        }
-
+        if (!items) { statusEl.innerHTML = "⚠ Haberler şu an yüklenemiyor."; return; }
         statusEl.innerHTML = `<span style="color:#8aaccc">${Math.min(items.length,12)} haber yüklendi</span>`;
         gridEl.innerHTML = items.slice(0,12).map(item => {
             const thumb = item.thumbnail || item.enclosure?.link || "";
             const cat = item.categories?.[0] || "Haber";
             const desc = stripHtml(item.description).slice(0,80).trim();
-            return `<div class="news-card">
-                ${thumb ? `<img class="news-thumb" src="${thumb}" alt="" loading="lazy" onerror="this.remove()">` : ""}
-                <div class="news-cat">${cat}</div>
-                <div class="news-title">${item.title}</div>
-                ${desc ? `<div style="font-size:.72rem;color:var(--muted);line-height:1.5">${desc}…</div>` : ""}
-                <div class="news-footer">
-                    <span class="news-date">${fmtDate(item.pubDate)}</span>
-                    <a href="${item.link}" target="_blank" class="btn" style="padding:5px 10px;font-size:.62rem;width:auto">OKU</a>
-                </div>
-            </div>`;
+            return `<div class="news-card">${thumb ? `<img class="news-thumb" src="${thumb}" alt="" loading="lazy" onerror="this.remove()">` : ""}<div class="news-cat">${cat}</div><div class="news-title">${item.title}</div>${desc ? `<div style="font-size:.72rem;color:var(--muted);line-height:1.5">${desc}…</div>` : ""}<div class="news-footer"><span class="news-date">${fmtDate(item.pubDate)}</span><a href="${item.link}" target="_blank" class="btn" style="padding:5px 10px;font-size:.62rem;width:auto">OKU</a></div></div>`;
         }).join("");
     }
 
     function showTakvim(id, btn) {
-        document.querySelectorAll("#takvim-tabs .cat-tab").forEach(b => {
-            b.classList.remove("active");
-            b.style.background = "";
-            b.style.borderColor = "";
-        });
+        document.querySelectorAll("#takvim-tabs .cat-tab").forEach(b => { b.classList.remove("active"); b.style.background = ""; b.style.borderColor = ""; });
         btn.classList.add("active");
         const colors = {"motogp-takvim":"#e8001d","wsbk-takvim":"#0066cc","f1-takvim":"#e10600"};
-        btn.style.background = colors[id] || "var(--accent)";
-        btn.style.borderColor = colors[id] || "var(--accent)";
-        document.getElementById("motogp-takvim").style.display = "none";
-        document.getElementById("wsbk-takvim").style.display = "none";
-        document.getElementById("f1-takvim").style.display = "none";
+        btn.style.background = colors[id] || "var(--accent)"; btn.style.borderColor = colors[id] || "var(--accent)";
+        ["motogp-takvim","wsbk-takvim","f1-takvim"].forEach(i => document.getElementById(i).style.display = "none");
         document.getElementById(id).style.display = "block";
     }
 
-
     function showGaleri(id, btn) {
-        ["g-motogp","g-wsbk","g-f1","g-dtm"].forEach(function(i) {
-            var el = document.getElementById(i);
-            if(el) el.style.display = "none";
-        });
+        ["g-motogp","g-wsbk","g-f1"].forEach(i => { const el = document.getElementById(i); if(el) el.style.display = "none"; });
         document.getElementById(id).style.display = "block";
-        var btns = btn.parentElement.querySelectorAll("button");
-        btns.forEach(function(b) { b.style.background="var(--card)"; b.style.borderColor="var(--border)"; b.style.color="#9aadcc"; });
+        btn.parentElement.querySelectorAll("button").forEach(b => { b.style.background="var(--card)"; b.style.borderColor="var(--border)"; b.style.color="#9aadcc"; });
         btn.style.background="#e8001d"; btn.style.borderColor="#e8001d"; btn.style.color="white";
     }
 
     window.addEventListener("DOMContentLoaded", startCountdown);
-
 </script>
+
+<!-- Botpress Webchat -->
+<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+<script>
+  window.botpress.init({
+    "configUrl": "https://files.bpcontent.cloud/2026/06/11/12/20260611125621-S525SHPZ.json"
+  });
+</script>
+
 </body>
 </html>
