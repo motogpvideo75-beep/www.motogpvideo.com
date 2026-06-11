@@ -397,6 +397,12 @@
         <span class="topnav-link" onclick="topNav('sec-canli',this)">Resmi Siteler</span>
         <span class="topnav-link" onclick="topNav('sec-iletisim',this)">İletişim</span>
     </div>
+    <div style="display:flex;align-items:center;gap:5px;margin-right:8px;">
+        <a href="https://www.instagram.com/motogp/" target="_blank" style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.85rem;">📷</a>
+        <a href="https://twitter.com/MotoGP" target="_blank" style="width:28px;height:28px;border-radius:6px;background:#000;display:flex;align-items:center;justify-content:center;text-decoration:none;color:white;font-size:.7rem;font-weight:900;">X</a>
+        <a href="https://www.youtube.com/motogp" target="_blank" style="width:28px;height:28px;border-radius:6px;background:#ff0000;display:flex;align-items:center;justify-content:center;text-decoration:none;color:white;font-size:.75rem;">▶</a>
+        <a href="https://www.facebook.com/MotoGP/" target="_blank" style="width:28px;height:28px;border-radius:6px;background:#1877f2;display:flex;align-items:center;justify-content:center;text-decoration:none;color:white;font-size:.75rem;font-weight:900;">f</a>
+    </div>
     <div class="topnav-lang">
         <button class="lang-btn active" onclick="switchLang('tr')">TR</button>
         <button class="lang-btn" onclick="switchLang('en')">EN</button>
@@ -478,55 +484,170 @@
         </div>
 
         <div class="section" id="sec-takvim">
-            <div class="sec-title" id="st-takvim">2026 MotoGP Yarış Ülkeleri</div>
-            <div style="font-family:Arial,sans-serif;font-size:1.1rem;font-weight:900;margin:0 0 14px;color:#fff;">MotoGP 2026</div>
-            <div class="flag-grid">
-                <div class="flag-card"><div class="flag-box">TH</div><div class="flag-name">THAILAND</div></div>
-                <div class="flag-card"><div class="flag-box">BR</div><div class="flag-name">BRAZIL</div></div>
-                <div class="flag-card"><div class="flag-box">US</div><div class="flag-name">USA</div></div>
-                <div class="flag-card"><div class="flag-box">QA</div><div class="flag-name">QATAR</div></div>
-                <div class="flag-card"><div class="flag-box">ES</div><div class="flag-name">JEREZ</div></div>
-                <div class="flag-card"><div class="flag-box">FR</div><div class="flag-name">FRANCE</div></div>
-                <div class="flag-card"><div class="flag-box">IT</div><div class="flag-name">ITALY</div></div>
-                <div class="flag-card"><div class="flag-box">DE</div><div class="flag-name">GERMANY</div></div>
-                <div class="flag-card"><div class="flag-box">NL</div><div class="flag-name">NETHERLANDS</div></div>
-                <div class="flag-card"><div class="flag-box">GB</div><div class="flag-name">UK</div></div>
-                <div class="flag-card"><div class="flag-box">SM</div><div class="flag-name">SAN MARINO</div></div>
-                <div class="flag-card"><div class="flag-box">AT</div><div class="flag-name">AUSTRIA</div></div>
-                <div class="flag-card"><div class="flag-box">JP</div><div class="flag-name">JAPAN</div></div>
-                <div class="flag-card"><div class="flag-box">TR</div><div class="flag-name">TURKİYE</div></div>
-                <div class="flag-card"><div class="flag-box">ID</div><div class="flag-name">INDONESIA</div></div>
-                <div class="flag-card"><div class="flag-box">MY</div><div class="flag-name">MALAYSIA</div></div>
-                <div class="flag-card"><div class="flag-box">PT</div><div class="flag-name">PORTUGAL</div></div>
-                <div class="flag-card"><div class="flag-box">ES</div><div class="flag-name">VALENCIA</div></div>
+            <div class="sec-title" id="st-takvim">2026 Yaris Takvimleri</div>
+            <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+                <button onclick="showCal('c-motogp',this)" style="background:#e8001d;border:1px solid #e8001d;color:white;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:700;">MotoGP</button>
+                <button onclick="showCal('c-wsbk',this)" style="background:var(--card);border:1px solid var(--border);color:#9aadcc;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:700;">WorldSBK</button>
+                <button onclick="showCal('c-f1',this)" style="background:var(--card);border:1px solid var(--border);color:#9aadcc;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:700;">Formula 1</button>
+            </div>
+
+            <div id="c-motogp">
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R01</span><span style="flex:1;font-size:.85rem;font-weight:700;">Tayland GP - Chang Circuit</span><span style="font-size:.72rem;color:var(--muted);">28 Sub-2 Mar</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R02</span><span style="flex:1;font-size:.85rem;font-weight:700;">Brezilya GP - Rio</span><span style="font-size:.72rem;color:var(--muted);">14-16 Mar</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R03</span><span style="flex:1;font-size:.85rem;font-weight:700;">Amerika GP - COTA</span><span style="font-size:.72rem;color:var(--muted);">28-30 Mar</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R04</span><span style="flex:1;font-size:.85rem;font-weight:700;">Katar GP - Lusail</span><span style="font-size:.72rem;color:var(--muted);">11-13 Nis</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R05</span><span style="flex:1;font-size:.85rem;font-weight:700;">Ispanya GP - Jerez</span><span style="font-size:.72rem;color:var(--muted);">1-3 May</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R06</span><span style="flex:1;font-size:.85rem;font-weight:700;">Fransa GP - Le Mans</span><span style="font-size:.72rem;color:var(--muted);">15-17 May</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R07</span><span style="flex:1;font-size:.85rem;font-weight:700;">Italya GP - Mugello</span><span style="font-size:.72rem;color:var(--muted);">29-31 May</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R08</span><span style="flex:1;font-size:.85rem;font-weight:700;">Almanya GP - Sachsenring</span><span style="font-size:.72rem;color:var(--muted);">19-21 Haz</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R09</span><span style="flex:1;font-size:.85rem;font-weight:700;">Hollanda GP - Assen</span><span style="font-size:.72rem;color:var(--muted);">26-28 Haz</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R10</span><span style="flex:1;font-size:.85rem;font-weight:700;">Britanya GP - Silverstone</span><span style="font-size:.72rem;color:var(--muted);">3-5 Tem</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R11</span><span style="flex:1;font-size:.85rem;font-weight:700;">Avusturya GP - Red Bull Ring</span><span style="font-size:.72rem;color:var(--muted);">10-12 Tem</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R12</span><span style="flex:1;font-size:.85rem;font-weight:700;">San Marino GP - Misano</span><span style="font-size:.72rem;color:var(--muted);">7-9 Agu</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R13</span><span style="flex:1;font-size:.85rem;font-weight:700;">Aragon GP - MotorLand</span><span style="font-size:.72rem;color:var(--muted);">21-23 Agu</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R14</span><span style="flex:1;font-size:.85rem;font-weight:700;">Japonya GP - Motegi</span><span style="font-size:.72rem;color:var(--muted);">18-20 Eyl</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#1a0505,#2a0808);border:1px solid #e8001d;border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R15</span><span style="flex:1;font-size:.85rem;font-weight:700;color:#ff6680;">Turkiye GP - Istanbul Park</span><span style="font-size:.72rem;color:#e8001d;font-weight:700;">25-27 Eyl</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R16</span><span style="flex:1;font-size:.85rem;font-weight:700;">Endonezya GP - Mandalika</span><span style="font-size:.72rem;color:var(--muted);">9-11 Eki</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R17</span><span style="flex:1;font-size:.85rem;font-weight:700;">Malezya GP - Sepang</span><span style="font-size:.72rem;color:var(--muted);">23-25 Eki</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R18</span><span style="flex:1;font-size:.85rem;font-weight:700;">Portekiz GP - Portimao</span><span style="font-size:.72rem;color:var(--muted);">6-8 Kas</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e8001d;min-width:30px;">R19</span><span style="flex:1;font-size:.85rem;font-weight:700;">Valencia GP - Ricardo Tormo</span><span style="font-size:.72rem;color:var(--muted);">20-22 Kas</span></div>
+                </div>
+            </div>
+
+            <div id="c-wsbk" style="display:none;">
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#0066cc;min-width:30px;">R01</span><span style="flex:1;font-size:.85rem;font-weight:700;">Avustralya - Phillip Island</span><span style="font-size:.72rem;color:var(--muted);">28 Sub-2 Mar</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#0066cc;min-width:30px;">R02</span><span style="flex:1;font-size:.85rem;font-weight:700;">Portekiz - Portimao</span><span style="font-size:.72rem;color:var(--muted);">4-6 Nis</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#0066cc;min-width:30px;">R03</span><span style="flex:1;font-size:.85rem;font-weight:700;">Hollanda - Assen</span><span style="font-size:.72rem;color:var(--muted);">25-27 Nis</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#0066cc;min-width:30px;">R04</span><span style="flex:1;font-size:.85rem;font-weight:700;">Macaristan - Balaton Park</span><span style="font-size:.72rem;color:var(--muted);">16-18 May</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#0066cc;min-width:30px;">R05</span><span style="flex:1;font-size:.85rem;font-weight:700;">Cekya - Most</span><span style="font-size:.72rem;color:var(--muted);">20-22 Haz</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#0066cc;min-width:30px;">R06</span><span style="flex:1;font-size:.85rem;font-weight:700;">Ispanya - Jerez</span><span style="font-size:.72rem;color:var(--muted);">4-6 Tem</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#0066cc;min-width:30px;">R07</span><span style="flex:1;font-size:.85rem;font-weight:700;">Italya - Cremona</span><span style="font-size:.72rem;color:var(--muted);">1-3 Agu</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#0066cc;min-width:30px;">R08</span><span style="flex:1;font-size:.85rem;font-weight:700;">San Marino - Misano</span><span style="font-size:.72rem;color:var(--muted);">5-7 Eyl</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#0066cc;min-width:30px;">R09</span><span style="flex:1;font-size:.85rem;font-weight:700;">Ispanya - Aragon</span><span style="font-size:.72rem;color:var(--muted);">19-21 Eyl</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#0066cc;min-width:30px;">R10</span><span style="flex:1;font-size:.85rem;font-weight:700;">Britanya - Donington Park</span><span style="font-size:.72rem;color:var(--muted);">3-5 Eki</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#0066cc;min-width:30px;">R11</span><span style="flex:1;font-size:.85rem;font-weight:700;">Fransa - Magny-Cours</span><span style="font-size:.72rem;color:var(--muted);">17-19 Eki</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#0066cc;min-width:30px;">R12</span><span style="flex:1;font-size:.85rem;font-weight:700;">Portekiz - Estoril</span><span style="font-size:.72rem;color:var(--muted);">14-16 Kas</span></div>
+                </div>
+            </div>
+
+            <div id="c-f1" style="display:none;">
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R01</span><span style="flex:1;font-size:.85rem;font-weight:700;">Avustralya GP - Melbourne</span><span style="font-size:.72rem;color:var(--muted);">15-16 Mar</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R02</span><span style="flex:1;font-size:.85rem;font-weight:700;">Cin GP - Shanghai</span><span style="font-size:.72rem;color:var(--muted);">22-23 Mar</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R03</span><span style="flex:1;font-size:.85rem;font-weight:700;">Japonya GP - Suzuka</span><span style="font-size:.72rem;color:var(--muted);">5-6 Nis</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R04</span><span style="flex:1;font-size:.85rem;font-weight:700;">Bahreyn GP</span><span style="font-size:.72rem;color:var(--muted);">19-20 Nis</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R05</span><span style="flex:1;font-size:.85rem;font-weight:700;">Suudi Arabistan GP</span><span style="font-size:.72rem;color:var(--muted);">26-27 Nis</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R06</span><span style="flex:1;font-size:.85rem;font-weight:700;">Miami GP</span><span style="font-size:.72rem;color:var(--muted);">3-4 May</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R07</span><span style="flex:1;font-size:.85rem;font-weight:700;">Emilia Romagna GP</span><span style="font-size:.72rem;color:var(--muted);">17-18 May</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R08</span><span style="flex:1;font-size:.85rem;font-weight:700;">Monako GP</span><span style="font-size:.72rem;color:var(--muted);">24-25 May</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R09</span><span style="flex:1;font-size:.85rem;font-weight:700;">Ispanya GP - Barcelona</span><span style="font-size:.72rem;color:var(--muted);">31 May-1 Haz</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R10</span><span style="flex:1;font-size:.85rem;font-weight:700;">Kanada GP - Montreal</span><span style="font-size:.72rem;color:var(--muted);">14-15 Haz</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R11</span><span style="flex:1;font-size:.85rem;font-weight:700;">Avusturya GP - Red Bull Ring</span><span style="font-size:.72rem;color:var(--muted);">28-29 Haz</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R12</span><span style="flex:1;font-size:.85rem;font-weight:700;">Britanya GP - Silverstone</span><span style="font-size:.72rem;color:var(--muted);">5-6 Tem</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R13</span><span style="flex:1;font-size:.85rem;font-weight:700;">Belcika GP - Spa</span><span style="font-size:.72rem;color:var(--muted);">26-27 Tem</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R14</span><span style="flex:1;font-size:.85rem;font-weight:700;">Macaristan GP - Hungaroring</span><span style="font-size:.72rem;color:var(--muted);">2-3 Agu</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R15</span><span style="flex:1;font-size:.85rem;font-weight:700;">Hollanda GP - Zandvoort</span><span style="font-size:.72rem;color:var(--muted);">30-31 Agu</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R16</span><span style="flex:1;font-size:.85rem;font-weight:700;">Italya GP - Monza</span><span style="font-size:.72rem;color:var(--muted);">6-7 Eyl</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R17</span><span style="flex:1;font-size:.85rem;font-weight:700;">Singapur GP</span><span style="font-size:.72rem;color:var(--muted);">20-21 Eyl</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R18</span><span style="flex:1;font-size:.85rem;font-weight:700;">ABD GP - Austin</span><span style="font-size:.72rem;color:var(--muted);">18-19 Eki</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R19</span><span style="flex:1;font-size:.85rem;font-weight:700;">Meksika GP</span><span style="font-size:.72rem;color:var(--muted);">25-26 Eki</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R20</span><span style="flex:1;font-size:.85rem;font-weight:700;">Brezilya GP - Sao Paulo</span><span style="font-size:.72rem;color:var(--muted);">8-9 Kas</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R21</span><span style="flex:1;font-size:.85rem;font-weight:700;">Las Vegas GP</span><span style="font-size:.72rem;color:var(--muted);">21-22 Kas</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R22</span><span style="flex:1;font-size:.85rem;font-weight:700;">Katar GP - Lusail</span><span style="font-size:.72rem;color:var(--muted);">28-29 Kas</span></div>
+                    <div style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;"><span style="font-size:.65rem;font-weight:800;color:#e10600;min-width:30px;">R23</span><span style="flex:1;font-size:.85rem;font-weight:700;">Abu Dhabi GP - Yas Marina</span><span style="font-size:.72rem;color:var(--muted);">5-6 Ara</span></div>
+                </div>
             </div>
         </div>
 
         <div class="section" id="sec-biniciler">
-            <div class="sec-title" id="st-biniciler">2026 MotoGP Sürücüleri</div>
-            <div class="grid">
-                <div class="card"><h3>Toprak Razgatlioglu</h3><span class="flag">TR - Prima Pramac Yamaha</span></div>
-                <div class="card"><h3>Marc Marquez</h3><span class="flag">ES - Ducati Lenovo Team</span></div>
-                <div class="card"><h3>Francesco Bagnaia</h3><span class="flag">IT - Ducati Lenovo Team</span></div>
-                <div class="card"><h3>Jorge Martin</h3><span class="flag">ES - Aprilia Racing</span></div>
-                <div class="card"><h3>Marco Bezzecchi</h3><span class="flag">IT - Aprilia Racing</span></div>
-                <div class="card"><h3>Fabio Quartararo</h3><span class="flag">FR - Monster Energy Yamaha</span></div>
-                <div class="card"><h3>Pedro Acosta</h3><span class="flag">ES - Red Bull KTM Factory</span></div>
-                <div class="card"><h3>Brad Binder</h3><span class="flag">ZA - Red Bull KTM Factory</span></div>
-                <div class="card"><h3>Jack Miller</h3><span class="flag">AU - Prima Pramac Yamaha</span></div>
-                <div class="card"><h3>Alex Rins</h3><span class="flag">ES - Monster Energy Yamaha</span></div>
-                <div class="card"><h3>Maverick Vinales</h3><span class="flag">ES - Red Bull KTM Tech3</span></div>
-                <div class="card"><h3>Enea Bastianini</h3><span class="flag">IT - Red Bull KTM Tech3</span></div>
-                <div class="card"><h3>Raul Fernandez</h3><span class="flag">ES - Trackhouse MotoGP</span></div>
-                <div class="card"><h3>Ai Ogura</h3><span class="flag">JP - Trackhouse MotoGP</span></div>
-                <div class="card"><h3>Johann Zarco</h3><span class="flag">FR - Castrol Honda LCR</span></div>
-                <div class="card"><h3>Diogo Moreira</h3><span class="flag">BR - Pro Honda LCR</span></div>
-                <div class="card"><h3>Luca Marini</h3><span class="flag">IT - Honda HRC Castrol</span></div>
-                <div class="card"><h3>Joan Mir</h3><span class="flag">ES - Honda HRC Castrol</span></div>
-                <div class="card"><h3>Franco Morbidelli</h3><span class="flag">IT - Pertamina Enduro VR46</span></div>
-                <div class="card"><h3>Fabio Di Giannantonio</h3><span class="flag">IT - Pertamina Enduro VR46</span></div>
-                <div class="card"><h3>Fermin Aldeguer</h3><span class="flag">ES - BK8 Gresini Racing</span></div>
-                <div class="card"><h3>Alex Marquez</h3><span class="flag">ES - BK8 Gresini Racing</span></div>
+            <div class="sec-title" id="st-biniciler">2026 Suruculer & Takimlar</div>
+            <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+                <button onclick="showRiders('r-motogp',this)" style="background:#e8001d;border:1px solid #e8001d;color:white;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:700;">MotoGP</button>
+                <button onclick="showRiders('r-wsbk',this)" style="background:var(--card);border:1px solid var(--border);color:#9aadcc;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:700;">WorldSBK</button>
+                <button onclick="showRiders('r-moto2',this)" style="background:var(--card);border:1px solid var(--border);color:#9aadcc;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:700;">Moto2</button>
+                <button onclick="showRiders('r-moto3',this)" style="background:var(--card);border:1px solid var(--border);color:#9aadcc;padding:6px 14px;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:700;">Moto3</button>
+            </div>
+
+            <div id="r-motogp">
+                <div class="grid">
+                    <div class="card"><h3>Toprak Razgatlioglu</h3><span class="flag">TR - Prima Pramac Yamaha</span></div>
+                    <div class="card"><h3>Marc Marquez</h3><span class="flag">ES - Ducati Lenovo</span></div>
+                    <div class="card"><h3>Francesco Bagnaia</h3><span class="flag">IT - Ducati Lenovo</span></div>
+                    <div class="card"><h3>Jorge Martin</h3><span class="flag">ES - Aprilia Racing</span></div>
+                    <div class="card"><h3>Marco Bezzecchi</h3><span class="flag">IT - Aprilia Racing</span></div>
+                    <div class="card"><h3>Fabio Quartararo</h3><span class="flag">FR - Monster Yamaha</span></div>
+                    <div class="card"><h3>Alex Rins</h3><span class="flag">ES - Monster Yamaha</span></div>
+                    <div class="card"><h3>Pedro Acosta</h3><span class="flag">ES - Red Bull KTM</span></div>
+                    <div class="card"><h3>Brad Binder</h3><span class="flag">ZA - Red Bull KTM</span></div>
+                    <div class="card"><h3>Jack Miller</h3><span class="flag">AU - Prima Pramac Yamaha</span></div>
+                    <div class="card"><h3>Fabio Di Giannantonio</h3><span class="flag">IT - VR46</span></div>
+                    <div class="card"><h3>Franco Morbidelli</h3><span class="flag">IT - VR46</span></div>
+                    <div class="card"><h3>Fermin Aldeguer</h3><span class="flag">ES - Gresini Racing</span></div>
+                    <div class="card"><h3>Alex Marquez</h3><span class="flag">ES - Gresini Racing</span></div>
+                    <div class="card"><h3>Maverick Vinales</h3><span class="flag">ES - KTM Tech3</span></div>
+                    <div class="card"><h3>Enea Bastianini</h3><span class="flag">IT - KTM Tech3</span></div>
+                    <div class="card"><h3>Raul Fernandez</h3><span class="flag">ES - Trackhouse</span></div>
+                    <div class="card"><h3>Ai Ogura</h3><span class="flag">JP - Trackhouse</span></div>
+                    <div class="card"><h3>Johann Zarco</h3><span class="flag">FR - Honda LCR</span></div>
+                    <div class="card"><h3>Diogo Moreira</h3><span class="flag">BR - Honda LCR</span></div>
+                    <div class="card"><h3>Luca Marini</h3><span class="flag">IT - Honda HRC</span></div>
+                    <div class="card"><h3>Joan Mir</h3><span class="flag">ES - Honda HRC</span></div>
+                </div>
+            </div>
+
+            <div id="r-wsbk" style="display:none;">
+                <div class="grid">
+                    <div class="card"><h3>Toprak Razgatlioglu</h3><span class="flag">TR - BMW Motorrad</span></div>
+                    <div class="card"><h3>Nicolo Bulega</h3><span class="flag">IT - Ducati Aruba</span></div>
+                    <div class="card"><h3>Alvaro Bautista</h3><span class="flag">ES - Ducati Aruba</span></div>
+                    <div class="card"><h3>Jonathan Rea</h3><span class="flag">GB - Yamaha PATA</span></div>
+                    <div class="card"><h3>Andrea Locatelli</h3><span class="flag">IT - Yamaha PATA</span></div>
+                    <div class="card"><h3>Alex Lowes</h3><span class="flag">GB - Kawasaki</span></div>
+                    <div class="card"><h3>Axel Bassani</h3><span class="flag">IT - Kawasaki</span></div>
+                    <div class="card"><h3>Michael van der Mark</h3><span class="flag">NL - BMW Motorrad</span></div>
+                    <div class="card"><h3>Danilo Petrucci</h3><span class="flag">IT - Barni Ducati</span></div>
+                    <div class="card"><h3>Scott Redding</h3><span class="flag">GB - Bonovo BMW</span></div>
+                    <div class="card"><h3>Garrett Gerloff</h3><span class="flag">US - Bonovo BMW</span></div>
+                    <div class="card"><h3>Iker Lecuona</h3><span class="flag">ES - Honda HRC</span></div>
+                    <div class="card"><h3>Xavi Vierge</h3><span class="flag">ES - Honda HRC</span></div>
+                    <div class="card"><h3>Bahattin Sofuoglu</h3><span class="flag">TR - Motox Racing</span></div>
+                </div>
+            </div>
+
+            <div id="r-moto2" style="display:none;">
+                <div class="grid">
+                    <div class="card"><h3>Deniz Oncu</h3><span class="flag">TR - ELF Marc VDS</span></div>
+                    <div class="card"><h3>Aron Canet</h3><span class="flag">ES - Fantic Racing</span></div>
+                    <div class="card"><h3>Celestino Vietti</h3><span class="flag">IT - Red Bull KTM Ajo</span></div>
+                    <div class="card"><h3>Sergio Garcia</h3><span class="flag">ES - MT Helmets</span></div>
+                    <div class="card"><h3>Tony Arbolino</h3><span class="flag">IT - ELF Marc VDS</span></div>
+                    <div class="card"><h3>Joe Roberts</h3><span class="flag">US - OnlyFans American</span></div>
+                    <div class="card"><h3>Manuel Gonzalez</h3><span class="flag">ES - Yamaha VR46</span></div>
+                    <div class="card"><h3>Albert Arenas</h3><span class="flag">ES - Aspar Team</span></div>
+                    <div class="card"><h3>Alonso Lopez</h3><span class="flag">ES - SpeedUp</span></div>
+                    <div class="card"><h3>Fermin Aldeguer</h3><span class="flag">ES - SpeedUp</span></div>
+                    <div class="card"><h3>Barry Baltus</h3><span class="flag">BE - RW Racing</span></div>
+                    <div class="card"><h3>Jake Dixon</h3><span class="flag">GB - GASGAS Aspar</span></div>
+                </div>
+            </div>
+
+            <div id="r-moto3" style="display:none;">
+                <div class="grid">
+                    <div class="card"><h3>David Alonso</h3><span class="flag">CO - CFMOTO Gaviota</span></div>
+                    <div class="card"><h3>Daniel Holgado</h3><span class="flag">ES - Red Bull KTM Ajo</span></div>
+                    <div class="card"><h3>Collin Veijer</h3><span class="flag">NL - Husqvarna</span></div>
+                    <div class="card"><h3>Ivan Ortola</h3><span class="flag">ES - MT Helmets</span></div>
+                    <div class="card"><h3>Joel Kelso</h3><span class="flag">AU - CFMoto</span></div>
+                    <div class="card"><h3>Ryusei Yamanaka</h3><span class="flag">JP - MT Helmets</span></div>
+                    <div class="card"><h3>Taiyo Furusato</h3><span class="flag">JP - Honda Team Asia</span></div>
+                    <div class="card"><h3>Angel Piqueras</h3><span class="flag">ES - Leopard Racing</span></div>
+                    <div class="card"><h3>Stefano Nepa</h3><span class="flag">IT - Aspar Team</span></div>
+                    <div class="card"><h3>Xabi Zurutuza</h3><span class="flag">ES - Red Bull KTM Tech3</span></div>
+                    <div class="card"><h3>Adrian Fernandez</h3><span class="flag">ES - Red Bull KTM Ajo</span></div>
+                    <div class="card"><h3>Luca Lunetta</h3><span class="flag">IT - SIC58</span></div>
+                </div>
             </div>
         </div>
 
@@ -642,6 +763,30 @@
             statusEl.innerHTML = "RSS yuklenemedi";
             gridEl.innerHTML = '<div class="card" style="align-items:flex-start;gap:8px"><h3>MotoGP Haberleri</h3><a href="https://www.motogp.com/en/news" target="_blank" class="btn">Siteye Git</a></div>';
         }
+    }
+
+    function showRiders(id, btn) {
+        document.querySelectorAll("#sec-biniciler > div:first-of-type + div, #sec-biniciler > div:not(:first-child)").forEach(function(el) {
+            if(el.id && el.id.startsWith("r-")) el.style.display = "none";
+        });
+        document.getElementById("r-motogp").style.display = "none";
+        document.getElementById("r-wsbk").style.display = "none";
+        document.getElementById("r-moto2").style.display = "none";
+        document.getElementById("r-moto3").style.display = "none";
+        document.getElementById(id).style.display = "block";
+        var btns = btn.parentElement.querySelectorAll("button");
+        btns.forEach(function(b) { b.style.background = "var(--card)"; b.style.borderColor = "var(--border)"; b.style.color = "#9aadcc"; });
+        btn.style.background = "#e8001d"; btn.style.borderColor = "#e8001d"; btn.style.color = "white";
+    }
+
+    function showCal(id, btn) {
+        document.getElementById("c-motogp").style.display = "none";
+        document.getElementById("c-wsbk").style.display = "none";
+        document.getElementById("c-f1").style.display = "none";
+        document.getElementById(id).style.display = "block";
+        var btns = btn.parentElement.querySelectorAll("button");
+        btns.forEach(function(b) { b.style.background = "var(--card)"; b.style.borderColor = "var(--border)"; b.style.color = "#9aadcc"; });
+        btn.style.background = "#e8001d"; btn.style.borderColor = "#e8001d"; btn.style.color = "white";
     }
 
     window.addEventListener("DOMContentLoaded", startCountdown);
