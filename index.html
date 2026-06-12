@@ -645,6 +645,8 @@
         .news-date { font-size:.68rem; color:var(--muted); }
         .news-footer { display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:4px; }
         @keyframes titleBlink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+        @keyframes globeCycle { 0%,24%{content:"🌍"} 25%,49%{content:"🌎"} 50%,74%{content:"🌏"} 75%,100%{content:"🌍"} }
+        .globe-spin::before { content:"🌍"; animation: globeCycle 1.6s steps(1) infinite; font-size:1.1rem; }
         .takvim-list { display:flex; flex-direction:column; gap:6px; }
         .takvim-row { display:flex; align-items:center; gap:12px; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:10px 14px; transition:border-color .2s; }
         .takvim-row:hover { border-color:var(--accent); }
@@ -781,7 +783,9 @@
             <div style="background:linear-gradient(135deg,#0d1220 0%,#1a0505 50%,#0d1220 100%);border:1px solid #e8001d44;border-radius:12px;padding:22px;margin-bottom:18px;text-align:center;">
                 <div style="font-size:1.3rem;font-weight:900;letter-spacing:1.5px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:12px;animation:titleBlink 2s infinite;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 36 24"><rect width="36" height="24" fill="#E30A17"/><circle cx="13" cy="12" r="6" fill="white"/><circle cx="15" cy="12" r="4.8" fill="#E30A17"/><polygon points="19.5,9.5 22.5,12 19.5,14.5 20.5,12" fill="white"/><circle cx="22.5" cy="10.5" r="0.8" fill="white"/></svg>
+                    <span class="globe-spin"></span>
                     <span id="hero-title">🏍️ MOTOR SPORLARI DÜNYASINA HOŞ GELDİNİZ!</span>
+                    <span class="globe-spin"></span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 36 24"><rect width="36" height="24" fill="#E30A17"/><circle cx="13" cy="12" r="6" fill="white"/><circle cx="15" cy="12" r="4.8" fill="#E30A17"/><polygon points="19.5,9.5 22.5,12 19.5,14.5 20.5,12" fill="white"/><circle cx="22.5" cy="10.5" r="0.8" fill="white"/></svg>
                 </div>
                 <div id="hero-desc" style="font-size:.85rem;color:#aaccee;line-height:1.8;">MotoGP, WorldSBK ve Formula 1 yarışlarını takip edebileceğiniz, güncel haberler, sürücü kadroları ve yarış takvimlerine ulaşabileceğiniz merkezi platformunuz.</div>
