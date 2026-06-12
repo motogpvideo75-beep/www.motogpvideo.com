@@ -466,7 +466,12 @@
         .cd-unit { display:flex; align-items:center; gap:3px; }
         .cd-num { background:white; color:var(--accent); font-size:.85rem; font-weight:900; padding:2px 6px; border-radius:4px; min-width:28px; text-align:center; }
         .cd-txt { font-size:.62rem; color:rgba(255,255,255,.8); text-transform:uppercase; }
-        .cd-right { display:flex; align-items:center; gap:12px; }
+        .cd-right { display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:center; flex:1; }
+        .cd-group { display:flex; align-items:center; gap:5px; }
+        .cd-glabel { color:rgba(255,255,255,.85); font-size:.65rem; white-space:nowrap; }
+        .cd-divider { width:1px; height:16px; background:rgba(255,255,255,.3); }
+        .cd-group .cd-num { font-size:.78rem; min-width:24px; padding:1px 5px; }
+        .cd-gtxt { font-size:.6rem; color:rgba(255,255,255,.8); }
         .live-pill { display:flex; align-items:center; gap:6px; background:rgba(0,0,0,.3); border:1px solid rgba(0,200,80,.6); border-radius:20px; padding:3px 12px; font-size:.72rem; color:var(--green); }
         .live-dot { width:7px; height:7px; border-radius:50%; background:var(--green); animation:blink 1s infinite; }
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
@@ -612,8 +617,12 @@
             <div class="cd-unit"><span class="cd-num" id="cd-san">--</span><span class="cd-txt">SANİYE</span></div>
         </div>
     </div>
-    <div class="cd-right">
-        <div class="lang-flags"><span class="active">TR</span><span>GB EN</span><span>FR FR</span></div>
+    <div class="cd-right" id="cd-multi">
+        <div class="cd-group"><span class="cd-glabel">🏍 MotoGP - <span id="mg-venue">--</span>:</span><span class="cd-num" id="mg-gun">--</span><span class="cd-gtxt">G</span><span class="cd-num" id="mg-saat">--</span><span class="cd-gtxt">S</span><span class="cd-num" id="mg-dak">--</span><span class="cd-gtxt">D</span></div>
+        <div class="cd-divider"></div>
+        <div class="cd-group"><span class="cd-glabel">🏆 WSBK - <span id="sbk-venue">--</span>:</span><span class="cd-num" id="sbk-gun">--</span><span class="cd-gtxt">G</span><span class="cd-num" id="sbk-saat">--</span><span class="cd-gtxt">S</span><span class="cd-num" id="sbk-dak">--</span><span class="cd-gtxt">D</span></div>
+        <div class="cd-divider"></div>
+        <div class="cd-group"><span class="cd-glabel">🚀 F1 - <span id="f1-venue">--</span>:</span><span class="cd-num" id="f1-gun">--</span><span class="cd-gtxt">G</span><span class="cd-num" id="f1-saat">--</span><span class="cd-gtxt">S</span><span class="cd-num" id="f1-dak">--</span><span class="cd-gtxt">D</span></div>
     </div>
 </div>
 
