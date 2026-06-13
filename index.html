@@ -512,15 +512,6 @@
         }
 
         function startCountdown() {
-            const target = new Date("2026-09-25T00:00:00");
-            function tick() {
-                const now = new Date(); const diff = target - now; if (diff <= 0) return;
-                document.getElementById("cd-gun").textContent = String(Math.floor(diff/86400000)).padStart(2,"0");
-                document.getElementById("cd-saat").textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,"0");
-                document.getElementById("cd-dak").textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,"0");
-                document.getElementById("cd-san").textContent = String(Math.floor((diff%60000)/1000)).padStart(2,"0");
-            }
-            tick(); setInterval(tick, 1000);
             startMultiCountdown();
         }
 
@@ -967,16 +958,7 @@
 </script>
 
 <div class="countdown-bar">
-    <div class="cd-left">
-        <span class="cd-label" id="cd-label-text">MOTO GP TÜRKİYE GRAND PRIX 2026'YA KALAN SÜRE:</span>
-        <div class="cd-units">
-            <div class="cd-unit"><span class="cd-num" id="cd-gun">--</span><span class="cd-txt">GÜN</span></div>
-            <div class="cd-unit"><span class="cd-num" id="cd-saat">--</span><span class="cd-txt">SAAT</span></div>
-            <div class="cd-unit"><span class="cd-num" id="cd-dak">--</span><span class="cd-txt">DAKİKA</span></div>
-            <div class="cd-unit"><span class="cd-num" id="cd-san">--</span><span class="cd-txt">SANİYE</span></div>
-        </div>
-    </div>
-    <div class="cd-right" id="cd-multi">
+    <div class="cd-right" id="cd-multi" style="flex:1; justify-content:space-around;">
         <div class="cd-group"><span class="cd-glabel">🏍 MotoGP - <span id="mg-venue">--</span>:</span><span class="cd-num" id="mg-gun">--</span><span class="cd-gtxt">G</span><span class="cd-num" id="mg-saat">--</span><span class="cd-gtxt">S</span><span class="cd-num" id="mg-dak">--</span><span class="cd-gtxt">D</span></div>
         <div class="cd-divider"></div>
         <div class="cd-group"><span class="cd-glabel">🏆 WSBK - <span id="sbk-venue">--</span>:</span><span class="cd-num" id="sbk-gun">--</span><span class="cd-gtxt">G</span><span class="cd-num" id="sbk-saat">--</span><span class="cd-gtxt">S</span><span class="cd-num" id="sbk-dak">--</span><span class="cd-gtxt">D</span></div>
