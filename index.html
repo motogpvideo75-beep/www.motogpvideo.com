@@ -311,6 +311,25 @@
         function toggleSidebar() { document.getElementById("sidebar").classList.toggle("open"); document.getElementById("overlay").classList.toggle("show"); }
         function closeSidebar() { document.getElementById("sidebar").classList.remove("open"); document.getElementById("overlay").classList.remove("show"); }
 
+        function toggleLangMenu() {
+            const menu = document.getElementById("lang-menu");
+            menu.style.display = menu.style.display === "none" ? "block" : "none";
+        }
+
+        function selectLang(lang, flag, name) {
+            document.getElementById("lang-menu").style.display = "none";
+            document.getElementById("lang-current-name").textContent = flag + " " + name;
+            switchLang(lang);
+        }
+
+        document.addEventListener("click", function(e) {
+            const btn = document.getElementById("lang-dropdown-btn");
+            const menu = document.getElementById("lang-menu");
+            if (btn && menu && !btn.contains(e.target) && !menu.contains(e.target)) {
+                menu.style.display = "none";
+            }
+        });
+
         // ---- Site İçi Arama ----
         const searchIndex = [
             { icon:"📺", title:"Motor Sporları Bilgi", desc:"Canlı yayın bilgileri", section:"sec-canli", keys:["canlı","yayın","live","broadcast","information","motorsport"] },
@@ -763,6 +782,8 @@
         .topnav-link:hover { color:#fff; background:var(--card2); }
         .topnav-link.active { color:#fff; }
         .topnav-lang { margin-left:auto; display:flex; gap:6px; }
+        .lang-option { padding:9px 16px; cursor:pointer; color:#cdd6f4; font-size:.85rem; font-weight:600; transition:background .15s; white-space:nowrap; }
+        .lang-option:hover { background:rgba(255,255,255,.08); }
         .lang-btn { background:var(--card); border:1px solid var(--border); color:rgba(255,255,255,.7); padding:2px 5px; border-radius:4px; cursor:pointer; font-size:.62rem; font-weight:700; transition:all .15s; }
         .lang-btn.active,.lang-btn:hover { background:var(--accent); border-color:var(--accent); color:#fff; }
         .layout { display:flex; min-height:calc(100vh - 90px); }
@@ -965,17 +986,21 @@
              style="height:38px;width:38px;object-fit:cover;border-radius:6px;border:1px solid #e8001d44;transform:scaleX(-1);" 
              alt="kask">
     </div>
-    <div class="topnav-lang" style="display:flex;align-items:center;gap:4px;">
-        <span style="font-size:.62rem;color:#7a90b8;font-weight:700;margin-right:4px;letter-spacing:1px;">LANG</span>
-        <button class="lang-btn" onclick="switchLang('tr')">🇹🇷 TR</button>
-        <button class="lang-btn active" onclick="switchLang('en')">🇬🇧 EN</button>
-        <button class="lang-btn" onclick="switchLang('de')">🇩🇪 DE</button>
-        <button class="lang-btn" onclick="switchLang('fr')">🇫🇷 FR</button>
-                <button class="lang-btn" onclick="switchLang('jp')">🇯🇵 JP</button>
-        <button class="lang-btn" onclick="switchLang('es')">🇪🇸 ES</button>
-        <button class="lang-btn" onclick="switchLang('it')">🇮🇹 IT</button>
-        <button class="lang-btn" onclick="switchLang('pt')">🇵🇹 PT</button>
-        <button class="lang-btn" onclick="switchLang('id')">🇮🇩 ID</button>
+    <div class="topnav-lang" style="display:flex;align-items:center;gap:4px;position:relative;">
+        <button id="lang-dropdown-btn" onclick="toggleLangMenu()" style="display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--border);color:#fff;padding:5px 12px;border-radius:6px;cursor:pointer;font-size:.75rem;font-weight:700;letter-spacing:.5px;">
+            🌐 <span id="lang-current-name">English</span> <span style="font-size:.6rem;opacity:.7;">▼</span>
+        </button>
+        <div id="lang-menu" style="display:none;position:absolute;top:calc(100% + 6px);right:0;background:#1a1f33;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.5);z-index:9999;min-width:160px;">
+            <div class="lang-option" onclick="selectLang('tr','🇹🇷','Türkçe')">🇹🇷 Türkçe</div>
+            <div class="lang-option" onclick="selectLang('en','🇬🇧','English')">🇬🇧 English</div>
+            <div class="lang-option" onclick="selectLang('de','🇩🇪','Deutsch')">🇩🇪 Deutsch</div>
+            <div class="lang-option" onclick="selectLang('fr','🇫🇷','Français')">🇫🇷 Français</div>
+            <div class="lang-option" onclick="selectLang('jp','🇯🇵','日本語')">🇯🇵 日本語</div>
+            <div class="lang-option" onclick="selectLang('es','🇪🇸','Español')">🇪🇸 Español</div>
+            <div class="lang-option" onclick="selectLang('it','🇮🇹','Italiano')">🇮🇹 Italiano</div>
+            <div class="lang-option" onclick="selectLang('pt','🇵🇹','Português')">🇵🇹 Português</div>
+            <div class="lang-option" onclick="selectLang('id','🇮🇩','Indonesia')">🇮🇩 Indonesia</div>
+        </div>
     </div>
 </nav>
 <div id="search-overlay" onclick="closeSearchOnBg(event)">
