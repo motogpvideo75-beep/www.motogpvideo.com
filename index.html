@@ -1466,7 +1466,7 @@
     }
 
     function showGaleri(id, btn) {
-        ["g-motogp","g-wsbk","g-f1"].forEach(i => { const el = document.getElementById(i); if(el) el.style.display = "none"; });
+        ["g-motogp","g-wsbk","g-f1","g-wrc","g-wec","g-motoamerica","g-idm"].forEach(i => { const el = document.getElementById(i); if(el) el.style.display = "none"; });
         document.getElementById(id).style.display = "block";
         btn.parentElement.querySelectorAll("button").forEach(b => { b.style.background="var(--card)"; b.style.borderColor="var(--border)"; b.style.color="#9aadcc"; });
         btn.style.background="#e8001d"; btn.style.borderColor="#e8001d"; btn.style.color="white";
