@@ -36,7 +36,8 @@
                 footer: "BU SİTE RESMİ BİR YAYIN KURULUŞU DEĞİLDİR. TÜM YAYIN HAKLARI İLGİLİ KURULUŞLARA AİTTİR.",
                 chBtn: "RESMİ YAYIN KURULUŞU",
                 heroTitle: "MOTOR SPORLARI DÜNYASINA HOŞ GELDİNİZ!",
-                heroDesc: "MotoGP, WorldSBK ve Formula 1 yarışlarını takip edebileceğiniz, güncel haberler, sürücü kadroları ve yarış takvimlerine ulaşabileceğiniz merkezi platformunuz."
+                heroDesc: "MotoGP, WorldSBK ve Formula 1 yarışlarını takip edebileceğiniz, güncel haberler, sürücü kadroları ve yarış takvimlerine ulaşabileceğiniz merkezi platformunuz.",
+                appBanner: "📱 MotoGP Video Android Uygulamamız Çıktı! Telefonunuza Hemen İndirmek İçin Tıklayın"
             },
             en: {
                 title: "MOTORSPORTS CENTER", label: "LATEST",
@@ -62,7 +63,8 @@
                 footer: "THIS SITE IS NOT AN OFFICIAL BROADCASTER. ALL BROADCASTING RIGHTS BELONG TO THEIR RESPECTIVE ORGANIZATIONS.",
                 chBtn: "OFFICIAL BROADCASTER",
                 heroTitle: "WELCOME TO THE WORLD OF MOTORSPORTS!",
-                heroDesc: "Your central platform to follow MotoGP, WorldSBK and Formula 1 races, latest news, rider lineups and race calendars."
+                heroDesc: "Your central platform to follow MotoGP, WorldSBK and Formula 1 races, latest news, rider lineups and race calendars.",
+                appBanner: "📱 Our MotoGP Video Android App Is Out! Tap to Download It to Your Phone Now"
             },
             de: {
                 title: "MOTORSPORT ZENTRUM", news: "• Das Rennwochenende kommt bald!", pilots: "Deutschland: Stefan Bradl", live: "SENDUNG INFO & PROGRAMM", cdLabel: "VERBLEIBENDE ZEIT BIS MOTO GP TÜRKEI GP 2036:",
@@ -84,7 +86,8 @@
                 footer: "DIESE SEITE IST KEIN OFFIZIELLER SENDER. ALLE ÜBERTRAGUNGSRECHTE LIEGEN BEI DEN JEWEILIGEN ORGANISATIONEN.",
                 chBtn: "OFFIZIELLER SENDER",
                 heroTitle: "WILLKOMMEN IN DER WELT DES MOTORSPORTS!",
-                heroDesc: "Ihre zentrale Plattform für MotoGP, WorldSBK und Formel 1 Rennen, aktuelle Nachrichten, Fahrer und Rennkalender."
+                heroDesc: "Ihre zentrale Plattform für MotoGP, WorldSBK und Formel 1 Rennen, aktuelle Nachrichten, Fahrer und Rennkalender.",
+                appBanner: "📱 Unsere MotoGP Video Android-App ist da! Jetzt aufs Handy herunterladen"
             },
             fr: {
                 title: "CENTRE SPORTS MOTO", news: "• Le week-end de course arrive bientôt!", pilots: "France: Johann Zarco, Fabio Quartararo", live: "INFO & PROGRAMME DES ÉMISSIONS", cdLabel: "TEMPS RESTANT AVANT LE GP DE TURQUIE 2036:",
@@ -106,7 +109,8 @@
                 footer: "CE SITE N'EST PAS UN DIFFUSEUR OFFICIEL. TOUS LES DROITS DE DIFFUSION APPARTIENNENT AUX ORGANISATIONS CONCERNÉES.",
                 chBtn: "DIFFUSEUR OFFICIEL",
                 heroTitle: "BIENVENUE DANS LE MONDE DU MOTORSPORT!",
-                heroDesc: "Votre plateforme centrale pour suivre MotoGP, WorldSBK et Formule 1, actualités, pilotes et calendriers."
+                heroDesc: "Votre plateforme centrale pour suivre MotoGP, WorldSBK et Formule 1, actualités, pilotes et calendriers.",
+                appBanner: "📱 Notre application Android MotoGP Video est disponible ! Téléchargez-la maintenant"
             },
             jp: {
                 title: "モータースポーツセンター", news: "• レースウィークがもうすぐ始まります！", pilots: "トルコ: トプラク・ラズガトリオール、バハッティン・ソフオール", live: "情報＆放送スケジュール", cdLabel: "2036年トルコGPまでの残り時間:",
@@ -129,7 +133,8 @@
                 footer: "このサイトは公式放送局ではありません。すべての放送権はそれぞれの団体に帰属します。",
                 chBtn: "公式放送局",
                 heroTitle: "モータースポーツの世界へようこそ！",
-                heroDesc: "MotoGP、WorldSBK、フォーミュラ1のニュース、ライダー、カレンダーを追うための中心プラットフォーム。"
+                heroDesc: "MotoGP、WorldSBK、フォーミュラ1のニュース、ライダー、カレンダーを追うための中心プラットフォーム。",
+                appBanner: "📱 MotoGP Video Androidアプリが登場！今すぐスマホにダウンロード"
             }
         };
 
@@ -172,6 +177,7 @@
             if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
             const ht = document.getElementById("hero-title"); if (ht && d.heroTitle) ht.innerText = d.heroTitle;
             const hd = document.getElementById("hero-desc"); if (hd && d.heroDesc) hd.innerText = d.heroDesc;
+            const ab = document.getElementById("app-banner"); if (ab && d.appBanner) ab.innerText = d.appBanner;
             if (d.platform) {
                 const ids = ["title","p1","p2","p3","p4","p5","p6","disc"];
                 ids.forEach(k => { const el = document.getElementById("plat-"+k); if (el) el.innerHTML = d.platform[k]; });
@@ -685,7 +691,7 @@
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSW3BQM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<a href="motogpvideo.apk" download style="display:block;background:#e8001d;color:#fff;text-align:center;padding:10px 16px;font-weight:900;font-size:.85rem;font-family:Arial,sans-serif;text-decoration:none;animation:appBannerBlink 1.4s ease-in-out infinite;">📱 MotoGP Video Android Uygulamamız Çıktı! Telefonunuza Hemen İndirmek İçin Tıklayın</a>
+<a id="app-banner" href="motogpvideo.apk" download style="display:block;background:#e8001d;color:#fff;text-align:center;padding:10px 16px;font-weight:900;font-size:.85rem;font-family:Arial,sans-serif;text-decoration:none;animation:appBannerBlink 1.4s ease-in-out infinite;">📱 MotoGP Video Android Uygulamamız Çıktı! Telefonunuza Hemen İndirmek İçin Tıklayın</a>
 <style>@keyframes appBannerBlink { 0%,100% { opacity:1; } 50% { opacity:.55; } }</style>
 
 <div class="countdown-bar">
@@ -1241,6 +1247,7 @@
         if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
         const ht2 = document.getElementById("hero-title"); if (ht2 && d.heroTitle) ht2.innerText = d.heroTitle;
         const hd2 = document.getElementById("hero-desc"); if (hd2 && d.heroDesc) hd2.innerText = d.heroDesc;
+        const ab2 = document.getElementById("app-banner"); if (ab2 && d.appBanner) ab2.innerText = d.appBanner;
         if (d.platform) { const ids = ["title","p1","p2","p3","p4","p5","p6","disc"]; ids.forEach(k => { const el = document.getElementById("plat-"+k); if (el) el.innerHTML = d.platform[k]; }); }
         document.documentElement.lang = lang;
         if(typeof buildBrandGrid === "function") buildBrandGrid();
