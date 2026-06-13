@@ -763,7 +763,7 @@
         .topnav-link:hover { color:#fff; background:var(--card2); }
         .topnav-link.active { color:#fff; }
         .topnav-lang { margin-left:auto; display:flex; gap:6px; }
-        .lang-btn { background:var(--card); border:1px solid var(--border); color:rgba(255,255,255,.7); padding:4px 10px; border-radius:4px; cursor:pointer; font-size:.75rem; font-weight:700; transition:all .15s; }
+        .lang-btn { background:var(--card); border:1px solid var(--border); color:rgba(255,255,255,.7); padding:2px 5px; border-radius:4px; cursor:pointer; font-size:.62rem; font-weight:700; transition:all .15s; }
         .lang-btn.active,.lang-btn:hover { background:var(--accent); border-color:var(--accent); color:#fff; }
         .layout { display:flex; min-height:calc(100vh - 90px); }
         .sidebar { width:var(--sidebar-w); background:var(--sidebar-bg); border-right:1px solid var(--border); padding:18px 0; flex-shrink:0; position:sticky; top:90px; height:calc(100vh - 90px); overflow-y:auto; transition:transform .3s; }
@@ -966,7 +966,6 @@
              alt="kask">
     </div>
     <div class="topnav-lang" style="display:flex;align-items:center;gap:4px;">
-        <button id="search-btn" onclick="openSearch()" title="Ara">🔍</button>
         <span style="font-size:.62rem;color:#7a90b8;font-weight:700;margin-right:4px;letter-spacing:1px;">LANG</span>
         <button class="lang-btn" onclick="switchLang('tr')">🇹🇷 TR</button>
         <button class="lang-btn active" onclick="switchLang('en')">🇬🇧 EN</button>
@@ -989,7 +988,10 @@
 
 <div class="layout" style="position:relative;">
     <nav class="sidebar" id="sidebar">
-        <div class="sidebar-section-label" id="sb-sec1">Yayınlar</div>
+        <div style="padding:12px 18px 6px;display:flex;align-items:center;justify-content:space-between;">
+            <div class="sidebar-section-label" id="sb-sec1" style="padding:0;margin:0;">Yayınlar</div>
+            <button id="search-btn" onclick="openSearch()" title="Ara" style="background:rgba(255,255,255,.08);border:1px solid var(--border);color:#cdd6f4;font-size:.95rem;cursor:pointer;padding:4px 10px;border-radius:6px;">🔍 Ara</button>
+        </div>
         <div class="nav-item active" onclick="showSection('sec-canli')"><span class="icon">📺</span> <span id="sb-canli">Motor Sporları Canlı</span></div>
         <div class="nav-item" onclick="showSection('sec-tv')"><span class="icon">🌍</span> <span id="sb-tv">TV Kanalları</span></div>
         <div class="nav-item" onclick="showSection('sec-platform')"><span class="icon">🌐</span> <span id="sb-platform">Özel Platformlar</span></div>
