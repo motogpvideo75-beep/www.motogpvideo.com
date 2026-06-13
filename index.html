@@ -38,7 +38,8 @@
                 chBtn: "RESMİ YAYIN KURULUŞU",
                 heroTitle: "MOTOR SPORLARI DÜNYASINA HOŞ GELDİNİZ!",
                 heroDesc: "MotoGP, WorldSBK ve Formula 1 yarışlarını takip edebileceğiniz, güncel haberler, sürücü kadroları ve yarış takvimlerine ulaşabileceğiniz merkezi platformunuz.",
-                appBanner: "📱 MotoGP Video Android Uygulamamız Çıktı! Telefonunuza Hemen İndirmek İçin Tıklayın"
+                appBanner: "📱 MotoGP Video Android Uygulamamız Çıktı! Telefonunuza Hemen İndirmek İçin Tıklayın",
+                countryNames: { usa:"ABD", uk_italy:"İngiltere / İtalya", europe:"Avrupa", france:"Fransa", germany_austria:"Almanya / Avusturya", uk:"İngiltere", world:"🌐 Dünya Geneli", europe_globe:"🌍 Avrupa", usa_flag:"🇺🇸 ABD" }
             },
             en: {
                 title: "MOTORSPORTS CENTER", label: "LATEST",
@@ -65,7 +66,8 @@
                 chBtn: "OFFICIAL BROADCASTER",
                 heroTitle: "WELCOME TO THE WORLD OF MOTORSPORTS!",
                 heroDesc: "Your central platform to follow MotoGP, WorldSBK and Formula 1 races, latest news, rider lineups and race calendars.",
-                appBanner: "📱 Our MotoGP Video Android App Is Out! Tap to Download It to Your Phone Now"
+                appBanner: "📱 Our MotoGP Video Android App Is Out! Tap to Download It to Your Phone Now",
+                countryNames: { usa:"USA", uk_italy:"UK / Italy", europe:"Europe", france:"France", germany_austria:"Germany / Austria", uk:"UK", world:"🌐 Worldwide", europe_globe:"🌍 Europe", usa_flag:"🇺🇸 USA" }
             },
             de: {
                 title: "MOTORSPORT ZENTRUM", label: "AKTUELL", news: "• Das Rennwochenende kommt bald!", pilots: "Deutschland: Stefan Bradl", live: "SENDUNG INFO & PROGRAMM", cdLabel: "VERBLEIBENDE ZEIT BIS MOTO GP TÜRKEI GP 2036:",
@@ -88,7 +90,8 @@
                 chBtn: "OFFIZIELLER SENDER",
                 heroTitle: "WILLKOMMEN IN DER WELT DES MOTORSPORTS!",
                 heroDesc: "Ihre zentrale Plattform für MotoGP, WorldSBK und Formel 1 Rennen, aktuelle Nachrichten, Fahrer und Rennkalender.",
-                appBanner: "📱 Unsere MotoGP Video Android-App ist da! Jetzt aufs Handy herunterladen"
+                appBanner: "📱 Unsere MotoGP Video Android-App ist da! Jetzt aufs Handy herunterladen",
+                countryNames: { usa:"USA", uk_italy:"UK / Italien", europe:"Europa", france:"Frankreich", germany_austria:"Deutschland / Österreich", uk:"UK", world:"🌐 Weltweit", europe_globe:"🌍 Europa", usa_flag:"🇺🇸 USA" }
             },
             fr: {
                 title: "CENTRE SPORTS MOTO", label: "DERNIÈRE MINUTE", news: "• Le week-end de course arrive bientôt!", pilots: "France: Johann Zarco, Fabio Quartararo", live: "INFO & PROGRAMME DES ÉMISSIONS", cdLabel: "TEMPS RESTANT AVANT LE GP DE TURQUIE 2036:",
@@ -111,7 +114,8 @@
                 chBtn: "DIFFUSEUR OFFICIEL",
                 heroTitle: "BIENVENUE DANS LE MONDE DU MOTORSPORT!",
                 heroDesc: "Votre plateforme centrale pour suivre MotoGP, WorldSBK et Formule 1, actualités, pilotes et calendriers.",
-                appBanner: "📱 Notre application Android MotoGP Video est disponible ! Téléchargez-la maintenant"
+                appBanner: "📱 Notre application Android MotoGP Video est disponible ! Téléchargez-la maintenant",
+                countryNames: { usa:"USA", uk_italy:"Royaume-Uni / Italie", europe:"Europe", france:"France", germany_austria:"Allemagne / Autriche", uk:"Royaume-Uni", world:"🌐 Mondial", europe_globe:"🌍 Europe", usa_flag:"🇺🇸 USA" }
             },
             jp: {
                 title: "モータースポーツセンター", label: "最新情報", news: "• レースウィークがもうすぐ始まります！", pilots: "トルコ: トプラク・ラズガトリオール、バハッティン・ソフオール", live: "情報＆放送スケジュール", cdLabel: "2036年トルコGPまでの残り時間:",
@@ -135,7 +139,8 @@
                 chBtn: "公式放送局",
                 heroTitle: "モータースポーツの世界へようこそ！",
                 heroDesc: "MotoGP、WorldSBK、フォーミュラ1のニュース、ライダー、カレンダーを追うための中心プラットフォーム。",
-                appBanner: "📱 MotoGP Video Androidアプリが登場！今すぐスマホにダウンロード"
+                appBanner: "📱 MotoGP Video Androidアプリが登場！今すぐスマホにダウンロード",
+                countryNames: { usa:"アメリカ", uk_italy:"英国 / イタリア", europe:"ヨーロッパ", france:"フランス", germany_austria:"ドイツ / オーストリア", uk:"英国", world:"🌐 世界中", europe_globe:"🌍 ヨーロッパ", usa_flag:"🇺🇸 アメリカ" }
             }
         };
 
@@ -176,6 +181,7 @@
             document.querySelectorAll(".btn-git").forEach(el => { if (d.btnGit) el.innerText = d.btnGit; });
             buildBrandGrid();
             if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
+            if (d.countryNames) { document.querySelectorAll(".flag[data-key]").forEach(el => { const k = el.getAttribute("data-key"); if (d.countryNames[k]) el.innerText = d.countryNames[k]; }); }
             const ht = document.getElementById("hero-title"); if (ht && d.heroTitle) ht.innerText = d.heroTitle;
             const hd = document.getElementById("hero-desc"); if (hd && d.heroDesc) hd.innerText = d.heroDesc;
             const ab = document.getElementById("app-banner"); if (ab && d.appBanner) ab.innerText = d.appBanner;
@@ -841,19 +847,19 @@
                 <div style="font-size:.9rem;font-weight:900;color:#e8001d;letter-spacing:2px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #e8001d;"><span id="tv-race-channels-title">MOTOR SPORLARI YARISI KANALLARI</span></div>
                 <div style="font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:2px;margin:12px 0 8px;">🇺🇸 ABD</div>
                 <div class="grid">
-                    <div class="card"><svg viewBox="0 0 100 40" style="width:80px;height:40px;margin-bottom:4px;"><rect width="100" height="40" rx="4" fill="#003399"/><text x="50" y="26" font-family="Arial Black" font-size="14" font-weight="900" fill="white" text-anchor="middle">FOX</text></svg><h3>Fox Sports</h3><span class="flag">ABD</span><a href="https://www.foxsports.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
-                    <div class="card"><svg viewBox="0 0 100 40" style="width:80px;height:40px;margin-bottom:4px;"><rect width="100" height="40" rx="4" fill="#cc0000"/><text x="50" y="26" font-family="Arial Black" font-size="14" font-weight="900" fill="white" text-anchor="middle">ESPN</text></svg><h3>ESPN</h3><span class="flag">ABD</span><a href="https://www.espn.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
-                    <div class="card"><h3>NBC Sports</h3><span class="flag">ABD</span><a href="https://www.nbcsports.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
-                    <div class="card"><h3>Peacock</h3><span class="flag">ABD</span><a href="https://www.peacocktv.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><svg viewBox="0 0 100 40" style="width:80px;height:40px;margin-bottom:4px;"><rect width="100" height="40" rx="4" fill="#003399"/><text x="50" y="26" font-family="Arial Black" font-size="14" font-weight="900" fill="white" text-anchor="middle">FOX</text></svg><h3>Fox Sports</h3><span class="flag" data-key="usa">ABD</span><a href="https://www.foxsports.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><svg viewBox="0 0 100 40" style="width:80px;height:40px;margin-bottom:4px;"><rect width="100" height="40" rx="4" fill="#cc0000"/><text x="50" y="26" font-family="Arial Black" font-size="14" font-weight="900" fill="white" text-anchor="middle">ESPN</text></svg><h3>ESPN</h3><span class="flag" data-key="usa">ABD</span><a href="https://www.espn.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>NBC Sports</h3><span class="flag" data-key="usa">ABD</span><a href="https://www.nbcsports.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>Peacock</h3><span class="flag" data-key="usa">ABD</span><a href="https://www.peacocktv.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
                 </div>
                 <div style="font-size:.7rem;font-weight:700;color:var(--muted);letter-spacing:2px;margin:16px 0 8px;">🇪🇺 AVRUPA</div>
                 <div class="grid">
-                    <div class="card"><h3>Sky Sport</h3><span class="flag">İngiltere / İtalya</span><a href="https://www.skysports.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
-                    <div class="card"><h3>Eurosport</h3><span class="flag">Avrupa</span><a href="https://www.eurosport.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
-                    <div class="card"><h3>Canal+</h3><span class="flag">Fransa</span><a href="https://www.canalplus.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
-                    <div class="card"><h3>TNT Sports</h3><span class="flag">İngiltere</span><a href="https://www.tntsports.co.uk" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
-                    <div class="card"><h3>DAZN</h3><span class="flag">Avrupa</span><a href="https://www.dazn.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
-                    <div class="card"><h3>ServusTV</h3><span class="flag">Almanya / Avusturya</span><a href="https://www.servustv.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>Sky Sport</h3><span class="flag" data-key="uk_italy">İngiltere / İtalya</span><a href="https://www.skysports.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>Eurosport</h3><span class="flag" data-key="europe">Avrupa</span><a href="https://www.eurosport.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>Canal+</h3><span class="flag" data-key="france">Fransa</span><a href="https://www.canalplus.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>TNT Sports</h3><span class="flag" data-key="uk">İngiltere</span><a href="https://www.tntsports.co.uk" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>DAZN</h3><span class="flag" data-key="europe">Avrupa</span><a href="https://www.dazn.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                    <div class="card"><h3>ServusTV</h3><span class="flag" data-key="germany_austria">Almanya / Avusturya</span><a href="https://www.servustv.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
                 </div>
             </div>
         </div>
@@ -1027,10 +1033,10 @@
         <div class="section" id="sec-global">
             <div class="sec-title" id="st-global">Global Hit Sporlar</div>
             <div class="grid">
-                <div class="card"><h3>Formula 1</h3><span class="flag">🌐 Dünya Geneli</span><a href="https://www.formula1.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
-                <div class="card"><h3>WorldSBK</h3><span class="flag">🌐 Dünya Geneli</span><a href="https://www.worldsbk.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
-                <div class="card"><h3>Şampiyonlar Ligi</h3><span class="flag">🌍 Avrupa</span><a href="https://www.uefa.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
-                <div class="card"><h3>NBA</h3><span class="flag">🇺🇸 ABD</span><a href="https://www.nba.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="card"><h3>Formula 1</h3><span class="flag" data-key="world">🌐 Dünya Geneli</span><a href="https://www.formula1.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="card"><h3>WorldSBK</h3><span class="flag" data-key="world">🌐 Dünya Geneli</span><a href="https://www.worldsbk.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="card"><h3>Şampiyonlar Ligi</h3><span class="flag" data-key="europe_globe">🌍 Avrupa</span><a href="https://www.uefa.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
+                <div class="card"><h3>NBA</h3><span class="flag" data-key="usa_flag">🇺🇸 ABD</span><a href="https://www.nba.com" target="_blank" class="btn btn-git">RESMİ YAYIN KURULUŞU</a></div>
             </div>
         </div>
 
@@ -1266,6 +1272,7 @@
         document.querySelectorAll(".btn-git").forEach(el => { if (d.btnGit) el.innerText = d.btnGit; });
         buildBrandGrid();
         if (d.chBtn) { document.querySelectorAll(".ch-label").forEach(el => el.innerText = d.chBtn); }
+        if (d.countryNames) { document.querySelectorAll(".flag[data-key]").forEach(el => { const k = el.getAttribute("data-key"); if (d.countryNames[k]) el.innerText = d.countryNames[k]; }); }
         const ht2 = document.getElementById("hero-title"); if (ht2 && d.heroTitle) ht2.innerText = d.heroTitle;
         const hd2 = document.getElementById("hero-desc"); if (hd2 && d.heroDesc) hd2.innerText = d.heroDesc;
         const ab2 = document.getElementById("app-banner"); if (ab2 && d.appBanner) ab2.innerText = d.appBanner;
