@@ -1235,6 +1235,7 @@
             <div class="sidebar-section-label" id="sb-sec1" style="padding:0;margin:0;">Yayınlar</div>
             <button id="search-btn" onclick="openSearch()" title="Ara" style="background:rgba(255,255,255,.08);border:1px solid var(--border);color:#cdd6f4;font-size:.95rem;cursor:pointer;padding:4px 10px;border-radius:6px;">🔍 Ara</button>
         </div>
+        <div class="nav-item" onclick="showSection('sec-haberler'); setTimeout(()=>{const el=document.getElementById('wc-title'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});},0);"><span class="icon">⚽</span> <span style="color:#ff1a1a;font-weight:900;animation:titleBlink 1s infinite;">2026 DÜNYA KUPASI</span></div>
         <div class="nav-item active" onclick="showSection('sec-canli')"><span class="icon">📺</span> <span id="sb-canli">Motor Sporları Canlı</span></div>
         <div class="nav-item" onclick="showSection('sec-tv')"><span class="icon">🌍</span> <span id="sb-tv">TV Kanalları</span></div>
         <div class="nav-item" onclick="showSection('sec-takvim')"><span class="icon">📅</span> <span id="sb-takvim">2026 Takvimi</span></div>
