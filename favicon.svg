@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="90" fill="#e8001d"/>
+
+  <!-- exhaust -->
+  <line x1="158" y1="370" x2="60" y2="398" stroke="#ffffff" stroke-width="24" stroke-linecap="round"/>
+
+  <!-- front fender -->
+  <path d="M310,300 C330,255 380,245 415,275 C400,260 350,265 335,305 Z" fill="#ffffff"/>
+
+  <!-- engine / tank block -->
+  <rect x="155" y="288" width="225" height="60" rx="22" fill="#ffffff"/>
+
+  <!-- rider torso (leaning forward) -->
+  <ellipse cx="245" cy="205" rx="58" ry="78" fill="#ffffff" transform="rotate(-25 245 205)"/>
+
+  <!-- rider helmet -->
+  <circle cx="305" cy="150" r="46" fill="#ffffff"/>
+  <!-- visor -->
+  <path d="M330,135 L362,142 L344,168 Z" fill="#e8001d"/>
+
+  <!-- wheels -->
+  <circle cx="140" cy="395" r="86" fill="#ffffff"/>
+  <circle cx="140" cy="395" r="32" fill="#e8001d"/>
+  <circle cx="380" cy="395" r="86" fill="#ffffff"/>
+  <circle cx="380" cy="395" r="32" fill="#e8001d"/>
+</svg>
