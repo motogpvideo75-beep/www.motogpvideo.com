@@ -1777,8 +1777,29 @@
                 <a href="/cerez.html" style="color:#fff;background:#222244;text-decoration:none;font-size:.76rem;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid #444488;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='#222244'">🍪 Çerez Politikası</a>
                 <a href="mailto:asikurye35@hotmail.com" style="color:#fff;background:#222244;text-decoration:none;font-size:.76rem;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid #444488;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='#222244'">✉️ İletişim</a>
             </div>
-            Bu site resmi bir yayın kuruluşu değildir. Tüm yayın hakları ilgili kuruluşlara aittir.
+            <div id="legal-disclaimer" style="margin-top:10px;padding:10px 16px;background:rgba(255,255,255,.04);border-radius:8px;font-size:.72rem;color:#7a90b8;line-height:1.7;max-width:860px;margin-left:auto;margin-right:auto;text-align:center;">
+                <span class="disc-tr">⚠️ Bu site MotoGP®, WorldSBK® ve Formula 1® ile resmi olarak bir bağlantısı olmaksızın bağımsız bir fan platformudur. MotoGP® ve WorldSBK® markaları Liberty Media / Dorna Sports S.L.'ye, Formula 1® markası Liberty Media Corporation'a aittir.</span>
+                <span class="disc-en" style="display:none">⚠️ This site is an independent fan platform with no official affiliation with MotoGP®, WorldSBK® or Formula 1®. MotoGP® and WorldSBK® are trademarks of Liberty Media / Dorna Sports S.L. Formula 1® is a trademark of Liberty Media Corporation.</span>
+                <span class="disc-de" style="display:none">⚠️ Diese Website ist eine unabhängige Fan-Plattform ohne offizielle Verbindung zu MotoGP®, WorldSBK® oder Formula 1®. MotoGP® und WorldSBK® sind Marken von Liberty Media / Dorna Sports S.L. Formula 1® ist eine Marke der Liberty Media Corporation.</span>
+                <span class="disc-fr" style="display:none">⚠️ Ce site est une plateforme de fans indépendante sans affiliation officielle avec MotoGP®, WorldSBK® ou Formula 1®. MotoGP® et WorldSBK® sont des marques de Liberty Media / Dorna Sports S.L. Formula 1® est une marque de Liberty Media Corporation.</span>
+                <span class="disc-ja" style="display:none">⚠️ このサイトはMotoGP®、WorldSBK®、Formula 1®とは公式に提携していない独立したファンプラットフォームです。MotoGP®とWorldSBK®はLiberty Media / Dorna Sports S.L.の商標です。Formula 1®はLiberty Media Corporationの商標です。</span>
+                <span class="disc-es" style="display:none">⚠️ Este sitio es una plataforma de fans independiente sin afiliación oficial con MotoGP®, WorldSBK® o Formula 1®. MotoGP® y WorldSBK® son marcas registradas de Liberty Media / Dorna Sports S.L. Formula 1® es marca registrada de Liberty Media Corporation.</span>
+                <span class="disc-it" style="display:none">⚠️ Questo sito è una piattaforma fan indipendente senza affiliazione ufficiale con MotoGP®, WorldSBK® o Formula 1®. MotoGP® e WorldSBK® sono marchi di Liberty Media / Dorna Sports S.L. Formula 1® è un marchio di Liberty Media Corporation.</span>
+                <span class="disc-pt" style="display:none">⚠️ Este site é uma plataforma de fãs independente sem afiliação oficial com MotoGP®, WorldSBK® ou Formula 1®. MotoGP® e WorldSBK® são marcas registadas da Liberty Media / Dorna Sports S.L. Formula 1® é marca registada da Liberty Media Corporation.</span>
+                <span class="disc-id" style="display:none">⚠️ Situs ini adalah platform penggemar independen tanpa afiliasi resmi dengan MotoGP®, WorldSBK®, atau Formula 1®. MotoGP® dan WorldSBK® adalah merek dagang Liberty Media / Dorna Sports S.L. Formula 1® adalah merek dagang Liberty Media Corporation.</span>
+            </div>
         </footer>
+<script>
+(function(){
+  const langMap = {tr:'tr',en:'en',de:'de',fr:'fr',ja:'ja',es:'es',it:'it',pt:'pt',id:'id'};
+  const htmlLang = (document.documentElement.lang||'tr').substring(0,2).toLowerCase();
+  const lang = langMap[htmlLang] || 'tr';
+  document.querySelectorAll('#legal-disclaimer span').forEach(s => s.style.display = 'none');
+  const el = document.querySelector('.disc-'+lang);
+  if (el) el.style.display = 'inline';
+  else { const tr = document.querySelector('.disc-tr'); if(tr) tr.style.display='inline'; }
+})();
+</script>
     </main>
 
     <div class="right-panel" style="width:160px;padding:0;overflow:hidden;display:flex;flex-direction:column;position:sticky;top:90px;height:calc(100vh - 90px);">
