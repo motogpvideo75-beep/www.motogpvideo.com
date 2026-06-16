@@ -641,6 +641,11 @@
             if (id === "sec-haberler") {
                 const activeTab = document.querySelector(".rss-tab[data-feed].active");
                 if (activeTab && document.getElementById("news-grid").querySelector(".skeleton")) loadRSS(activeTab);
+            // Disclaimer güncelle
+            document.querySelectorAll('#legal-disclaimer span').forEach(s => s.style.display = 'none');
+            const discEl = document.querySelector('.disc-' + lang);
+            if (discEl) discEl.style.display = 'inline';
+            else { const tr = document.querySelector('.disc-tr'); if(tr) tr.style.display='inline'; }
             }
         }
 
