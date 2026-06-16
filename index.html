@@ -630,17 +630,7 @@
             }
             applyTtTranslations(d);
             document.documentElement.lang = lang;
-            if(typeof buildBrandGrid === "function") buildBrandGrid();}
-
-        function showSection(id) {
-            document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
-            document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
-            document.getElementById(id).classList.add("active");
-            event.target.closest(".nav-item").classList.add("active");
-            if (window.innerWidth <= 768) closeSidebar();
-            if (id === "sec-haberler") {
-                const activeTab = document.querySelector(".rss-tab[data-feed].active");
-                if (activeTab && document.getElementById("news-grid").querySelector(".skeleton")) loadRSS(activeTab);
+            if(typeof buildBrandGrid === "function") buildBrandGrid();
             // Ekstra nav linkleri güncelle
             const navLabels = {
                 tr:{takvim:"📅 Takvim",puan:"🏆 Puan",canli:"📺 Canlı Yayın"},
@@ -661,7 +651,18 @@
             document.querySelectorAll('#legal-disclaimer span').forEach(s => s.style.display = 'none');
             const discEl = document.querySelector('.disc-' + lang);
             if (discEl) discEl.style.display = 'inline';
-            else { const tr = document.querySelector('.disc-tr'); if(tr) tr.style.display='inline'; }
+            else { const tr2 = document.querySelector('.disc-tr'); if(tr2) tr2.style.display='inline'; }
+        }
+
+        function showSection(id) {
+            document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+            document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+            document.getElementById(id).classList.add("active");
+            event.target.closest(".nav-item").classList.add("active");
+            if (window.innerWidth <= 768) closeSidebar();
+            if (id === "sec-haberler") {
+                const activeTab = document.querySelector(".rss-tab[data-feed].active");
+                if (activeTab && document.getElementById("news-grid").querySelector(".skeleton")) loadRSS(activeTab);
             }
         }
 
