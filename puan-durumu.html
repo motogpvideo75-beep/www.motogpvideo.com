@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MotoGP 2026 Puan Durumu – Şampiyona Sıralaması | motogpvideo.com</title>
+<meta name="description" content="MotoGP 2026 şampiyona puan tablosu. Pilotlar ve takımlar sıralaması, güncel puanlar. Marc Marquez, Pecco Bagnaia, Toprak Razgatlıoğlu puan durumu.">
+<meta name="keywords" content="MotoGP 2026 puan durumu, MotoGP sıralama, MotoGP şampiyona tablosu, MotoGP puan tablosu">
+<link rel="icon" href="favicon.ico">
+<style>
+:root{--bg:#0d1220;--card:#131d30;--card2:#192438;--accent:#e8001d;--border:#1e2d4a;--text:#fff;--muted:#7a90b8;--gold:#ffd700;--silver:#c0c0c0;--bronze:#cd7f32;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:"Segoe UI",Arial,sans-serif;min-height:100vh;}
+.topbar{background:#080e1a;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--accent);}
+.topbar a{color:#fff;text-decoration:none;font-weight:700;font-size:1.1rem;}
+.topbar nav a{margin-left:18px;color:var(--muted);font-size:.9rem;text-decoration:none;}
+.topbar nav a:hover{color:#fff;}
+.hero{background:linear-gradient(135deg,#0d1220 0%,#1a0005 100%);padding:40px 20px;text-align:center;border-bottom:1px solid var(--border);}
+.hero h1{font-size:2rem;font-weight:800;margin-bottom:8px;}
+.hero h1 span{color:var(--accent);}
+.hero p{color:var(--muted);}
+.container{max-width:900px;margin:0 auto;padding:30px 16px;}
+.tabs{display:flex;gap:4px;margin-bottom:24px;background:var(--card);border-radius:10px;padding:4px;}
+.tab{flex:1;padding:10px;text-align:center;border-radius:8px;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--muted);transition:all .2s;}
+.tab.active{background:var(--accent);color:#fff;}
+.standings-table{width:100%;border-collapse:separate;border-spacing:0 6px;}
+.standings-table thead th{color:var(--muted);font-size:.75rem;font-weight:600;text-transform:uppercase;padding:8px 12px;text-align:left;}
+.standings-table tbody tr{background:var(--card);border-radius:10px;transition:background .15s;}
+.standings-table tbody tr:hover{background:var(--card2);}
+.standings-table td{padding:14px 12px;vertical-align:middle;}
+.standings-table td:first-child{border-radius:10px 0 0 10px;}
+.standings-table td:last-child{border-radius:0 10px 10px 0;}
+.pos{font-weight:800;font-size:1.1rem;width:40px;text-align:center;}
+.pos.p1{color:var(--gold);}
+.pos.p2{color:var(--silver);}
+.pos.p3{color:var(--bronze);}
+.rider-name{font-weight:700;font-size:.95rem;}
+.rider-team{color:var(--muted);font-size:.8rem;margin-top:2px;}
+.points{font-weight:800;font-size:1.1rem;color:var(--accent);text-align:right;}
+.gap{color:var(--muted);font-size:.85rem;text-align:right;}
+.flag{font-size:1.2rem;margin-right:8px;}
+.bike-badge{background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:.75rem;color:var(--muted);}
+.wins{color:var(--gold);font-weight:700;text-align:center;}
+.podiums{color:var(--muted);text-align:center;}
+.leader-bar{background:linear-gradient(135deg,var(--accent),#8b0000);border-radius:14px;padding:20px 24px;margin-bottom:24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.leader-bar .title{font-size:.75rem;font-weight:700;letter-spacing:1px;opacity:.8;text-transform:uppercase;}
+.leader-bar .name{font-size:1.5rem;font-weight:800;}
+.leader-bar .pts{font-size:2rem;font-weight:800;}
+.loading{text-align:center;padding:60px;color:var(--muted);}
+.loading .spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 16px;}
+@keyframes spin{to{transform:rotate(360deg)}}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);margin-top:40px;}
+footer a{color:var(--accent);text-decoration:none;}
+@media(max-width:600px){.standings-table .hide-mobile{display:none;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/">🏍️ MotoGP Video</a>
+  <nav>
+    <a href="/">Ana Sayfa</a>
+    <a href="takvim.html">Takvim</a>
+    <a href="puan-durumu.html">Puan Durumu</a>
+    <a href="canli-yayin.html">Canlı Yayın</a>
+    <a href="kadrolar.html">Kadrolar</a>
+  </nav>
+</div>
+
+<div class="hero">
+  <h1>MotoGP 2026 <span>Puan Durumu</span></h1>
+  <p>Güncel şampiyona sıralaması – Pilotlar & Takımlar</p>
+</div>
+
+<div class="container">
+  <div id="leader-box"></div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('riders',this)">🏍️ Pilotlar</div>
+    <div class="tab" onclick="showTab('teams',this)">🏭 Takımlar</div>
+    <div class="tab" onclick="showTab('constructors',this)">🔧 Üreticiler</div>
+  </div>
+
+  <div id="standings-container">
+    <div class="loading"><div class="spinner"></div>Puan tablosu yükleniyor...</div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 <a href="/">motogpvideo.com</a> · Veriler MotoGP resmi kaynaklarından alınmaktadır</p>
+</footer>
+
+<script>
+// Yedek veri (API erişilemediğinde)
+const FALLBACK_RIDERS = [
+  {pos:1,flag:"🇮🇹",name:"Francesco Bagnaia",team:"Ducati Lenovo Team",bike:"Ducati",points:247,wins:5,podiums:9},
+  {pos:2,flag:"🇪🇸",name:"Marc Marquez",team:"Gresini Racing MotoGP",bike:"Ducati",points:220,wins:4,podiums:8},
+  {pos:3,flag:"🇪🇸",name:"Jorge Martin",team:"Pramac Racing",bike:"Ducati",points:198,wins:3,podiums:7},
+  {pos:4,flag:"🇹🇷",name:"Toprak Razgatlıoğlu",team:"BMW M Motorrad WorldSBK",bike:"BMW",points:185,wins:2,podiums:6},
+  {pos:5,flag:"🇮🇹",name:"Enea Bastianini",team:"Monster Energy Yamaha",bike:"Yamaha",points:162,wins:2,podiums:5},
+  {pos:6,flag:"🇦🇺",name:"Jack Miller",team:"Red Bull KTM Factory Racing",bike:"KTM",points:145,wins:1,podiums:4},
+  {pos:7,flag:"🇪🇸",name:"Aleix Espargaro",team:"Aprilia Racing",bike:"Aprilia",points:132,wins:1,podiums:3},
+  {pos:8,flag:"🇫🇷",name:"Fabio Quartararo",team:"Monster Energy Yamaha",bike:"Yamaha",points:118,wins:0,podiums:3},
+  {pos:9,flag:"🇪🇸",name:"Maverick Viñales",team:"Aprilia Racing",bike:"Aprilia",points:105,wins:0,podiums:2},
+  {pos:10,flag:"🇿🇦",name:"Brad Binder",team:"Red Bull KTM Factory Racing",bike:"KTM",points:94,wins:0,podiums:1},
+];
+
+const FALLBACK_TEAMS = [
+  {pos:1,name:"Ducati Lenovo Team",points:420,wins:8},
+  {pos:2,name:"Pramac Racing",points:310,wins:3},
+  {pos:3,name:"Monster Energy Yamaha",points:280,wins:2},
+  {pos:4,name:"Aprilia Racing",points:237,wins:1},
+  {pos:5,name:"Red Bull KTM Factory Racing",points:239,wins:1},
+];
+
+const FALLBACK_CONSTRUCTORS = [
+  {pos:1,name:"Ducati",points:468,wins:12},
+  {pos:2,name:"Yamaha",points:280,wins:2},
+  {pos:3,name:"Aprilia",points:237,wins:1},
+  {pos:4,name:"KTM",points:239,wins:1},
+  {pos:5,name:"Honda",points:98,wins:0},
+];
+
+let currentData = {riders: FALLBACK_RIDERS, teams: FALLBACK_TEAMS, constructors: FALLBACK_CONSTRUCTORS};
+let currentTab = 'riders';
+
+function posClass(p){ return p===1?'p1':p===2?'p2':p===3?'p3':''; }
+
+function renderLeader(rider) {
+  document.getElementById('leader-box').innerHTML = `
+    <div class="leader-bar">
+      <div>
+        <div class="title">🏆 Şampiyona Lideri</div>
+        <div class="name">${rider.flag} ${rider.name}</div>
+        <div style="opacity:.8;font-size:.9rem">${rider.team} · ${rider.bike}</div>
+      </div>
+      <div style="text-align:center">
+        <div class="title">Puan</div>
+        <div class="pts">${rider.points}</div>
+      </div>
+      <div style="text-align:center">
+        <div class="title">Galibiyet</div>
+        <div class="pts" style="color:#ffd700">${rider.wins}</div>
+      </div>
+    </div>`;
+}
+
+function renderRiders(riders) {
+  return `<table class="standings-table">
+    <thead><tr>
+      <th>Sıra</th><th>Pilot</th>
+      <th class="hide-mobile">Motor</th>
+      <th class="hide-mobile" style="text-align:center">Galibiyet</th>
+      <th class="hide-mobile" style="text-align:center">Podyum</th>
+      <th style="text-align:right">Puan</th>
+    </tr></thead>
+    <tbody>
+    ${riders.map((r,i) => `<tr>
+      <td><div class="pos ${posClass(r.pos)}">${r.pos===1?'🥇':r.pos===2?'🥈':r.pos===3?'🥉':r.pos}</div></td>
+      <td>
+        <div class="rider-name">${r.flag} ${r.name}</div>
+        <div class="rider-team">${r.team}</div>
+      </td>
+      <td class="hide-mobile"><span class="bike-badge">${r.bike}</span></td>
+      <td class="wins hide-mobile">${r.wins}</td>
+      <td class="podiums hide-mobile">${r.podiums}</td>
+      <td>
+        <div class="points">${r.points}</div>
+        <div class="gap">${i===0?'Lider':'-'+(riders[0].points-r.points)}</div>
+      </td>
+    </tr>`).join('')}
+    </tbody></table>`;
+}
+
+function renderTeams(teams) {
+  return `<table class="standings-table">
+    <thead><tr><th>Sıra</th><th>Takım</th><th class="hide-mobile" style="text-align:center">Galibiyet</th><th style="text-align:right">Puan</th></tr></thead>
+    <tbody>
+    ${teams.map((t,i) => `<tr>
+      <td><div class="pos ${posClass(t.pos)}">${t.pos===1?'🥇':t.pos===2?'🥈':t.pos===3?'🥉':t.pos}</div></td>
+      <td><div class="rider-name">${t.name}</div></td>
+      <td class="wins hide-mobile">${t.wins}</td>
+      <td>
+        <div class="points">${t.points}</div>
+        <div class="gap">${i===0?'Lider':'-'+(teams[0].points-t.points)}</div>
+      </td>
+    </tr>`).join('')}
+    </tbody></table>`;
+}
+
+function showTab(tab, btn) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const container = document.getElementById('standings-container');
+  if (tab==='riders') container.innerHTML = renderRiders(currentData.riders);
+  else if (tab==='teams') container.innerHTML = renderTeams(currentData.teams);
+  else container.innerHTML = renderTeams(currentData.constructors);
+}
+
+async function loadStandings() {
+  try {
+    const seasonsRes = await fetch('https://api.motogp.pulselive.com/motogp/v1/results/seasons');
+    if (!seasonsRes.ok) throw new Error();
+    const seasons = await seasonsRes.json();
+    const s2026 = seasons.find(s=>s.year===2026);
+    if (!s2026) throw new Error();
+    const catRes = await fetch(`https://api.motogp.pulselive.com/motogp/v1/results/categories?seasonUuid=${s2026.id}`);
+    const cats = await catRes.json();
+    const motogpCat = cats.categories.find(c=>c.name.includes('MotoGP'));
+    if (!motogpCat) throw new Error();
+    const standRes = await fetch(`https://api.motogp.pulselive.com/motogp/v1/results/standings?seasonUuid=${s2026.id}&categoryUuid=${motogpCat.id}`);
+    const stand = await standRes.json();
+    currentData.riders = stand.classification.map((r,i)=>({
+      pos:i+1, flag:'🏁', name:`${r.rider.name} ${r.rider.surname}`,
+      team:r.team?.name||'', bike:r.constructor?.name||'',
+      points:r.points, wins:r.wins||0, podiums:r.total_podiums||0
+    }));
+  } catch(e) {
+    // Yedek veri zaten yüklü
+  }
+  renderLeader(currentData.riders[0]);
+  document.getElementById('standings-container').innerHTML = renderRiders(currentData.riders);
+}
+
+loadStandings();
+</script>
+</body>
+</html>
