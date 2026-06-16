@@ -614,7 +614,7 @@
             Object.entries(map).forEach(([id, txt]) => { const el = document.getElementById(id); if (el) el.innerText = txt; });
             const tabs = document.querySelectorAll(".rss-tab");
             d.rssTabs.forEach((txt, i) => { if (tabs[i]) tabs[i].innerText = txt; });
-            const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
+            const footer = document.querySelector("footer"); if (footer) { const fd = footer.querySelector("#footer-text"); if(fd) fd.innerText = d.footer; }
             const trt = document.getElementById("tv-race-channels-title"); if (trt && d.tvRaceTitle) trt.innerText = d.tvRaceTitle;
             const wct = document.getElementById("wc-title"); if (wct && d.worldCupTitle) wct.innerText = d.worldCupTitle;
             document.querySelectorAll(".btn-git").forEach(el => { if (d.btnGit) el.innerText = d.btnGit; });
@@ -1777,6 +1777,7 @@
                 <a href="/cerez.html" style="color:#fff;background:#222244;text-decoration:none;font-size:.76rem;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid #444488;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='#222244'">🍪 Çerez Politikası</a>
                 <a href="mailto:asikurye35@hotmail.com" style="color:#fff;background:#222244;text-decoration:none;font-size:.76rem;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid #444488;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='#222244'">✉️ İletişim</a>
             </div>
+            <span id="footer-text" style="display:none"></span>
             <div id="legal-disclaimer" style="margin-top:10px;padding:10px 16px;background:rgba(255,255,255,.04);border-radius:8px;font-size:.72rem;color:#7a90b8;line-height:1.7;max-width:860px;margin-left:auto;margin-right:auto;text-align:center;">
                 <span class="disc-tr">⚠️ Bu site MotoGP®, WorldSBK® ve Formula 1® ile resmi olarak bir bağlantısı olmaksızın bağımsız bir fan platformudur. MotoGP® ve WorldSBK® markaları Liberty Media / Dorna Sports S.L.'ye, Formula 1® markası Liberty Media Corporation'a aittir.</span>
                 <span class="disc-en" style="display:none">⚠️ This site is an independent fan platform with no official affiliation with MotoGP®, WorldSBK® or Formula 1®. MotoGP® and WorldSBK® are trademarks of Liberty Media / Dorna Sports S.L. Formula 1® is a trademark of Liberty Media Corporation.</span>
@@ -1984,7 +1985,7 @@
         Object.entries(map).forEach(([id, txt]) => { const el = document.getElementById(id); if (el) el.innerText = txt; });
         const tabs = document.querySelectorAll(".rss-tab");
         d.rssTabs.forEach((txt, i) => { if (tabs[i]) tabs[i].innerText = txt; });
-        const footer = document.querySelector("footer"); if (footer) footer.innerText = d.footer;
+        const footer = document.querySelector("footer"); if (footer) { const fd = footer.querySelector("#footer-text"); if(fd) fd.innerText = d.footer; }
         const trt2 = document.getElementById("tv-race-channels-title"); if (trt2 && d.tvRaceTitle) trt2.innerText = d.tvRaceTitle;
         const wct2 = document.getElementById("wc-title"); if (wct2 && d.worldCupTitle) wct2.innerText = d.worldCupTitle;
         document.querySelectorAll(".btn-git").forEach(el => { if (d.btnGit) el.innerText = d.btnGit; });
