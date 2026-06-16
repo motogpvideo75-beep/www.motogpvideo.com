@@ -2035,8 +2035,8 @@
 </div>
 <script>
 const popupTexts = {
-    tr: "Bu platform 2009 yılından bu yana bağımsız bir motor sporları bilgi ve yayın rehberi olarak hizmet vermektedir. Hiçbir zaman yetkisiz yayın yapılmamış, ticari kazanç elde edilmemiş ve ilgili kuruluşların haklarına saygı gösterilmiştir. Tüm haklar resmi kuruluşlara aittir. MotoGP® ve WorldSBK® markaları Liberty Media / Dorna Sports S.L.'ye, Formula 1® markası Liberty Media Corporation'a aittir.",
-    en: "This platform has been operating as an independent motorsports information and broadcast guide since 2009. No unauthorized broadcasts have ever been made, no commercial gain has been obtained, and the rights of all relevant organizations have always been respected. All rights belong to their respective official organizations. MotoGP® and WorldSBK® are trademarks of Liberty Media / Dorna Sports S.L. Formula 1® is a trademark of Liberty Media Corporation.",
+    tr: "Bu platform 2009 yılından bu yana bağımsız bir motor sporları bilgi ve yayın rehberi olarak hizmet vermektedir. Hiçbir zaman yetkisiz yayın yapılmamış, ticari kazanç elde edilmemiş ve ilgili kuruluşların haklarına saygı gösterilmiştir. Tüm haklar resmi kuruluşlara aittir.|MotoGP® ve WorldSBK® markaları Liberty Media / Dorna Sports S.L.'ye, Formula 1® markası Liberty Media Corporation'a aittir.",
+    en: "This platform has been operating as an independent motorsports information and broadcast guide since 2009. No unauthorized broadcasts have ever been made, no commercial gain has been obtained, and the rights of all relevant organizations have always been respected. All rights belong to their respective official organizations.|MotoGP® and WorldSBK® are trademarks of Liberty Media / Dorna Sports S.L. Formula 1® is a trademark of Liberty Media Corporation.",
     de: "Diese Plattform ist seit 2009 als unabhängiger Motorsport-Informations- und Übertragungsführer tätig. Es wurden nie unbefugte Übertragungen durchgeführt, kein kommerzieller Gewinn erzielt und die Rechte aller relevanten Organisationen wurden stets respektiert. MotoGP® und WorldSBK® sind Marken von Liberty Media / Dorna Sports S.L. Formula 1® ist eine Marke der Liberty Media Corporation.",
     fr: "Cette plateforme fonctionne comme un guide d'information et de diffusion motorsport indépendant depuis 2009. Aucune diffusion non autorisée n'a jamais été effectuée, aucun gain commercial n'a été obtenu et les droits de toutes les organisations concernées ont toujours été respectés. MotoGP® et WorldSBK® sont des marques de Liberty Media / Dorna Sports S.L. Formula 1® est une marque de Liberty Media Corporation.",
     ja: "このプラットフォームは2009年から独立したモータースポーツ情報・放送ガイドとして運営されています。無断放送は一切行われておらず、商業的利益も得ておらず、関連組織の権利を常に尊重しています。MotoGP®とWorldSBK®はLiberty Media / Dorna Sports S.L.の商標です。Formula 1®はLiberty Media Corporationの商標です。",
@@ -2056,7 +2056,8 @@ function closeWelcomePopup(){
     if(sessionStorage.getItem('popup_shown')) return;
     var lang = (navigator.language || 'en').split('-')[0];
     if(!popupTexts[lang]) lang = 'en';
-    document.getElementById('popup-text').innerText = popupTexts[lang];
+    const parts = (popupTexts[lang]||popupTexts['tr']).split('|');
+    document.getElementById('popup-text').innerHTML = parts[0] + (parts[1] ? '<br><span style="color:#e8001d;font-weight:700;margin-top:6px;display:inline-block">' + parts[1] + '</span>' : '');
     document.getElementById('popup-btn').innerText = popupBtns[lang] || 'OK';
     document.getElementById('welcome-popup').style.display='flex';
 })();
