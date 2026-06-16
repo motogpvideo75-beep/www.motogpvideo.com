@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MotoGP 2026 Yarış Takvimi – Tarih ve Saat Bilgileri | motogpvideo.com</title>
+<meta name="description" content="MotoGP 2026 yarış takvimi, tarihler ve Türkiye saatiyle saat bilgileri. MotoGP yarışı saat kaçta başlıyor? Tüm Grand Prix tarihleri burada.">
+<meta name="keywords" content="MotoGP 2026 takvim, MotoGP yarış saati, MotoGP ne zaman, MotoGP saat kaçta, MotoGP program">
+<link rel="icon" href="favicon.ico">
+<style>
+:root{--bg:#0d1220;--card:#131d30;--card2:#192438;--accent:#e8001d;--border:#1e2d4a;--text:#fff;--muted:#7a90b8;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:"Segoe UI",Arial,sans-serif;min-height:100vh;}
+.topbar{background:#080e1a;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--accent);}
+.topbar a{color:#fff;text-decoration:none;font-weight:700;font-size:1.1rem;}
+.topbar nav a{margin-left:18px;color:var(--muted);font-size:.9rem;text-decoration:none;}
+.topbar nav a:hover{color:#fff;}
+.hero{background:linear-gradient(135deg,#0d1220 0%,#1a0005 100%);padding:40px 20px;text-align:center;border-bottom:1px solid var(--border);}
+.hero h1{font-size:2rem;font-weight:800;margin-bottom:8px;}
+.hero h1 span{color:var(--accent);}
+.hero p{color:var(--muted);font-size:1rem;}
+.container{max-width:900px;margin:0 auto;padding:30px 16px;}
+.next-race{background:linear-gradient(135deg,var(--accent),#8b0000);border-radius:14px;padding:24px;margin-bottom:30px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.next-race .label{font-size:.75rem;font-weight:700;letter-spacing:1px;opacity:.8;text-transform:uppercase;}
+.next-race .name{font-size:1.4rem;font-weight:800;margin:4px 0;}
+.next-race .countdown{font-size:2rem;font-weight:800;font-variant-numeric:tabular-nums;}
+.next-race .sessions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;}
+.next-race .session{background:rgba(0,0,0,.3);border-radius:8px;padding:6px 12px;font-size:.8rem;}
+.filters{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;}
+.filter-btn{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:7px 16px;border-radius:20px;cursor:pointer;font-size:.85rem;transition:all .2s;}
+.filter-btn.active,.filter-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+.race-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:12px;display:flex;align-items:center;gap:16px;transition:border-color .2s;cursor:default;}
+.race-card:hover{border-color:var(--accent);}
+.race-card.past{opacity:.5;}
+.race-card.next{border-color:var(--accent);background:var(--card2);}
+.round-badge{background:var(--accent);color:#fff;font-weight:800;font-size:.8rem;min-width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.race-info{flex:1;}
+.race-name{font-weight:700;font-size:1rem;margin-bottom:2px;}
+.race-circuit{color:var(--muted);font-size:.85rem;}
+.race-dates{text-align:right;flex-shrink:0;}
+.race-date{font-weight:700;font-size:.95rem;}
+.race-time{color:var(--accent);font-size:.85rem;font-weight:600;}
+.status-badge{font-size:.7rem;font-weight:700;padding:3px 8px;border-radius:10px;margin-left:8px;}
+.status-past{background:#2a3050;color:var(--muted);}
+.status-next{background:var(--accent);color:#fff;}
+.status-upcoming{background:#1e3a1e;color:#00c853;}
+.sessions-row{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
+.session-pill{background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:.75rem;color:var(--muted);}
+.session-pill span{color:#fff;font-weight:600;}
+.loading{text-align:center;padding:60px;color:var(--muted);}
+.loading .spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 16px;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error{background:#1a0a0a;border:1px solid #5a0000;border-radius:12px;padding:20px;text-align:center;color:#ff6b6b;}
+footer{text-align:center;padding:30px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);margin-top:40px;}
+footer a{color:var(--accent);text-decoration:none;}
+@media(max-width:600px){.race-card{flex-wrap:wrap;}.race-dates{text-align:left;}.next-race .countdown{font-size:1.5rem;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/">🏍️ MotoGP Video</a>
+  <nav>
+    <a href="/">Ana Sayfa</a>
+    <a href="takvim.html">Takvim</a>
+    <a href="puan-durumu.html">Puan Durumu</a>
+    <a href="canli-yayin.html">Canlı Yayın</a>
+    <a href="kadrolar.html">Kadrolar</a>
+  </nav>
+</div>
+
+<div class="hero">
+  <h1>MotoGP 2026 <span>Yarış Takvimi</span></h1>
+  <p>Tüm Grand Prix tarihleri, saat bilgileri ve Türkiye yayıncıları</p>
+</div>
+
+<div class="container">
+  <div id="next-race-box"></div>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterRaces('all',this)">Tümü</button>
+    <button class="filter-btn" onclick="filterRaces('upcoming',this)">Yaklaşan</button>
+    <button class="filter-btn" onclick="filterRaces('past',this)">Geçmiş</button>
+  </div>
+
+  <div id="races-container">
+    <div class="loading"><div class="spinner"></div>Yarış takvimi yükleniyor...</div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 <a href="/">motogpvideo.com</a> · Veriler MotoGP resmi kaynaklarından alınmaktadır · Saatler Türkiye saatiyle (UTC+3)</p>
+</footer>
+
+<script>
+const SEASON_YEAR = 2026;
+const TZ_OFFSET = 3; // Türkiye UTC+3
+
+// MotoGP 2026 takvimi (API'den gelemiyen durumlar için yedek veri)
+const FALLBACK_RACES = [
+  {round:1,name:"Tayland Grand Prix",circuit:"Chang Uluslararası Devre",country:"🇹🇭",date:"2026-02-28",raceTime:"10:00",sessions:[{n:"Antrenman 1",t:"Cum 05:00"},{n:"Antrenman 2",t:"Cum 09:00"},{n:"Sıralama",t:"Cmt 09:50"},{n:"Sprint",t:"Cmt 14:00"},{n:"Yarış",t:"Paz 10:00"}]},
+  {round:2,name:"Brezilya Grand Prix",circuit:"Autódromo Int. Ayrton Senna, Goiânia",country:"🇧🇷",date:"2026-03-22",raceTime:"18:00",sessions:[{n:"Antrenman 1",t:"Cum 13:00"},{n:"Antrenman 2",t:"Cum 17:00"},{n:"Sıralama",t:"Cmt 17:50"},{n:"Sprint",t:"Cmt 22:00"},{n:"Yarış",t:"Paz 18:00"}]},
+  {round:3,name:"Arjantin Grand Prix",circuit:"Termas de Río Hondo",country:"🇦🇷",date:"2026-04-05",raceTime:"19:00",sessions:[{n:"Antrenman 1",t:"Cum 14:00"},{n:"Antrenman 2",t:"Cum 18:00"},{n:"Sıralama",t:"Cmt 18:50"},{n:"Sprint",t:"Cmt 23:00"},{n:"Yarış",t:"Paz 19:00"}]},
+  {round:4,name:"Katar Grand Prix",circuit:"Lusail Uluslararası Devre",country:"🇶🇦",date:"2026-04-19",raceTime:"21:00",sessions:[{n:"Antrenman 1",t:"Cum 16:00"},{n:"Antrenman 2",t:"Cum 20:00"},{n:"Sıralama",t:"Cmt 20:50"},{n:"Sprint",t:"Cmt 21:00"},{n:"Yarış",t:"Paz 21:00"}]},
+  {round:5,name:"İspanya Grand Prix",circuit:"Jerez Devresi",country:"🇪🇸",date:"2026-05-03",raceTime:"14:00",sessions:[{n:"Antrenman 1",t:"Cum 09:45"},{n:"Antrenman 2",t:"Cum 14:00"},{n:"Sıralama",t:"Cmt 10:50"},{n:"Sprint",t:"Cmt 15:00"},{n:"Yarış",t:"Paz 14:00"}]},
+  {round:6,name:"Fransa Grand Prix",circuit:"Le Mans Devresi",country:"🇫🇷",date:"2026-05-17",raceTime:"14:00",sessions:[{n:"Antrenman 1",t:"Cum 09:45"},{n:"Antrenman 2",t:"Cum 14:00"},{n:"Sıralama",t:"Cmt 10:50"},{n:"Sprint",t:"Cmt 15:00"},{n:"Yarış",t:"Paz 14:00"}]},
+  {round:7,name:"Katalonya Grand Prix",circuit:"Circuit de Barcelona-Catalunya",country:"🇪🇸",date:"2026-06-07",raceTime:"14:00",sessions:[{n:"Antrenman 1",t:"Cum 09:45"},{n:"Antrenman 2",t:"Cum 14:00"},{n:"Sıralama",t:"Cmt 10:50"},{n:"Sprint",t:"Cmt 15:00"},{n:"Yarış",t:"Paz 14:00"}]},
+  {round:8,name:"İtalya Grand Prix",circuit:"Mugello Devresi",country:"🇮🇹",date:"2026-06-21",raceTime:"14:00",sessions:[{n:"Antrenman 1",t:"Cum 09:45"},{n:"Antrenman 2",t:"Cum 14:00"},{n:"Sıralama",t:"Cmt 10:50"},{n:"Sprint",t:"Cmt 15:00"},{n:"Yarış",t:"Paz 14:00"}]},
+  {round:9,name:"Hollanda Grand Prix",circuit:"TT Devresi Assen",country:"🇳🇱",date:"2026-06-28",raceTime:"14:00",sessions:[{n:"Antrenman 1",t:"Cum 09:45"},{n:"Antrenman 2",t:"Cum 14:00"},{n:"Sıralama",t:"Cmt 10:50"},{n:"Sprint",t:"Cmt 15:00"},{n:"Yarış",t:"Paz 14:00"}]},
+  {round:10,name:"Almanya Grand Prix",circuit:"Sachsenring Devresi",country:"🇩🇪",date:"2026-07-12",raceTime:"14:00",sessions:[{n:"Antrenman 1",t:"Cum 09:45"},{n:"Antrenman 2",t:"Cum 14:00"},{n:"Sıralama",t:"Cmt 10:50"},{n:"Sprint",t:"Cmt 15:00"},{n:"Yarış",t:"Paz 14:00"}]},
+  {round:11,name:"İngiltere Grand Prix",circuit:"Silverstone Devresi",country:"🇬🇧",date:"2026-08-02",raceTime:"14:00",sessions:[{n:"Antrenman 1",t:"Cum 09:45"},{n:"Antrenman 2",t:"Cum 14:00"},{n:"Sıralama",t:"Cmt 10:50"},{n:"Sprint",t:"Cmt 15:00"},{n:"Yarış",t:"Paz 14:00"}]},
+  {round:12,name:"Avusturya Grand Prix",circuit:"Red Bull Ring",country:"🇦🇹",date:"2026-08-16",raceTime:"14:00",sessions:[{n:"Antrenman 1",t:"Cum 09:45"},{n:"Antrenman 2",t:"Cum 14:00"},{n:"Sıralama",t:"Cmt 10:50"},{n:"Sprint",t:"Cmt 15:00"},{n:"Yarış",t:"Paz 14:00"}]},
+  {round:13,name:"Aragonya Grand Prix",circuit:"MotorLand Aragón",country:"🇪🇸",date:"2026-08-30",raceTime:"14:00",sessions:[{n:"Antrenman 1",t:"Cum 09:45"},{n:"Antrenman 2",t:"Cum 14:00"},{n:"Sıralama",t:"Cmt 10:50"},{n:"Sprint",t:"Cmt 15:00"},{n:"Yarış",t:"Paz 14:00"}]},
+  {round:14,name:"San Marino Grand Prix",circuit:"Misano Dünya Devresi",country:"🇮🇹",date:"2026-09-13",raceTime:"14:00",sessions:[{n:"Antrenman 1",t:"Cum 09:45"},{n:"Antrenman 2",t:"Cum 14:00"},{n:"Sıralama",t:"Cmt 10:50"},{n:"Sprint",t:"Cmt 15:00"},{n:"Yarış",t:"Paz 14:00"}]},
+  {round:15,name:"Japonya Grand Prix",circuit:"Twin Ring Motegi",country:"🇯🇵",date:"2026-09-27",raceTime:"09:00",sessions:[{n:"Antrenman 1",t:"Cum 04:45"},{n:"Antrenman 2",t:"Cum 09:00"},{n:"Sıralama",t:"Cmt 09:50"},{n:"Sprint",t:"Cmt 14:00"},{n:"Yarış",t:"Paz 09:00"}]},
+  {round:16,name:"Endonezya Grand Prix",circuit:"Mandalika Uluslararası Devre",country:"🇮🇩",date:"2026-10-11",raceTime:"13:00",sessions:[{n:"Antrenman 1",t:"Cum 08:45"},{n:"Antrenman 2",t:"Cum 13:00"},{n:"Sıralama",t:"Cmt 13:50"},{n:"Sprint",t:"Cmt 14:00"},{n:"Yarış",t:"Paz 13:00"}]},
+  {round:17,name:"Avustralya Grand Prix",circuit:"Phillip Island Devresi",country:"🇦🇺",date:"2026-10-18",raceTime:"06:00",sessions:[{n:"Antrenman 1",t:"Cum 02:45"},{n:"Antrenman 2",t:"Cum 07:00"},{n:"Sıralama",t:"Cmt 07:50"},{n:"Sprint",t:"Cmt 06:00"},{n:"Yarış",t:"Paz 06:00"}]},
+  {round:18,name:"Malezya Grand Prix",circuit:"Sepang Uluslararası Devre",country:"🇲🇾",date:"2026-11-01",raceTime:"10:00",sessions:[{n:"Antrenman 1",t:"Cum 05:45"},{n:"Antrenman 2",t:"Cum 10:00"},{n:"Sıralama",t:"Cmt 10:50"},{n:"Sprint",t:"Cmt 11:00"},{n:"Yarış",t:"Paz 10:00"}]},
+  {round:19,name:"Valencia Grand Prix",circuit:"Ricardo Tormo Devresi",country:"🇪🇸",date:"2026-11-15",raceTime:"14:00",sessions:[{n:"Antrenman 1",t:"Cum 09:45"},{n:"Antrenman 2",t:"Cum 14:00"},{n:"Sıralama",t:"Cmt 10:50"},{n:"Sprint",t:"Cmt 15:00"},{n:"Yarış",t:"Paz 14:00"}]},
+];
+
+let allRaces = [];
+let currentFilter = 'all';
+
+function getStatus(dateStr) {
+  const now = new Date();
+  const race = new Date(dateStr + 'T23:59:59');
+  const raceStart = new Date(dateStr + 'T00:00:00');
+  if (race < now) return 'past';
+  const diff = raceStart - now;
+  if (diff < 7 * 24 * 60 * 60 * 1000) return 'next';
+  return 'upcoming';
+}
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function getCountdown(dateStr, timeStr) {
+  const [h, m] = timeStr.split(':');
+  const target = new Date(dateStr + 'T' + h + ':' + m + ':00');
+  target.setHours(target.getHours());
+  const diff = target - new Date();
+  if (diff <= 0) return null;
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const mins = Math.floor((diff % 3600000) / 60000);
+  if (days > 0) return days + ' gün ' + hours + ' saat';
+  if (hours > 0) return hours + ' saat ' + mins + ' dk';
+  return mins + ' dakika';
+}
+
+function renderNextRace(race) {
+  const cd = getCountdown(race.date, race.raceTime);
+  if (!cd) return;
+  document.getElementById('next-race-box').innerHTML = `
+    <div class="next-race">
+      <div>
+        <div class="label">⏱️ Sıradaki Yarış</div>
+        <div class="name">${race.country} ${race.name}</div>
+        <div style="font-size:.85rem;opacity:.8;margin:2px 0">${race.circuit} · ${formatDate(race.date)} · Yarış ${race.raceTime} (TR)</div>
+        <div class="sessions">
+          ${race.sessions.map(s=>`<div class="session"><b>${s.n}:</b> ${s.t}</div>`).join('')}
+        </div>
+      </div>
+      <div style="text-align:center;flex-shrink:0">
+        <div class="label">Kalan Süre</div>
+        <div class="countdown">${cd}</div>
+      </div>
+    </div>`;
+}
+
+function renderRaces(races) {
+  const container = document.getElementById('races-container');
+  if (!races.length) { container.innerHTML = '<div class="loading">Gösterilecek yarış yok.</div>'; return; }
+  container.innerHTML = races.map(race => {
+    const status = getStatus(race.date);
+    const statusLabel = {past:'Tamamlandı',next:'Sıradaki',upcoming:'Yaklaşan'}[status];
+    const statusClass = {past:'status-past',next:'status-next',upcoming:'status-upcoming'}[status];
+    if (currentFilter === 'upcoming' && status === 'past') return '';
+    if (currentFilter === 'past' && status !== 'past') return '';
+    return `
+    <div class="race-card ${status}">
+      <div class="round-badge">${race.round}</div>
+      <div class="race-info">
+        <div class="race-name">${race.country} ${race.name} <span class="status-badge ${statusClass}">${statusLabel}</span></div>
+        <div class="race-circuit">🏁 ${race.circuit}</div>
+        <div class="sessions-row">
+          ${race.sessions.map(s=>`<div class="session-pill">${s.n}: <span>${s.t}</span></div>`).join('')}
+        </div>
+      </div>
+      <div class="race-dates">
+        <div class="race-date">${formatDate(race.date)}</div>
+        <div class="race-time">🏁 Yarış: ${race.raceTime} (TR)</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterRaces(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderRaces(allRaces);
+}
+
+async function loadRaces() {
+  try {
+    // MotoGP public API dene
+    const seasonsRes = await fetch('https://api.motogp.pulselive.com/motogp/v1/results/seasons');
+    if (!seasonsRes.ok) throw new Error('API yanıt vermedi');
+    const seasons = await seasonsRes.json();
+    const season2026 = seasons.find(s => s.year === 2026);
+    if (!season2026) throw new Error('2026 sezonu bulunamadı');
+    const eventsRes = await fetch(`https://api.motogp.pulselive.com/motogp/v1/results/events?seasonUuid=${season2026.id}&isFinished=false`);
+    const events = await eventsRes.json();
+    // API verisini dönüştür
+    allRaces = events.events.map((e,i) => ({
+      round: i+1,
+      name: e.name,
+      circuit: e.circuit?.name || '',
+      country: '',
+      date: e.date_start?.split('T')[0] || '',
+      raceTime: '14:00',
+      sessions: []
+    }));
+  } catch(e) {
+    // Yedek veriyi kullan
+    allRaces = FALLBACK_RACES;
+  }
+
+  // Sıradaki yarışı bul ve göster
+  const nextRace = allRaces.find(r => getStatus(r.date) === 'next') ||
+                   allRaces.find(r => getStatus(r.date) === 'upcoming');
+  if (nextRace) renderNextRace(nextRace);
+
+  renderRaces(allRaces);
+}
+
+loadRaces();
+
+// Her dakika geri sayımı güncelle
+setInterval(() => {
+  const nextRace = allRaces.find(r => getStatus(r.date) === 'next') ||
+                   allRaces.find(r => getStatus(r.date) === 'upcoming');
+  if (nextRace) renderNextRace(nextRace);
+}, 60000);
+</script>
+</body>
+</html>
