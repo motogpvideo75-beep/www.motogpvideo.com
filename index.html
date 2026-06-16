@@ -654,9 +654,9 @@
                 id:{takvim:"📅 Kalender",puan:"🏆 Poin",canli:"📺 TV Langsung"}
             };
             const nl = navLabels[lang] || navLabels['tr'];
-            const nt = document.getElementById('nav-takvim'); if(nt) nt.textContent = nl.takvim;
-            const np = document.getElementById('nav-puan'); if(np) np.textContent = nl.puan;
-            const nc = document.getElementById('nav-canli'); if(nc) nc.textContent = nl.canli;
+            const nt = document.getElementById('nav-takvim'); if(nt) nt.innerHTML = nl.takvim;
+            const np = document.getElementById('nav-puan'); if(np) np.innerHTML = nl.puan;
+            const nc = document.getElementById('nav-canli'); if(nc) nc.innerHTML = nl.canli;
             // Disclaimer güncelle
             document.querySelectorAll('#legal-disclaimer span').forEach(s => s.style.display = 'none');
             const discEl = document.querySelector('.disc-' + lang);
