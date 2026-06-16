@@ -641,6 +641,22 @@
             if (id === "sec-haberler") {
                 const activeTab = document.querySelector(".rss-tab[data-feed].active");
                 if (activeTab && document.getElementById("news-grid").querySelector(".skeleton")) loadRSS(activeTab);
+            // Ekstra nav linkleri güncelle
+            const navLabels = {
+                tr:{takvim:"📅 Takvim",puan:"🏆 Puan",canli:"📺 Canlı Yayın"},
+                en:{takvim:"📅 Calendar",puan:"🏆 Standings",canli:"📺 Live TV"},
+                de:{takvim:"📅 Kalender",puan:"🏆 Punkte",canli:"📺 Live TV"},
+                fr:{takvim:"📅 Calendrier",puan:"🏆 Classement",canli:"📺 TV en Direct"},
+                ja:{takvim:"📅 カレンダー",puan:"🏆 ポイント",canli:"📺 ライブTV"},
+                es:{takvim:"📅 Calendario",puan:"🏆 Puntos",canli:"📺 TV en Vivo"},
+                it:{takvim:"📅 Calendario",puan:"🏆 Punti",canli:"📺 TV in Diretta"},
+                pt:{takvim:"📅 Calendário",puan:"🏆 Pontos",canli:"📺 TV ao Vivo"},
+                id:{takvim:"📅 Kalender",puan:"🏆 Poin",canli:"📺 TV Langsung"}
+            };
+            const nl = navLabels[lang] || navLabels['tr'];
+            const nt = document.getElementById('nav-takvim'); if(nt) nt.textContent = nl.takvim;
+            const np = document.getElementById('nav-puan'); if(np) np.textContent = nl.puan;
+            const nc = document.getElementById('nav-canli'); if(nc) nc.textContent = nl.canli;
             // Disclaimer güncelle
             document.querySelectorAll('#legal-disclaimer span').forEach(s => s.style.display = 'none');
             const discEl = document.querySelector('.disc-' + lang);
@@ -1291,9 +1307,9 @@
         <span class="topnav-link" onclick="topNav('sec-galeri',this)">Galeri</span>
         <span class="topnav-link" onclick="topNav('sec-tv',this)">Resmi Siteler</span>
         <span class="topnav-link" onclick="topNav('sec-iletisim',this)">İletişim</span>
-        <a class="topnav-link" href="takvim.html" style="text-decoration:none;color:rgba(255,255,255,.75)">📅 Takvim</a>
-        <a class="topnav-link" href="puan-durumu.html" style="text-decoration:none;color:rgba(255,255,255,.75)">🏆 Puan</a>
-        <a class="topnav-link" href="canli-yayin.html" style="text-decoration:none;color:rgba(255,255,255,.75)">📺 Canlı Yayın</a>
+        <a class="topnav-link" id="nav-takvim" href="takvim.html" style="text-decoration:none;color:rgba(255,255,255,.75)">📅 Takvim</a>
+        <a class="topnav-link" id="nav-puan" href="puan-durumu.html" style="text-decoration:none;color:rgba(255,255,255,.75)">🏆 Puan</a>
+        <a class="topnav-link" id="nav-canli" href="canli-yayin.html" style="text-decoration:none;color:rgba(255,255,255,.75)">📺 Canlı Yayın</a>
 
     </div>
 
