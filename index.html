@@ -1954,6 +1954,49 @@
     }
 </script>
 
+<!-- Açılış Popup - 9 Dil -->
+<div id="welcome-popup" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:999999;background:rgba(0,0,0,.75);align-items:center;justify-content:center;padding:20px;">
+    <div style="background:#13132a;border:2px solid #e8001d;border-radius:16px;max-width:520px;width:100%;padding:28px 24px;position:relative;box-shadow:0 8px 40px rgba(232,0,29,.3);">
+        <div style="text-align:center;margin-bottom:18px;">
+            <div style="font-size:2rem;margin-bottom:6px;">🏍️</div>
+            <div style="font-size:1.1rem;font-weight:900;color:#e8001d;letter-spacing:.5px;">motogpvideo.com</div>
+            <div style="font-size:.72rem;color:#888;margin-top:2px;" id="popup-since">Est. 2009</div>
+        </div>
+        <p id="popup-text" style="font-size:.83rem;color:#ddd;line-height:1.7;text-align:center;margin-bottom:20px;"></p>
+        <div style="text-align:center;">
+            <button onclick="closeWelcomePopup()" style="background:#e8001d;border:none;color:#fff;padding:10px 32px;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:700;transition:opacity .2s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'" id="popup-btn">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+const popupTexts = {
+    tr: "Bu platform 2009 yılından bu yana bağımsız bir motor sporları bilgi ve yayın rehberi olarak hizmet vermektedir. Hiçbir zaman yetkisiz yayın yapılmamış, ticari kazanç elde edilmemiş ve ilgili kuruluşların haklarına saygı gösterilmiştir. Tüm haklar resmi kuruluşlara aittir.",
+    en: "This platform has been operating as an independent motorsports information and broadcast guide since 2009. No unauthorized broadcasts have ever been made, no commercial gain has been obtained, and the rights of all relevant organizations have always been respected. All rights belong to their respective official organizations.",
+    de: "Diese Plattform ist seit 2009 als unabhängiger Motorsport-Informations- und Übertragungsführer tätig. Es wurden nie unbefugte Übertragungen durchgeführt, kein kommerzieller Gewinn erzielt und die Rechte aller relevanten Organisationen wurden stets respektiert.",
+    fr: "Cette plateforme fonctionne comme un guide d'information et de diffusion motorsport indépendant depuis 2009. Aucune diffusion non autorisée n'a jamais été effectuée, aucun gain commercial n'a été obtenu et les droits de toutes les organisations concernées ont toujours été respectés.",
+    ja: "このプラットフォームは2009年から独立したモータースポーツ情報・放送ガイドとして運営されています。無断放送は一切行われておらず、商業的利益も得ておらず、関連組織の権利を常に尊重しています。",
+    es: "Esta plataforma opera como guía independiente de información y transmisión de deportes de motor desde 2009. Nunca se han realizado transmisiones no autorizadas, no se han obtenido ganancias comerciales y siempre se han respetado los derechos de todas las organizaciones pertinentes.",
+    it: "Questa piattaforma opera come guida indipendente di informazioni e trasmissioni di motorsport dal 2009. Non sono mai state effettuate trasmissioni non autorizzate, non sono stati ottenuti guadagni commerciali e i diritti di tutte le organizzazioni pertinenti sono sempre stati rispettati.",
+    pt: "Esta plataforma opera como guia independente de informações e transmissão de desportos motorizados desde 2009. Nunca foram feitas transmissões não autorizadas, não foram obtidos ganhos comerciais e os direitos de todas as organizações relevantes foram sempre respeitados.",
+    id: "Platform ini telah beroperasi sebagai panduan informasi dan siaran motorsport independen sejak 2009. Tidak pernah ada siaran tidak resmi, tidak ada keuntungan komersial yang diperoleh, dan hak-hak semua organisasi terkait selalu dihormati."
+};
+const popupBtns = {
+    tr:"Anladım", en:"Got It", de:"Verstanden", fr:"Compris", ja:"了解", es:"Entendido", it:"Capito", pt:"Entendido", id:"Mengerti"
+};
+function closeWelcomePopup(){
+    document.getElementById('welcome-popup').style.display='none';
+    sessionStorage.setItem('popup_shown','1');
+}
+(function(){
+    if(sessionStorage.getItem('popup_shown')) return;
+    var lang = (navigator.language || 'en').split('-')[0];
+    if(!popupTexts[lang]) lang = 'en';
+    document.getElementById('popup-text').innerText = popupTexts[lang];
+    document.getElementById('popup-btn').innerText = popupBtns[lang] || 'OK';
+    document.getElementById('welcome-popup').style.display='flex';
+})();
+</script>
+
 </body>
 </html>
 
