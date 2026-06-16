@@ -1,5 +1,57 @@
 <html lang="tr">
 <head>
+    <!-- OneSignal Web Push Bildirimleri -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+      window.OneSignalDeferred = window.OneSignalDeferred || [];
+      OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+          appId: "10ae3811-a24b-4df4-af80-d7b70ccab79a",
+          notifyButton: {
+            enable: true,
+            size: "medium",
+            position: "bottom-right",
+            text: {
+              "tip.state.unsubscribed": "Bildirimlere abone ol",
+              "tip.state.subscribed": "Bildirimlerden çık",
+              "tip.state.blocked": "Bildirimler engellendi",
+              "message.prenotify": "Yarış bildirimlerine abone olmak için tıkla!",
+              "message.action.subscribed": "Bildirimler aktif! 🏍️",
+              "message.action.resubscribed": "Bildirimler tekrar aktif!",
+              "message.action.unsubscribed": "Bildirimler devre dışı.",
+              "dialog.main.title": "Bildirimleri Yönet",
+              "dialog.main.button.subscribe": "ABONE OL",
+              "dialog.main.button.unsubscribe": "ÇIKIŞ YAP",
+              "dialog.blocked.title": "Bildirimler Engellendi",
+              "dialog.blocked.message": "Bildirimlere izin vermek için tarayıcı ayarlarını değiştir."
+            }
+          },
+          welcomeNotification: {
+            title: "MotoGP Video 🏍️",
+            message: "Artık yarış bildirimlerine abonesiniz!"
+          },
+          promptOptions: {
+            slidedown: {
+              prompts: [
+                {
+                  type: "push",
+                  autoPrompt: true,
+                  text: {
+                    actionMessage: "🏍️ MotoGP, WorldSBK ve F1 yarış bildirimlerini almak ister misiniz?",
+                    acceptButton: "Evet, isterim!",
+                    cancelButton: "Hayır"
+                  },
+                  delay: {
+                    pageViews: 1,
+                    timeDelay: 5
+                  }
+                }
+              ]
+            }
+          }
+        });
+      });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
