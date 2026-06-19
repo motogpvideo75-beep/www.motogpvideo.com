@@ -634,15 +634,15 @@
             if(typeof buildBrandGrid === "function") buildBrandGrid();
             // Ekstra nav linkleri güncelle
             const navLabels = {
-                tr:{takvim:"📅 Takvim",puan:"🏆 Puan",canli:"📺 Canlı Yayın"},
-                en:{takvim:"📅 Calendar",puan:"🏆 Standings",canli:"📺 Live TV"},
-                de:{takvim:"📅 Kalender",puan:"🏆 Punkte",canli:"📺 Live TV"},
-                fr:{takvim:"📅 Calendrier",puan:"🏆 Classement",canli:"📺 TV en Direct"},
-                ja:{takvim:"📅 カレンダー",puan:"🏆 ポイント",canli:"📺 ライブTV"},
-                es:{takvim:"📅 Calendario",puan:"🏆 Puntos",canli:"📺 TV en Vivo"},
-                it:{takvim:"📅 Calendario",puan:"🏆 Punti",canli:"📺 TV in Diretta"},
-                pt:{takvim:"📅 Calendário",puan:"🏆 Pontos",canli:"📺 TV ao Vivo"},
-                id:{takvim:"📅 Kalender",puan:"🏆 Poin",canli:"📺 TV Langsung"}
+                tr:{takvim:"📅 Takvim",puan:"🏆 Puan",canli:"📺 Yayın Rehberi"},
+                en:{takvim:"📅 Calendar",puan:"🏆 Standings",canli:"📺 Broadcast Guide"},
+                de:{takvim:"📅 Kalender",puan:"🏆 Punkte",canli:"📺 Sendeführer"},
+                fr:{takvim:"📅 Calendrier",puan:"🏆 Classement",canli:"📺 Guide TV"},
+                ja:{takvim:"📅 カレンダー",puan:"🏆 ポイント",canli:"📺 放送ガイド"},
+                es:{takvim:"📅 Calendario",puan:"🏆 Puntos",canli:"📺 Guía de Emisión"},
+                it:{takvim:"📅 Calendario",puan:"🏆 Punti",canli:"📺 Guida TV"},
+                pt:{takvim:"📅 Calendário",puan:"🏆 Pontos",canli:"📺 Guia de Transmissão"},
+                id:{takvim:"📅 Kalender",puan:"🏆 Poin",canli:"📺 Panduan Siaran"}
             };
             const nl = navLabels[lang] || navLabels['tr'];
             const nt = document.getElementById('nav-takvim'); if(nt) nt.innerHTML = nl.takvim;
@@ -1311,7 +1311,7 @@
         <span class="topnav-link" onclick="topNav('sec-iletisim',this)">İletişim</span>
         <a class="topnav-link" id="nav-takvim" href="takvim.html" style="text-decoration:none;color:rgba(255,255,255,.75)">📅 Takvim</a>
         <a class="topnav-link" id="nav-puan" href="puan-durumu.html" style="text-decoration:none;color:rgba(255,255,255,.75)">🏆 Puan</a>
-        <a class="topnav-link" id="nav-canli" href="canli-yayin.html" style="text-decoration:none;color:rgba(255,255,255,.75)">📺 Canlı Yayın</a>
+        <a class="topnav-link" id="nav-canli" href="canli-yayin.html" style="text-decoration:none;color:rgba(255,255,255,.75)">📺 Yayın Rehberi</a>
 
     </div>
 
