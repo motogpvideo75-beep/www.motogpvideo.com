@@ -597,6 +597,29 @@
             },
         };
 
+        const navLabels = {
+            tr:{takvim:"📅 Takvim",puan:"🏆 Puan",canli:"📺 Yayın Rehberi",readBtn:"OKU",newsLoaded:"{n} haber yüklendi",footerPrivacy:"🔒 Gizlilik & KVKK",footerCookie:"🍪 Çerez Politikası",footerContact:"✉️ İletişim"},
+            en:{takvim:"📅 Calendar",puan:"🏆 Standings",canli:"📺 Broadcast Guide",readBtn:"READ",newsLoaded:"{n} news loaded",footerPrivacy:"🔒 Privacy Policy",footerCookie:"🍪 Cookie Policy",footerContact:"✉️ Contact"},
+            de:{takvim:"📅 Kalender",puan:"🏆 Punkte",canli:"📺 Sendeführer",readBtn:"LESEN",newsLoaded:"{n} Nachrichten geladen",footerPrivacy:"🔒 Datenschutz",footerCookie:"🍪 Cookie-Richtlinie",footerContact:"✉️ Kontakt"},
+            fr:{takvim:"📅 Calendrier",puan:"🏆 Classement",canli:"📺 Guide TV",readBtn:"LIRE",newsLoaded:"{n} actualités chargées",footerPrivacy:"🔒 Confidentialité",footerCookie:"🍪 Politique de cookies",footerContact:"✉️ Contact"},
+            ja:{takvim:"📅 カレンダー",puan:"🏆 ポイント",canli:"📺 放送ガイド",readBtn:"読む",newsLoaded:"{n}件のニュースを読み込みました",footerPrivacy:"🔒 プライバシーポリシー",footerCookie:"🍪 クッキーポリシー",footerContact:"✉️ お問い合わせ"},
+            es:{takvim:"📅 Calendario",puan:"🏆 Puntos",canli:"📺 Guía de Emisión",readBtn:"LEER",newsLoaded:"{n} noticias cargadas",footerPrivacy:"🔒 Privacidad",footerCookie:"🍪 Política de cookies",footerContact:"✉️ Contacto"},
+            it:{takvim:"📅 Calendario",puan:"🏆 Punti",canli:"📺 Guida TV",readBtn:"LEGGI",newsLoaded:"{n} notizie caricate",footerPrivacy:"🔒 Privacy",footerCookie:"🍪 Politica dei cookie",footerContact:"✉️ Contatto"},
+            pt:{takvim:"📅 Calendário",puan:"🏆 Pontos",canli:"📺 Guia de Transmissão",readBtn:"LER",newsLoaded:"{n} notícias carregadas",footerPrivacy:"🔒 Privacidade",footerCookie:"🍪 Política de Cookies",footerContact:"✉️ Contato"},
+            id:{takvim:"📅 Kalender",puan:"🏆 Poin",canli:"📺 Panduan Siaran",readBtn:"BACA",newsLoaded:"{n} berita dimuat",footerPrivacy:"🔒 Privasi",footerCookie:"🍪 Kebijakan Cookie",footerContact:"✉️ Kontak"},
+            ar:{takvim:"📅 التقويم",puan:"🏆 الترتيب",canli:"📺 دليل البث",readBtn:"اقرأ",newsLoaded:"تم تحميل {n} خبر",footerPrivacy:"🔒 الخصوصية",footerCookie:"🍪 سياسة ملفات تعريف الارتباط",footerContact:"✉️ اتصل بنا"}
+        };
+
+        function applyUiLabels(lang) {
+            const nl = navLabels[lang] || navLabels['tr'];
+            const nt = document.getElementById('nav-takvim'); if(nt) nt.innerHTML = nl.takvim;
+            const np = document.getElementById('nav-puan'); if(np) np.innerHTML = nl.puan;
+            const nc = document.getElementById('nav-canli'); if(nc) nc.innerHTML = nl.canli;
+            const fp = document.getElementById('footer-privacy'); if(fp) fp.innerHTML = nl.footerPrivacy;
+            const fc = document.getElementById('footer-cookie'); if(fc) fc.innerHTML = nl.footerCookie;
+            const fct = document.getElementById('footer-contact'); if(fct) fct.innerHTML = nl.footerContact;
+        }
+
         function applyTtTranslations(d) {
             if (!d.tt) return;
             const tt = d.tt;
@@ -680,22 +703,8 @@
             document.documentElement.lang = lang;
             document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
             if(typeof buildBrandGrid === "function") buildBrandGrid();
-            // Ekstra nav linkleri güncelle
-            const navLabels = {
-                tr:{takvim:"📅 Takvim",puan:"🏆 Puan",canli:"📺 Yayın Rehberi"},
-                en:{takvim:"📅 Calendar",puan:"🏆 Standings",canli:"📺 Broadcast Guide"},
-                de:{takvim:"📅 Kalender",puan:"🏆 Punkte",canli:"📺 Sendeführer"},
-                fr:{takvim:"📅 Calendrier",puan:"🏆 Classement",canli:"📺 Guide TV"},
-                ja:{takvim:"📅 カレンダー",puan:"🏆 ポイント",canli:"📺 放送ガイド"},
-                es:{takvim:"📅 Calendario",puan:"🏆 Puntos",canli:"📺 Guía de Emisión"},
-                it:{takvim:"📅 Calendario",puan:"🏆 Punti",canli:"📺 Guida TV"},
-                pt:{takvim:"📅 Calendário",puan:"🏆 Pontos",canli:"📺 Guia de Transmissão"},
-                id:{takvim:"📅 Kalender",puan:"🏆 Poin",canli:"📺 Panduan Siaran"}
-            };
-            const nl = navLabels[lang] || navLabels['tr'];
-            const nt = document.getElementById('nav-takvim'); if(nt) nt.innerHTML = nl.takvim;
-            const np = document.getElementById('nav-puan'); if(np) np.innerHTML = nl.puan;
-            const nc = document.getElementById('nav-canli'); if(nc) nc.innerHTML = nl.canli;
+            // Ekstra nav linkleri ve footer çevirileri
+            applyUiLabels(lang);
             // Disclaimer güncelle
             document.querySelectorAll('#legal-disclaimer span').forEach(s => s.style.display = 'none');
             const discEl = document.querySelector('.disc-' + lang);
@@ -1840,9 +1849,9 @@
         <footer>
 
             <div style="margin-bottom:12px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;">
-                <a href="/kvkk.html" style="color:#fff;background:#222244;text-decoration:none;font-size:.76rem;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid #444488;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='#222244'">🔒 Gizlilik & KVKK</a>
-                <a href="/cerez.html" style="color:#fff;background:#222244;text-decoration:none;font-size:.76rem;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid #444488;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='#222244'">🍪 Çerez Politikası</a>
-                <a href="mailto:asikurye35@hotmail.com" style="color:#fff;background:#222244;text-decoration:none;font-size:.76rem;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid #444488;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='#222244'">✉️ İletişim</a>
+                <a href="/kvkk.html" id="footer-privacy" style="color:#fff;background:#222244;text-decoration:none;font-size:.76rem;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid #444488;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='#222244'">🔒 Gizlilik & KVKK</a>
+                <a href="/cerez.html" id="footer-cookie" style="color:#fff;background:#222244;text-decoration:none;font-size:.76rem;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid #444488;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='#222244'">🍪 Çerez Politikası</a>
+                <a href="mailto:asikurye35@hotmail.com" id="footer-contact" style="color:#fff;background:#222244;text-decoration:none;font-size:.76rem;font-weight:700;padding:6px 14px;border-radius:20px;border:1px solid #444488;" onmouseover="this.style.background='var(--accent)'" onmouseout="this.style.background='#222244'">✉️ İletişim</a>
             </div>
             <span id="footer-text" style="display:none"></span>
             <div id="legal-disclaimer" style="margin-top:10px;padding:10px 16px;background:rgba(255,255,255,.04);border-radius:8px;font-size:.72rem;color:#7a90b8;line-height:1.7;max-width:860px;margin-left:auto;margin-right:auto;text-align:center;">
@@ -1995,12 +2004,14 @@
             try { const res = await fetch(url); const data = await res.json(); if (data.items && data.items.length > 0) { items = data.items; break; } } catch(e) { continue; }
         }
         if (!items) { statusEl.innerHTML = "⚠ Haberler şu an yüklenemiyor."; return; }
-        statusEl.innerHTML = `<span style="color:#8aaccc">${Math.min(items.length,12)} haber yüklendi</span>`;
+        const curLang = document.documentElement.lang || "tr";
+        const ui = (typeof navLabels !== "undefined" && (navLabels[curLang] || navLabels["tr"])) || {readBtn:"OKU", newsLoaded:"{n} haber yüklendi"};
+        statusEl.innerHTML = `<span style="color:#8aaccc">${ui.newsLoaded.replace("{n}", Math.min(items.length,12))}</span>`;
         gridEl.innerHTML = items.slice(0,12).map(item => {
             const thumb = item.thumbnail || item.enclosure?.link || "";
             const cat = item.categories?.[0] || "Haber";
             const desc = stripHtml(item.description).slice(0,80).trim();
-            return `<div class="news-card">${thumb ? `<img class="news-thumb" src="${thumb}" alt="" loading="lazy" onerror="this.remove()">` : ""}<div class="news-cat">${cat}</div><div class="news-title">${item.title}</div>${desc ? `<div style="font-size:.72rem;color:var(--muted);line-height:1.5">${desc}…</div>` : ""}<div class="news-footer"><span class="news-date">${fmtDate(item.pubDate)}</span><a href="${item.link}" target="_blank" rel="noopener noreferrer" class="btn" style="padding:5px 10px;font-size:.62rem;width:auto">OKU</a></div></div>`;
+            return `<div class="news-card">${thumb ? `<img class="news-thumb" src="${thumb}" alt="" loading="lazy" onerror="this.remove()">` : ""}<div class="news-cat">${cat}</div><div class="news-title">${item.title}</div>${desc ? `<div style="font-size:.72rem;color:var(--muted);line-height:1.5">${desc}…</div>` : ""}<div class="news-footer"><span class="news-date">${fmtDate(item.pubDate)}</span><a href="${item.link}" target="_blank" rel="noopener noreferrer" class="btn" style="padding:5px 10px;font-size:.62rem;width:auto">${ui.readBtn}</a></div></div>`;
         }).join("");
     }
 
@@ -2079,6 +2090,7 @@
         document.documentElement.lang = lang;
         document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
         if(typeof buildBrandGrid === "function") buildBrandGrid();
+        if(typeof applyUiLabels === "function") applyUiLabels(lang);
     }
 </script>
 
