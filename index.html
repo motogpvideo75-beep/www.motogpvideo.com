@@ -763,7 +763,7 @@
             { icon:"🏍", title:"Marka Ansiklopedisi", desc:"Honda, Yamaha, Ducati, KTM...", section:"sec-markalar", keys:["marka","brand","honda","yamaha","ducati","ktm","aprilia","suzuki","bmw","kawasaki"] },
             { icon:"⛑️", title:"Kask & Tulum Markaları", desc:"AGV, Shoei, Arai, Alpinestars, Dainese...", section:"sec-ekipman", keys:["kask","tulum","ekipman","helmet","agv","shoei","arai","alpinestars","dainese","spidi","eldiven","bot","koruma","ktm","nolan","x-lite","schuberth","bell","icon","held","klim","furygan"] },
             { icon:"📅", title:"2026 Takvimi", desc:"MotoGP, WorldSBK, Formula 1 takvimi", section:"sec-takvim", keys:["takvim","calendar","2026","grand prix","schedule","race","yarış"] },
-            { icon:"🏆", title:"Biniciler & Takımlar", desc:"Sürücüler ve takım kadroları", section:"sec-biniciler", keys:["binici","sürücü","rider","team","takım","toprak","marc","bagnaia","quartararo","zarco","martin"] },
+            { icon:"🏆", title:"Biniciler & Takımlar", desc:"Sürücüler ve takım kadroları", section:"sec-biniciler", keys:["binici","sürücü","rider","team","takım","toprak","marc","bagnaia","quartararo","zarco","martin","wspb","sportbike","worldspb","wssp","supersport","wwcr"] },
             { icon:"🇮🇲", title:"Isle of Man TT", desc:"1907'den beri efsanevi yol yarışı", section:"sec-tt", keys:["isle of man","tt","man adası","mountain course","snaefell","tourist trophy","dunlop","hickman","tt races"] },
             { icon:"📰", title:"Haberler", desc:"Son dakika haberleri", section:"sec-haberler", keys:["haber","news","son","latest","breaking"] },
             { icon:"🌍", title:"FIFA Dünya Kupası 2026", desc:"Resmi yayın kanalları - ülkeye göre", section:"sec-haberler", keys:["dünya kupası","world cup","fifa","2026","futbol","football","soccer","mundial","coupe du monde","trt","fox sports","bbc","telemundo"] },
@@ -1148,6 +1148,28 @@
                     {num:34, name:"Charlie Eastwood", flag:"🇮🇪", country:"İrlanda", team:"Racing Team Turkey by TF (Corvette Z06 LMGT3.R) 🇹🇷", bike:"WEC", featured:true},
                     {num:78, name:"Esteban Masson", flag:"🇫🇷", country:"Fransa", team:"Akkodis ASP (Lexus RC F GT3)", bike:"WEC"},
                     {num:24, name:"Cem Bölükbaşı", flag:"🇹🇷", country:"Türkiye", team:"Vector Sport (ELMS LMP2, Oreca 07-Gibson)", bike:"WEC", featured:true}
+                ]
+            },
+            wspb: {
+                label:"🆕 WorldSPB 2026 (İlk Sezon)", color:"#9933cc",
+                list:[
+                    {num:6,  name:"Jeffrey Buis",        flag:"🇳🇱", country:"Hollanda",   team:"Track & Trades Wixx Racing", bike:"Suzuki"},
+                    {num:7,  name:"Beñat Fernández",      flag:"🇪🇸", country:"İspanya",    team:"Kove Racing Team",           bike:"Kove"},
+                    {num:11, name:"Mattia Sorrenti",      flag:"🇮🇹", country:"İtalya",     team:"Revo-M2",                    bike:"Aprilia"},
+                    {num:16, name:"Álvaro Fuertes",       flag:"🇪🇸", country:"İspanya",    team:"Deza-Box 77 Racing Team",    bike:"Kawasaki"},
+                    {num:34, name:"Xavi Artigas",         flag:"🇪🇸", country:"İspanya",    team:"MTM Kawasaki",               bike:"Kawasaki"},
+                    {num:38, name:"David Salvador",       flag:"🇪🇸", country:"İspanya",    team:"Team ProDina Kawasaki XCI",  bike:"Kawasaki"},
+                    {num:39, name:"Juan Risueño",         flag:"🇪🇸", country:"İspanya",    team:"Pons Motosport Italika",     bike:"Kawasaki"},
+                    {num:47, name:"Antonio Torres",       flag:"🇪🇸", country:"İspanya",    team:"Team ProDina Kawasaki XCI",  bike:"Kawasaki"},
+                    {num:71, name:"Loris Veneman",        flag:"🇳🇱", country:"Hollanda",   team:"MTM Kawasaki",               bike:"Kawasaki"},
+                    {num:77, name:"José Osuna",           flag:"🇪🇸", country:"İspanya",    team:"Deza-Box 77 Racing Team",    bike:"Kawasaki"},
+                    {num:98, name:"Thomas Benetti",       flag:"🇮🇹", country:"İtalya",     team:"MMR",                        bike:"Aprilia"},
+                    {num:5,  name:"Kas Beekmans",         flag:"🇳🇱", country:"Hollanda",   team:"VLR Racing Team",            bike:"Suzuki"},
+                    {num:13, name:"Harrison Dessoy",      flag:"🇬🇧", country:"İngiltere",  team:"PHR Performance",            bike:"Triumph"},
+                    {num:22, name:"Fenton Seabright",     flag:"🇬🇧", country:"İngiltere",  team:"PHR Performance",            bike:"Triumph"},
+                    {num:9,  name:"Marco Gaggi",          flag:"🇮🇹", country:"İtalya",     team:"Team BrCorse",               bike:"Yamaha"},
+                    {num:18, name:"Carter Thompson",      flag:"🇦🇺", country:"Avustralya", team:"Team BrCorse",               bike:"Yamaha"},
+                    {num:99, name:"Alessandro Di Persio", flag:"🇮🇹", country:"İtalya",     team:"ARCO Yamaha MotoR University",bike:"Yamaha"}
                 ]
             }
         };
@@ -1866,6 +1888,7 @@
                 <button class="cat-tab" onclick="showCat('moto3',this)">🟢 Moto3</button>
                 <button class="cat-tab" onclick="showCat('wsbk',this)">🏆 WorldSBK</button>
                 <button class="cat-tab" onclick="showCat('wssp',this)">⚡ Dünya SSP</button>
+                <button class="cat-tab" onclick="showCat('wspb',this)">🆕 WorldSPB</button>
                 <button class="cat-tab" onclick="showCat('wwcr',this)">👩 Dünya WCR</button>
                 <button class="cat-tab" onclick="showCat('f1',this)">🚀 Formula 1</button>
                 <button class="cat-tab" onclick="showCat('wec',this)">🏆 WEC</button>
