@@ -337,7 +337,7 @@
                     disclaimer:"⚠️ Ce site n'est pas un diffuseur officiel. Tous les droits de diffusion et de marque relatifs à l'Isle of Man TT appartiennent à TT Races Official / Isle of Man Government."
                 }
             },
-            jp: {
+            ja: {
                 title: "モータースポーツセンター", label: "最新情報", news: "• レースウィークがもうすぐ始まります！", pilots: "トルコ: トプラク・ラズガトリオール、バハッティン・ソフオール", live: "情報＆放送スケジュール", cdLabel: "2026年トルコGPまでの残り時間:",
                 sidebar: { sec1:"放送", canli:"モータースポーツ情報", tv:"TVチャンネル", platform:"特別プラットフォーム", sec2:"情報", markalar:"ブランド百科事典", sec3:"レース", takvim:"2026年カレンダー", biniciler:"ライダー＆チーム", tt:"Isle of Man TT", haberler:"ニュース", global:"世界のスポーツ", mission:"私たちの使命", missionText:"モータースポーツの世界を支え、ファンを合法で高品質な放送につなげます。", missionLink:"合法ストリーミングガイド" },
                 platform: {
@@ -2033,15 +2033,44 @@
 
     window.addEventListener("DOMContentLoaded", startCountdown);
     window.addEventListener("DOMContentLoaded", function() {
-        const arabCountries = ["SA","AE","QA","KW","BH","OM","EG","JO","LB","SY","IQ","YE","LY","TN","DZ","MA","SD","PS","MR","SO","DJ","KM"];
+        // URL'de ?lang= ile açıkça bir dil belirtilmişse (örn. Google sonuçları, paylaşılan link),
+        // o seçim kullanıcının/arama motorunun isteğidir; IP tahminiyle ezilmemeli.
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get("lang")) return;
+
+        const countryToLang = {
+            // Türkçe
+            TR: "tr",
+            // Arapça
+            SA:"ar", AE:"ar", QA:"ar", KW:"ar", BH:"ar", OM:"ar", EG:"ar", JO:"ar", LB:"ar",
+            SY:"ar", IQ:"ar", YE:"ar", LY:"ar", TN:"ar", DZ:"ar", MA:"ar", SD:"ar", PS:"ar",
+            MR:"ar", SO:"ar", DJ:"ar", KM:"ar",
+            // Almanca
+            DE:"de", AT:"de", LI:"de",
+            // Fransızca
+            FR:"fr", BE:"fr", LU:"fr", MC:"fr",
+            // Japonca
+            JP:"ja",
+            // İspanyolca
+            ES:"es", MX:"es", AR:"es", CO:"es", PE:"es", VE:"es", CL:"es", EC:"es", GT:"es",
+            CU:"es", BO:"es", DO:"es", HN:"es", PY:"es", SV:"es", NI:"es", CR:"es", PA:"es",
+            UY:"es", PR:"es", GQ:"es",
+            // İtalyanca
+            IT:"it", SM:"it", VA:"it",
+            // Portekizce
+            PT:"pt", BR:"pt", AO:"pt", MZ:"pt", CV:"pt", GW:"pt", ST:"pt", TL:"pt",
+            // Endonezce
+            ID:"id"
+        };
+        const supportedLangs = ["tr","en","de","fr","ja","es","it","pt","id","ar"];
+
         fetch("https://get.geojs.io/v1/ip/country.json")
             .then(r => r.json())
             .then(function(data) {
-                if (data && data.country && arabCountries.indexOf(data.country) !== -1) {
-                    switchLangSilent("ar");
-                } else {
-                    switchLangSilent("en");
-                }
+                var code = data && data.country;
+                var lang = (code && countryToLang[code]) || "en";
+                if (supportedLangs.indexOf(lang) === -1) lang = "en";
+                switchLangSilent(lang);
             })
             .catch(function() { switchLangSilent("en"); });
     });
