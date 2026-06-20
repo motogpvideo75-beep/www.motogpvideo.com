@@ -739,6 +739,7 @@
         function selectLang(lang, flag, name) {
             document.getElementById("lang-menu").style.display = "none";
             document.getElementById("lang-current-name").textContent = flag + " " + name;
+            try { localStorage.setItem("userLangChoice", lang); } catch(e) {}
             switchLang(lang);
         }
 
@@ -1403,7 +1404,7 @@
             <div class="lang-option" onclick="selectLang('en','🇬🇧','English')">🇬🇧 English</div>
             <div class="lang-option" onclick="selectLang('de','🇩🇪','Deutsch')">🇩🇪 Deutsch</div>
             <div class="lang-option" onclick="selectLang('fr','🇫🇷','Français')">🇫🇷 Français</div>
-            <div class="lang-option" onclick="selectLang('jp','🇯🇵','日本語')">🇯🇵 日本語</div>
+            <div class="lang-option" onclick="selectLang('ja','🇯🇵','日本語')">🇯🇵 日本語</div>
             <div class="lang-option" onclick="selectLang('es','🇪🇸','Español')">🇪🇸 Español</div>
             <div class="lang-option" onclick="selectLang('it','🇮🇹','Italiano')">🇮🇹 Italiano</div>
             <div class="lang-option" onclick="selectLang('pt','🇵🇹','Português')">🇵🇹 Português</div>
@@ -2160,6 +2161,20 @@
         var urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get("lang")) return;
 
+        // Kullanıcı daha önce manuel olarak bir dil seçtiyse, o tercihi koru;
+        // IP tabanlı otomatik algılama bu seçimi asla ezmesin.
+        try {
+            var savedLang = localStorage.getItem("userLangChoice");
+            if (savedLang) {
+                switchLangSilent(savedLang);
+                var nameMapEarly = {tr:'Türkçe',en:'English',de:'Deutsch',fr:'Français',ja:'日本語',es:'Español',it:'Italiano',pt:'Português',id:'Indonesia',ar:'العربية'};
+                var flagMapEarly = {tr:'🇹🇷',en:'🇬🇧',de:'🇩🇪',fr:'🇫🇷',ja:'🇯🇵',es:'🇪🇸',it:'🇮🇹',pt:'🇵🇹',id:'🇮🇩',ar:'🇸🇦'};
+                var curNameEl = document.getElementById("lang-current-name");
+                if (curNameEl && nameMapEarly[savedLang]) curNameEl.textContent = (flagMapEarly[savedLang]||'') + ' ' + nameMapEarly[savedLang];
+                return;
+            }
+        } catch(e) {}
+
         const countryToLang = {
             // Türkçe
             TR: "tr",
@@ -2189,12 +2204,16 @@
         fetch("https://get.geojs.io/v1/ip/country.json")
             .then(r => r.json())
             .then(function(data) {
+                try { if (localStorage.getItem("userLangChoice")) return; } catch(e) {}
                 var code = data && data.country;
                 var lang = (code && countryToLang[code]) || "en";
                 if (supportedLangs.indexOf(lang) === -1) lang = "en";
                 switchLangSilent(lang);
             })
-            .catch(function() { switchLangSilent("en"); });
+            .catch(function() {
+                try { if (localStorage.getItem("userLangChoice")) return; } catch(e) {}
+                switchLangSilent("en");
+            });
     });
 
     function switchLangSilent(lang) {
