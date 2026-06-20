@@ -714,6 +714,10 @@
             const bgEl = document.querySelector('.bg-guide-' + lang);
             if (bgEl) bgEl.style.display = 'inline';
             else { const bgTr = document.querySelector('.bg-guide-tr'); if(bgTr) bgTr.style.display='inline'; }
+            document.querySelectorAll('#ekipman-guide span').forEach(s => s.style.display = 'none');
+            const eqEl = document.querySelector('.eq-guide-' + lang);
+            if (eqEl) eqEl.style.display = 'inline';
+            else { const eqTr = document.querySelector('.eq-guide-tr'); if(eqTr) eqTr.style.display='inline'; }
         }
 
         function showSection(id) {
@@ -1624,57 +1628,68 @@
 
         <div class="section" id="sec-ekipman">
             <div class="sec-title" id="st-ekipman">⛑️ Kask &amp; Tulum Markaları</div>
-            <p style="color:var(--muted);font-size:.85rem;line-height:1.8;margin-bottom:18px;">Pist günü ya da günlük sürüş fark etmeksizin doğru ekipman güvenliğin temelidir. MotoGP ve WorldSBK pilotlarının tercih ettiği dünyaca ünlü kask, tulum ve koruma ekipmanı markalarını derledik — her markanın resmi sitesine doğrudan ulaşabilirsiniz. Sezon başlarken kask, deri tulum, eldiven ve bot ihtiyaçlarınız için bu markaları karşılaştırabilirsiniz.</p>
+            <p id="ekipman-guide" style="color:var(--muted);font-size:.85rem;line-height:1.8;margin-bottom:18px;">
+                <span class="eq-guide-tr">Pist günü ya da günlük sürüş fark etmeksizin doğru ekipman güvenliğin temelidir. MotoGP ve WorldSBK pilotlarının tercih ettiği dünyaca ünlü kask, tulum ve koruma ekipmanı markalarını derledik — her markanın resmi sitesine doğrudan ulaşabilirsiniz. Sezon başlarken kask, deri tulum, eldiven ve bot ihtiyaçlarınız için bu markaları karşılaştırabilirsiniz.</span>
+                <span class="eq-guide-en" style="display:none">Whether it's a track day or daily riding, the right gear is the foundation of safety. We've compiled the world-renowned helmet, suit and protective gear brands favored by MotoGP and WorldSBK riders — you can go directly to each brand's official site. Compare these brands for your helmet, leather suit, glove and boot needs as the season starts.</span>
+                <span class="eq-guide-de" style="display:none">Ob Trackday oder Alltagsfahrt — die richtige Ausrüstung ist die Grundlage der Sicherheit. Wir haben die weltbekannten Helm-, Kombi- und Schutzausrüstungsmarken zusammengestellt, die von MotoGP- und WorldSBK-Fahrern bevorzugt werden — Sie gelangen direkt zur offiziellen Website jeder Marke. Vergleichen Sie diese Marken für Ihren Bedarf an Helmen, Lederkombis, Handschuhen und Stiefeln zum Saisonstart.</span>
+                <span class="eq-guide-fr" style="display:none">Que ce soit pour une journée sur circuit ou une conduite quotidienne, le bon équipement est la base de la sécurité. Nous avons compilé les marques de casques, combinaisons et équipements de protection mondialement reconnues, privilégiées par les pilotes MotoGP et WorldSBK — vous pouvez accéder directement au site officiel de chaque marque. Comparez ces marques pour vos besoins en casques, combinaisons en cuir, gants et bottes en ce début de saison.</span>
+                <span class="eq-guide-ja" style="display:none">サーキット走行でも日常のライディングでも、適切なギアは安全の基本です。MotoGPやWorldSBKのライダーに愛用されている世界的に有名なヘルメット、スーツ、プロテクションギアのブランドをまとめました — 各ブランドの公式サイトに直接アクセスできます。シーズン開幕にあたり、ヘルメット、レザースーツ、グローブ、ブーツ選びにこれらのブランドを比較してみてください。</span>
+                <span class="eq-guide-es" style="display:none">Ya sea un día de pista o conducción diaria, el equipo adecuado es la base de la seguridad. Hemos recopilado las marcas de cascos, monos y equipo de protección reconocidas mundialmente, preferidas por los pilotos de MotoGP y WorldSBK — puede acceder directamente al sitio oficial de cada marca. Compare estas marcas para sus necesidades de casco, mono de cuero, guantes y botas al comenzar la temporada.</span>
+                <span class="eq-guide-it" style="display:none">Che si tratti di un track day o della guida quotidiana, l'attrezzatura giusta è la base della sicurezza. Abbiamo raccolto i marchi di caschi, tute e attrezzatura protettiva di fama mondiale preferiti dai piloti MotoGP e WorldSBK — è possibile accedere direttamente al sito ufficiale di ogni marchio. Confrontate questi marchi per le vostre esigenze di casco, tuta in pelle, guanti e stivali all'inizio della stagione.</span>
+                <span class="eq-guide-pt" style="display:none">Seja num track day ou na condução diária, o equipamento certo é a base da segurança. Compilámos as marcas de capacetes, macacões e equipamento de proteção mundialmente conhecidas, preferidas pelos pilotos de MotoGP e WorldSBK — pode aceder diretamente ao site oficial de cada marca. Compare estas marcas para as suas necessidades de capacete, macacão de couro, luvas e botas no início da época.</span>
+                <span class="eq-guide-ar" style="display:none">سواء كان يومًا على الحلبة أو قيادة يومية، فإن المعدات المناسبة هي أساس السلامة. لقد جمعنا أشهر علامات الخوذات والبدلات ومعدات الحماية المفضلة لدى سائقي MotoGP وWorldSBK — يمكنكم الوصول مباشرة إلى الموقع الرسمي لكل علامة تجارية. قارنوا بين هذه العلامات التجارية لاحتياجاتكم من الخوذة والبدلة الجلدية والقفازات والأحذية مع بداية الموسم.</span>
+                <span class="eq-guide-id" style="display:none">Baik untuk track day maupun berkendara sehari-hari, perlengkapan yang tepat adalah dasar keselamatan. Kami telah merangkum merek helm, jaket kulit, dan perlengkapan pelindung terkenal dunia yang disukai oleh pembalap MotoGP dan WorldSBK — Anda dapat langsung mengunjungi situs resmi setiap merek. Bandingkan merek-merek ini untuk kebutuhan helm, jaket kulit, sarung tangan, dan sepatu bot Anda menjelang musim baru.</span>
+            </p>
             <div class="channel-grid">
                 <a class="channel-card" href="https://www.agv.com" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
                     <div class="channel-logo" style="background:linear-gradient(135deg,#1a1a1a,#3a3a3a);display:flex;align-items:center;justify-content:center;font-size:1.6rem;">⛑️</div>
                     <div class="channel-info"><div class="channel-name">AGV</div><div class="channel-badge">KASK · İtalya</div></div>
-                    <span class="ch-btn">RESMİ SİTEYE GİT</span>
+                    <span class="ch-btn ch-label">RESMİ SİTEYE GİT</span>
                 </a>
                 <a class="channel-card" href="https://www.shoei.com" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
                     <div class="channel-logo" style="background:linear-gradient(135deg,#0d2b4d,#1a4d80);display:flex;align-items:center;justify-content:center;font-size:1.6rem;">⛑️</div>
                     <div class="channel-info"><div class="channel-name">Shoei</div><div class="channel-badge">KASK · Japonya</div></div>
-                    <span class="ch-btn">RESMİ SİTEYE GİT</span>
+                    <span class="ch-btn ch-label">RESMİ SİTEYE GİT</span>
                 </a>
                 <a class="channel-card" href="https://www.arai.co.jp/en/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
                     <div class="channel-logo" style="background:linear-gradient(135deg,#4d0d0d,#800000);display:flex;align-items:center;justify-content:center;font-size:1.6rem;">⛑️</div>
                     <div class="channel-info"><div class="channel-name">Arai</div><div class="channel-badge">KASK · Japonya</div></div>
-                    <span class="ch-btn">RESMİ SİTEYE GİT</span>
+                    <span class="ch-btn ch-label">RESMİ SİTEYE GİT</span>
                 </a>
                 <a class="channel-card" href="https://www.shark-helmets.com" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
                     <div class="channel-logo" style="background:linear-gradient(135deg,#1a1a1a,#444);display:flex;align-items:center;justify-content:center;font-size:1.6rem;">⛑️</div>
                     <div class="channel-info"><div class="channel-name">Shark</div><div class="channel-badge">KASK · Fransa</div></div>
-                    <span class="ch-btn">RESMİ SİTEYE GİT</span>
+                    <span class="ch-btn ch-label">RESMİ SİTEYE GİT</span>
                 </a>
                 <a class="channel-card" href="https://www.hjchelmets.com" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
                     <div class="channel-logo" style="background:linear-gradient(135deg,#0d3d1a,#1a8033);display:flex;align-items:center;justify-content:center;font-size:1.6rem;">⛑️</div>
                     <div class="channel-info"><div class="channel-name">HJC</div><div class="channel-badge">KASK · Güney Kore</div></div>
-                    <span class="ch-btn">RESMİ SİTEYE GİT</span>
+                    <span class="ch-btn ch-label">RESMİ SİTEYE GİT</span>
                 </a>
                 <a class="channel-card" href="https://www.alpinestars.com" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
                     <div class="channel-logo" style="background:linear-gradient(135deg,#1a1a1a,#e8001d44);display:flex;align-items:center;justify-content:center;font-size:1.6rem;">🧥</div>
                     <div class="channel-info"><div class="channel-name">Alpinestars</div><div class="channel-badge">TULUM/EKİPMAN · İtalya</div></div>
-                    <span class="ch-btn">RESMİ SİTEYE GİT</span>
+                    <span class="ch-btn ch-label">RESMİ SİTEYE GİT</span>
                 </a>
                 <a class="channel-card" href="https://www.dainese.com" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
                     <div class="channel-logo" style="background:linear-gradient(135deg,#1a1a1a,#660000);display:flex;align-items:center;justify-content:center;font-size:1.6rem;">🧥</div>
                     <div class="channel-info"><div class="channel-name">Dainese</div><div class="channel-badge">TULUM/EKİPMAN · İtalya</div></div>
-                    <span class="ch-btn">RESMİ SİTEYE GİT</span>
+                    <span class="ch-btn ch-label">RESMİ SİTEYE GİT</span>
                 </a>
                 <a class="channel-card" href="https://www.spidi.com" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
                     <div class="channel-logo" style="background:linear-gradient(135deg,#1a1a1a,#003366);display:flex;align-items:center;justify-content:center;font-size:1.6rem;">🧥</div>
                     <div class="channel-info"><div class="channel-name">Spidi</div><div class="channel-badge">TULUM/EKİPMAN · İtalya</div></div>
-                    <span class="ch-btn">RESMİ SİTEYE GİT</span>
+                    <span class="ch-btn ch-label">RESMİ SİTEYE GİT</span>
                 </a>
                 <a class="channel-card" href="https://www.revitsport.com" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
                     <div class="channel-logo" style="background:linear-gradient(135deg,#1a1a1a,#333);display:flex;align-items:center;justify-content:center;font-size:1.6rem;">🧥</div>
                     <div class="channel-info"><div class="channel-name">Rev'it</div><div class="channel-badge">TULUM/EKİPMAN · Hollanda</div></div>
-                    <span class="ch-btn">RESMİ SİTEYE GİT</span>
+                    <span class="ch-btn ch-label">RESMİ SİTEYE GİT</span>
                 </a>
                 <a class="channel-card" href="https://www.rst-moto.com" target="_blank" rel="noopener noreferrer" style="text-decoration:none;color:inherit;">
                     <div class="channel-logo" style="background:linear-gradient(135deg,#1a1a1a,#e8001d33);display:flex;align-items:center;justify-content:center;font-size:1.6rem;">🧥</div>
                     <div class="channel-info"><div class="channel-name">RST</div><div class="channel-badge">TULUM/EKİPMAN · İngiltere</div></div>
-                    <span class="ch-btn">RESMİ SİTEYE GİT</span>
+                    <span class="ch-btn ch-label">RESMİ SİTEYE GİT</span>
                 </a>
             </div>
         </div>
@@ -2266,6 +2281,10 @@
         const bgEl2 = document.querySelector('.bg-guide-' + lang);
         if (bgEl2) bgEl2.style.display = 'inline';
         else { const bgTr2 = document.querySelector('.bg-guide-tr'); if(bgTr2) bgTr2.style.display='inline'; }
+        document.querySelectorAll('#ekipman-guide span').forEach(s => s.style.display = 'none');
+        const eqEl2 = document.querySelector('.eq-guide-' + lang);
+        if (eqEl2) eqEl2.style.display = 'inline';
+        else { const eqTr2 = document.querySelector('.eq-guide-tr'); if(eqTr2) eqTr2.style.display='inline'; }
     }
 </script>
 
