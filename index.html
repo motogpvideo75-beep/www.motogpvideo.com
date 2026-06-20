@@ -2168,6 +2168,49 @@ function closeWelcomePopup(){
 })();
 </script>
 
+<script>
+// ---- URL'deki ?lang= parametresine göre otomatik dil + SEO başlık/açıklama ayarı ----
+(function(){
+    var supportedLangs = ['tr','en','de','fr','ja','es','it','pt','id','ar'];
+    var params = new URLSearchParams(window.location.search);
+    var urlLang = params.get('lang');
+    if(!urlLang || supportedLangs.indexOf(urlLang) === -1) return;
+
+    function applySeoLang(lang){
+        var d = langData[lang];
+        if(!d) return;
+        if(d.title) document.title = d.title + ' | motogpvideo.com';
+        if(d.heroDesc){
+            var metaDesc = document.querySelector('meta[name="description"]');
+            if(metaDesc) metaDesc.setAttribute('content', d.heroDesc);
+            var ogDesc = document.querySelector('meta[property="og:description"]');
+            if(ogDesc) ogDesc.setAttribute('content', d.heroDesc);
+        }
+        if(d.heroTitle){
+            var ogTitle = document.querySelector('meta[property="og:title"]');
+            if(ogTitle) ogTitle.setAttribute('content', d.heroTitle);
+        }
+    }
+
+    function init(){
+        if(typeof switchLang === 'function') switchLang(urlLang);
+        applySeoLang(urlLang);
+        var dd = document.getElementById('lang-current-name');
+        if(dd){
+            var flagMap = {tr:'🇹🇷',en:'🇬🇧',de:'🇩🇪',fr:'🇫🇷',ja:'🇯🇵',es:'🇪🇸',it:'🇮🇹',pt:'🇵🇹',id:'🇮🇩',ar:'🇸🇦'};
+            var nameMap = {tr:'Türkçe',en:'English',de:'Deutsch',fr:'Français',ja:'日本語',es:'Español',it:'Italiano',pt:'Português',id:'Indonesia',ar:'العربية'};
+            dd.textContent = (flagMap[urlLang]||'') + ' ' + (nameMap[urlLang]||urlLang);
+        }
+    }
+
+    if(document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
+
 </body>
 </html>
 
