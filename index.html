@@ -1155,7 +1155,8 @@
         html[dir="rtl"] .rider-team { border-left:none; }
         html[dir="rtl"] svg { direction:ltr; }
         html[dir="rtl"] .brand-riders strong, html[dir="rtl"] .ticker-text { unicode-bidi:plaintext; }
-        body { background:var(--bg); color:var(--text); font-family:"Segoe UI",Arial,sans-serif; min-height:100vh; }
+        body { background:var(--bg); color:var(--text); font-family:"Segoe UI",Arial,sans-serif; min-height:100vh; overflow-x:hidden; }
+        html { overflow-x:hidden; }
         .countdown-bar { background:var(--accent); display:flex; align-items:center; justify-content:space-between; padding:0 20px; height:36px; font-size:.75rem; font-weight:700; letter-spacing:.5px; }
         /* Site içi arama */
         #search-btn { background:none; border:none; color:#cdd6f4; font-size:1.1rem; cursor:pointer; padding:4px 8px; border-radius:6px; transition:background .2s; }
@@ -1315,7 +1316,7 @@
         .rider-team { font-size:.56rem; color:#7a90b8; line-height:1.4; border-left:2px solid; padding-left:5px; }
         .rider-bike { display:inline-block; font-size:.5rem; font-weight:700; letter-spacing:1px; padding:2px 5px; border-radius:3px; margin-top:4px; text-transform:uppercase; color:#fff; }
         @media (max-width:900px) { .channel-grid { grid-template-columns:repeat(3,1fr); } .rider-grid { grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); } }
-        @media (max-width:768px) { .sidebar { position:fixed; top:90px; left:0; height:calc(100vh - 90px); transform:translateX(-100%); z-index:95; } .sidebar.open { transform:translateX(0); } .channel-grid { grid-template-columns:repeat(2,1fr); } .topnav-links { display:none; } .rider-grid { grid-template-columns:repeat(3,1fr); } }
+        @media (max-width:768px) { .sidebar { position:fixed; top:90px; left:0; height:calc(100vh - 90px); transform:translateX(-100%); z-index:95; } .sidebar.open { transform:translateX(0); } .channel-grid { grid-template-columns:repeat(2,1fr); } .topnav-links { display:none; } .rider-grid { grid-template-columns:repeat(3,1fr); } .nav-brand-images { display:none !important; } }
         @media (max-width:480px) { .channel-grid { grid-template-columns:repeat(2,1fr); } .cd-label { display:none; } .rider-grid { grid-template-columns:repeat(2,1fr); } }
     </style>
 </head>
@@ -1381,7 +1382,7 @@
 
     </div>
 
-    <div style="margin-right:10px;display:flex;align-items:center;gap:6px;">
+    <div class="nav-brand-images" style="margin-right:10px;display:flex;align-items:center;gap:6px;">
         <img src="https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/kask.png" 
              style="height:38px;width:38px;object-fit:cover;border-radius:6px;border:1px solid #e8001d44;" 
              alt="kask">
