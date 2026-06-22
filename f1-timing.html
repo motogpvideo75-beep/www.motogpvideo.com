@@ -539,14 +539,13 @@ async function loadData() {
   try {
     // En son seansı bul (önce race, yoksa herhangi bir seans)
     let session = null;
-    const raceRes = await fetch('https://api.openf1.org/v1/sessions?session_type=Race&year=2026');
-    const races = await raceRes.json();
-    if (races && races.length > 0) {
+    const toArr = async (res) => { try { const d = await res.json(); return Array.isArray(d) ? d : []; } catch(e) { return []; } };
+    const races = await toArr(await fetch('https://api.openf1.org/v1/sessions?session_type=Race&year=2026'));
+    if (races.length > 0) {
       session = races[races.length - 1];
     } else {
-      const allRes = await fetch('https://api.openf1.org/v1/sessions?year=2026');
-      const all = await allRes.json();
-      if (all && all.length > 0) session = all[all.length - 1];
+      const all = await toArr(await fetch('https://api.openf1.org/v1/sessions?year=2026'));
+      if (all.length > 0) session = all[all.length - 1];
     }
 
     if (!session) throw new Error('No sessions found');
@@ -566,10 +565,17 @@ async function loadData() {
       fetch(`https://api.openf1.org/v1/stints?session_key=${sk}`)
     ]);
 
-    const positions = await posRes.json();
-    const drivers = await drvRes.json();
-    const laps = await lapRes.json();
-    const stints = await stintRes.json();
+    const safeArr = async (res) => {
+      try {
+        const d = await res.json();
+        return Array.isArray(d) ? d : [];
+      } catch(e) { return []; }
+    };
+
+    const positions = await safeArr(posRes);
+    const drivers   = await safeArr(drvRes);
+    const laps      = await safeArr(lapRes);
+    const stints    = await safeArr(stintRes);
 
     // Sürücü map
     const drvMap = {};
