@@ -3,226 +3,399 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MotoGP 2026 Puan Durumu – Şampiyona Sıralaması | motogpvideo.com</title>
-<meta name="description" content="MotoGP 2026 şampiyona puan tablosu. Pilotlar ve takımlar sıralaması, güncel puanlar. Marc Marquez, Pecco Bagnaia, Toprak Razgatlıoğlu puan durumu.">
-<meta name="keywords" content="MotoGP 2026 puan durumu, MotoGP sıralama, MotoGP şampiyona tablosu, MotoGP puan tablosu">
+<title>MotoGP 2026 Puan Durumu — Şampiyona Sıralaması | motogpvideo.com</title>
+<meta name="description" content="MotoGP 2026 şampiyona puan durumu. Sürücü ve takım sıralamaları, Moto2, Moto3 ve WorldSBK puan tabloları. Sportradar API ile güncel veriler.">
+<meta name="keywords" content="MotoGP 2026 puan durumu, MotoGP standings, şampiyona sıralaması, Bezzecchi, Martin, Toprak, WorldSBK puan">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.motogpvideo.com/puan-durumu.html">
-<link rel="icon" href="favicon.ico">
+<meta property="og:title" content="MotoGP 2026 Puan Durumu — motogpvideo.com">
+<meta property="og:description" content="MotoGP 2026 şampiyona sıralaması. Sportradar API ile güncel sürücü ve takım puanları.">
+<meta property="og:url" content="https://www.motogpvideo.com/puan-durumu.html">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#e8001d">
 <style>
-:root{--bg:#0d1220;--card:#131d30;--card2:#192438;--accent:#e8001d;--border:#1e2d4a;--text:#fff;--muted:#7a90b8;--gold:#ffd700;--silver:#c0c0c0;--bronze:#cd7f32;}
+:root{--bg:#0d1220;--nav-bg:#0d1424;--card:#131d30;--card2:#192438;--accent:#e8001d;--green:#00c853;--border:#1e2d4a;--text:#fff;--muted:#7a90b8;--gold:#f0c040;--silver:#b0c4de;--bronze:#cd7f32;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:"Segoe UI",Arial,sans-serif;min-height:100vh;}
-.topbar{background:#080e1a;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--accent);}
-.topbar a{color:#fff;text-decoration:none;font-weight:700;font-size:1.1rem;}
-.topbar nav a{margin-left:18px;color:var(--muted);font-size:.9rem;text-decoration:none;}
-.topbar nav a:hover{color:#fff;}
-.hero{background:linear-gradient(135deg,#0d1220 0%,#1a0005 100%);padding:40px 20px;text-align:center;border-bottom:1px solid var(--border);}
-.hero h1{font-size:2rem;font-weight:800;margin-bottom:8px;}
-.hero h1 span{color:var(--accent);}
-.hero p{color:var(--muted);}
-.container{max-width:900px;margin:0 auto;padding:30px 16px;}
-.tabs{display:flex;gap:4px;margin-bottom:24px;background:var(--card);border-radius:10px;padding:4px;}
-.tab{flex:1;padding:10px;text-align:center;border-radius:8px;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--muted);transition:all .2s;}
-.tab.active{background:var(--accent);color:#fff;}
-.standings-table{width:100%;border-collapse:separate;border-spacing:0 6px;}
-.standings-table thead th{color:var(--muted);font-size:.75rem;font-weight:600;text-transform:uppercase;padding:8px 12px;text-align:left;}
-.standings-table tbody tr{background:var(--card);border-radius:10px;transition:background .15s;}
-.standings-table tbody tr:hover{background:var(--card2);}
-.standings-table td{padding:14px 12px;vertical-align:middle;}
-.standings-table td:first-child{border-radius:10px 0 0 10px;}
-.standings-table td:last-child{border-radius:0 10px 10px 0;}
-.pos{font-weight:800;font-size:1.1rem;width:40px;text-align:center;}
-.pos.p1{color:var(--gold);}
-.pos.p2{color:var(--silver);}
-.pos.p3{color:var(--bronze);}
-.rider-name{font-weight:700;font-size:.95rem;}
-.rider-team{color:var(--muted);font-size:.8rem;margin-top:2px;}
-.points{font-weight:800;font-size:1.1rem;color:var(--accent);text-align:right;}
-.gap{color:var(--muted);font-size:.85rem;text-align:right;}
-.flag{font-size:1.2rem;margin-right:8px;}
-.bike-badge{background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:3px 8px;font-size:.75rem;color:var(--muted);}
-.wins{color:var(--gold);font-weight:700;text-align:center;}
-.podiums{color:var(--muted);text-align:center;}
-.leader-bar{background:linear-gradient(135deg,var(--accent),#8b0000);border-radius:14px;padding:20px 24px;margin-bottom:24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
-.leader-bar .title{font-size:.75rem;font-weight:700;letter-spacing:1px;opacity:.8;text-transform:uppercase;}
-.leader-bar .name{font-size:1.5rem;font-weight:800;}
-.leader-bar .pts{font-size:2rem;font-weight:800;}
-.loading{text-align:center;padding:60px;color:var(--muted);}
-.loading .spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 16px;}
-@keyframes spin{to{transform:rotate(360deg)}}
-footer{text-align:center;padding:30px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);margin-top:40px;}
-footer a{color:var(--accent);text-decoration:none;}
-@media(max-width:600px){.standings-table .hide-mobile{display:none;}}
+.topnav{background:var(--nav-bg);border-bottom:1px solid var(--border);display:flex;align-items:center;height:54px;padding:0 20px;position:sticky;top:0;z-index:100;gap:12px;}
+.topnav-links{display:flex;align-items:center;gap:2px;flex:1;}
+.topnav-link{padding:6px 12px;font-size:.82rem;font-weight:500;color:rgba(255,255,255,.7);text-decoration:none;border-radius:4px;transition:color .15s,background .15s;white-space:nowrap;}
+.topnav-link:hover,.topnav-link.active{color:#fff;background:var(--card2);}
+.lang-btn{background:var(--card);border:1px solid var(--border);color:var(--text);padding:4px 10px;border-radius:4px;font-size:.78rem;cursor:pointer;margin-left:auto;}
+.lang-dropdown{display:none;position:absolute;right:20px;top:58px;background:var(--nav-bg);border:1px solid var(--border);border-radius:6px;padding:4px;min-width:120px;z-index:200;}
+.lang-dropdown.open{display:block;}
+.lang-opt{display:block;padding:6px 12px;font-size:.8rem;color:var(--muted);cursor:pointer;border-radius:4px;}
+.lang-opt:hover{background:var(--card2);color:#fff;}
+@keyframes logoBlink{0%,100%{opacity:1}50%{opacity:.15}}
+.logo-anim{animation:logoBlink 1.5s ease-in-out infinite;}
+.breadcrumb{padding:10px 20px;font-size:.78rem;color:var(--muted);border-bottom:1px solid var(--border);}
+.breadcrumb a{color:var(--muted);text-decoration:none;}
+.breadcrumb a:hover{color:#fff;}
+.main{max-width:1100px;margin:0 auto;padding:24px 20px 60px;}
+.page-title{font-size:1.5rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.page-sub{color:var(--muted);font-size:.83rem;margin-bottom:20px;}
+.tabs{display:flex;gap:4px;margin-bottom:18px;flex-wrap:wrap;}
+.tab{padding:7px 16px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:.82rem;font-weight:500;cursor:pointer;transition:all .15s;}
+.tab:hover{color:#fff;border-color:#3a4d6a;}
+.tab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+.section{display:none;}
+.section.active{display:block;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:16px;}
+.card-header{background:var(--card2);padding:12px 16px;font-size:.8rem;font-weight:600;color:var(--muted);display:flex;justify-content:space-between;align-items:center;}
+.card-header span{color:#fff;font-size:.9rem;}
+table{width:100%;border-collapse:collapse;font-size:.82rem;}
+th{padding:9px 12px;text-align:left;font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--border);background:var(--card2);}
+td{padding:9px 12px;border-top:1px solid var(--border);}
+tr:hover td{background:rgba(255,255,255,.025);}
+.pos{font-weight:700;width:36px;}
+.pos-1{color:var(--gold);}
+.pos-2{color:var(--silver);}
+.pos-3{color:var(--bronze);}
+.team-bar{width:4px;height:24px;border-radius:2px;display:inline-block;vertical-align:middle;margin-right:8px;}
+.driver-name{font-weight:600;}
+.abbr{color:var(--muted);font-size:.72rem;margin-left:4px;}
+.team-cell{color:var(--muted);font-size:.75rem;}
+.pts{font-weight:700;font-size:.9rem;}
+.pts-1{color:var(--gold);}
+.wins{color:var(--green);}
+.flag{font-size:1rem;margin-right:4px;}
+.status-row{text-align:center;padding:40px;color:var(--muted);}
+.update-line{font-size:.72rem;color:var(--muted);text-align:right;margin-top:8px;}
+.info-chip{display:inline-flex;align-items:center;gap:6px;background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:.75rem;color:var(--muted);margin-bottom:16px;}
+.info-chip strong{color:#fff;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 1.5s infinite;display:inline-block;}
+footer{background:#080e1a;border-top:1px solid var(--border);padding:20px;text-align:center;}
+.footer-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-btn{color:#fff;background:#222244;text-decoration:none;font-size:.74rem;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid #444488;}
+.footer-btn:hover{background:var(--accent);}
+.footer-text{font-size:.7rem;color:var(--muted);}
+@media(max-width:768px){
+  .topnav-links{display:none;}
+  .main{padding:16px 12px 40px;}
+  th.hide-m,td.hide-m{display:none;}
+}
 </style>
 </head>
 <body>
-<div class="topbar">
-  <a href="/">🏍️ MotoGP Video</a>
-  <nav>
-    <a href="/">Ana Sayfa</a>
-    <a href="takvim.html">Takvim</a>
-    <a href="puan-durumu.html">Puan Durumu</a>
-    <a href="canli-yayin.html">Yayın Rehberi</a>
-  </nav>
+
+<nav class="topnav">
+  <a href="/" style="text-decoration:none;margin-right:20px;">
+    <svg viewBox="0 0 220 44" xmlns="http://www.w3.org/2000/svg" style="height:34px;width:auto;">
+      <text x="0" y="30" font-size="24" class="logo-anim">🏍️</text>
+      <text x="34" y="30" font-family="Arial Black,sans-serif" font-size="20" font-weight="900" font-style="italic" fill="white" letter-spacing="-0.5" class="logo-anim">YARIŞ</text>
+      <text x="110" y="30" font-family="Arial Black,sans-serif" font-size="20" font-weight="900" font-style="italic" fill="#e8001d" letter-spacing="-0.5" class="logo-anim">MERKEZİ</text>
+      <text x="200" y="30" font-size="24" class="logo-anim">🏁</text>
+    </svg>
+  </a>
+  <div class="topnav-links">
+    <a class="topnav-link" href="/">Ana Sayfa</a>
+    <a class="topnav-link" href="/takvim.html">📅 Takvim</a>
+    <a class="topnav-link active" href="/puan-durumu.html">🏆 Puan</a>
+    <a class="topnav-link" href="/canli-yayin.html">📺 Yayın Rehberi</a>
+    <a class="topnav-link" href="/f1-timing.html">🔴 F1 Timing</a>
+  </div>
+  <button class="lang-btn" onclick="document.getElementById('lm').classList.toggle('open')" id="lang-current">TR 🌐 ▾</button>
+  <div class="lang-dropdown" id="lm">
+    <span class="lang-opt" onclick="setLang('tr')">🇹🇷 Türkçe</span>
+    <span class="lang-opt" onclick="setLang('en')">🇬🇧 English</span>
+    <span class="lang-opt" onclick="setLang('de')">🇩🇪 Deutsch</span>
+    <span class="lang-opt" onclick="setLang('fr')">🇫🇷 Français</span>
+    <span class="lang-opt" onclick="setLang('ja')">🇯🇵 日本語</span>
+    <span class="lang-opt" onclick="setLang('es')">🇪🇸 Español</span>
+    <span class="lang-opt" onclick="setLang('it')">🇮🇹 Italiano</span>
+    <span class="lang-opt" onclick="setLang('pt')">🇵🇹 Português</span>
+    <span class="lang-opt" onclick="setLang('ar')">🇸🇦 العربية</span>
+    <span class="lang-opt" onclick="setLang('id')">🇮🇩 Indonesia</span>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">motogpvideo.com</a> › <span id="bc">MotoGP 2026 Puan Durumu</span>
 </div>
 
-<div class="hero">
-  <h1>MotoGP 2026 <span>Puan Durumu</span></h1>
-  <p>Güncel şampiyona sıralaması – Pilotlar & Takımlar</p>
-</div>
+<main class="main">
+  <div class="page-title">🏆 <span id="pt">MotoGP 2026 — Puan Durumu</span></div>
+  <div class="page-sub" id="ps">Sportradar API · Güncel şampiyona sıralaması · Sürücü ve takım puanları</div>
 
-<div class="container">
-  <div id="leader-box"></div>
+  <div class="info-chip">
+    <span class="live-dot"></span>
+    <span id="ic">Sportradar resmi veri kaynağı · Son güncelleme: <strong id="last-upd">—</strong></span>
+  </div>
 
   <div class="tabs">
-    <div class="tab active" onclick="showTab('riders',this)">🏍️ Pilotlar</div>
-    <div class="tab" onclick="showTab('teams',this)">🏭 Takımlar</div>
-    <div class="tab" onclick="showTab('constructors',this)">🔧 Üreticiler</div>
+    <button class="tab active" onclick="showTab('motogp')" id="tab-motogp">🏍️ MotoGP</button>
+    <button class="tab" onclick="showTab('moto2')" id="tab-moto2">Moto2</button>
+    <button class="tab" onclick="showTab('moto3')" id="tab-moto3">Moto3</button>
+    <button class="tab" onclick="showTab('sbk')" id="tab-sbk">🏁 WorldSBK</button>
+    <button class="tab" onclick="showTab('teams')" id="tab-teams">🔧 Takımlar</button>
   </div>
 
-  <div id="standings-container">
-    <div class="loading"><div class="spinner"></div>Puan tablosu yükleniyor...</div>
-  </div>
-</div>
+  <div id="sec-motogp" class="section active"><div class="status-row" id="st-motogp">⏳ Yükleniyor...</div></div>
+  <div id="sec-moto2" class="section"><div class="status-row">⏳ Yükleniyor...</div></div>
+  <div id="sec-moto3" class="section"><div class="status-row">⏳ Yükleniyor...</div></div>
+  <div id="sec-sbk" class="section"><div class="status-row">⏳ Yükleniyor...</div></div>
+  <div id="sec-teams" class="section"><div class="status-row">⏳ Yükleniyor...</div></div>
+
+  <div class="update-line" id="upd-line"></div>
+</main>
 
 <footer>
-  <p>© 2026 <a href="/">motogpvideo.com</a> · Veriler MotoGP resmi kaynaklarından alınmaktadır</p>
+  <div class="footer-links">
+    <a href="/kvkk.html" class="footer-btn">🔒 Gizlilik</a>
+    <a href="/cerez.html" class="footer-btn">🍪 Çerez</a>
+    <a href="mailto:asikurye35@hotmail.com" class="footer-btn">✉️ İletişim</a>
+  </div>
+  <div class="footer-text">BU SİTE RESMİ BİR YAYIN KURULUŞU DEĞİLDİR. TÜM YAYIN HAKLARI İLGİLİ KURULUŞLARA AİTTİR.</div>
 </footer>
 
 <script>
-// Yedek veri (API erişilemediğinde)
-const FALLBACK_RIDERS = [
-  {pos:1,flag:"🇮🇹",name:"Francesco Bagnaia",team:"Ducati Lenovo Team",bike:"Ducati",points:247,wins:5,podiums:9},
-  {pos:2,flag:"🇪🇸",name:"Marc Marquez",team:"Gresini Racing MotoGP",bike:"Ducati",points:220,wins:4,podiums:8},
-  {pos:3,flag:"🇪🇸",name:"Jorge Martin",team:"Pramac Racing",bike:"Ducati",points:198,wins:3,podiums:7},
-  {pos:4,flag:"🇹🇷",name:"Toprak Razgatlıoğlu",team:"BMW M Motorrad WorldSBK",bike:"BMW",points:185,wins:2,podiums:6},
-  {pos:5,flag:"🇮🇹",name:"Enea Bastianini",team:"Monster Energy Yamaha",bike:"Yamaha",points:162,wins:2,podiums:5},
-  {pos:6,flag:"🇦🇺",name:"Jack Miller",team:"Red Bull KTM Factory Racing",bike:"KTM",points:145,wins:1,podiums:4},
-  {pos:7,flag:"🇪🇸",name:"Aleix Espargaro",team:"Aprilia Racing",bike:"Aprilia",points:132,wins:1,podiums:3},
-  {pos:8,flag:"🇫🇷",name:"Fabio Quartararo",team:"Monster Energy Yamaha",bike:"Yamaha",points:118,wins:0,podiums:3},
-  {pos:9,flag:"🇪🇸",name:"Maverick Viñales",team:"Aprilia Racing",bike:"Aprilia",points:105,wins:0,podiums:2},
-  {pos:10,flag:"🇿🇦",name:"Brad Binder",team:"Red Bull KTM Factory Racing",bike:"KTM",points:94,wins:0,podiums:1},
-];
+const API_KEY = 'pfySmetr5buVMbGz0yZyVryDQt8eu5IUHXa5Lrzo';
+const BASE = 'https://api.sportradar.com/motogp/trial/v2/en';
 
-const FALLBACK_TEAMS = [
-  {pos:1,name:"Ducati Lenovo Team",points:420,wins:8},
-  {pos:2,name:"Pramac Racing",points:310,wins:3},
-  {pos:3,name:"Monster Energy Yamaha",points:280,wins:2},
-  {pos:4,name:"Aprilia Racing",points:237,wins:1},
-  {pos:5,name:"Red Bull KTM Factory Racing",points:239,wins:1},
-];
+// Sezon ID'leri
+const SEASONS = {
+  motogp: 'sr:stage:1295902',
+  moto2:  'sr:stage:1295904',
+  moto3:  'sr:stage:1295906',
+  sbk:    'sr:stage:1315889'
+};
 
-const FALLBACK_CONSTRUCTORS = [
-  {pos:1,name:"Ducati",points:468,wins:12},
-  {pos:2,name:"Yamaha",points:280,wins:2},
-  {pos:3,name:"Aprilia",points:237,wins:1},
-  {pos:4,name:"KTM",points:239,wins:1},
-  {pos:5,name:"Honda",points:98,wins:0},
-];
+const TEAM_COLORS = {
+  'Aprilia Yarış': '#bb1924', 'Aprilia Racing': '#bb1924',
+  'Ducati Lenovo': '#cc0000', 'Ducati Lenovo Team': '#cc0000',
+  'Red Bull KTM Factory Racing': '#ff6600',
+  'Red Bull KTM Tech3': '#ff8800',
+  'Monster Energy Yamaha MotoGP': '#0033aa',
+  'Prima Pramac Yamaha': '#0055cc',
+  'Yamaha Factory Racing Team': '#001f7a',
+  'Trackhouse MotoGP Team': '#00aacc',
+  'Pertamina Enduro VR46 Racing Team': '#ffd700',
+  'Gresini Racing MotoGP': '#ff0044',
+  'Honda HRC Castrol': '#cc0022',
+  'LCR Honda': '#e60033',
+  'Marc VDS': '#0033aa',
+};
 
-let currentData = {riders: FALLBACK_RIDERS, teams: FALLBACK_TEAMS, constructors: FALLBACK_CONSTRUCTORS};
-let currentTab = 'riders';
+const FLAGS = {
+  'Italy':'🇮🇹','Spain':'🇪🇸','France':'🇫🇷','Japan':'🇯🇵','Germany':'🇩🇪',
+  'Great Britain':'🇬🇧','Australia':'🇦🇺','South Africa':'🇿🇦','Brazil':'🇧🇷',
+  'Portugal':'🇵🇹','USA':'🇺🇸','Turkey':'🇹🇷','Austria':'🇦🇹',
+  'İtalya':'🇮🇹','İspanya':'🇪🇸','Fransa':'🇫🇷','Japonya':'🇯🇵',
+  'Almanya':'🇩🇪','Büyük Britanya':'🇬🇧','Avustralya':'🇦🇺',
+  'Güney Afrika':'🇿🇦','Brezilya':'🇧🇷','Portekiz':'🇵🇹','Türkiye':'🇹🇷','Avusturya':'🇦🇹'
+};
 
-function posClass(p){ return p===1?'p1':p===2?'p2':p===3?'p3':''; }
+const dataCache = {};
+let currentTab = 'motogp';
 
-function renderLeader(rider) {
-  document.getElementById('leader-box').innerHTML = `
-    <div class="leader-bar">
-      <div>
-        <div class="title">🏆 Şampiyona Lideri</div>
-        <div class="name">${rider.flag} ${rider.name}</div>
-        <div style="opacity:.8;font-size:.9rem">${rider.team} · ${rider.bike}</div>
-      </div>
-      <div style="text-align:center">
-        <div class="title">Puan</div>
-        <div class="pts">${rider.points}</div>
-      </div>
-      <div style="text-align:center">
-        <div class="title">Galibiyet</div>
-        <div class="pts" style="color:#ffd700">${rider.wins}</div>
-      </div>
-    </div>`;
-}
-
-function renderRiders(riders) {
-  return `<table class="standings-table">
-    <thead><tr>
-      <th>Sıra</th><th>Pilot</th>
-      <th class="hide-mobile">Motor</th>
-      <th class="hide-mobile" style="text-align:center">Galibiyet</th>
-      <th class="hide-mobile" style="text-align:center">Podyum</th>
-      <th style="text-align:right">Puan</th>
-    </tr></thead>
-    <tbody>
-    ${riders.map((r,i) => `<tr>
-      <td><div class="pos ${posClass(r.pos)}">${r.pos===1?'🥇':r.pos===2?'🥈':r.pos===3?'🥉':r.pos}</div></td>
-      <td>
-        <div class="rider-name">${r.flag} ${r.name}</div>
-        <div class="rider-team">${r.team}</div>
-      </td>
-      <td class="hide-mobile"><span class="bike-badge">${r.bike}</span></td>
-      <td class="wins hide-mobile">${r.wins}</td>
-      <td class="podiums hide-mobile">${r.podiums}</td>
-      <td>
-        <div class="points">${r.points}</div>
-        <div class="gap">${i===0?'Lider':'-'+(riders[0].points-r.points)}</div>
-      </td>
-    </tr>`).join('')}
-    </tbody></table>`;
-}
-
-function renderTeams(teams) {
-  return `<table class="standings-table">
-    <thead><tr><th>Sıra</th><th>Takım</th><th class="hide-mobile" style="text-align:center">Galibiyet</th><th style="text-align:right">Puan</th></tr></thead>
-    <tbody>
-    ${teams.map((t,i) => `<tr>
-      <td><div class="pos ${posClass(t.pos)}">${t.pos===1?'🥇':t.pos===2?'🥈':t.pos===3?'🥉':t.pos}</div></td>
-      <td><div class="rider-name">${t.name}</div></td>
-      <td class="wins hide-mobile">${t.wins}</td>
-      <td>
-        <div class="points">${t.points}</div>
-        <div class="gap">${i===0?'Lider':'-'+(teams[0].points-t.points)}</div>
-      </td>
-    </tr>`).join('')}
-    </tbody></table>`;
-}
-
-function showTab(tab, btn) {
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.getElementById('sec-' + tab).classList.add('active');
   currentTab = tab;
-  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  const container = document.getElementById('standings-container');
-  if (tab==='riders') container.innerHTML = renderRiders(currentData.riders);
-  else if (tab==='teams') container.innerHTML = renderTeams(currentData.teams);
-  else container.innerHTML = renderTeams(currentData.constructors);
+  if (!dataCache[tab]) loadTab(tab);
 }
 
-async function loadStandings() {
+async function loadTab(tab) {
+  const secId = 'sec-' + tab;
+  document.getElementById(secId).innerHTML = '<div class="status-row">⏳ Veri yükleniyor...</div>';
   try {
-    const seasonsRes = await fetch('https://api.motogp.pulselive.com/motogp/v1/results/seasons');
-    if (!seasonsRes.ok) throw new Error();
-    const seasons = await seasonsRes.json();
-    const s2026 = seasons.find(s=>s.year===2026);
-    if (!s2026) throw new Error();
-    const catRes = await fetch(`https://api.motogp.pulselive.com/motogp/v1/results/categories?seasonUuid=${s2026.id}`);
-    const cats = await catRes.json();
-    const motogpCat = cats.categories.find(c=>c.name.includes('MotoGP'));
-    if (!motogpCat) throw new Error();
-    const standRes = await fetch(`https://api.motogp.pulselive.com/motogp/v1/results/standings?seasonUuid=${s2026.id}&categoryUuid=${motogpCat.id}`);
-    const stand = await standRes.json();
-    currentData.riders = stand.classification.map((r,i)=>({
-      pos:i+1, flag:'🏁', name:`${r.rider.name} ${r.rider.surname}`,
-      team:r.team?.name||'', bike:r.constructor?.name||'',
-      points:r.points, wins:r.wins||0, podiums:r.total_podiums||0
-    }));
+    let url, data;
+    if (tab === 'teams') {
+      // Takımlar için motogp verisini kullan
+      if (!dataCache['motogp']) {
+        const r = await fetch(`${BASE}/sport_events/${SEASONS.motogp}/summary.json?api_key=${API_KEY}`);
+        data = await r.json();
+        dataCache['motogp_raw'] = data;
+      } else {
+        data = dataCache['motogp_raw'];
+      }
+      renderTeams(secId, data);
+    } else {
+      url = `${BASE}/sport_events/${SEASONS[tab]}/summary.json?api_key=${API_KEY}`;
+      const r = await fetch(url);
+      data = await r.json();
+      dataCache[tab] = data;
+      if (tab === 'motogp') dataCache['motogp_raw'] = data;
+      renderDrivers(secId, data, tab);
+    }
+    document.getElementById('last-upd').textContent = new Date().toLocaleTimeString('tr-TR');
+    document.getElementById('upd-line').textContent = 'Son güncelleme: ' + new Date().toLocaleString('tr-TR');
   } catch(e) {
-    // Yedek veri zaten yüklü
+    document.getElementById(secId).innerHTML = `<div class="status-row">⚠️ Veri alınamadı.<br><small>${e.message}</small></div>`;
   }
-  renderLeader(currentData.riders[0]);
-  document.getElementById('standings-container').innerHTML = renderRiders(currentData.riders);
 }
 
-loadStandings();
+function getTeamColor(teamName) {
+  if (!teamName) return '#555';
+  for (const [k, v] of Object.entries(TEAM_COLORS)) {
+    if (teamName.includes(k) || k.includes(teamName.split(' ')[0])) return v;
+  }
+  // Hash ile renk üret
+  let hash = 0;
+  for (let c of teamName) hash = c.charCodeAt(0) + ((hash << 5) - hash);
+  const h = Math.abs(hash) % 360;
+  return `hsl(${h},60%,45%)`;
+}
+
+function renderDrivers(secId, data, tab) {
+  const competitors = data?.stage?.competitors || data?.competitors || [];
+  if (!competitors.length) {
+    document.getElementById(secId).innerHTML = '<div class="status-row">📭 Bu şampiyona için veri bulunamadı.</div>';
+    return;
+  }
+
+  const sorted = [...competitors].sort((a,b) => (a.result?.position||99) - (b.result?.position||99));
+  const topPts = sorted[0]?.result?.points || 1;
+
+  const labels = {
+    motogp:{title:'MotoGP 2026 Sürücü Şampiyonası', races:'Yarış'},
+    moto2:{title:'Moto2 2026 Şampiyonası', races:'Yarış'},
+    moto3:{title:'Moto3 2026 Şampiyonası', races:'Yarış'},
+    sbk:{title:'WorldSBK 2026 Şampiyonası', races:'Yarış'},
+  };
+
+  let html = `<div class="card">
+    <div class="card-header"><span>${labels[tab]?.title||'Şampiyona'}</span> <span style="color:var(--muted);font-size:.75rem">${sorted.length} sürücü</span></div>
+    <table>
+      <thead><tr>
+        <th>P</th>
+        <th>Sürücü</th>
+        <th class="hide-m">Takım</th>
+        <th>Puan</th>
+        <th class="hide-m">Yarış</th>
+        <th class="hide-m">Zafer</th>
+        <th class="hide-m">Podyum</th>
+        <th class="hide-m">Pole</th>
+      </tr></thead><tbody>`;
+
+  sorted.forEach((c, idx) => {
+    const r = c.result || {};
+    const pos = r.position || idx+1;
+    const posClass = pos===1?'pos-1':pos===2?'pos-2':pos===3?'pos-3':'';
+    const pts = r.points || 0;
+    const flag = FLAGS[c.nationality] || FLAGS[c.country_code] || '🏁';
+    const teamName = c.team?.name || '—';
+    const color = getTeamColor(teamName);
+    const gap = pos === 1 ? '' : pts ? `<span style="color:var(--muted);font-size:.75rem">-${topPts - pts}</span>` : '';
+
+    html += `<tr>
+      <td class="pos ${posClass}">${pos}</td>
+      <td>
+        <span class="team-bar" style="background:${color}"></span>
+        <span class="flag">${flag}</span>
+        <span class="driver-name">${c.name || '—'}</span>
+        ${r.bike_number ? `<span class="abbr">#${r.bike_number}</span>` : ''}
+      </td>
+      <td class="team-cell hide-m">${teamName}</td>
+      <td class="pts ${pos===1?'pts-1':''}">${pts || '—'} ${gap}</td>
+      <td class="hide-m" style="color:var(--muted)">${r.races || '—'}</td>
+      <td class="wins hide-m">${r.victories || r.wins || (r.victories===0?'—':'—')}</td>
+      <td class="hide-m" style="color:var(--muted)">${r.podiums !== undefined ? r.podiums : '—'}</td>
+      <td class="hide-m" style="color:var(--muted)">${r.pole_positions !== undefined ? r.pole_positions : '—'}</td>
+    </tr>`;
+  });
+
+  html += '</tbody></table></div>';
+  document.getElementById(secId).innerHTML = html;
+}
+
+function renderTeams(secId, data) {
+  const teams = data?.stage?.teams || data?.teams || [];
+  if (!teams.length) {
+    // Alternatif: competitors'dan takım çek
+    document.getElementById(secId).innerHTML = '<div class="status-row">📭 Takım verisi bulunamadı.</div>';
+    return;
+  }
+
+  const sorted = [...teams].sort((a,b) => (a.result?.position||99) - (b.result?.position||99));
+  const topPts = sorted[0]?.result?.points || 1;
+
+  let html = `<div class="card">
+    <div class="card-header"><span>MotoGP 2026 Takım Şampiyonası</span></div>
+    <table>
+      <thead><tr>
+        <th>P</th><th>Takım</th><th>Puan</th>
+        <th class="hide-m">Yarış</th><th class="hide-m">Zafer</th><th class="hide-m">Podyum</th>
+      </tr></thead><tbody>`;
+
+  sorted.forEach((t, idx) => {
+    const r = t.result || {};
+    const pos = r.position || idx+1;
+    const posClass = pos===1?'pos-1':pos===2?'pos-2':pos===3?'pos-3':'';
+    const pts = r.points || 0;
+    const color = getTeamColor(t.name);
+    const gap = pos===1?'':pts?`<span style="color:var(--muted);font-size:.75rem">-${topPts-pts}</span>`:'';
+
+    html += `<tr>
+      <td class="pos ${posClass}">${pos}</td>
+      <td><span class="team-bar" style="background:${color}"></span><span class="driver-name">${t.name||'—'}</span></td>
+      <td class="pts ${pos===1?'pts-1':''}">${pts||'—'} ${gap}</td>
+      <td class="hide-m" style="color:var(--muted)">${r.races||'—'}</td>
+      <td class="wins hide-m">${r.victories||r.wins||'—'}</td>
+      <td class="hide-m" style="color:var(--muted)">${r.podiums!==undefined?r.podiums:'—'}</td>
+    </tr>`;
+
+    // Sürücüleri listele
+    if (t.competitors && t.competitors.length) {
+      t.competitors.forEach(d => {
+        const dr = d.result || {};
+        html += `<tr style="background:rgba(255,255,255,.015)">
+          <td></td>
+          <td style="padding-left:28px;color:var(--muted);font-size:.78rem">↳ ${d.name||'—'} <span class="abbr">#${dr.bike_number||'?'}</span></td>
+          <td style="color:var(--muted)">${dr.points||'—'}</td>
+          <td class="hide-m" style="color:var(--muted)">${dr.races||'—'}</td>
+          <td class="hide-m"></td><td class="hide-m"></td>
+        </tr>`;
+      });
+    }
+  });
+
+  html += '</tbody></table></div>';
+  document.getElementById(secId).innerHTML = html;
+}
+
+// Dil sistemi
+const i18n = {
+  tr:{bc:'MotoGP 2026 Puan Durumu',pt:'MotoGP 2026 — Puan Durumu',ps:'Sportradar API · Güncel şampiyona sıralaması'},
+  en:{bc:'MotoGP 2026 Standings',pt:'MotoGP 2026 — Championship Standings',ps:'Sportradar API · Live championship standings'},
+  de:{bc:'MotoGP 2026 Punktestand',pt:'MotoGP 2026 — Punktestand',ps:'Sportradar API · Aktueller Meisterschaftsstand'},
+  fr:{bc:'MotoGP 2026 Classement',pt:'MotoGP 2026 — Classement Championnat',ps:'Sportradar API · Classement actuel du championnat'},
+  ja:{bc:'MotoGP 2026 ポイント',pt:'MotoGP 2026 — チャンピオンシップ順位',ps:'Sportradar API · 最新チャンピオンシップ順位'},
+  es:{bc:'MotoGP 2026 Clasificación',pt:'MotoGP 2026 — Clasificación del Campeonato',ps:'Sportradar API · Clasificación actualizada'},
+  it:{bc:'MotoGP 2026 Classifica',pt:'MotoGP 2026 — Classifica Campionato',ps:'Sportradar API · Classifica aggiornata'},
+  pt:{bc:'MotoGP 2026 Classificação',pt2:'MotoGP 2026 — Classificação do Campeonato',ps:'Sportradar API · Classificação atual'},
+  ar:{bc:'ترتيب MotoGP 2026',pt:'MotoGP 2026 — ترتيب البطولة',ps:'Sportradar API · ترتيب البطولة المحدث'},
+  id:{bc:'MotoGP 2026 Klasemen',pt:'MotoGP 2026 — Klasemen Kejuaraan',ps:'Sportradar API · Klasemen terkini'},
+};
+const flags2 = {tr:'🇹🇷',en:'🇬🇧',de:'🇩🇪',fr:'🇫🇷',ja:'🇯🇵',es:'🇪🇸',it:'🇮🇹',pt:'🇵🇹',ar:'🇸🇦',id:'🇮🇩'};
+
+let lang = localStorage.getItem('mgv_lang') || new URLSearchParams(location.search).get('lang') || 'tr';
+function applyLang(l) {
+  lang = l;
+  const t = i18n[l] || i18n.tr;
+  document.getElementById('bc').textContent = t.bc;
+  document.getElementById('pt').textContent = t.pt || t.pt2 || '';
+  document.getElementById('ps').textContent = t.ps;
+  document.getElementById('lang-current').textContent = (flags2[l]||'') + ' ' + l.toUpperCase() + ' ▾';
+  document.documentElement.lang = l;
+  document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+}
+function setLang(l) {
+  localStorage.setItem('mgv_lang', l);
+  applyLang(l);
+  document.getElementById('lm').classList.remove('open');
+}
+document.addEventListener('click', e => { if (!e.target.closest('.lang-btn') && !e.target.closest('.lang-dropdown')) document.getElementById('lm').classList.remove('open'); });
+
+applyLang(lang);
+loadTab('motogp');
 </script>
 </body>
 </html>
