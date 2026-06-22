@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>F1 Canlı Zamanlama 2026 — Formula 1 Live Timing | motogpvideo.com</title>
+<meta name="description" content="Formula 1 2026 canlı zamanlama verileri. Sürücü pozisyonları, tur süreleri, takım bilgileri ve anlık sıralama tablosu. OpenF1 API ile gerçek F1 verisi.">
+<meta name="keywords" content="F1 live timing, Formula 1 canlı zamanlama, F1 2026, F1 sıralama, lap times, race timing, Formula 1 live, F1 positions">
+<meta name="author" content="motogpvideo.com">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.motogpvideo.com/f1-timing.html">
+
+<link rel="alternate" hreflang="tr" href="https://www.motogpvideo.com/f1-timing.html?lang=tr">
+<link rel="alternate" hreflang="en" href="https://www.motogpvideo.com/f1-timing.html?lang=en">
+<link rel="alternate" hreflang="de" href="https://www.motogpvideo.com/f1-timing.html?lang=de">
+<link rel="alternate" hreflang="fr" href="https://www.motogpvideo.com/f1-timing.html?lang=fr">
+<link rel="alternate" hreflang="ja" href="https://www.motogpvideo.com/f1-timing.html?lang=ja">
+<link rel="alternate" hreflang="es" href="https://www.motogpvideo.com/f1-timing.html?lang=es">
+<link rel="alternate" hreflang="it" href="https://www.motogpvideo.com/f1-timing.html?lang=it">
+<link rel="alternate" hreflang="pt" href="https://www.motogpvideo.com/f1-timing.html?lang=pt">
+<link rel="alternate" hreflang="ar" href="https://www.motogpvideo.com/f1-timing.html?lang=ar">
+<link rel="alternate" hreflang="id" href="https://www.motogpvideo.com/f1-timing.html?lang=id">
+<link rel="alternate" hreflang="x-default" href="https://www.motogpvideo.com/f1-timing.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.motogpvideo.com/f1-timing.html">
+<meta property="og:title" content="F1 Canlı Zamanlama 2026 — Formula 1 Live Timing">
+<meta property="og:description" content="Formula 1 2026 canlı zamanlama verileri. Sürücü pozisyonları, tur süreleri ve anlık sıralama. OpenF1 API ile gerçek F1 verisi.">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png">
+<meta property="og:site_name" content="motogpvideo.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="F1 Canlı Zamanlama 2026 — motogpvideo.com">
+<meta name="twitter:description" content="Formula 1 2026 canlı zamanlama. Gerçek sürücü pozisyonları ve tur süreleri.">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "F1 Canlı Zamanlama 2026",
+  "description": "Formula 1 2026 canlı zamanlama verileri. Sürücü pozisyonları ve tur süreleri.",
+  "url": "https://www.motogpvideo.com/f1-timing.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "motogpvideo.com",
+    "url": "https://www.motogpvideo.com"
+  }
+}
+</script>
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#e8001d">
+
+<style>
+:root{--bg:#0d1220;--topbar-bg:#080e1a;--nav-bg:#0d1424;--card:#131d30;--card2:#192438;--accent:#e8001d;--green:#00c853;--border:#1e2d4a;--text:#ffffff;--muted:#7a90b8;--purple:#9b59b6;--gold:#f0c040;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:"Segoe UI",Arial,sans-serif;min-height:100vh;overflow-x:hidden;}
+
+/* NAV */
+.topnav{background:var(--nav-bg);border-bottom:1px solid var(--border);display:flex;align-items:center;height:54px;padding:0 20px;position:sticky;top:0;z-index:100;gap:12px;}
+.topnav-logo{display:flex;align-items:center;margin-right:20px;text-decoration:none;}
+.topnav-links{display:flex;align-items:center;gap:2px;flex:1;}
+.topnav-link{padding:6px 12px;font-size:.82rem;font-weight:500;color:rgba(255,255,255,.7);text-decoration:none;border-radius:4px;transition:color .15s,background .15s;white-space:nowrap;cursor:pointer;}
+.topnav-link:hover{color:#fff;background:var(--card2);}
+.topnav-link.active{color:#fff;background:var(--card2);}
+.topnav-lang{display:flex;align-items:center;gap:4px;position:relative;}
+.lang-btn{background:var(--card);border:1px solid var(--border);color:var(--text);padding:4px 10px;border-radius:4px;font-size:.78rem;cursor:pointer;}
+.lang-dropdown{display:none;position:absolute;right:0;top:110%;background:var(--nav-bg);border:1px solid var(--border);border-radius:6px;padding:4px;min-width:120px;z-index:200;}
+.lang-dropdown.open{display:block;}
+.lang-opt{display:block;padding:6px 12px;font-size:.8rem;color:var(--muted);cursor:pointer;border-radius:4px;white-space:nowrap;}
+.lang-opt:hover{background:var(--card2);color:#fff;}
+@keyframes logoBlink{0%,100%{opacity:1}50%{opacity:.15}}
+.logo-anim{animation:logoBlink 1.5s ease-in-out infinite;}
+
+/* BREADCRUMB */
+.breadcrumb{padding:10px 20px;font-size:.78rem;color:var(--muted);border-bottom:1px solid var(--border);}
+.breadcrumb a{color:var(--muted);text-decoration:none;}
+.breadcrumb a:hover{color:#fff;}
+.breadcrumb span{margin:0 6px;}
+
+/* MAIN */
+.main{max-width:1100px;margin:0 auto;padding:24px 20px 60px;}
+.page-header{margin-bottom:20px;}
+.page-title{font-size:1.5rem;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.page-subtitle{color:var(--muted);font-size:.85rem;}
+
+/* SESSION BAR */
+.session-bar{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 18px;margin-bottom:18px;display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between;}
+.session-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:.78rem;color:var(--muted);}
+.chip strong{color:#fff;}
+.refresh-btn{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:7px 16px;font-size:.8rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;transition:opacity .15s;}
+.refresh-btn:hover{opacity:.85;}
+.refresh-btn:disabled{opacity:.5;cursor:default;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{animation:spin .8s linear infinite;display:inline-block;}
+
+/* LIVE BADGE */
+.live-badge{display:inline-flex;align-items:center;gap:6px;background:#1a0a0a;border:1px solid #e8001d44;border-radius:20px;padding:3px 10px;font-size:.72rem;font-weight:700;color:var(--accent);}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1.5s infinite;}
+.live-badge.ok .live-dot{background:var(--green);}
+.live-badge.ok{color:var(--green);border-color:#00c85344;}
+
+/* TABLE */
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:18px;}
+table{width:100%;border-collapse:collapse;font-size:.82rem;}
+thead tr{background:var(--card2);}
+th{padding:10px 12px;text-align:left;font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;}
+td{padding:9px 12px;border-top:1px solid var(--border);white-space:nowrap;}
+tr:hover td{background:rgba(255,255,255,.03);}
+.pos-num{font-weight:700;font-size:.88rem;width:32px;}
+.pos-1{color:var(--gold);}
+.pos-2{color:#b0c4de;}
+.pos-3{color:#cd7f32;}
+.team-bar{width:4px;height:28px;border-radius:2px;display:inline-block;vertical-align:middle;margin-right:8px;}
+.driver-full{font-weight:600;}
+.driver-abbr{color:var(--muted);font-size:.72rem;margin-left:4px;}
+.team-name{color:var(--muted);font-size:.75rem;}
+.lap-time{font-family:"Courier New",monospace;font-size:.8rem;}
+.fastest-lap{color:var(--purple);font-weight:700;}
+.personal-best{color:var(--green);}
+.gap-col{color:var(--muted);font-family:"Courier New",monospace;font-size:.78rem;}
+.lap-num{color:var(--muted);}
+.tyre{font-size:.75rem;padding:2px 7px;border-radius:3px;font-weight:700;}
+.tyre-S{background:#e8001d22;color:#e8001d;border:1px solid #e8001d44;}
+.tyre-M{background:#f0c04022;color:#f0c040;border:1px solid #f0c04044;}
+.tyre-H{color:#fff;background:#33333366;border:1px solid #555;}
+.tyre-I{background:#00aaff22;color:#00aaff;border:1px solid #00aaff44;}
+.tyre-W{background:#0044ff22;color:#4499ff;border:1px solid #4499ff44;}
+
+/* STATUS */
+.status-row{text-align:center;padding:40px 20px;color:var(--muted);}
+.status-icon{font-size:2rem;margin-bottom:10px;}
+.status-msg{font-size:.9rem;}
+.status-sub{font-size:.75rem;margin-top:6px;color:#5a6a88;}
+
+/* LEGEND */
+.legend-bar{display:flex;flex-wrap:wrap;gap:16px;font-size:.75rem;color:var(--muted);padding:12px 18px;background:var(--card);border:1px solid var(--border);border-radius:8px;}
+.legend-item{display:flex;align-items:center;gap:6px;}
+.legend-dot{width:8px;height:8px;border-radius:50%;}
+
+/* INFO BOX */
+.info-box{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:14px 18px;margin-bottom:18px;font-size:.82rem;color:var(--muted);line-height:1.6;}
+.info-box strong{color:#fff;}
+
+/* UPDATE LINE */
+.update-line{font-size:.72rem;color:var(--muted);text-align:right;margin-top:6px;}
+
+/* FOOTER */
+footer{background:var(--topbar-bg);border-top:1px solid var(--border);padding:20px;text-align:center;}
+.footer-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+.footer-btn{color:#fff;background:#222244;text-decoration:none;font-size:.74rem;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid #444488;}
+.footer-btn:hover{background:var(--accent);}
+.footer-text{font-size:.7rem;color:var(--muted);}
+
+@media(max-width:768px){
+  .topnav-links{display:none;}
+  th.hide-mobile,td.hide-mobile{display:none;}
+  .main{padding:16px 12px 40px;}
+  .session-bar{gap:8px;}
+  .page-title{font-size:1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav">
+  <div class="topnav-logo">
+    <a href="/" style="text-decoration:none;">
+      <svg viewBox="0 0 220 44" xmlns="http://www.w3.org/2000/svg" style="height:34px;width:auto;">
+        <style>@keyframes logoBlink{0%,100%{opacity:1}50%{opacity:.15}}.logo-anim{animation:logoBlink 1.5s ease-in-out infinite;}</style>
+        <text x="0" y="30" font-size="24" class="logo-anim">🏍️</text>
+        <text x="34" y="30" font-family="Arial Black,sans-serif" font-size="20" font-weight="900" font-style="italic" fill="white" letter-spacing="-0.5" class="logo-anim">YARIŞ</text>
+        <text x="110" y="30" font-family="Arial Black,sans-serif" font-size="20" font-weight="900" font-style="italic" fill="#e8001d" letter-spacing="-0.5" class="logo-anim">MERKEZİ</text>
+        <text x="200" y="30" font-size="24" class="logo-anim">🏁</text>
+      </svg>
+    </a>
+  </div>
+  <div class="topnav-links">
+    <a class="topnav-link" href="/">Ana Sayfa</a>
+    <a class="topnav-link" href="/takvim.html" id="nav-takvim">📅 Takvim</a>
+    <a class="topnav-link" href="/puan-durumu.html" id="nav-puan">🏆 Puan</a>
+    <a class="topnav-link" href="/canli-yayin.html" id="nav-canli">📺 Yayın Rehberi</a>
+    <a class="topnav-link active" href="/f1-timing.html">🔴 F1 Timing</a>
+  </div>
+  <div class="topnav-lang" style="margin-left:auto;">
+    <button class="lang-btn" onclick="toggleLang()" id="lang-current">TR 🌐</button>
+    <div class="lang-dropdown" id="lang-menu">
+      <span class="lang-opt" onclick="setLang('tr')">🇹🇷 Türkçe</span>
+      <span class="lang-opt" onclick="setLang('en')">🇬🇧 English</span>
+      <span class="lang-opt" onclick="setLang('de')">🇩🇪 Deutsch</span>
+      <span class="lang-opt" onclick="setLang('fr')">🇫🇷 Français</span>
+      <span class="lang-opt" onclick="setLang('ja')">🇯🇵 日本語</span>
+      <span class="lang-opt" onclick="setLang('es')">🇪🇸 Español</span>
+      <span class="lang-opt" onclick="setLang('it')">🇮🇹 Italiano</span>
+      <span class="lang-opt" onclick="setLang('pt')">🇵🇹 Português</span>
+      <span class="lang-opt" onclick="setLang('ar')">🇸🇦 العربية</span>
+      <span class="lang-opt" onclick="setLang('id')">🇮🇩 Indonesia</span>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/">motogpvideo.com</a>
+  <span>›</span>
+  <span id="bc-label">F1 Canlı Zamanlama</span>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="page-header">
+    <div class="page-title">
+      🏎️ <span id="page-title-text">Formula 1 — Canlı Zamanlama</span>
+      <span class="live-badge" id="live-badge"><span class="live-dot"></span> <span id="live-text">BAĞLANIYOR</span></span>
+    </div>
+    <div class="page-subtitle" id="page-subtitle">OpenF1 API · Gerçek zamanlı sürücü pozisyonları ve tur süreleri · Otomatik güncelleme</div>
+  </div>
+
+  <!-- SESSION BAR -->
+  <div class="session-bar">
+    <div class="session-chips" id="session-chips">
+      <div class="chip"><strong id="sc-circuit">—</strong></div>
+      <div class="chip" id="sc-session-wrap"><strong id="sc-session">—</strong></div>
+      <div class="chip"><span id="sc-lap-label">Tur:</span> <strong id="sc-lap">—</strong></div>
+      <div class="chip"><span id="sc-date-label">Tarih:</span> <strong id="sc-date">—</strong></div>
+    </div>
+    <button class="refresh-btn" id="refresh-btn" onclick="loadData()">
+      <span id="refresh-icon">↻</span> <span id="refresh-text">Yenile</span>
+    </button>
+  </div>
+
+  <!-- INFO BOX -->
+  <div class="info-box" id="info-box">
+    <strong id="info-title">📡 Veri Kaynağı:</strong> <span id="info-text">OpenF1 — ücretsiz ve açık kaynaklı resmi F1 veri API'si. Canlı seans sırasında gerçek zamanlı güncellenir. Seans dışında en son tamamlanan seansın verisi gösterilir.</span>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap" id="table-wrap">
+    <div class="status-row">
+      <div class="status-icon">⏳</div>
+      <div class="status-msg" id="status-msg">Veri yükleniyor...</div>
+      <div class="status-sub" id="status-sub">OpenF1 API'ye bağlanılıyor</div>
+    </div>
+  </div>
+
+  <div class="update-line" id="update-line"></div>
+
+  <!-- LEGEND -->
+  <div class="legend-bar">
+    <div class="legend-item"><span class="legend-dot" style="background:var(--purple)"></span> <span id="leg-fastest">En hızlı tur (genel)</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:var(--green)"></span> <span id="leg-personal">Kişisel en iyi</span></div>
+    <div class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span> <span id="leg-leader">Lider</span></div>
+    <div class="legend-item">
+      <span class="tyre tyre-S">S</span> <span id="leg-soft" style="margin-left:2px">Soft</span>
+    </div>
+    <div class="legend-item">
+      <span class="tyre tyre-M">M</span> <span id="leg-medium" style="margin-left:2px">Medium</span>
+    </div>
+    <div class="legend-item">
+      <span class="tyre tyre-H">H</span> <span id="leg-hard" style="margin-left:2px">Hard</span>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="/kvkk.html" class="footer-btn">🔒 <span id="f-privacy">Gizlilik & KVKK</span></a>
+    <a href="/cerez.html" class="footer-btn">🍪 <span id="f-cookie">Çerez Politikası</span></a>
+    <a href="mailto:asikurye35@hotmail.com" class="footer-btn">✉️ <span id="f-contact">İletişim</span></a>
+  </div>
+  <div class="footer-text" id="f-disclaimer">BU SİTE RESMİ BİR YAYIN KURULUŞU DEĞİLDİR. TÜM YAYIN HAKLARI İLGİLİ KURULUŞLARA AİTTİR.</div>
+</footer>
+
+<script>
+// ── DİL SİSTEMİ ──────────────────────────────────────────────────
+const i18n = {
+  tr:{
+    pageTitle:"Formula 1 — Canlı Zamanlama",
+    subtitle:"OpenF1 API · Gerçek zamanlı sürücü pozisyonları ve tur süreleri · Otomatik güncelleme",
+    bc:"F1 Canlı Zamanlama",
+    lapLabel:"Tur:", dateLabel:"Tarih:",
+    refresh:"Yenile", loading:"Veri yükleniyor...", connecting:"OpenF1 API'ye bağlanılıyor",
+    noData:"Bu seans için pozisyon verisi bulunamadı.", noDataSub:"Seans tamamlanmış veya henüz başlamamış olabilir.",
+    error:"Veri alınamadı.", errorSub:"İnternet bağlantısını kontrol edin.",
+    infoTitle:"📡 Veri Kaynağı:", infoText:"OpenF1 — ücretsiz ve açık kaynaklı resmi F1 veri API'si. Canlı seans sırasında gerçek zamanlı güncellenir. Seans dışında en son tamamlanan seansın verisi gösterilir.",
+    thPos:"P", thDriver:"Sürücü", thTeam:"Takım", thLastLap:"Son Tur", thBestLap:"En İyi Tur", thGap:"Fark", thLap:"Tur", thTyre:"Lastik",
+    legFastest:"En hızlı tur (genel)", legPersonal:"Kişisel en iyi", legLeader:"Lider",
+    updated:"Son güncelleme:", live:"CANLI", connecting2:"BAĞLANIYOR",
+    fPrivacy:"Gizlilik & KVKK", fCookie:"Çerez Politikası", fContact:"İletişim",
+    fDisclaimer:"BU SİTE RESMİ BİR YAYIN KURULUŞU DEĞİLDİR. TÜM YAYIN HAKLARI İLGİLİ KURULUŞLARA AİTTİR.",
+    navHome:"Ana Sayfa", navCal:"📅 Takvim", navStand:"🏆 Puan", navBroadcast:"📺 Yayın Rehberi", navTiming:"🔴 F1 Timing"
+  },
+  en:{
+    pageTitle:"Formula 1 — Live Timing",
+    subtitle:"OpenF1 API · Real-time driver positions and lap times · Auto refresh",
+    bc:"F1 Live Timing",
+    lapLabel:"Lap:", dateLabel:"Date:",
+    refresh:"Refresh", loading:"Loading data...", connecting:"Connecting to OpenF1 API",
+    noData:"No position data found for this session.", noDataSub:"Session may have ended or not started yet.",
+    error:"Failed to fetch data.", errorSub:"Check your internet connection.",
+    infoTitle:"📡 Data Source:", infoText:"OpenF1 — free and open-source official F1 data API. Updates in real time during live sessions. Outside sessions, shows the most recently completed session data.",
+    thPos:"P", thDriver:"Driver", thTeam:"Team", thLastLap:"Last Lap", thBestLap:"Best Lap", thGap:"Gap", thLap:"Lap", thTyre:"Tyre",
+    legFastest:"Fastest lap (overall)", legPersonal:"Personal best", legLeader:"Leader",
+    updated:"Last updated:", live:"LIVE", connecting2:"CONNECTING",
+    fPrivacy:"Privacy Policy", fCookie:"Cookie Policy", fContact:"Contact",
+    fDisclaimer:"THIS SITE IS NOT AN OFFICIAL BROADCASTER. ALL BROADCASTING RIGHTS BELONG TO THEIR RESPECTIVE ORGANIZATIONS.",
+    navHome:"Home", navCal:"📅 Calendar", navStand:"🏆 Standings", navBroadcast:"📺 Broadcast Guide", navTiming:"🔴 F1 Timing"
+  },
+  de:{
+    pageTitle:"Formula 1 — Live-Timing",
+    subtitle:"OpenF1 API · Echtzeit-Fahrerpositionen und Rundenzeiten · Automatische Aktualisierung",
+    bc:"F1 Live-Timing",
+    lapLabel:"Runde:", dateLabel:"Datum:",
+    refresh:"Aktualisieren", loading:"Daten werden geladen...", connecting:"Verbindung mit OpenF1 API",
+    noData:"Keine Positionsdaten für diese Sitzung.", noDataSub:"Die Sitzung könnte beendet sein oder noch nicht begonnen haben.",
+    error:"Datenabruf fehlgeschlagen.", errorSub:"Internetverbindung prüfen.",
+    infoTitle:"📡 Datenquelle:", infoText:"OpenF1 — kostenlose und quelloffene offizielle F1-Daten-API. Aktualisiert sich während Live-Sessions in Echtzeit.",
+    thPos:"P", thDriver:"Fahrer", thTeam:"Team", thLastLap:"Letzte Runde", thBestLap:"Beste Runde", thGap:"Abstand", thLap:"Rd.", thTyre:"Reifen",
+    legFastest:"Schnellste Runde (gesamt)", legPersonal:"Persönliche Bestzeit", legLeader:"Führender",
+    updated:"Zuletzt aktualisiert:", live:"LIVE", connecting2:"VERBINDEN",
+    fPrivacy:"Datenschutz", fCookie:"Cookie-Richtlinie", fContact:"Kontakt",
+    fDisclaimer:"DIESE SEITE IST KEIN OFFIZIELLER SENDER. ALLE ÜBERTRAGUNGSRECHTE LIEGEN BEI DEN JEWEILIGEN ORGANISATIONEN.",
+    navHome:"Startseite", navCal:"📅 Kalender", navStand:"🏆 Punkte", navBroadcast:"📺 Sendeführer", navTiming:"🔴 F1 Timing"
+  },
+  fr:{
+    pageTitle:"Formula 1 — Chronométrage en Direct",
+    subtitle:"OpenF1 API · Positions des pilotes en temps réel et temps au tour · Mise à jour automatique",
+    bc:"F1 Chronométrage",
+    lapLabel:"Tour:", dateLabel:"Date:",
+    refresh:"Actualiser", loading:"Chargement...", connecting:"Connexion à l'API OpenF1",
+    noData:"Aucune donnée de position pour cette session.", noDataSub:"La session est peut-être terminée ou n'a pas encore commencé.",
+    error:"Échec de récupération des données.", errorSub:"Vérifiez votre connexion Internet.",
+    infoTitle:"📡 Source de données:", infoText:"OpenF1 — API F1 officielle gratuite et open source. Mise à jour en temps réel lors des sessions en direct.",
+    thPos:"P", thDriver:"Pilote", thTeam:"Équipe", thLastLap:"Dernier Tour", thBestLap:"Meilleur Tour", thGap:"Écart", thLap:"T.", thTyre:"Pneu",
+    legFastest:"Tour le plus rapide (global)", legPersonal:"Meilleur personnel", legLeader:"Leader",
+    updated:"Dernière mise à jour:", live:"EN DIRECT", connecting2:"CONNEXION",
+    fPrivacy:"Confidentialité", fCookie:"Politique de cookies", fContact:"Contact",
+    fDisclaimer:"CE SITE N'EST PAS UN DIFFUSEUR OFFICIEL. TOUS LES DROITS DE DIFFUSION APPARTIENNENT AUX ORGANISATIONS CONCERNÉES.",
+    navHome:"Accueil", navCal:"📅 Calendrier", navStand:"🏆 Classement", navBroadcast:"📺 Guide TV", navTiming:"🔴 F1 Timing"
+  },
+  ja:{
+    pageTitle:"フォーミュラ1 — ライブタイミング",
+    subtitle:"OpenF1 API · リアルタイムドライバー順位とラップタイム · 自動更新",
+    bc:"F1ライブタイミング",
+    lapLabel:"ラップ:", dateLabel:"日付:",
+    refresh:"更新", loading:"データを読み込み中...", connecting:"OpenF1 APIに接続中",
+    noData:"このセッションの順位データが見つかりません。", noDataSub:"セッションが終了しているか、まだ始まっていない可能性があります。",
+    error:"データの取得に失敗しました。", errorSub:"インターネット接続を確認してください。",
+    infoTitle:"📡 データソース:", infoText:"OpenF1 — 無料でオープンソースの公式F1データAPI。ライブセッション中はリアルタイムで更新されます。",
+    thPos:"順", thDriver:"ドライバー", thTeam:"チーム", thLastLap:"最新ラップ", thBestLap:"ベストラップ", thGap:"差", thLap:"周", thTyre:"タイヤ",
+    legFastest:"最速ラップ（総合）", legPersonal:"自己ベスト", legLeader:"リーダー",
+    updated:"最終更新:", live:"ライブ", connecting2:"接続中",
+    fPrivacy:"プライバシーポリシー", fCookie:"Cookieポリシー", fContact:"お問い合わせ",
+    fDisclaimer:"このサイトは公式放送局ではありません。すべての放送権はそれぞれの団体に帰属します。",
+    navHome:"ホーム", navCal:"📅 カレンダー", navStand:"🏆 順位", navBroadcast:"📺 放送ガイド", navTiming:"🔴 F1タイミング"
+  },
+  es:{
+    pageTitle:"Formula 1 — Cronometraje en Vivo",
+    subtitle:"OpenF1 API · Posiciones de pilotos en tiempo real y tiempos de vuelta · Actualización automática",
+    bc:"F1 Cronometraje en Vivo",
+    lapLabel:"Vuelta:", dateLabel:"Fecha:",
+    refresh:"Actualizar", loading:"Cargando datos...", connecting:"Conectando con OpenF1 API",
+    noData:"No se encontraron datos de posición para esta sesión.", noDataSub:"La sesión puede haber terminado o aún no ha comenzado.",
+    error:"Error al obtener datos.", errorSub:"Compruebe su conexión a Internet.",
+    infoTitle:"📡 Fuente de datos:", infoText:"OpenF1 — API oficial gratuita y de código abierto de F1. Se actualiza en tiempo real durante las sesiones en vivo.",
+    thPos:"P", thDriver:"Piloto", thTeam:"Equipo", thLastLap:"Última Vuelta", thBestLap:"Mejor Vuelta", thGap:"Diferencia", thLap:"V.", thTyre:"Neumático",
+    legFastest:"Vuelta más rápida (global)", legPersonal:"Mejor personal", legLeader:"Líder",
+    updated:"Última actualización:", live:"EN VIVO", connecting2:"CONECTANDO",
+    fPrivacy:"Privacidad", fCookie:"Política de cookies", fContact:"Contacto",
+    fDisclaimer:"ESTE SITIO NO ES UNA EMISORA OFICIAL. TODOS LOS DERECHOS DE TRANSMISIÓN PERTENECEN A SUS RESPECTIVAS ORGANIZACIONES.",
+    navHome:"Inicio", navCal:"📅 Calendario", navStand:"🏆 Clasificación", navBroadcast:"📺 Guía TV", navTiming:"🔴 F1 Timing"
+  },
+  it:{
+    pageTitle:"Formula 1 — Cronometraggio in Diretta",
+    subtitle:"OpenF1 API · Posizioni dei piloti in tempo reale e tempi sul giro · Aggiornamento automatico",
+    bc:"F1 Cronometraggio",
+    lapLabel:"Giro:", dateLabel:"Data:",
+    refresh:"Aggiorna", loading:"Caricamento dati...", connecting:"Connessione a OpenF1 API",
+    noData:"Nessun dato di posizione per questa sessione.", noDataSub:"La sessione potrebbe essere terminata o non ancora iniziata.",
+    error:"Impossibile recuperare i dati.", errorSub:"Controlla la connessione Internet.",
+    infoTitle:"📡 Fonte dati:", infoText:"OpenF1 — API ufficiale F1 gratuita e open source. Aggiornamento in tempo reale durante le sessioni live.",
+    thPos:"P", thDriver:"Pilota", thTeam:"Squadra", thLastLap:"Ultimo Giro", thBestLap:"Miglior Giro", thGap:"Distacco", thLap:"G.", thTyre:"Gomma",
+    legFastest:"Giro più veloce (assoluto)", legPersonal:"Miglior personale", legLeader:"Leader",
+    updated:"Ultimo aggiornamento:", live:"LIVE", connecting2:"CONNESSIONE",
+    fPrivacy:"Privacy", fCookie:"Politica cookie", fContact:"Contatti",
+    fDisclaimer:"QUESTO SITO NON È UN'EMITTENTE UFFICIALE. TUTTI I DIRITTI DI TRASMISSIONE APPARTENGONO ALLE RISPETTIVE ORGANIZZAZIONI.",
+    navHome:"Home", navCal:"📅 Calendario", navStand:"🏆 Classifica", navBroadcast:"📺 Guida TV", navTiming:"🔴 F1 Timing"
+  },
+  pt:{
+    pageTitle:"Formula 1 — Cronometragem ao Vivo",
+    subtitle:"OpenF1 API · Posições dos pilotos em tempo real e tempos de volta · Atualização automática",
+    bc:"F1 Cronometragem ao Vivo",
+    lapLabel:"Volta:", dateLabel:"Data:",
+    refresh:"Atualizar", loading:"Carregando dados...", connecting:"Conectando à API OpenF1",
+    noData:"Nenhum dado de posição encontrado para esta sessão.", noDataSub:"A sessão pode ter terminado ou ainda não começou.",
+    error:"Falha ao obter dados.", errorSub:"Verifique a sua ligação à Internet.",
+    infoTitle:"📡 Fonte de dados:", infoText:"OpenF1 — API oficial de F1 gratuita e de código aberto. Atualizada em tempo real durante sessões ao vivo.",
+    thPos:"P", thDriver:"Piloto", thTeam:"Equipa", thLastLap:"Última Volta", thBestLap:"Melhor Volta", thGap:"Diferença", thLap:"V.", thTyre:"Pneu",
+    legFastest:"Volta mais rápida (geral)", legPersonal:"Melhor pessoal", legLeader:"Líder",
+    updated:"Última atualização:", live:"AO VIVO", connecting2:"A LIGAR",
+    fPrivacy:"Privacidade", fCookie:"Política de cookies", fContact:"Contacto",
+    fDisclaimer:"ESTE SITE NÃO É UMA EMISSORA OFICIAL. TODOS OS DIREITOS DE TRANSMISSÃO PERTENCEM ÀS RESPETIVAS ORGANIZAÇÕES.",
+    navHome:"Início", navCal:"📅 Calendário", navStand:"🏆 Classificação", navBroadcast:"📺 Guia TV", navTiming:"🔴 F1 Timing"
+  },
+  ar:{
+    pageTitle:"فورمولا 1 — التوقيت الحي",
+    subtitle:"OpenF1 API · مواقع السائقين في الوقت الفعلي وأوقات الأدوار · تحديث تلقائي",
+    bc:"توقيت F1 المباشر",
+    lapLabel:"الدورة:", dateLabel:"التاريخ:",
+    refresh:"تحديث", loading:"جارٍ تحميل البيانات...", connecting:"الاتصال بـ OpenF1 API",
+    noData:"لا توجد بيانات موقع لهذه الجلسة.", noDataSub:"ربما انتهت الجلسة أو لم تبدأ بعد.",
+    error:"فشل في جلب البيانات.", errorSub:"تحقق من اتصالك بالإنترنت.",
+    infoTitle:"📡 مصدر البيانات:", infoText:"OpenF1 — واجهة برمجة تطبيقات F1 الرسمية المجانية ومفتوحة المصدر. تُحدَّث في الوقت الفعلي خلال الجلسات المباشرة.",
+    thPos:"م", thDriver:"السائق", thTeam:"الفريق", thLastLap:"آخر دورة", thBestLap:"أفضل دورة", thGap:"الفجوة", thLap:"د.", thTyre:"إطار",
+    legFastest:"أسرع دورة (إجمالي)", legPersonal:"أفضل شخصي", legLeader:"المتصدر",
+    updated:"آخر تحديث:", live:"مباشر", connecting2:"جارٍ الاتصال",
+    fPrivacy:"الخصوصية", fCookie:"سياسة الكوكيز", fContact:"اتصل بنا",
+    fDisclaimer:"هذا الموقع ليس جهة بث رسمية. جميع حقوق البث ملك للمنظمات المعنية.",
+    navHome:"الرئيسية", navCal:"📅 الجدول", navStand:"🏆 الترتيب", navBroadcast:"📺 دليل البث", navTiming:"🔴 توقيت F1"
+  },
+  id:{
+    pageTitle:"Formula 1 — Live Timing",
+    subtitle:"OpenF1 API · Posisi pembalap real-time dan waktu lap · Pembaruan otomatis",
+    bc:"F1 Live Timing",
+    lapLabel:"Lap:", dateLabel:"Tanggal:",
+    refresh:"Perbarui", loading:"Memuat data...", connecting:"Menghubungkan ke OpenF1 API",
+    noData:"Tidak ada data posisi untuk sesi ini.", noDataSub:"Sesi mungkin sudah berakhir atau belum dimulai.",
+    error:"Gagal mengambil data.", errorSub:"Periksa koneksi internet Anda.",
+    infoTitle:"📡 Sumber Data:", infoText:"OpenF1 — API data F1 resmi yang gratis dan open-source. Diperbarui secara real-time selama sesi langsung.",
+    thPos:"P", thDriver:"Pembalap", thTeam:"Tim", thLastLap:"Lap Terakhir", thBestLap:"Lap Terbaik", thGap:"Selisih", thLap:"Lap", thTyre:"Ban",
+    legFastest:"Lap tercepat (keseluruhan)", legPersonal:"Terbaik pribadi", legLeader:"Pemimpin",
+    updated:"Terakhir diperbarui:", live:"LANGSUNG", connecting2:"MENGHUBUNGKAN",
+    fPrivacy:"Privasi", fCookie:"Kebijakan Cookie", fContact:"Kontak",
+    fDisclaimer:"SITUS INI BUKAN PENYIAR RESMI. SEMUA HAK SIARAN ADALAH MILIK ORGANISASI TERKAIT.",
+    navHome:"Beranda", navCal:"📅 Kalender", navStand:"🏆 Klasemen", navBroadcast:"📺 Panduan Siaran", navTiming:"🔴 F1 Timing"
+  }
+};
+
+let currentLang = 'tr';
+
+function detectLang() {
+  const p = new URLSearchParams(location.search).get('lang');
+  if (p && i18n[p]) return p;
+  const stored = localStorage.getItem('mgv_lang');
+  if (stored && i18n[stored]) return stored;
+  return 'tr';
+}
+
+function applyLang(lang) {
+  const t = i18n[lang];
+  if (!t) return;
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+  document.getElementById('page-title-text').textContent = t.pageTitle;
+  document.getElementById('page-subtitle').textContent = t.subtitle;
+  document.getElementById('bc-label').textContent = t.bc;
+  document.getElementById('sc-lap-label').textContent = t.lapLabel;
+  document.getElementById('sc-date-label').textContent = t.dateLabel;
+  document.getElementById('refresh-text').textContent = t.refresh;
+  document.getElementById('info-title').textContent = t.infoTitle;
+  document.getElementById('info-text').textContent = t.infoText;
+  document.getElementById('leg-fastest').textContent = t.legFastest;
+  document.getElementById('leg-personal').textContent = t.legPersonal;
+  document.getElementById('leg-leader').textContent = t.legLeader;
+  document.getElementById('f-privacy').textContent = t.fPrivacy;
+  document.getElementById('f-cookie').textContent = t.fCookie;
+  document.getElementById('f-contact').textContent = t.fContact;
+  document.getElementById('f-disclaimer').textContent = t.fDisclaimer;
+  document.getElementById('live-text').textContent = t.connecting2;
+  document.getElementById('lang-current').textContent = lang.toUpperCase() + ' 🌐';
+
+  const flags = {tr:'🇹🇷',en:'🇬🇧',de:'🇩🇪',fr:'🇫🇷',ja:'🇯🇵',es:'🇪🇸',it:'🇮🇹',pt:'🇵🇹',ar:'🇸🇦',id:'🇮🇩'};
+  document.getElementById('lang-current').textContent = (flags[lang]||'') + ' ' + lang.toUpperCase() + ' ▾';
+}
+
+function setLang(lang) {
+  localStorage.setItem('mgv_lang', lang);
+  applyLang(lang);
+  document.getElementById('lang-menu').classList.remove('open');
+  loadData();
+}
+
+function toggleLang() {
+  document.getElementById('lang-menu').classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.topnav-lang')) {
+    document.getElementById('lang-menu').classList.remove('open');
+  }
+});
+
+// ── F1 VERİ SİSTEMİ ───────────────────────────────────────────────
+const TEAM_COLORS = {
+  'Red Bull Racing':'#3671C6','Ferrari':'#E8002D','Mercedes':'#27F4D2',
+  'McLaren':'#FF8000','Aston Martin':'#229971','Alpine':'#FF87BC',
+  'Haas F1 Team':'#B6BABD','RB':'#6692FF','Williams':'#64C4FF','Kick Sauber':'#52E252'
+};
+
+function fmtTime(sec) {
+  if (!sec || sec <= 0) return '--:--.---';
+  const s = Math.round(sec * 1000);
+  const m = Math.floor(s / 60000);
+  const ss = Math.floor((s % 60000) / 1000);
+  const ms = s % 1000;
+  return `${m}:${String(ss).padStart(2,'0')}.${String(ms).padStart(3,'0')}`;
+}
+
+function fmtDate(iso) {
+  if (!iso) return '—';
+  try {
+    return new Date(iso).toLocaleDateString('tr-TR', {day:'2-digit',month:'long',year:'numeric'});
+  } catch(e) { return iso.slice(0,10); }
+}
+
+let refreshTimer = null;
+
+async function loadData() {
+  const t = i18n[currentLang];
+  const btn = document.getElementById('refresh-btn');
+  const icon = document.getElementById('refresh-icon');
+  btn.disabled = true;
+  icon.classList.add('spin');
+
+  showStatus('⏳', t.loading, t.connecting);
+
+  try {
+    // En son seansı bul (önce race, yoksa herhangi bir seans)
+    let session = null;
+    const raceRes = await fetch('https://api.openf1.org/v1/sessions?session_type=Race&year=2026');
+    const races = await raceRes.json();
+    if (races && races.length > 0) {
+      session = races[races.length - 1];
+    } else {
+      const allRes = await fetch('https://api.openf1.org/v1/sessions?year=2026');
+      const all = await allRes.json();
+      if (all && all.length > 0) session = all[all.length - 1];
+    }
+
+    if (!session) throw new Error('No sessions found');
+
+    const sk = session.session_key;
+
+    // Chip güncelle
+    document.getElementById('sc-circuit').textContent = session.circuit_short_name || session.location || '—';
+    document.getElementById('sc-session').textContent = session.session_name || '—';
+    document.getElementById('sc-date').textContent = fmtDate(session.date_start);
+
+    // Paralel veri çek
+    const [posRes, drvRes, lapRes, stintRes] = await Promise.all([
+      fetch(`https://api.openf1.org/v1/position?session_key=${sk}`),
+      fetch(`https://api.openf1.org/v1/drivers?session_key=${sk}`),
+      fetch(`https://api.openf1.org/v1/laps?session_key=${sk}`),
+      fetch(`https://api.openf1.org/v1/stints?session_key=${sk}`)
+    ]);
+
+    const positions = await posRes.json();
+    const drivers = await drvRes.json();
+    const laps = await lapRes.json();
+    const stints = await stintRes.json();
+
+    // Sürücü map
+    const drvMap = {};
+    drivers.forEach(d => { drvMap[d.driver_number] = d; });
+
+    // En son pozisyon
+    const latestPos = {};
+    positions.forEach(p => {
+      if (!latestPos[p.driver_number] || p.date > latestPos[p.driver_number].date) {
+        latestPos[p.driver_number] = p;
+      }
+    });
+
+    // En iyi tur hesapla
+    const bestLaps = {};
+    let overallBest = Infinity;
+    laps.forEach(l => {
+      if (l.lap_duration && l.lap_duration > 30) {
+        if (!bestLaps[l.driver_number] || l.lap_duration < bestLaps[l.driver_number]) {
+          bestLaps[l.driver_number] = l.lap_duration;
+        }
+        if (l.lap_duration < overallBest) overallBest = l.lap_duration;
+      }
+    });
+
+    // Son tur
+    const lastLap = {};
+    let maxLap = 0;
+    laps.forEach(l => {
+      if (!lastLap[l.driver_number] || l.lap_number > lastLap[l.driver_number].lap_number) {
+        lastLap[l.driver_number] = l;
+      }
+      if (l.lap_number > maxLap) maxLap = l.lap_number;
+    });
+
+    if (maxLap > 0) document.getElementById('sc-lap').textContent = maxLap;
+    else document.getElementById('sc-lap').textContent = '—';
+
+    // Son stint → lastik
+    const latestStint = {};
+    stints.forEach(s => {
+      if (!latestStint[s.driver_number] || s.stint_number > latestStint[s.driver_number].stint_number) {
+        latestStint[s.driver_number] = s;
+      }
+    });
+
+    const sorted = Object.values(latestPos).sort((a,b) => a.position - b.position);
+
+    if (sorted.length === 0) {
+      showStatus('📭', t.noData, t.noDataSub);
+      setBadge('connecting');
+      return;
+    }
+
+    const leaderBest = bestLaps[sorted[0].driver_number] || null;
+
+    // Tablo oluştur
+    let html = `<table>
+      <thead><tr>
+        <th>${t.thPos}</th>
+        <th>${t.thDriver}</th>
+        <th class="hide-mobile">${t.thTeam}</th>
+        <th>${t.thLastLap}</th>
+        <th class="hide-mobile">${t.thBestLap}</th>
+        <th>${t.thGap}</th>
+        <th class="hide-mobile">${t.thLap}</th>
+        <th class="hide-mobile">${t.thTyre}</th>
+      </tr></thead><tbody>`;
+
+    sorted.forEach((p, idx) => {
+      const drv = drvMap[p.driver_number] || {};
+      const color = drv.team_colour ? '#' + drv.team_colour : (TEAM_COLORS[drv.team_name] || '#555');
+      const bl = bestLaps[p.driver_number];
+      const ll = lastLap[p.driver_number];
+      const stint = latestStint[p.driver_number];
+      const isOverallFastest = bl && overallBest < Infinity && Math.abs(bl - overallBest) < 0.001;
+      const posClass = idx === 0 ? 'pos-1' : idx === 1 ? 'pos-2' : idx === 2 ? 'pos-3' : '';
+
+      // Fark hesapla
+      let gapStr = '—';
+      if (idx === 0) gapStr = `<strong style="color:var(--gold)">${t.thPos}1 ${t.legLeader.split(' ')[0]}</strong>`;
+      else if (leaderBest && bl) {
+        const diff = bl - leaderBest;
+        gapStr = `<span class="gap-col">+${diff.toFixed(3)}s</span>`;
+      }
+
+      // Lastik
+      let tyreHtml = '<span style="color:var(--muted)">—</span>';
+      if (stint && stint.compound) {
+        const c = stint.compound.charAt(0);
+        const cls = ['S','M','H','I','W'].includes(c) ? `tyre-${c}` : '';
+        tyreHtml = `<span class="tyre ${cls}">${stint.compound}</span>`;
+      }
+
+      // Son tur rengi
+      let lastLapClass = 'lap-time';
+      if (ll && ll.lap_duration) {
+        if (isOverallFastest && ll.lap_number === lastLap[p.driver_number]?.lap_number) lastLapClass += ' fastest-lap';
+        else if (bl && ll.lap_duration <= bl * 1.001) lastLapClass += ' personal-best';
+      }
+
+      html += `<tr>
+        <td class="pos-num ${posClass}">${p.position}</td>
+        <td>
+          <span class="team-bar" style="background:${color}"></span>
+          <span class="driver-full">${drv.full_name || ('DRV ' + p.driver_number)}</span>
+          <span class="driver-abbr">${drv.name_acronym || ''}</span>
+        </td>
+        <td class="hide-mobile team-name">${drv.team_name || '—'}</td>
+        <td class="${lastLapClass}">${ll && ll.lap_duration ? fmtTime(ll.lap_duration) : '—'}</td>
+        <td class="hide-mobile lap-time ${isOverallFastest ? 'fastest-lap' : ''}">${bl ? fmtTime(bl) : '—'}</td>
+        <td>${gapStr}</td>
+        <td class="hide-mobile lap-num">${ll ? ll.lap_number : '—'}</td>
+        <td class="hide-mobile">${tyreHtml}</td>
+      </tr>`;
+    });
+
+    html += '</tbody></table>';
+    document.getElementById('table-wrap').innerHTML = html;
+    setBadge('live');
+    document.getElementById('update-line').textContent = t.updated + ' ' + new Date().toLocaleTimeString('tr-TR');
+
+  } catch(e) {
+    showStatus('⚠️', t.error, t.errorSub + ' (' + e.message + ')');
+    setBadge('connecting');
+  }
+
+  btn.disabled = false;
+  icon.classList.remove('spin');
+
+  // 30sn'de bir otomatik yenile
+  clearTimeout(refreshTimer);
+  refreshTimer = setTimeout(loadData, 30000);
+}
+
+function showStatus(icon, msg, sub) {
+  document.getElementById('table-wrap').innerHTML = `
+    <div class="status-row">
+      <div class="status-icon">${icon}</div>
+      <div class="status-msg">${msg}</div>
+      <div class="status-sub">${sub}</div>
+    </div>`;
+}
+
+function setBadge(state) {
+  const badge = document.getElementById('live-badge');
+  const t = i18n[currentLang];
+  if (state === 'live') {
+    badge.className = 'live-badge ok';
+    document.getElementById('live-text').textContent = t.live;
+  } else {
+    badge.className = 'live-badge';
+    document.getElementById('live-text').textContent = t.connecting2;
+  }
+}
+
+// ── BAŞLAT ─────────────────────────────────────────────────────────
+currentLang = detectLang();
+applyLang(currentLang);
+loadData();
+</script>
+
+</body>
+</html>
