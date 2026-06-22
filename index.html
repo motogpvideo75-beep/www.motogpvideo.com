@@ -37,7 +37,7 @@
               prompts: [
                 {
                   type: "push",
-                  autoPrompt: true,
+                  autoPrompt: false,
                   text: {
                     actionMessage: "🏍️ MotoGP, WorldSBK ve F1 yarış bildirimlerini almak ister misiniz?",
                     acceptButton: "Evet, isterim!",
@@ -1238,7 +1238,7 @@
         html[dir="rtl"] .brand-riders strong, html[dir="rtl"] .ticker-text { unicode-bidi:plaintext; }
         body { background:var(--bg); color:var(--text); font-family:"Segoe UI",Arial,sans-serif; min-height:100vh; overflow-x:hidden; }
         html { overflow-x:hidden; }
-        .countdown-bar { background:var(--accent); display:flex; align-items:center; justify-content:space-between; padding:0 20px; height:36px; font-size:.75rem; font-weight:700; letter-spacing:.5px; }
+        .countdown-bar { background:var(--accent); display:flex; align-items:center; justify-content:space-between; padding:0 20px; height:36px; font-size:.75rem; font-weight:700; letter-spacing:.5px; overflow-x:auto; gap:8px; scrollbar-width:none; }
         /* Site içi arama */
         #search-btn { background:none; border:none; color:#cdd6f4; font-size:1.1rem; cursor:pointer; padding:4px 8px; border-radius:6px; transition:background .2s; }
         #search-btn:hover { background:rgba(255,255,255,.1); }
@@ -1497,6 +1497,8 @@
             [style*="minmax(240px"] { grid-template-columns:1fr !important; }
             [style*="minmax(180px"] { grid-template-columns:repeat(2,1fr) !important; }
         }
+
+
     </style>
 </head>
 <body>
