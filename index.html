@@ -2579,6 +2579,67 @@
         el.classList.add("active");
     }
 
+
+    var rSocials = {
+        "Marc Marquez":{"ig":"marcmarquez93","tw":"marcmarquez93"},
+        "Francesco Bagnaia":{"ig":"pecco_bagnaia","tw":"PeccoBagnaia"},
+        "Jorge Martin":{"ig":"jorgemartinofficial","tw":"88jorgemartin"},
+        "Fabio Quartararo":{"ig":"fabioquartararo20","tw":"FabioQ20"},
+        "Brad Binder":{"ig":"bradbinder33","tw":"BradBinder_33"},
+        "Marco Bezzecchi":{"ig":"marcobezzecchi72","tw":"bez_marco72"},
+        "Jack Miller":{"ig":"jackmiller_43","tw":"jackmiller_43"},
+        "Ai Ogura":{"ig":"ai_ogura79","tw":"aiogura79"},
+        "Enea Bastianini":{"ig":"eneabastianini23","tw":"eneabastianini"},
+        "Alex Rins":{"ig":"alexrins42","tw":"Rins42"},
+        "Luca Marini":{"ig":"lucamarini10","tw":"LucaMarini_10"},
+        "Johann Zarco":{"ig":"johannzarco5","tw":"johannzarco"},
+        "Nicolo Bulega":{"ig":"nicolobulega11","tw":"NicoloBulega"},
+        "Alvaro Bautista":{"ig":"alvarobautista19","tw":"19Bautista"},
+        "Jonathan Rea":{"ig":"jonathanrea65","tw":"JonathanRea"},
+        "Alex Lowes":{"ig":"alexlowes22","tw":"alexlowes22"},
+        "Iker Lecuona":{"ig":"ikerlecuona","tw":"IkerLecuona"},
+        "Garrett Gerloff":{"ig":"garrettgerloff","tw":"GarrettGerloff"},
+        "Andrea Locatelli":{"ig":"andrealocatelli55","tw":"AndyLocatelli"},
+        "Yari Montella":{"ig":"yarimontella","tw":"YariMontella"},
+        "Miguel Oliveira":{"ig":"migueloliveira88","tw":"Migueloliveira88"},
+        "Celestino Vietti":{"ig":"celestinovietti13","tw":"CelestinoViett1"},
+        "Aron Canet":{"ig":"aroncanet44","tw":"aroncanet44"},
+        "Tony Arbolino":{"ig":"tonyarbolino14","tw":"TonyArbolino14"},
+        "Joe Roberts":{"ig":"joerobertsracing","tw":"JoeRobertsRaci1"},
+        "David Alonso":{"ig":"davidalonso80","tw":"DavidAlonso80"},
+        "Ayumu Sasaki":{"ig":"ayumusasaki71","tw":"ayumusasaki71"},
+        "Bahattin Sofu\u011flu":{"ig":"bahattinsofuoglu","tw":"BSofuoglu54"},
+        "Can \u00d6nc\u00fc":{"ig":"canoncu61","tw":"canoncu61"},
+        "Deniz \u00d6nc\u00fc":{"ig":"deniz_oncu53","tw":"DenizOncu53"},
+        "Sam Lowes":{"ig":"samlowes22","tw":"SamLowes_22"},
+        "Augusto Fernandez":{"ig":"augustofernandez37","tw":"37augusto"}
+    };
+
+    function openRM(name,flag,team,bike,color) {
+        document.getElementById('rmd-name').innerText = name;
+        document.getElementById('rmd-flag').innerText = flag;
+        document.getElementById('rmd-team').innerText = team;
+        var b = document.getElementById('rmd-bike');
+        b.innerText = bike; b.style.background = color+'99'; b.style.border = '1px solid '+color; b.style.color = '#fff';
+        var s = rSocials[name] || {};
+        var d = document.getElementById('rmd-socials');
+        d.innerHTML = '';
+        if (s.ig || s.tw) {
+            document.getElementById('rmd-nosocial').style.display = 'none';
+            d.style.display = 'flex';
+            if (s.ig) d.innerHTML += '<a href="https://www.instagram.com/'+s.ig+'/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);border-radius:10px;padding:10px 14px;text-decoration:none;color:white;font-weight:700;font-size:.85rem;">&#128247; Instagram &rarr; @'+s.ig+'</a>';
+            if (s.tw) d.innerHTML += '<a href="https://twitter.com/'+s.tw+'" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;background:#000;border:1px solid #333;border-radius:10px;padding:10px 14px;text-decoration:none;color:white;font-weight:700;font-size:.85rem;">&#120143; Twitter &rarr; @'+s.tw+'</a>';
+        } else {
+            document.getElementById('rmd-nosocial').style.display = 'block';
+            d.style.display = 'none';
+        }
+        document.getElementById('rider-modal').style.display = 'flex';
+    }
+
+    function closeRiderModal(e) {
+        if (e.target.id === 'rider-modal') document.getElementById('rider-modal').style.display = 'none';
+    }
+
     function buildBrandGrid() {
             const lang = document.documentElement.lang || 'tr';
             const ld = langData[lang];
@@ -2613,7 +2674,7 @@
             const grad = r.featured
                 ? "background:linear-gradient(135deg,#1a0040 0%,#4a0066 55%,#cc0080 100%);"
                 : `background:linear-gradient(135deg,#0d1220 0%,${bc}44 100%);`;
-            return `<div class="rider-card${r.featured ? " featured" : ""}">
+            return `<div class="rider-card${r.featured ? " featured" : ""}" data-rname="${r.name}" data-rflag="${r.flag}" data-rteam="${r.team}" data-rbike="${r.bike}" data-rcolor="${bc}" onclick="openRM(this.dataset.rname,this.dataset.rflag,this.dataset.rteam,this.dataset.rbike,this.dataset.rcolor)" style="cursor:pointer;">
                 <div class="rider-card-top" style="${grad}">
                     <span class="rider-num-bg">${r.num}</span>
                     <span class="rider-num" style="color:${r.featured ? "#ff44cc" : "#fff"}">${r.num}</span>
@@ -2976,6 +3037,22 @@ function closeWelcomePopup(){
 })();
 </script>
 
+
+<div id="rider-modal" onclick="closeRiderModal(event)" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);z-index:9999;align-items:center;justify-content:center;">
+    <div style="background:#1a1f33;border:1px solid #1e2d4a;border-radius:16px;padding:28px 24px;max-width:340px;width:90%;position:relative;box-shadow:0 8px 40px rgba(0,0,0,.6);">
+        <button onclick="document.getElementById('rider-modal').style.display='none'" style="position:absolute;top:12px;right:14px;background:none;border:none;color:#aaa;font-size:1.3rem;cursor:pointer;">&#10005;</button>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+            <div id="rmd-flag" style="font-size:2rem;"></div>
+            <div>
+                <div id="rmd-name" style="font-size:1.1rem;font-weight:900;color:white;"></div>
+                <div id="rmd-team" style="font-size:.75rem;color:#6a8caf;margin-top:2px;"></div>
+                <div id="rmd-bike" style="font-size:.65rem;font-weight:700;margin-top:4px;padding:2px 8px;border-radius:10px;display:inline-block;"></div>
+            </div>
+        </div>
+        <div id="rmd-socials" style="display:flex;flex-direction:column;gap:8px;"></div>
+        <div id="rmd-nosocial" style="display:none;color:#6a8caf;font-size:.82rem;text-align:center;padding:12px 0;">Sosyal medya bilgisi bulunamadi</div>
+    </div>
+</div>
 </body>
 </html>
 
