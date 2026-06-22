@@ -155,7 +155,7 @@ footer{background:#080e1a;border-top:1px solid var(--border);padding:20px;text-a
 
 <script>
 const API_KEY = 'pfySmetr5buVMbGz0yZyVryDQt8eu5IUHXa5Lrzo';
-const BASE = 'https://api.sportradar.com/motogp/trial/v2/en';
+const BASE = '/api/sportradar';
 
 // Sezon ID'leri
 const SEASONS = {
@@ -218,7 +218,7 @@ async function loadTab(tab) {
       }
       renderTeams(secId, data);
     } else {
-      url = `${BASE}/sport_events/${SEASONS[tab]}/summary.json?api_key=${API_KEY}`;
+      url = `${BASE}?stage=${SEASONS[tab]}`;
       const r = await fetch(url);
       data = await r.json();
       dataCache[tab] = data;
