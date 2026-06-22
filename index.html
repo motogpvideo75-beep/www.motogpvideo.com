@@ -1399,6 +1399,104 @@
         @media (max-width:900px) { .channel-grid { grid-template-columns:repeat(3,1fr); } .rider-grid { grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); } }
         @media (max-width:768px) { .sidebar { position:fixed; top:90px; left:0; height:calc(100vh - 90px); transform:translateX(-100%); z-index:95; } .sidebar.open { transform:translateX(0); } .channel-grid { grid-template-columns:repeat(2,1fr); } .topnav-links { display:none; } .rider-grid { grid-template-columns:repeat(3,1fr); } .nav-brand-images { display:none !important; } }
         @media (max-width:480px) { .channel-grid { grid-template-columns:repeat(2,1fr); } .cd-label { display:none; } .rider-grid { grid-template-columns:repeat(2,1fr); } }
+
+        /* ===== MOBİL OPTİMİZASYON ===== */
+
+        /* Countdown bar - mobilde küçült */
+        @media (max-width:768px) {
+            .countdown-bar { padding:0 10px; height:32px; font-size:.62rem; gap:4px; }
+            .cd-group { gap:3px; }
+            .cd-num { font-size:.7rem; min-width:22px; padding:1px 4px; }
+            .cd-sep { display:none; }
+        }
+        @media (max-width:480px) {
+            .countdown-bar { justify-content:space-around; flex-wrap:nowrap; overflow:hidden; }
+            .countdown-bar > div { flex:1; min-width:0; }
+        }
+
+        /* Topnav - mobilde sıkıştır */
+        @media (max-width:768px) {
+            .topnav { padding:0 10px; height:50px; }
+            .topnav-logo span { font-size:.8rem !important; }
+            .nav-brand-images { display:none !important; }
+        }
+        @media (max-width:480px) {
+            .topnav { padding:0 8px; height:46px; }
+            .topnav-logo { margin-right:8px !important; }
+        }
+
+        /* Main içerik padding */
+        @media (max-width:768px) {
+            .main { padding:14px 12px 30px; }
+        }
+        @media (max-width:480px) {
+            .main { padding:10px 8px 24px; }
+        }
+
+        /* Brand/sponsor grid - mobilde tek kolon */
+        @media (max-width:600px) {
+            .brand-grid { grid-template-columns:1fr !important; }
+            div[style*="grid-template-columns:repeat(auto-fill,minmax(260px"] { grid-template-columns:1fr !important; }
+            div[style*="grid-template-columns:repeat(auto-fill,minmax(300px"] { grid-template-columns:1fr !important; }
+        }
+
+        /* Takvim tablosu - mobilde scroll */
+        @media (max-width:600px) {
+            .takvim-table { font-size:.72rem; }
+            .takvim-rnd { min-width:24px; font-size:.6rem; }
+            .takvim-flag { font-size:1rem; min-width:24px; }
+        }
+
+        /* Flag grid - mobilde 2 kolon */
+        @media (max-width:480px) {
+            .flag-grid { grid-template-columns:repeat(2,1fr) !important; gap:6px; }
+            .flag-box { font-size:1.6rem !important; }
+        }
+
+        /* Genel grid - mobilde tek kolon */
+        @media (max-width:480px) {
+            .grid { grid-template-columns:repeat(auto-fill,minmax(140px,1fr)) !important; gap:8px; }
+        }
+
+        /* Ticker - mobilde küçük */
+        @media (max-width:480px) {
+            .ticker-wrapper { height:34px; margin-bottom:14px; }
+            .ticker-tag { font-size:.6rem; padding:0 8px; }
+        }
+
+        /* Hero başlık - mobilde küçült */
+        @media (max-width:480px) {
+            #hero-title { font-size:.85rem !important; letter-spacing:.5px !important; }
+            #hero-desc { font-size:.78rem !important; }
+        }
+
+        /* Sec-title - mobilde küçük */
+        @media (max-width:480px) {
+            .sec-title { font-size:1rem !important; }
+        }
+
+        /* Sponsor kartlar - mobilde tam genişlik */
+        @media (max-width:600px) {
+            #sec-sponsor div[style*="display:grid"] { grid-template-columns:1fr !important; }
+        }
+
+        /* Puan durumu tab butonları */
+        @media (max-width:600px) {
+            .pd-tabs { flex-wrap:wrap; gap:6px !important; }
+            .pd-tab { font-size:.7rem !important; padding:7px 10px !important; }
+        }
+
+        /* WorldSBK tab - küçük ekran */
+        @media (max-width:480px) {
+            .wsbk-tab-btn { font-size:.65rem !important; padding:6px 8px !important; }
+        }
+
+        /* Genel inline grid'ler için override */
+        @media (max-width:500px) {
+            [style*="minmax(220px"] { grid-template-columns:1fr !important; }
+            [style*="minmax(240px"] { grid-template-columns:1fr !important; }
+            [style*="minmax(180px"] { grid-template-columns:repeat(2,1fr) !important; }
+        }
     </style>
 </head>
 <body>
