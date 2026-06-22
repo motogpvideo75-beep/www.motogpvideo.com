@@ -10,5 +10,11 @@
     { "source": "/index-pt.html", "destination": "/", "permanent": true },
     { "source": "/index-ar.html", "destination": "/", "permanent": true },
     { "source": "/index-id.html", "destination": "/", "permanent": true }
-  ]
+  ],
+  "functions": {
+    "api/sportradar.js": {
+      "memory": 128,
+      "maxDuration": 10
+    }
+  }
 }
