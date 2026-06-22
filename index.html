@@ -1588,23 +1588,6 @@
              style="height:38px;width:38px;object-fit:cover;border-radius:6px;border:1px solid #e8001d44;transform:scaleX(-1);" 
              alt="kask">
     </div>
-    <div class="topnav-lang" style="display:flex;align-items:center;gap:4px;position:relative;">
-        <button id="lang-dropdown-btn" onclick="toggleLangMenu()" style="display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--border);color:#fff;padding:5px 12px;border-radius:6px;cursor:pointer;font-size:.75rem;font-weight:700;letter-spacing:.5px;">
-            🌐 <span id="lang-current-name">English</span> <span style="font-size:.6rem;opacity:.7;">▼</span>
-        </button>
-        <div id="lang-menu" style="display:none;position:absolute;top:calc(100% + 6px);right:0;background:#1a1f33;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.5);z-index:9999;min-width:160px;">
-            <div class="lang-option" onclick="selectLang('tr','🇹🇷','Türkçe')">🇹🇷 Türkçe</div>
-            <div class="lang-option" onclick="selectLang('en','🇬🇧','English')">🇬🇧 English</div>
-            <div class="lang-option" onclick="selectLang('de','🇩🇪','Deutsch')">🇩🇪 Deutsch</div>
-            <div class="lang-option" onclick="selectLang('fr','🇫🇷','Français')">🇫🇷 Français</div>
-            <div class="lang-option" onclick="selectLang('ja','🇯🇵','日本語')">🇯🇵 日本語</div>
-            <div class="lang-option" onclick="selectLang('es','🇪🇸','Español')">🇪🇸 Español</div>
-            <div class="lang-option" onclick="selectLang('it','🇮🇹','Italiano')">🇮🇹 Italiano</div>
-            <div class="lang-option" onclick="selectLang('pt','🇵🇹','Português')">🇵🇹 Português</div>
-            <div class="lang-option" onclick="selectLang('id','🇮🇩','Indonesia')">🇮🇩 Indonesia</div>
-            <div class="lang-option" onclick="selectLang('ar','🇸🇦','العربية')">🇸🇦 العربية</div>
-        </div>
-    </div>
 </nav>
 <div id="search-overlay" onclick="closeSearchOnBg(event)">
   <div id="search-box">
@@ -1648,6 +1631,24 @@
             <a href="https://twitter.com/F1" target="_blank" rel="noopener noreferrer" title="Formula 1 Twitter" style="width:34px;height:34px;border-radius:6px;background:#000;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.85rem;font-weight:900;color:white;transition:opacity .2s;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">𝕏</a>
             <a href="https://www.youtube.com/F1" target="_blank" rel="noopener noreferrer" title="Formula 1 YouTube" style="width:34px;height:34px;border-radius:6px;background:#ff0000;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1rem;transition:opacity .2s;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">▶</a>
             <a href="https://www.reddit.com/r/MotoGP/" target="_blank" rel="noopener noreferrer" title="Reddit - r/MotoGP" style="width:34px;height:34px;border-radius:6px;background:#ff4500;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1rem;transition:opacity .2s;" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">👽</a>
+        </div>
+        <div class="sidebar-section-label" style="margin-top:8px;">🌐 Dil Seçimi</div>
+        <div style="padding:6px 18px 10px;position:relative;">
+            <button id="lang-dropdown-btn" onclick="toggleLangMenu()" style="display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);color:#fff;padding:8px 14px;border-radius:8px;cursor:pointer;font-size:.82rem;font-weight:700;width:100%;letter-spacing:.5px;">
+                🌐 <span id="lang-current-name">Türkçe</span> <span style="margin-left:auto;font-size:.6rem;opacity:.7;">▼</span>
+            </button>
+            <div id="lang-menu" style="display:none;position:absolute;left:18px;right:18px;bottom:calc(100% - 6px);background:#1a1f33;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 -8px 24px rgba(0,0,0,.5);z-index:9999;">
+                <div class="lang-option" onclick="selectLang('tr','🇹🇷','Türkçe')">🇹🇷 Türkçe</div>
+                <div class="lang-option" onclick="selectLang('en','🇬🇧','English')">🇬🇧 English</div>
+                <div class="lang-option" onclick="selectLang('de','🇩🇪','Deutsch')">🇩🇪 Deutsch</div>
+                <div class="lang-option" onclick="selectLang('fr','🇫🇷','Français')">🇫🇷 Français</div>
+                <div class="lang-option" onclick="selectLang('ja','🇯🇵','日本語')">🇯🇵 日本語</div>
+                <div class="lang-option" onclick="selectLang('es','🇪🇸','Español')">🇪🇸 Español</div>
+                <div class="lang-option" onclick="selectLang('it','🇮🇹','Italiano')">🇮🇹 Italiano</div>
+                <div class="lang-option" onclick="selectLang('pt','🇵🇹','Português')">🇵🇹 Português</div>
+                <div class="lang-option" onclick="selectLang('id','🇮🇩','Indonesia')">🇮🇩 Indonesia</div>
+                <div class="lang-option" onclick="selectLang('ar','🇸🇦','العربية')">🇸🇦 العربية</div>
+            </div>
         </div>
         <div class="sidebar-section-label" id="sb-mission" style="margin-top:8px;">Misyonumuz</div>
         <div class="nav-mission" id="sb-mission-text">Amatörden motor sporları dünyasını desteklemek ve izleyicileri güçlü, kaliteli yayınlarla buluşturmaktır. Herkese Hoş!</div>
