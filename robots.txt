@@ -1,3 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /motogpvideo.apk
+
+# Gereksiz dosyalar
+Disallow: /eksik-kod.txt
+Disallow: /kod.html.txt
+Disallow: /Yeni Metin Belgesi.txt
+
 Sitemap: https://www.motogpvideo.com/sitemap.xml

@@ -77,7 +77,10 @@
     <link rel="alternate" hreflang="it" href="https://www.motogpvideo.com/?lang=it">
     <link rel="alternate" hreflang="pt" href="https://www.motogpvideo.com/?lang=pt">
     <link rel="alternate" hreflang="id" href="https://www.motogpvideo.com/?lang=id">
+    <link rel="alternate" hreflang="ar" href="https://www.motogpvideo.com/?lang=ar">
     <link rel="alternate" hreflang="x-default" href="https://www.motogpvideo.com/">
+    <!-- Preload kritik görsel -->
+    <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png">
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -88,7 +91,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#e8001d">
 
-    <title> Motor Sporları Merkezi</title>
+    <title>MotoGP, WorldSBK & F1 Canlı Yayın Rehberi — motogpvideo.com</title>
     <meta name="description" content="MotoGP, WorldSBK, Formula 1 ve 2026 FIFA Dünya Kupası'nı takip edin: canlı yayın bilgileri, yarış takvimleri, sürücü kadroları ve resmi yayın kanalları rehberi.">
     <meta name="keywords" content="MotoGP, WorldSBK, Formula 1, 2026 Dünya Kupası, FIFA World Cup 2026, WRC, WEC, Toprak Razgatlıoğlu, yarış takvimi, motor sporları, motorsport, live streaming, race calendar, dünya kupası izle, world cup watch">
     <meta name="author" content="motogpvideo.com">
@@ -101,16 +104,32 @@
     <meta property="og:title" content="Motor Sporları & 2026 Dünya Kupası Merkezi — MotoGP, F1, WorldSBK">
     <meta property="og:description" content="MotoGP, WorldSBK, Formula 1 ve 2026 FIFA Dünya Kupası'nı takip edin: canlı yayın bilgileri, yarış takvimleri, sürücü kadroları ve resmi yayın kanalları rehberi.">
     <meta property="og:image" content="https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="MotoGP, WorldSBK ve Formula 1 canlı yayın rehberi — motogpvideo.com">
     <meta property="og:locale" content="tr_TR">
     <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="it_IT">
+    <meta property="og:locale:alternate" content="pt_PT">
+    <meta property="og:locale:alternate" content="ja_JP">
+    <meta property="og:locale:alternate" content="ar_SA">
+    <meta property="og:locale:alternate" content="id_ID">
     <meta property="og:site_name" content="motogpvideo.com">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@motogpvideo_com">
+    <meta name="twitter:creator" content="@motogpvideo_com">
     <meta name="twitter:title" content="Motor Sporları & 2026 Dünya Kupası Merkezi — MotoGP, F1, WorldSBK">
     <meta name="twitter:description" content="MotoGP, WorldSBK, F1 ve 2026 FIFA Dünya Kupası canlı yayın bilgileri, takvimler ve resmi yayın kanalları.">
     <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png">
+    <meta name="twitter:image:width" content="1200">
+    <meta name="twitter:image:height" content="630">
+    <meta name="twitter:image:alt" content="MotoGP, WorldSBK ve Formula 1 canlı yayın rehberi">
 
     <!-- Schema.org yapısal veri -->
     <script type="application/ld+json">
@@ -118,24 +137,24 @@
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "Motor Sporları Merkezi",
+        "name": "MotoGP, WorldSBK & F1 Canlı Yayın Rehberi",
         "alternateName": "motogpvideo.com",
         "url": "https://www.motogpvideo.com",
-        "description": "MotoGP, WorldSBK ve Formula 1 yarışlarını takip edebileceğiniz, canlı yayın bilgileri, yarış takvimleri ve sürücü kadrolarına ulaşabileceğiniz motor sporları platformu.",
-        "inLanguage": ["tr", "en", "de", "fr", "ja", "es", "it", "pt", "id"],
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://www.motogpvideo.com/?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
+        "description": "MotoGP, WorldSBK ve Formula 1 yarışlarını takip edebileceğiniz, ücretsiz canlı yayın bilgileri, yarış takvimleri ve sürücü kadrolarına ulaşabileceğiniz bağımsız motor sporları platformu.",
+        "inLanguage": ["tr", "en", "de", "fr", "ja", "es", "it", "pt", "ar", "id"]
       },
       {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "motogpvideo.com",
         "url": "https://www.motogpvideo.com",
-        "logo": "https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png",
-        "description": "Bağımsız motor sporları bilgi ve yayın rehberi platformu. MotoGP, WorldSBK ve Formula 1 için resmi kaynaklara yönlendirme.",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png",
+          "width": 1200,
+          "height": 630
+        },
+        "description": "Bağımsız motor sporları bilgi ve yayın rehberi platformu. MotoGP, WorldSBK ve Formula 1 için resmi kaynaklara yönlendirme. Ücretsiz, reklamsız, 10 dil.",
         "contactPoint": {
           "@type": "ContactPoint",
           "email": "asikurye35@hotmail.com",
@@ -143,6 +162,33 @@
         },
         "sameAs": [
           "https://www.motogpvideo.com"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Motor Sporları Yayın Rehberleri",
+        "description": "MotoGP, WorldSBK ve Formula 1 için ülkeye göre resmi TV kanalları ve canlı yayın platformları",
+        "url": "https://www.motogpvideo.com/canli-yayin.html",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "MotoGP Yayın Rehberi",
+            "url": "https://www.motogpvideo.com/canli-yayin.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "2026 MotoGP Takvimi",
+            "url": "https://www.motogpvideo.com/takvim.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "MotoGP Puan Durumu",
+            "url": "https://www.motogpvideo.com/puan-durumu.html"
+          }
         ]
       }
     ]
