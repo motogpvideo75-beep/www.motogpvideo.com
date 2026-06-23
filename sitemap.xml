@@ -25,6 +25,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.motogpvideo.com/turk-surucular.html</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.motogpvideo.com/f1-timing.html</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>daily</changefreq>
