@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1280, initial-scale=0.25, minimum-scale=0.1, maximum-scale=5.0, user-scalable=yes">
+    <title>Türk Yarışçılar — motogpvideo.com</title>
+    <meta name="description" content="Kenan Sofuoğlu, Toprak Razgatlıoğlu ve tüm Türk motorsport efsanelerinin biyografileri. Kariyer hikayeleri, başarıları ve istatistikleri.">
+    <link rel="canonical" href="https://www.motogpvideo.com/turk-surucular.html">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="tr" href="https://www.motogpvideo.com/turk-surucular.html?lang=tr">
+    <link rel="alternate" hreflang="en" href="https://www.motogpvideo.com/turk-surucular.html?lang=en">
+    <link rel="alternate" hreflang="de" href="https://www.motogpvideo.com/turk-surucular.html?lang=de">
+    <link rel="alternate" hreflang="fr" href="https://www.motogpvideo.com/turk-surucular.html?lang=fr">
+    <link rel="alternate" hreflang="ja" href="https://www.motogpvideo.com/turk-surucular.html?lang=ja">
+    <link rel="alternate" hreflang="es" href="https://www.motogpvideo.com/turk-surucular.html?lang=es">
+    <link rel="alternate" hreflang="it" href="https://www.motogpvideo.com/turk-surucular.html?lang=it">
+    <link rel="alternate" hreflang="pt" href="https://www.motogpvideo.com/turk-surucular.html?lang=pt">
+    <link rel="alternate" hreflang="id" href="https://www.motogpvideo.com/turk-surucular.html?lang=id">
+    <link rel="alternate" hreflang="ar" href="https://www.motogpvideo.com/turk-surucular.html?lang=ar">
+    <link rel="alternate" hreflang="x-default" href="https://www.motogpvideo.com/turk-surucular.html">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg:#0d1220; --topbar-bg:#080e1a; --nav-bg:#0d1424;
+            --card:#131d30; --card2:#192438; --accent:#e8001d;
+            --accent2:#b50016; --green:#00c853; --border:#1e2d4a;
+            --text:#ffffff; --muted:#7a90b8; --gold:#f5a623;
+        }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        body { background:var(--bg); color:var(--text); font-family:"Segoe UI",Arial,sans-serif; min-height:100vh; }
+
+        /* TOPNAV */
+        .topnav { background:var(--nav-bg); border-bottom:1px solid var(--border); display:flex; align-items:center; height:54px; padding:0 20px; position:sticky; top:0; z-index:100; gap:16px; }
+        .topnav a.logo { font-size:1.1rem; font-weight:900; color:#fff; text-decoration:none; letter-spacing:.5px; }
+        .topnav a.logo span { color:var(--accent); }
+        .topnav .nav-links { display:flex; gap:8px; margin-left:auto; }
+        .topnav .nav-links a { color:var(--muted); text-decoration:none; font-size:.85rem; padding:6px 12px; border-radius:6px; transition:all .2s; }
+        .topnav .nav-links a:hover, .topnav .nav-links a.active { background:var(--card2); color:#fff; }
+
+        /* LANG BAR */
+        .lang-bar { background:var(--topbar-bg); border-bottom:1px solid var(--border); padding:6px 20px; display:flex; gap:6px; flex-wrap:wrap; }
+        .lang-bar span { cursor:pointer; font-size:.78rem; padding:3px 10px; border-radius:12px; color:var(--muted); transition:all .2s; }
+        .lang-bar span:hover { background:var(--card); color:#fff; }
+        .lang-bar span.active { background:var(--accent); color:#fff; font-weight:700; }
+
+        /* HERO */
+        .hero { background:linear-gradient(135deg,#080e1a 0%,#0d1220 50%,#12001a 100%); padding:50px 20px 40px; text-align:center; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+        .hero::before { content:"🇹🇷"; font-size:120px; position:absolute; top:-20px; right:-20px; opacity:.05; }
+        .hero h1 { font-size:2.2rem; font-weight:900; margin-bottom:10px; }
+        .hero h1 span { color:var(--accent); }
+        .hero p { color:var(--muted); font-size:1rem; max-width:600px; margin:0 auto; }
+
+        /* RIDER TABS */
+        .rider-tabs { display:flex; gap:8px; padding:20px; overflow-x:auto; border-bottom:1px solid var(--border); background:var(--nav-bg); }
+        .rider-tab { cursor:pointer; padding:8px 18px; border-radius:20px; font-size:.85rem; font-weight:700; white-space:nowrap; border:1px solid var(--border); color:var(--muted); transition:all .2s; }
+        .rider-tab:hover { border-color:var(--accent); color:#fff; }
+        .rider-tab.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+
+        /* MAIN CONTENT */
+        .content { max-width:900px; margin:0 auto; padding:30px 20px; }
+
+        /* RIDER HEADER */
+        .rider-header { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:30px; margin-bottom:30px; display:flex; gap:30px; align-items:center; }
+        .rider-number { font-size:5rem; font-weight:900; color:var(--accent); opacity:.3; line-height:1; min-width:120px; text-align:center; font-family:"Tajawal",sans-serif; }
+        .rider-info h2 { font-size:1.8rem; font-weight:900; margin-bottom:6px; }
+        .rider-info .subtitle { color:var(--accent); font-size:.9rem; font-weight:700; margin-bottom:12px; letter-spacing:1px; text-transform:uppercase; }
+        .rider-meta { display:flex; flex-wrap:wrap; gap:12px; margin-top:12px; }
+        .meta-item { background:var(--card2); border-radius:8px; padding:6px 14px; font-size:.82rem; }
+        .meta-item strong { color:var(--muted); font-size:.72rem; display:block; text-transform:uppercase; letter-spacing:.5px; margin-bottom:2px; }
+
+        /* STATS ROW */
+        .stats-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-bottom:30px; }
+        .stat-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px; text-align:center; }
+        .stat-card .num { font-size:2.2rem; font-weight:900; color:var(--gold); }
+        .stat-card .lbl { font-size:.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; margin-top:4px; }
+
+        /* TIMELINE */
+        .section-title { font-size:1.1rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:1px; margin-bottom:18px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+        .timeline { position:relative; padding-left:24px; margin-bottom:30px; }
+        .timeline::before { content:""; position:absolute; left:6px; top:0; bottom:0; width:2px; background:var(--border); }
+        .tl-item { position:relative; margin-bottom:24px; }
+        .tl-dot { position:absolute; left:-21px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--accent); border:2px solid var(--bg); }
+        .tl-dot.gold { background:var(--gold); }
+        .tl-dot.green { background:var(--green); }
+        .tl-year { font-size:.75rem; font-weight:700; color:var(--accent); letter-spacing:1px; margin-bottom:4px; }
+        .tl-title { font-size:.95rem; font-weight:700; margin-bottom:4px; }
+        .tl-desc { font-size:.85rem; color:var(--muted); line-height:1.5; }
+
+        /* BIO TEXT */
+        .bio-section { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:24px; margin-bottom:24px; }
+        .bio-section p { font-size:.92rem; line-height:1.7; color:#c8d8f0; margin-bottom:12px; }
+        .bio-section p:last-child { margin-bottom:0; }
+        .bio-section .highlight { color:#fff; font-weight:600; }
+
+        /* CHAMPIONSHIP BADGES */
+        .champ-badges { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:30px; }
+        .champ-badge { background:linear-gradient(135deg,var(--gold),#c8860a); color:#000; font-weight:900; font-size:.78rem; padding:6px 14px; border-radius:20px; letter-spacing:.5px; }
+
+        /* SOCIAL */
+        .social-links { display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+        .social-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border-radius:8px; font-size:.82rem; font-weight:700; text-decoration:none; transition:opacity .2s; }
+        .social-btn:hover { opacity:.8; }
+        .social-btn.instagram { background:#e1306c; color:#fff; }
+        .social-btn.twitter { background:#1da1f2; color:#fff; }
+        .social-btn.youtube { background:#ff0000; color:#fff; }
+        .social-btn.facebook { background:#1877f2; color:#fff; }
+
+        /* RIDER PANELS */
+        .rider-panel { display:none; }
+        .rider-panel.active { display:block; }
+
+        /* BACK LINK */
+        .back-bar { padding:12px 20px; border-bottom:1px solid var(--border); }
+        .back-bar a { color:var(--muted); text-decoration:none; font-size:.85rem; }
+        .back-bar a:hover { color:#fff; }
+
+        /* FOOTER */
+        .footer { text-align:center; padding:30px 20px; color:var(--muted); font-size:.8rem; border-top:1px solid var(--border); margin-top:40px; }
+
+        @media(max-width:600px) {
+            .rider-header { flex-direction:column; text-align:center; }
+            .rider-number { font-size:3rem; min-width:auto; }
+            .hero h1 { font-size:1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOPNAV -->
+<nav class="topnav">
+    <a href="/" class="logo">moto<span>GP</span>video</a>
+    <div class="nav-links">
+        <a href="/">Ana Sayfa</a>
+        <a href="/takvim.html">Takvim</a>
+        <a href="/puan-durumu.html">Puan Durumu</a>
+        <a href="/turk-surucular.html" class="active">Türk Sürücüler</a>
+    </div>
+</nav>
+
+<!-- LANG BAR -->
+<div class="lang-bar">
+    <span onclick="setLang('tr')" id="lang-tr" class="active">🇹🇷 TR</span>
+    <span onclick="setLang('en')" id="lang-en">🇬🇧 EN</span>
+    <span onclick="setLang('de')" id="lang-de">🇩🇪 DE</span>
+    <span onclick="setLang('fr')" id="lang-fr">🇫🇷 FR</span>
+    <span onclick="setLang('ja')" id="lang-ja">🇯🇵 JA</span>
+    <span onclick="setLang('es')" id="lang-es">🇪🇸 ES</span>
+    <span onclick="setLang('it')" id="lang-it">🇮🇹 IT</span>
+    <span onclick="setLang('pt')" id="lang-pt">🇧🇷 PT</span>
+    <span onclick="setLang('id')" id="lang-id">🇮🇩 ID</span>
+    <span onclick="setLang('ar')" id="lang-ar">🇸🇦 AR</span>
+</div>
+
+<!-- BACK BAR -->
+<div class="back-bar">
+    <a href="/">← <span data-key="back">Ana Sayfaya Dön</span></a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>🇹🇷 <span data-key="heroTitle">Türk Motorsport Efsaneleri</span></h1>
+    <p data-key="heroDesc">Piste çıkan, dünyayı şaşırtan, Türk bayrağını zirveye taşıyan isimlerin hikayeleri.</p>
+</div>
+
+<!-- RIDER TABS -->
+<div class="rider-tabs">
+    <div class="rider-tab active" onclick="showRider('kenan')">🏆 Kenan Sofuoğlu</div>
+    <div class="rider-tab" onclick="showRider('toprak')">⭐ Toprak Razgatlıoğlu</div>
+    <div class="rider-tab" onclick="showRider('can')">🔥 Can Öncü</div>
+    <div class="rider-tab" onclick="showRider('deniz')">⚡ Deniz Öncü</div>
+    <div class="rider-tab" onclick="showRider('bahattin')">🌟 Bahattin Sofuoğlu</div>
+    <div class="rider-tab" onclick="showRider('zayn')">🌱 Zayn Sofuoğlu</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content">
+
+    <!-- ===== KENAN SOFUOĞLU ===== -->
+    <div id="rider-kenan" class="rider-panel active">
+
+        <div class="rider-header">
+            <div class="rider-number">#54</div>
+            <div class="rider-info">
+                <div class="subtitle" data-key="kenan_subtitle">5× Supersport Dünya Şampiyonu</div>
+                <h2>Kenan Sofuoğlu</h2>
+                <div class="rider-meta">
+                    <div class="meta-item"><strong data-key="born">DOĞUM</strong>25 Temmuz 1983</div>
+                    <div class="meta-item"><strong data-key="birthplace">DOĞUM YERİ</strong>Akyazı, Sakarya</div>
+                    <div class="meta-item"><strong data-key="nationality">MİLLİYET</strong>🇹🇷 Türk</div>
+                    <div class="meta-item"><strong data-key="number">NUMARA</strong>#54</div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/kenansofuoglu" target="_blank" class="social-btn instagram">📸 Instagram</a>
+                    <a href="https://twitter.com/54KenanSofuoglu" target="_blank" class="social-btn twitter">🐦 Twitter</a>
+                    <a href="https://www.youtube.com/@kenansofuoglu" target="_blank" class="social-btn youtube">▶ YouTube</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- STATS -->
+        <div class="stats-row">
+            <div class="stat-card"><div class="num">5</div><div class="lbl" data-key="worldTitles">Dünya Şampiyonluğu</div></div>
+            <div class="stat-card"><div class="num">38</div><div class="lbl" data-key="raceWins">Yarış Galibiyeti</div></div>
+            <div class="stat-card"><div class="num">2007</div><div class="lbl" data-key="firstTitle">İlk Şampiyonluk</div></div>
+            <div class="stat-card"><div class="num">#1</div><div class="lbl" data-key="turkRecord">Türkiye Rekoru</div></div>
+        </div>
+
+        <!-- CHAMP BADGES -->
+        <div class="champ-badges">
+            <div class="champ-badge">🏆 2007 SSP Şampiyonu</div>
+            <div class="champ-badge">🏆 2010 SSP Şampiyonu</div>
+            <div class="champ-badge">🏆 2012 SSP Şampiyonu</div>
+            <div class="champ-badge">🏆 2015 SSP Şampiyonu</div>
+            <div class="champ-badge">🏆 2016 SSP Şampiyonu</div>
+        </div>
+
+        <!-- BIO -->
+        <div class="section-title" data-key="lifeStory">Hayat Hikayesi</div>
+
+        <div class="bio-section">
+            <p data-key="kenan_bio1">Motor tamircisi bir babanın oğlu olarak Sakarya'nın Akyazı ilçesinde dünyaya gelen Kenan Sofuoğlu, motosikleti bir meslek aracı değil, bir tutku olarak benimseyen bir ailenin içinde büyüdü. Ağabeyleri Bahattin ve Sinan ile birlikte pistte büyüdü; aile geleneği onun DNA'sına işlenmişti.</p>
+            <p data-key="kenan_bio2">2000 yılında ağabeyi Sinan'ın yarışta ayağını kırmasının ardından 16 yaşında, özel izinle onun motoruna bindi. O günkü yarışı birinci tamamladı. Bir efsanenin fitili bu kadar sıradan bir anda ateşlendi.</p>
+            <p data-key="kenan_bio3">2002'de maddi imkânsızlıklar içinde, ağabeylerinin fedakârlığıyla tek başına Almanya'ya gönderildi. Bavulunda hayalleri, cebinde neredeyse hiç para yoktu. O yıl Yamaha Cup'ı kazandı. Aynı yıl en büyük destekçisi ağabeyi Bahattin trafik kazasında hayatını kaybetti. Kenan bugün hâlâ kaskında Bahattin'in ismini taşıyor.</p>
+        </div>
+
+        <!-- TIMELINE -->
+        <div class="section-title" data-key="careerTimeline">Kariyer Zaman Çizelgesi</div>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">1996</div>
+                <div class="tl-title" data-key="tl1t">Motorsporla İlk Tanışma</div>
+                <div class="tl-desc" data-key="tl1d">Ağabeyi Bahattin'i Türkiye Şampiyonası'nda izleyerek motor dünyasına adım attı.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2000</div>
+                <div class="tl-title" data-key="tl2t">İlk Yarış, İlk Galibiyet</div>
+                <div class="tl-desc" data-key="tl2d">16 yaşında ağabeyinin motoruyla çıktığı ilk drag yarışını kazandı. Türkiye Pist Şampiyonası B Grubu birincisi oldu.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2002</div>
+                <div class="tl-title" data-key="tl3t">Almanya'ya Yolculuk</div>
+                <div class="tl-desc" data-key="tl3d">Ağabeylerinin fedakârlığıyla Avrupa'ya gitti. Yamaha Cup şampiyonu oldu. Ağabeyi Bahattin'i trafik kazasında kaybetti.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-year">2006</div>
+                <div class="tl-title" data-key="tl4t">Dünya Supersport Şampiyonası</div>
+                <div class="tl-desc" data-key="tl4d">Ten Kate Honda ile tam zamanlı Supersport Dünya Şampiyonası'na katıldı. İlk sezonunu 3. tamamladı.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot gold"></div>
+                <div class="tl-year">2007 🏆</div>
+                <div class="tl-title" data-key="tl5t">TÜRKİYE'NİN İLK DÜNYA ŞAMPİYONU</div>
+                <div class="tl-desc" data-key="tl5d">Sezonda 8 yarış kazanarak rekor kırdı ve şampiyonluğu aldı. Türkiye'nin motosiklet sporundaki ilk büyük dünya şampiyonu oldu.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot gold"></div>
+                <div class="tl-year">2010 🏆</div>
+                <div class="tl-title" data-key="tl6t">İkinci Şampiyonluk + Moto2</div>
+                <div class="tl-desc" data-key="tl6d">Supersport'ta ikinci şampiyonluğunu aldı. Moto2'de Portekiz ve İspanya yarışlarına katılan ilk Türk pilot oldu.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot gold"></div>
+                <div class="tl-year">2012 🏆</div>
+                <div class="tl-title" data-key="tl7t">Kawasaki ile Üçüncü Şampiyonluk</div>
+                <div class="tl-desc" data-key="tl7d">Kawasaki ZX-6R ile 183 puanla üçüncü dünya şampiyonluğunu aldı.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot gold"></div>
+                <div class="tl-year">2015–2016 🏆🏆</div>
+                <div class="tl-title" data-key="tl8t">Tarihi Çifte Şampiyonluk</div>
+                <div class="tl-desc" data-key="tl8d">Üst üste iki yıl şampiyon olarak Supersport tarihinin en fazla şampiyonluk kazanan pilotu unvanını pekiştirdi. Toplamda 38 galibiyet.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot green"></div>
+                <div class="tl-year">2018</div>
+                <div class="tl-title" data-key="tl9t">Emeklilik ve Milletvekilliği</div>
+                <div class="tl-desc" data-key="tl9d">Aktif yarış kariyerini noktaladı. AK Parti'den Sakarya milletvekili seçildi. Akyazı'da kendi adını taşıyan 3.600 metrelik pisti hizmete açtı.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot green"></div>
+                <div class="tl-year">Günümüz</div>
+                <div class="tl-title" data-key="tl10t">Mentorluk ve Geleceğe Yatırım</div>
+                <div class="tl-desc" data-key="tl10d">Oğlu Zayn Sofuoğlu'nu genç yaşta yarışa hazırlarken genç Türk yeteneklerin de destekçisi olmaya devam ediyor. Toprak Razgatlıoğlu'nun erken kariyerinde önemli rol oynadı.</div>
+            </div>
+        </div>
+
+        <!-- LEGACY -->
+        <div class="section-title" data-key="legacy">Mirası</div>
+        <div class="bio-section">
+            <p data-key="kenan_legacy1">Kenan Sofuoğlu'nun hikayesi yalnızca motorsport tarihine değil, Türk spor tarihine de altın harflerle yazılmıştır. Sıfırdan, maddi imkânsızlıklar içinde, kişisel kayıpların gölgesinde beş dünya şampiyonluğu kazanmak, kendine özgü bir karakterin ürünüdür.</p>
+            <p data-key="kenan_legacy2">Piste çıkan sürücünün kaskında taşıdığı ağabeyinin ismi, hem bir vefa hem de bir motivasyon kaynağıydı. Yarış kariyerinde yalnızca şampiyonluklar değil, insan hikayesi de ön plana çıktı.</p>
+            <p data-key="kenan_legacy3">2012'de hayatı "54" belgesel filmiyle NTV Spor'da anlatıldı. Akyazı'daki pisti ise bugün hem profesyonellere hem de amatörlere kapılarını açıyor; Sofuoğlu, bir efsane olmanın ötesinde motor sporunu Türkiye'de yaşatma misyonunu üstlendi.</p>
+        </div>
+
+    </div><!-- /kenan -->
+
+    <!-- ===== TOPRAK ===== -->
+    <div id="rider-toprak" class="rider-panel">
+        <div class="rider-header">
+            <div class="rider-number">#54</div>
+            <div class="rider-info">
+                <div class="subtitle">1× WorldSBK Dünya Şampiyonu</div>
+                <h2>Toprak Razgatlıoğlu</h2>
+                <div class="rider-meta">
+                    <div class="meta-item"><strong>DOĞUM</strong>16 Ekim 1996</div>
+                    <div class="meta-item"><strong>DOĞUM YERİ</strong>Sakarya</div>
+                    <div class="meta-item"><strong>MİLLİYET</strong>🇹🇷 Türk</div>
+                    <div class="meta-item"><strong>NUMARA</strong>#54</div>
+                </div>
+            </div>
+        </div>
+        <div class="bio-section">
+            <p>Toprak Razgatlıoğlu'nun biyografisi yakında eklenecek. 🚧</p>
+        </div>
+    </div>
+
+    <!-- ===== CAN ÖNCÜ ===== -->
+    <div id="rider-can" class="rider-panel">
+        <div class="rider-header">
+            <div class="rider-number">#53</div>
+            <div class="rider-info">
+                <div class="subtitle">MotoGP Pilotu</div>
+                <h2>Can Öncü</h2>
+                <div class="rider-meta">
+                    <div class="meta-item"><strong>DOĞUM</strong>16 Ocak 2004</div>
+                    <div class="meta-item"><strong>MİLLİYET</strong>🇹🇷 Türk</div>
+                </div>
+            </div>
+        </div>
+        <div class="bio-section">
+            <p>Can Öncü'nün biyografisi yakında eklenecek. 🚧</p>
+        </div>
+    </div>
+
+    <!-- ===== DENİZ ÖNCÜ ===== -->
+    <div id="rider-deniz" class="rider-panel">
+        <div class="rider-header">
+            <div class="rider-number">#53</div>
+            <div class="rider-info">
+                <div class="subtitle">WorldSBK Pilotu</div>
+                <h2>Deniz Öncü</h2>
+                <div class="rider-meta">
+                    <div class="meta-item"><strong>MİLLİYET</strong>🇹🇷 Türk</div>
+                </div>
+            </div>
+        </div>
+        <div class="bio-section">
+            <p>Deniz Öncü'nün biyografisi yakında eklenecek. 🚧</p>
+        </div>
+    </div>
+
+    <!-- ===== BAHATTİN SOFUOĞLU ===== -->
+    <div id="rider-bahattin" class="rider-panel">
+        <div class="rider-header">
+            <div class="rider-number">#21</div>
+            <div class="rider-info">
+                <div class="subtitle">WorldSSP Pilotu</div>
+                <h2>Bahattin Sofuoğlu</h2>
+                <div class="rider-meta">
+                    <div class="meta-item"><strong>MİLLİYET</strong>🇹🇷 Türk</div>
+                </div>
+            </div>
+        </div>
+        <div class="bio-section">
+            <p>Bahattin Sofuoğlu'nun biyografisi yakında eklenecek. 🚧</p>
+        </div>
+    </div>
+
+    <!-- ===== ZAYN SOFUOĞLU ===== -->
+    <div id="rider-zayn" class="rider-panel">
+        <div class="rider-header">
+            <div class="rider-number">#54</div>
+            <div class="rider-info">
+                <div class="subtitle">Genç Umut</div>
+                <h2>Zayn Sofuoğlu</h2>
+                <div class="rider-meta">
+                    <div class="meta-item"><strong>BABA</strong>Kenan Sofuoğlu</div>
+                    <div class="meta-item"><strong>MİLLİYET</strong>🇹🇷 Türk</div>
+                </div>
+            </div>
+        </div>
+        <div class="bio-section">
+            <p>Zayn Sofuoğlu'nun biyografisi yakında eklenecek. 🚧</p>
+        </div>
+    </div>
+
+</div><!-- /content -->
+
+<div class="footer">
+    <p>© 2024 motogpvideo.com — Bağımsız Motorsport Medyası</p>
+    <p style="margin-top:6px;font-size:.75rem;">Bu sayfa kamuya açık kaynaklardan derlenen bilgiler içermektedir.</p>
+</div>
+
+<script>
+// ===== DİL VERİSİ =====
+const translations = {
+    tr: {
+        back:"Ana Sayfaya Dön", heroTitle:"Türk Motorsport Efsaneleri",
+        heroDesc:"Piste çıkan, dünyayı şaşırtan, Türk bayrağını zirveye taşıyan isimlerin hikayeleri.",
+        born:"DOĞUM", birthplace:"DOĞUM YERİ", nationality:"MİLLİYET", number:"NUMARA",
+        kenan_subtitle:"5× Supersport Dünya Şampiyonu",
+        worldTitles:"Dünya Şampiyonluğu", raceWins:"Yarış Galibiyeti",
+        firstTitle:"İlk Şampiyonluk", turkRecord:"Türkiye Rekoru",
+        lifeStory:"Hayat Hikayesi", careerTimeline:"Kariyer Zaman Çizelgesi", legacy:"Mirası",
+        kenan_bio1:"Motor tamircisi bir babanın oğlu olarak Sakarya'nın Akyazı ilçesinde dünyaya gelen Kenan Sofuoğlu, motosikleti bir meslek aracı değil, bir tutku olarak benimseyen bir ailenin içinde büyüdü. Ağabeyleri Bahattin ve Sinan ile birlikte pistte büyüdü; aile geleneği onun DNA'sına işlenmişti.",
+        kenan_bio2:"2000 yılında ağabeyi Sinan'ın yarışta ayağını kırmasının ardından 16 yaşında, özel izinle onun motoruna bindi. O günkü yarışı birinci tamamladı. Bir efsanenin fitili bu kadar sıradan bir anda ateşlendi.",
+        kenan_bio3:"2002'de maddi imkânsızlıklar içinde, ağabeylerinin fedakârlığıyla tek başına Almanya'ya gönderildi. Bavulunda hayalleri, cebinde neredeyse hiç para yoktu. O yıl Yamaha Cup'ı kazandı. Aynı yıl en büyük destekçisi ağabeyi Bahattin trafik kazasında hayatını kaybetti. Kenan bugün hâlâ kaskında Bahattin'in ismini taşıyor.",
+        tl1t:"Motorsporla İlk Tanışma", tl1d:"Ağabeyi Bahattin'i Türkiye Şampiyonası'nda izleyerek motor dünyasına adım attı.",
+        tl2t:"İlk Yarış, İlk Galibiyet", tl2d:"16 yaşında ağabeyinin motoruyla çıktığı ilk drag yarışını kazandı. Türkiye Pist Şampiyonası B Grubu birincisi oldu.",
+        tl3t:"Almanya'ya Yolculuk", tl3d:"Ağabeylerinin fedakârlığıyla Avrupa'ya gitti. Yamaha Cup şampiyonu oldu. Ağabeyi Bahattin'i trafik kazasında kaybetti.",
+        tl4t:"Dünya Supersport Şampiyonası", tl4d:"Ten Kate Honda ile tam zamanlı Supersport Dünya Şampiyonası'na katıldı. İlk sezonunu 3. tamamladı.",
+        tl5t:"TÜRKİYE'NİN İLK DÜNYA ŞAMPİYONU", tl5d:"Sezonda 8 yarış kazanarak rekor kırdı ve şampiyonluğu aldı. Türkiye'nin motosiklet sporundaki ilk büyük dünya şampiyonu oldu.",
+        tl6t:"İkinci Şampiyonluk + Moto2", tl6d:"Supersport'ta ikinci şampiyonluğunu aldı. Moto2'de Portekiz ve İspanya yarışlarına katılan ilk Türk pilot oldu.",
+        tl7t:"Kawasaki ile Üçüncü Şampiyonluk", tl7d:"Kawasaki ZX-6R ile 183 puanla üçüncü dünya şampiyonluğunu aldı.",
+        tl8t:"Tarihi Çifte Şampiyonluk", tl8d:"Üst üste iki yıl şampiyon olarak Supersport tarihinin en fazla şampiyonluk kazanan pilotu unvanını pekiştirdi. Toplamda 38 galibiyet.",
+        tl9t:"Emeklilik ve Milletvekilliği", tl9d:"Aktif yarış kariyerini noktaladı. AK Parti'den Sakarya milletvekili seçildi. Akyazı'da kendi adını taşıyan 3.600 metrelik pisti hizmete açtı.",
+        tl10t:"Mentorluk ve Geleceğe Yatırım", tl10d:"Oğlu Zayn Sofuoğlu'nu genç yaşta yarışa hazırlarken genç Türk yeteneklerin de destekçisi olmaya devam ediyor.",
+        kenan_legacy1:"Kenan Sofuoğlu'nun hikayesi yalnızca motorsport tarihine değil, Türk spor tarihine de altın harflerle yazılmıştır. Sıfırdan, maddi imkânsızlıklar içinde, kişisel kayıpların gölgesinde beş dünya şampiyonluğu kazanmak, kendine özgü bir karakterin ürünüdür.",
+        kenan_legacy2:"Piste çıkan sürücünün kaskında taşıdığı ağabeyinin ismi, hem bir vefa hem de bir motivasyon kaynağıydı. Yarış kariyerinde yalnızca şampiyonluklar değil, insan hikayesi de ön plana çıktı.",
+        kenan_legacy3:"2012'de hayatı '54' belgesel filmiyle NTV Spor'da anlatıldı. Akyazı'daki pisti ise bugün hem profesyonellere hem de amatörlere kapılarını açıyor."
+    },
+    en: {
+        back:"Back to Home", heroTitle:"Turkish Motorsport Legends",
+        heroDesc:"The stories of those who took to the track, amazed the world, and carried the Turkish flag to the top.",
+        born:"BORN", birthplace:"BIRTHPLACE", nationality:"NATIONALITY", number:"NUMBER",
+        kenan_subtitle:"5× Supersport World Champion",
+        worldTitles:"World Titles", raceWins:"Race Wins",
+        firstTitle:"First Title", turkRecord:"Turkish Record",
+        lifeStory:"Life Story", careerTimeline:"Career Timeline", legacy:"Legacy",
+        kenan_bio1:"Born in Akyazı, Sakarya, as the son of a motorcycle mechanic, Kenan Sofuoğlu grew up in a family that treated motorcycles not as a profession but as a passion. He grew up on the track alongside his brothers Bahattin and Sinan; family tradition was in his DNA.",
+        kenan_bio2:"In 2000, after his brother Sinan broke his leg in a race, 16-year-old Kenan climbed onto his motorcycle with special permission. He finished first. The fuse of a legend was lit in that ordinary moment.",
+        kenan_bio3:"In 2002, through financial hardship, he was sent to Germany alone thanks to his brothers' sacrifice. His luggage held dreams; his pocket held almost no money. That year he won the Yamaha Cup. The same year, his biggest supporter, brother Bahattin, died in a traffic accident. Kenan still carries Bahattin's name on his helmet today.",
+        tl1t:"First Contact with Motorsport", tl1d:"Watched his brother Bahattin race in the Turkish Championship and stepped into the world of motorcycles.",
+        tl2t:"First Race, First Win", tl2d:"Won his first drag race at 16 on his brother's motorcycle. Became Turkish Motorcycle Track Championship Group B winner.",
+        tl3t:"Journey to Germany", tl3d:"Went to Europe through his brothers' sacrifice. Won the Yamaha Cup. Lost brother Bahattin in a traffic accident.",
+        tl4t:"World Supersport Championship", tl4d:"Joined the full-time Supersport World Championship with Ten Kate Honda. Finished 3rd in his first season.",
+        tl5t:"TURKEY'S FIRST WORLD CHAMPION", tl5d:"Won 8 races in the season, breaking records, and claimed the title. Became Turkey's first major motorcycle world champion.",
+        tl6t:"Second Title + Moto2", tl6d:"Won his second Supersport title. Became the first Turkish rider to compete in Moto2 at Portugal and Spain.",
+        tl7t:"Third Title with Kawasaki", tl7d:"Won his third world title with Kawasaki ZX-6R with 183 points.",
+        tl8t:"Historic Double Championship", tl8d:"Back-to-back champion, cementing his status as the most successful rider in Supersport history. 38 wins total.",
+        tl9t:"Retirement and Parliament", tl9d:"Ended his active racing career. Elected Member of Parliament from Sakarya. Opened the 3,600m circuit bearing his name in Akyazı.",
+        tl10t:"Mentoring and Investing in the Future", tl10d:"While preparing his son Zayn for racing from a young age, he continues to support young Turkish talents.",
+        kenan_legacy1:"Kenan Sofuoğlu's story is written in golden letters not only in motorsport history but in Turkish sports history. Winning five world championships from nothing, amid financial hardship and personal loss, is the product of a unique character.",
+        kenan_legacy2:"The brother's name carried on the helmet of the racing driver was both a tribute and a source of motivation. In his racing career, it wasn't just championships that stood out — the human story did too.",
+        kenan_legacy3:"In 2012, his life was told in the documentary '54' on NTV Spor. The circuit in Akyazı today opens its doors to both professionals and amateurs alike."
+    },
+    de: {
+        back:"Zurück zur Startseite", heroTitle:"Türkische Motorsport-Legenden",
+        heroDesc:"Die Geschichten derer, die auf die Strecke gingen, die Welt begeisterten und die türkische Flagge an die Spitze trugen.",
+        born:"GEBOREN", birthplace:"GEBURTSORT", nationality:"NATIONALITÄT", number:"NUMMER",
+        kenan_subtitle:"5× Supersport-Weltmeister",
+        worldTitles:"Weltmeisterschaften", raceWins:"Rennsiege",
+        firstTitle:"Erster Titel", turkRecord:"Türkischer Rekord",
+        lifeStory:"Lebensgeschichte", careerTimeline:"Karriere-Zeitlinie", legacy:"Vermächtnis",
+        kenan_bio1:"Als Sohn eines Motorradmechanikers in Akyazı, Sakarya geboren, wuchs Kenan Sofuoğlu in einer Familie auf, die Motorräder nicht als Beruf, sondern als Leidenschaft behandelte.",
+        kenan_bio2:"Im Jahr 2000, nachdem sein Bruder Sinan sich beim Rennen das Bein gebrochen hatte, bestieg der 16-jährige Kenan mit Sondergenehmigung sein Motorrad. Er beendete das Rennen als Erster.",
+        kenan_bio3:"2002 wurde er unter finanziellen Schwierigkeiten durch das Opfer seiner Brüder allein nach Deutschland geschickt. Sein Gepäck enthielt Träume; in seiner Tasche war kaum Geld. In diesem Jahr gewann er den Yamaha Cup.",
+        tl1t:"Erste Begegnung mit dem Motorsport", tl1d:"Schaute seinem Bruder Bahattin bei der türkischen Meisterschaft zu und trat in die Motorradwelt ein.",
+        tl2t:"Erstes Rennen, Erster Sieg", tl2d:"Gewann sein erstes Drag-Race mit 16 Jahren auf dem Motorrad seines Bruders.",
+        tl3t:"Reise nach Deutschland", tl3d:"Ging durch das Opfer seiner Brüder nach Europa. Gewann den Yamaha Cup.",
+        tl4t:"Supersport-Weltmeisterschaft", tl4d:"Trat mit Ten Kate Honda der Supersport-WM bei. Beendete seine erste Saison auf Platz 3.",
+        tl5t:"TÜRKEIS ERSTER WELTMEISTER", tl5d:"Gewann 8 Rennen und holte den Titel. Wurde Türkeis erster großer Motorrad-Weltmeister.",
+        tl6t:"Zweiter Titel + Moto2", tl6d:"Holte seinen zweiten Supersport-Titel. Erster türkischer Fahrer in der Moto2.",
+        tl7t:"Dritter Titel mit Kawasaki", tl7d:"Gewann seinen dritten Weltmeistertitel mit Kawasaki ZX-6R.",
+        tl8t:"Historischer Doppeltitel", tl8d:"Zwei Jahre in Folge Meister. Insgesamt 38 Siege.",
+        tl9t:"Ruhestand und Parlament", tl9d:"Beendete seine aktive Rennkarriere. Wurde Abgeordneter. Eröffnete die 3.600m-Rennstrecke in Akyazı.",
+        tl10t:"Mentoring und Investition in die Zukunft", tl10d:"Bereitet seinen Sohn Zayn auf Rennen vor und unterstützt junge türkische Talente.",
+        kenan_legacy1:"Kenan Sofuoğlus Geschichte ist nicht nur in der Motorsportgeschichte, sondern auch in der türkischen Sportgeschichte in goldenen Lettern geschrieben.",
+        kenan_legacy2:"Der Name des Bruders auf dem Helm war sowohl eine Hommage als auch eine Motivationsquelle.",
+        kenan_legacy3:"2012 wurde sein Leben im Dokumentarfilm '54' auf NTV Spor erzählt."
+    },
+    fr: {
+        back:"Retour à l'accueil", heroTitle:"Légendes du Motorsport Turc",
+        heroDesc:"Les histoires de ceux qui sont montés sur la piste, ont étonné le monde et hissé le drapeau turc au sommet.",
+        born:"NÉ", birthplace:"LIEU DE NAISSANCE", nationality:"NATIONALITÉ", number:"NUMÉRO",
+        kenan_subtitle:"5× Champion du Monde Supersport",
+        worldTitles:"Titres Mondiaux", raceWins:"Victoires",
+        firstTitle:"Premier Titre", turkRecord:"Record Turc",
+        lifeStory:"Histoire de Vie", careerTimeline:"Chronologie de Carrière", legacy:"Héritage",
+        kenan_bio1:"Né à Akyazı, Sakarya, fils d'un mécanicien de motos, Kenan Sofuoğlu a grandi dans une famille qui traitait les motos non comme une profession mais comme une passion.",
+        kenan_bio2:"En 2000, après que son frère Sinan s'est cassé la jambe dans une course, le jeune Kenan âgé de 16 ans est monté sur sa moto avec une permission spéciale. Il a terminé premier.",
+        kenan_bio3:"En 2002, dans des difficultés financières, il a été envoyé seul en Allemagne grâce au sacrifice de ses frères. Il a remporté le Yamaha Cup cette année-là.",
+        tl1t:"Premier Contact avec le Motorsport", tl1d:"A regardé son frère Bahattin courir au Championnat de Turquie.",
+        tl2t:"Première Course, Première Victoire", tl2d:"A gagné sa première course à 16 ans sur la moto de son frère.",
+        tl3t:"Voyage en Allemagne", tl3d:"Est allé en Europe grâce au sacrifice de ses frères. A remporté le Yamaha Cup.",
+        tl4t:"Championnat du Monde Supersport", tl4d:"A rejoint le championnat du monde Supersport avec Ten Kate Honda.",
+        tl5t:"PREMIER CHAMPION DU MONDE TURC", tl5d:"A remporté 8 courses et décroché le titre. Premier grand champion du monde de moto turc.",
+        tl6t:"Deuxième Titre + Moto2", tl6d:"A remporté son deuxième titre Supersport. Premier pilote turc en Moto2.",
+        tl7t:"Troisième Titre avec Kawasaki", tl7d:"A remporté son troisième titre mondial avec Kawasaki ZX-6R.",
+        tl8t:"Double Championnat Historique", tl8d:"Champion deux ans de suite. 38 victoires au total.",
+        tl9t:"Retraite et Parlement", tl9d:"A mis fin à sa carrière de coureur. Élu député. A ouvert le circuit de 3 600 m à Akyazı.",
+        tl10t:"Mentorat et Investissement dans l'Avenir", tl10d:"Prépare son fils Zayn à la compétition et soutient les jeunes talents turcs.",
+        kenan_legacy1:"L'histoire de Kenan Sofuoğlu est écrite en lettres d'or dans l'histoire du sport turc.",
+        kenan_legacy2:"Le nom du frère porté sur le casque était à la fois un hommage et une source de motivation.",
+        kenan_legacy3:"En 2012, sa vie a été racontée dans le documentaire '54' sur NTV Spor."
+    },
+    es: {
+        back:"Volver al inicio", heroTitle:"Leyendas del Motorsport Turco",
+        heroDesc:"Las historias de quienes salieron a la pista, asombraron al mundo y llevaron la bandera turca a la cima.",
+        born:"NACIMIENTO", birthplace:"LUGAR DE NACIMIENTO", nationality:"NACIONALIDAD", number:"NÚMERO",
+        kenan_subtitle:"5× Campeón del Mundo Supersport",
+        worldTitles:"Títulos Mundiales", raceWins:"Victorias",
+        firstTitle:"Primer Título", turkRecord:"Récord Turco",
+        lifeStory:"Historia de Vida", careerTimeline:"Cronología de Carrera", legacy:"Legado",
+        kenan_bio1:"Nacido en Akyazı, Sakarya, hijo de un mecánico de motos, Kenan Sofuoğlu creció en una familia que trataba las motocicletas no como una profesión sino como una pasión.",
+        kenan_bio2:"En 2000, tras que su hermano Sinan se rompiera la pierna en una carrera, el joven Kenan de 16 años subió a su moto con permiso especial. Terminó primero.",
+        kenan_bio3:"En 2002, en dificultades financieras, fue enviado solo a Alemania gracias al sacrificio de sus hermanos. Ese año ganó la Yamaha Cup.",
+        tl1t:"Primer Contacto con el Motorsport", tl1d:"Vio a su hermano Bahattin correr en el Campeonato de Turquía.",
+        tl2t:"Primera Carrera, Primera Victoria", tl2d:"Ganó su primera carrera de drag a los 16 años en la moto de su hermano.",
+        tl3t:"Viaje a Alemania", tl3d:"Fue a Europa gracias al sacrificio de sus hermanos. Ganó la Yamaha Cup.",
+        tl4t:"Campeonato Mundial Supersport", tl4d:"Se unió al campeonato mundial Supersport con Ten Kate Honda.",
+        tl5t:"PRIMER CAMPEÓN MUNDIAL TURCO", tl5d:"Ganó 8 carreras y se proclamó campeón. Primer gran campeón mundial de motos turco.",
+        tl6t:"Segundo Título + Moto2", tl6d:"Ganó su segundo título Supersport. Primer piloto turco en Moto2.",
+        tl7t:"Tercer Título con Kawasaki", tl7d:"Ganó su tercer título mundial con Kawasaki ZX-6R.",
+        tl8t:"Doble Campeonato Histórico", tl8d:"Campeón dos años seguidos. 38 victorias en total.",
+        tl9t:"Retiro y Parlamento", tl9d:"Puso fin a su carrera de piloto. Elegido diputado. Abrió el circuito de 3.600 m en Akyazı.",
+        tl10t:"Mentoría e Inversión en el Futuro", tl10d:"Prepara a su hijo Zayn para las carreras y apoya a los jóvenes talentos turcos.",
+        kenan_legacy1:"La historia de Kenan Sofuoğlu está escrita en letras de oro en la historia del deporte turco.",
+        kenan_legacy2:"El nombre del hermano en el casco era tanto un tributo como una fuente de motivación.",
+        kenan_legacy3:"En 2012, su vida fue contada en el documental '54' en NTV Spor."
+    },
+    it: {
+        back:"Torna alla home", heroTitle:"Leggende del Motorsport Turco",
+        heroDesc:"Le storie di chi è sceso in pista, ha stupito il mondo e ha portato la bandiera turca in cima.",
+        born:"NATO", birthplace:"LUOGO DI NASCITA", nationality:"NAZIONALITÀ", number:"NUMERO",
+        kenan_subtitle:"5× Campione del Mondo Supersport",
+        worldTitles:"Titoli Mondiali", raceWins:"Vittorie",
+        firstTitle:"Primo Titolo", turkRecord:"Record Turco",
+        lifeStory:"Storia di Vita", careerTimeline:"Cronologia della Carriera", legacy:"Eredità",
+        kenan_bio1:"Nato ad Akyazı, Sakarya, figlio di un meccanico di moto, Kenan Sofuoğlu è cresciuto in una famiglia che trattava le moto non come professione ma come passione.",
+        kenan_bio2:"Nel 2000, dopo che suo fratello Sinan si era rotto una gamba in gara, il sedicenne Kenan salì sulla sua moto con un permesso speciale. Finì primo.",
+        kenan_bio3:"Nel 2002, in difficoltà economiche, fu mandato da solo in Germania grazie al sacrificio dei suoi fratelli. Quell'anno vinse la Yamaha Cup.",
+        tl1t:"Primo Contatto con il Motorsport", tl1d:"Guardò suo fratello Bahattin gareggiare nel Campionato Turco.",
+        tl2t:"Prima Gara, Prima Vittoria", tl2d:"Vinse la sua prima gara drag a 16 anni sulla moto del fratello.",
+        tl3t:"Viaggio in Germania", tl3d:"Andò in Europa grazie al sacrificio dei suoi fratelli. Vinse la Yamaha Cup.",
+        tl4t:"Campionato Mondiale Supersport", tl4d:"Si unì al campionato mondiale Supersport con Ten Kate Honda.",
+        tl5t:"PRIMO CAMPIONE MONDIALE TURCO", tl5d:"Vinse 8 gare e si aggiudicò il titolo. Primo grande campione mondiale di moto turco.",
+        tl6t:"Secondo Titolo + Moto2", tl6d:"Vinse il suo secondo titolo Supersport. Primo pilota turco in Moto2.",
+        tl7t:"Terzo Titolo con Kawasaki", tl7d:"Vinse il suo terzo titolo mondiale con Kawasaki ZX-6R.",
+        tl8t:"Doppio Campionato Storico", tl8d:"Campione due anni di fila. 38 vittorie in totale.",
+        tl9t:"Ritiro e Parlamento", tl9d:"Pose fine alla sua carriera da pilota. Eletto deputato. Aprì il circuito da 3.600 m ad Akyazı.",
+        tl10t:"Mentoring e Investimento nel Futuro", tl10d:"Prepara suo figlio Zayn alle gare e continua a supportare i giovani talenti turchi.",
+        kenan_legacy1:"La storia di Kenan Sofuoğlu è scritta a lettere d'oro nella storia dello sport turco.",
+        kenan_legacy2:"Il nome del fratello sul casco era sia un tributo che una fonte di motivazione.",
+        kenan_legacy3:"Nel 2012, la sua vita fu raccontata nel documentario '54' su NTV Spor."
+    },
+    pt: {
+        back:"Voltar ao início", heroTitle:"Lendas do Motorsport Turco",
+        heroDesc:"As histórias de quem foi para a pista, surpreendeu o mundo e levou a bandeira turca ao topo.",
+        born:"NASCIMENTO", birthplace:"LOCAL DE NASCIMENTO", nationality:"NACIONALIDADE", number:"NÚMERO",
+        kenan_subtitle:"5× Campeão Mundial Supersport",
+        worldTitles:"Títulos Mundiais", raceWins:"Vitórias",
+        firstTitle:"Primeiro Título", turkRecord:"Recorde Turco",
+        lifeStory:"História de Vida", careerTimeline:"Linha do Tempo da Carreira", legacy:"Legado",
+        kenan_bio1:"Nascido em Akyazı, Sakarya, filho de um mecânico de motos, Kenan Sofuoğlu cresceu em uma família que tratava as motocicletas não como profissão, mas como paixão.",
+        kenan_bio2:"Em 2000, após seu irmão Sinan quebrar a perna em uma corrida, o jovem Kenan de 16 anos subiu na moto com permissão especial. Terminou em primeiro.",
+        kenan_bio3:"Em 2002, em dificuldades financeiras, foi enviado sozinho para a Alemanha graças ao sacrifício de seus irmãos. Naquele ano ganhou a Yamaha Cup.",
+        tl1t:"Primeiro Contato com o Motorsport", tl1d:"Assistiu seu irmão Bahattin correr no Campeonato Turco.",
+        tl2t:"Primeira Corrida, Primeira Vitória", tl2d:"Venceu sua primeira corrida de drag aos 16 anos na moto do irmão.",
+        tl3t:"Viagem para a Alemanha", tl3d:"Foi para a Europa graças ao sacrifício de seus irmãos. Venceu a Yamaha Cup.",
+        tl4t:"Campeonato Mundial Supersport", tl4d:"Ingressou no campeonato mundial Supersport com a Ten Kate Honda.",
+        tl5t:"PRIMEIRO CAMPEÃO MUNDIAL TURCO", tl5d:"Ganhou 8 corridas e conquistou o título. Primeiro grande campeão mundial de motos turco.",
+        tl6t:"Segundo Título + Moto2", tl6d:"Venceu seu segundo título Supersport. Primeiro piloto turco na Moto2.",
+        tl7t:"Terceiro Título com Kawasaki", tl7d:"Venceu seu terceiro título mundial com Kawasaki ZX-6R.",
+        tl8t:"Duplo Campeonato Histórico", tl8d:"Campeão dois anos seguidos. 38 vitórias no total.",
+        tl9t:"Aposentadoria e Parlamento", tl9d:"Encerrou sua carreira de piloto. Eleito deputado. Abriu o circuito de 3.600 m em Akyazı.",
+        tl10t:"Mentoria e Investimento no Futuro", tl10d:"Prepara seu filho Zayn para as corridas e continua apoiando jovens talentos turcos.",
+        kenan_legacy1:"A história de Kenan Sofuoğlu está escrita em letras de ouro na história do esporte turco.",
+        kenan_legacy2:"O nome do irmão no capacete era tanto uma homenagem quanto uma fonte de motivação.",
+        kenan_legacy3:"Em 2012, sua vida foi contada no documentário '54' na NTV Spor."
+    },
+    id: {
+        back:"Kembali ke beranda", heroTitle:"Legenda Motorsport Turki",
+        heroDesc:"Kisah mereka yang turun ke lintasan, mengejutkan dunia, dan membawa bendera Turki ke puncak.",
+        born:"LAHIR", birthplace:"TEMPAT LAHIR", nationality:"KEBANGSAAN", number:"NOMOR",
+        kenan_subtitle:"5× Juara Dunia Supersport",
+        worldTitles:"Gelar Dunia", raceWins:"Kemenangan Balapan",
+        firstTitle:"Gelar Pertama", turkRecord:"Rekor Turki",
+        lifeStory:"Kisah Hidup", careerTimeline:"Garis Waktu Karier", legacy:"Warisan",
+        kenan_bio1:"Lahir di Akyazı, Sakarya, sebagai putra seorang montir sepeda motor, Kenan Sofuoğlu tumbuh dalam keluarga yang memperlakukan sepeda motor bukan sebagai pekerjaan tetapi sebagai passion.",
+        kenan_bio2:"Pada tahun 2000, setelah saudaranya Sinan mematahkan kakinya dalam balapan, Kenan yang berusia 16 tahun menaiki motornya dengan izin khusus. Ia finish pertama.",
+        kenan_bio3:"Pada tahun 2002, dalam kesulitan keuangan, ia dikirim sendirian ke Jerman berkat pengorbanan saudara-saudaranya. Tahun itu ia memenangkan Yamaha Cup.",
+        tl1t:"Perkenalan Pertama dengan Motorsport", tl1d:"Menyaksikan saudaranya Bahattin balapan di Kejuaraan Turki.",
+        tl2t:"Balapan Pertama, Kemenangan Pertama", tl2d:"Memenangkan balapan drag pertamanya di usia 16 tahun dengan motor saudaranya.",
+        tl3t:"Perjalanan ke Jerman", tl3d:"Pergi ke Eropa berkat pengorbanan saudara-saudaranya. Memenangkan Yamaha Cup.",
+        tl4t:"Kejuaraan Dunia Supersport", tl4d:"Bergabung dengan kejuaraan dunia Supersport bersama Ten Kate Honda.",
+        tl5t:"JUARA DUNIA PERTAMA TURKI", tl5d:"Memenangkan 8 balapan dan meraih gelar. Juara dunia motorsport besar pertama dari Turki.",
+        tl6t:"Gelar Kedua + Moto2", tl6d:"Meraih gelar Supersport keduanya. Pebalap Turki pertama di Moto2.",
+        tl7t:"Gelar Ketiga bersama Kawasaki", tl7d:"Meraih gelar dunia ketiganya dengan Kawasaki ZX-6R.",
+        tl8t:"Gelar Ganda Bersejarah", tl8d:"Juara dua tahun berturut-turut. Total 38 kemenangan.",
+        tl9t:"Pensiun dan Parlemen", tl9d:"Mengakhiri karier balapnya. Terpilih sebagai anggota parlemen. Membuka sirkuit 3.600 m di Akyazı.",
+        tl10t:"Mentoring dan Investasi untuk Masa Depan", tl10d:"Mempersiapkan putranya Zayn untuk balapan dan terus mendukung bakat-bakat muda Turki.",
+        kenan_legacy1:"Kisah Kenan Sofuoğlu tertulis dengan huruf emas tidak hanya dalam sejarah motorsport tetapi juga dalam sejarah olahraga Turki.",
+        kenan_legacy2:"Nama saudaranya di helm adalah penghormatan sekaligus sumber motivasi.",
+        kenan_legacy3:"Pada tahun 2012, hidupnya dikisahkan dalam dokumenter '54' di NTV Spor."
+    },
+    ja: {
+        back:"ホームへ戻る", heroTitle:"トルコのモータースポーツ伝説",
+        heroDesc:"サーキットに出て、世界を驚かせ、トルコの旗を頂点へと運んだ人々の物語。",
+        born:"生年月日", birthplace:"出身地", nationality:"国籍", number:"番号",
+        kenan_subtitle:"5× スーパースポーツ世界チャンピオン",
+        worldTitles:"世界タイトル", raceWins:"レース優勝",
+        firstTitle:"初タイトル", turkRecord:"トルコ記録",
+        lifeStory:"生涯", careerTimeline:"キャリア年表", legacy:"遺産",
+        kenan_bio1:"サカリヤ州アクヤズで、バイク整備士の息子として生まれたケナン・ソフオールは、バイクを職業ではなく情熱として扱う家族の中で育った。",
+        kenan_bio2:"2000年、兄シナンがレースで足を骨折した後、16歳のケナンは特別許可を得て彼のバイクに乗った。その日のレースで1位でゴールした。",
+        kenan_bio3:"2002年、財政的な困難の中、兄たちの犠牲によって一人でドイツに送られた。その年にヤマハカップを制した。",
+        tl1t:"モータースポーツとの出会い", tl1d:"兄バハッティンがトルコ選手権でレースするのを見て、バイクの世界に入った。",
+        tl2t:"初レース、初優勝", tl2d:"16歳で兄のバイクに乗り、初のドラッグレースで優勝。",
+        tl3t:"ドイツへの旅", tl3d:"兄たちの犠牲でヨーロッパへ渡った。ヤマハカップを制覇。",
+        tl4t:"世界スーパースポーツ選手権", tl4d:"テン・ケイト・ホンダで世界スーパースポーツ選手権にフル参戦。初シーズン3位。",
+        tl5t:"トルコ初の世界チャンピオン", tl5d:"シーズン8勝を挙げて記録を破り、タイトル獲得。トルコ初の主要二輪世界チャンピオンとなった。",
+        tl6t:"2度目のタイトル + Moto2", tl6d:"2度目のスーパースポーツタイトルを獲得。Moto2に参戦した初のトルコ人ライダーとなった。",
+        tl7t:"カワサキで3度目のタイトル", tl7d:"カワサキZX-6Rで183ポイントを獲得し、3度目の世界タイトルを手にした。",
+        tl8t:"歴史的な2連覇", tl8d:"2年連続チャンピオンとなり、スーパースポーツ史上最多タイトル保持者の地位を確固たるものにした。通算38勝。",
+        tl9t:"引退と国会議員", tl9d:"現役レースキャリアを終了。国会議員に当選。アクヤズに3,600mのサーキットをオープン。",
+        tl10t:"メンタリングと未来への投資", tl10d:"息子ザインをレースに向けて準備しながら、若いトルコ人才能の支援を続けている。",
+        kenan_legacy1:"ケナン・ソフオールの物語は、モータースポーツの歴史だけでなく、トルコのスポーツ史にも黄金の文字で刻まれている。",
+        kenan_legacy2:"ヘルメットに兄の名前を刻むことは、敬意であり同時にモチベーションの源でもあった。",
+        kenan_legacy3:"2012年、彼の人生はNTVスポルのドキュメンタリー『54』で語られた。"
+    },
+    ar: {
+        back:"العودة إلى الصفحة الرئيسية", heroTitle:"أساطير رياضة السيارات التركية",
+        heroDesc:"قصص من نزلوا إلى المضمار وأذهلوا العالم ورفعوا العلم التركي إلى القمة.",
+        born:"تاريخ الميلاد", birthplace:"مكان الميلاد", nationality:"الجنسية", number:"الرقم",
+        kenan_subtitle:"بطل العالم Supersport 5 مرات",
+        worldTitles:"ألقاب عالمية", raceWins:"انتصارات",
+        firstTitle:"أول لقب", turkRecord:"الرقم التركي",
+        lifeStory:"قصة الحياة", careerTimeline:"الجدول الزمني للمسيرة", legacy:"الإرث",
+        kenan_bio1:"وُلد كنان صوفو أوغلو في أقياظي، سقاريا، ابناً لميكانيكي دراجات نارية، ونشأ في عائلة عاملت الدراجات النارية شغفاً لا مهنة.",
+        kenan_bio2:"في عام 2000، بعد أن كسر أخوه سنان ساقه في سباق، امتطى كنان البالغ من العمر 16 عاماً دراجته بإذن خاص وأنهى السباق في المركز الأول.",
+        kenan_bio3:"في عام 2002، وسط صعوبات مالية، أُرسل وحيداً إلى ألمانيا بفضل تضحية إخوته. في ذلك العام فاز بكأس ياماها.",
+        tl1t:"أول لقاء مع رياضة السيارات", tl1d:"شاهد أخاه باهاتين يتسابق في البطولة التركية ودخل عالم الدراجات النارية.",
+        tl2t:"أول سباق، أول فوز", tl2d:"فاز بأول سباق دراغ له في سن 16 على دراجة أخيه.",
+        tl3t:"الرحلة إلى ألمانيا", tl3d:"ذهب إلى أوروبا بفضل تضحية إخوته. فاز بكأس ياماها.",
+        tl4t:"بطولة العالم Supersport", tl4d:"انضم إلى بطولة العالم Supersport مع Ten Kate Honda.",
+        tl5t:"أول بطل عالمي تركي", tl5d:"فاز بـ 8 سباقات وحصل على اللقب. أصبح أول بطل عالمي كبير للدراجات النارية من تركيا.",
+        tl6t:"اللقب الثاني + موتو 2", tl6d:"فاز بلقبه الثاني في Supersport. أول متسابق تركي في موتو 2.",
+        tl7t:"اللقب الثالث مع كاواساكي", tl7d:"فاز بلقبه العالمي الثالث مع كاواساكي ZX-6R.",
+        tl8t:"اللقب المزدوج التاريخي", tl8d:"بطل عامين متتاليين. 38 انتصاراً في المجموع.",
+        tl9t:"التقاعد والبرلمان", tl9d:"أنهى مسيرته في السباقات. انتُخب نائباً. افتتح حلبة 3600 متر في أقياظي.",
+        tl10t:"الإرشاد والاستثمار في المستقبل", tl10d:"يُعِدّ ابنه زين للسباقات ويواصل دعم المواهب التركية الشابة.",
+        kenan_legacy1:"قصة كنان صوفو أوغلو مكتوبة بحروف ذهبية ليس فقط في تاريخ رياضة السيارات بل في تاريخ الرياضة التركية.",
+        kenan_legacy2:"اسم أخيه على الخوذة كان تكريماً ومصدر إلهام في آنٍ واحد.",
+        kenan_legacy3:"في عام 2012، رُوِيت قصة حياته في فيلم وثائقي بعنوان '54' على قناة NTV Spor."
+    }
+};
+
+let currentLang = localStorage.getItem("mgv_lang") || "tr";
+
+function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem("mgv_lang", lang);
+    document.querySelectorAll(".lang-bar span").forEach(s => s.classList.remove("active"));
+    const el = document.getElementById("lang-" + lang);
+    if (el) el.classList.add("active");
+    const t = translations[lang] || translations.tr;
+    const isRTL = lang === "ar";
+    document.documentElement.dir = isRTL ? "rtl" : "ltr";
+    document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
+        if (t[key]) el.textContent = t[key];
+    });
+    // Update page title
+    const titles = {
+        tr:"Türk Yarışçılar", en:"Turkish Riders", de:"Türkische Fahrer",
+        fr:"Pilotes Turcs", es:"Pilotos Turcos", it:"Piloti Turchi",
+        pt:"Pilotos Turcos", id:"Pembalap Turki", ja:"トルコ人ライダー", ar:"السائقون الأتراك"
+    };
+    document.title = (titles[lang] || "Turkish Riders") + " — motogpvideo.com";
+}
+
+function showRider(id) {
+    document.querySelectorAll(".rider-panel").forEach(p => p.classList.remove("active"));
+    document.querySelectorAll(".rider-tab").forEach(t => t.classList.remove("active"));
+    document.getElementById("rider-" + id).classList.add("active");
+    event.target.classList.add("active");
+}
+
+// Init
+(function() {
+    const urlLang = new URLSearchParams(window.location.search).get("lang");
+    setLang(urlLang || currentLang);
+})();
+</script>
+
+</body>
+</html>
