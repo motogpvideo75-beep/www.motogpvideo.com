@@ -813,6 +813,13 @@
                 const activeTab = document.querySelector(".rss-tab[data-feed].active");
                 if (activeTab && document.getElementById("news-grid").querySelector(".skeleton")) loadRSS(activeTab);
             }
+            if (id === "sec-videolar") {
+                const grid = document.getElementById("video-grid");
+                const firstBtn = document.querySelector("#video-tabs .cat-tab");
+                if (grid && firstBtn && grid.children.length <= 1) {
+                    loadVideos("motogp", firstBtn);
+                }
+            }
         }
 
         function toggleSidebar() { document.getElementById("sidebar").classList.toggle("open"); document.getElementById("overlay").classList.toggle("show"); }
@@ -3731,24 +3738,7 @@ function closeVideoPopupBtn() {
     document.body.style.overflow = '';
 }
 
-// Videolar bölümü açıldığında otomatik yükle
-document.addEventListener('DOMContentLoaded', function() {
-    // MutationObserver ile sec-videolar görünür olduğunda yükle
-    const target = document.getElementById('sec-videolar');
-    if (!target) return;
-    const obs = new MutationObserver(function(mutations) {
-        mutations.forEach(function(m) {
-            if (m.attributeName === 'class' && target.classList.contains('active')) {
-                const grid = document.getElementById('video-grid');
-                const firstBtn = document.querySelector('#video-tabs .cat-tab');
-                if (grid && firstBtn && grid.children.length <= 1) {
-                    loadVideos('motogp', firstBtn);
-                }
-            }
-        });
-    });
-    obs.observe(target, { attributes: true });
-});
+// Video yükleme showSection içinde yapılıyor
 </script>
 
 </body>
