@@ -3732,16 +3732,22 @@ function closeVideoPopupBtn() {
 }
 
 // Videolar bölümü açıldığında otomatik yükle
-const _origShowSection = typeof showSection === 'function' ? showSection : null;
 document.addEventListener('DOMContentLoaded', function() {
-    const origShow = window.showSection;
-    window.showSection = function(id) {
-        origShow(id);
-        if (id === 'sec-videolar' && document.getElementById('video-grid').children.length <= 1) {
-            const firstBtn = document.querySelector('#video-tabs .cat-tab');
-            loadVideos('motogp', firstBtn);
-        }
-    };
+    // MutationObserver ile sec-videolar görünür olduğunda yükle
+    const target = document.getElementById('sec-videolar');
+    if (!target) return;
+    const obs = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+            if (m.attributeName === 'class' && target.classList.contains('active')) {
+                const grid = document.getElementById('video-grid');
+                const firstBtn = document.querySelector('#video-tabs .cat-tab');
+                if (grid && firstBtn && grid.children.length <= 1) {
+                    loadVideos('motogp', firstBtn);
+                }
+            }
+        });
+    });
+    obs.observe(target, { attributes: true });
 });
 </script>
 
