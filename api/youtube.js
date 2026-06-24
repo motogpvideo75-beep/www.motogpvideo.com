@@ -5,24 +5,37 @@ export default async function handler(req, res) {
   const { channel } = req.query;
   if (!channel) return res.status(400).json({ error: 'channel required' });
 
-  const CHANNELS = {
-    motogp: 'UCgyQ6OF3MBe9eENjWMTuE_w',
-    wsbk:   'UCpAMDSvBQWX7_VEMfpB1Wtw',
-    f1:     'UCB_qr75-ydFVKSF9Dmo6izg'
+  const API_KEY = 'AIzaSyCk0fgTroD9nqt0cJOoP5Wm-rlhUDvRU1Q';
+
+  // YouTube handle'larından channel ID al, sonra videoları çek
+  const HANDLES = {
+    motogp: 'motogp',
+    wsbk:   'WorldSBK',
+    f1:     'Formula1'
   };
 
-  const channelId = CHANNELS[channel];
-  if (!channelId) return res.status(400).json({ error: 'invalid channel' });
-
-  const API_KEY = 'AIzaSyCk0fgTroD9nqt0cJOoP5Wm-rlhUDvRU1Q';
-  const url = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet&order=date&type=video&maxResults=12`;
+  const handle = HANDLES[channel];
+  if (!handle) return res.status(400).json({ error: 'invalid channel' });
 
   try {
-    const r = await fetch(url);
-    if (!r.ok) return res.status(r.status).json({ error: `YouTube API: ${r.status}` });
-    const data = await r.json();
+    // Önce handle'dan channel bilgilerini al
+    const chUrl = `https://www.googleapis.com/youtube/v3/channels?key=${API_KEY}&forHandle=${handle}&part=id,snippet&maxResults=1`;
+    const chRes = await fetch(chUrl);
+    const chData = await chRes.json();
+
+    if (!chData.items || chData.items.length === 0) {
+      return res.status(404).json({ error: `Channel not found for handle: ${handle}`, raw: chData });
+    }
+
+    const channelId = chData.items[0].id;
+
+    // Sonra videoları çek
+    const vidUrl = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${channelId}&part=snippet&order=date&type=video&maxResults=12`;
+    const vidRes = await fetch(vidUrl);
+    const vidData = await vidRes.json();
+
     res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=300');
-    return res.status(200).json(data);
+    return res.status(200).json(vidData);
   } catch(e) {
     return res.status(500).json({ error: e.message });
   }
