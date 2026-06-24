@@ -148,7 +148,7 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="player-title">
         <span>▶</span>
         <span class="player-title-text" id="motogp-player-title">Yarış yükleniyor...</span>
-        <button class="player-close" onclick="closePlayer('motogp')">✕</button>
+        <button class="player-close" onclick="/* kapalı */">✕</button>
       </div>
       <iframe id="motogp-iframe" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
     </div>
@@ -187,7 +187,7 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="player-title">
         <span>▶</span>
         <span class="player-title-text" id="sbk-player-title">Yarış yükleniyor...</span>
-        <button class="player-close" onclick="closePlayer('sbk')">✕</button>
+        <button class="player-close" onclick="/* kapalı */">✕</button>
       </div>
       <iframe id="sbk-iframe" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
     </div>
@@ -221,7 +221,7 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="player-title">
         <span>▶</span>
         <span class="player-title-text" id="f1-player-title">Yükleniyor...</span>
-        <button class="player-close" onclick="closePlayer('f1')">✕</button>
+        <button class="player-close" onclick="/* kapalı */">✕</button>
       </div>
       <iframe id="f1-iframe" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
     </div>
@@ -492,17 +492,8 @@ function switchTab(tab) {
 
 // ===== PLAYER =====
 function playRace(series, videoId, title) {
-  const player = document.getElementById(series + '-player');
-  const iframe = document.getElementById(series + '-iframe');
-  const titleEl = document.getElementById(series + '-player-title');
-  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-  titleEl.textContent = title;
-  player.classList.add('active');
-  player.scrollIntoView({behavior: 'smooth', block: 'start'});
-  // Mark active card
-  document.querySelectorAll('#' + series + '-grid .race-card').forEach(c => c.classList.remove('active'));
-  const card = document.querySelector(`[data-vid="${videoId}"]`);
-  if (card) card.classList.add('active');
+  // YouTube embed izni vermiyor — doğrudan YouTube'da aç
+  window.open('https://www.youtube.com/watch?v=' + videoId, '_blank');
 }
 
 function closePlayer(series) {
