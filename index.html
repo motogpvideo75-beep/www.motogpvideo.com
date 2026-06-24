@@ -3662,7 +3662,7 @@ async function loadVideos(channel, btn) {
 
     try {
         const channelId = YT_CHANNELS[channel];
-        const url = `https://www.googleapis.com/youtube/v3/search?key=${YT_API_KEY}&channelId=${channelId}&part=snippet&order=date&type=video&maxResults=12`;
+        const url = `/api/youtube?channel=${channel}`;
         const res = await fetch(url);
         const data = await res.json();
 
