@@ -1639,6 +1639,7 @@
         <div class="nav-item" onclick="showSection('sec-biniciler')"><span class="icon">🏆</span> <span id="sb-biniciler">Biniciler & Takımlar</span></div>
         <div class="nav-item" onclick="showSection('sec-tt')"><span class="icon">🏍️</span> <span id="sb-tt">Isle of Man TT</span></div>
         <a href="turk-surucular.html" style="text-decoration:none;"><div class="nav-item"><span class="icon">🇹🇷</span> <span id="sb-turk">Türk Sürücüler</span></div></a>
+        <div class="nav-item" onclick="showSection('sec-videolar')"><span class="icon">▶️</span> <span id="sb-videolar">Resmi Videolar</span></div>
         <div class="nav-item" onclick="showSection('sec-haberler')"><span class="icon">📰</span> <span id="sb-haberler">Haberler</span></div>
         <div class="nav-item" onclick="showSection('sec-global')"><span class="icon">⚡</span> <span id="sb-global">Global Hit Sporlar</span></div>
         <div class="nav-item" onclick="showSection('sec-sponsor')"><span class="icon">🏆</span> <span id="sb-sponsor">Resmi Sponsorlar</span></div>
@@ -2726,6 +2727,34 @@
             </div>
         </div>
 
+
+        <!-- ===== RESMİ VİDEOLAR BÖLÜMÜ ===== -->
+        <div class="section" id="sec-videolar">
+            <div class="sec-title">▶️ Resmi Videolar</div>
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:16px;">MotoGP, WorldSBK ve Formula 1 resmi YouTube kanallarından son videolar. Tıklayarak izle, hak sahibi kanalına git.</p>
+
+            <!-- Sekme Butonları -->
+            <div class="cat-tabs" id="video-tabs" style="margin-bottom:18px;">
+                <button class="cat-tab active" style="background:#e8001d;border-color:#e8001d;" onclick="loadVideos('motogp', this)">🏍️ MotoGP</button>
+                <button class="cat-tab" onclick="loadVideos('wsbk', this)">🏁 WorldSBK</button>
+                <button class="cat-tab" onclick="loadVideos('f1', this)">🚀 Formula 1</button>
+            </div>
+
+            <!-- Video Grid -->
+            <div id="video-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;">
+                <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);font-size:.85rem;">Yükleniyor...</div>
+            </div>
+        </div>
+
+        <!-- Video Popup -->
+        <div id="video-popup" onclick="closeVideoPopup(event)" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99999;align-items:center;justify-content:center;">
+            <div style="position:relative;width:90%;max-width:860px;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden;">
+                <iframe id="video-iframe" src="" frameborder="0" allow="autoplay;encrypted-media" allowfullscreen style="width:100%;height:100%;"></iframe>
+                <button onclick="closeVideoPopupBtn()" style="position:absolute;top:8px;right:10px;background:rgba(0,0,0,.7);border:none;color:#fff;font-size:1.4rem;cursor:pointer;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;z-index:2;">✕</button>
+            </div>
+            <div id="video-popup-link" style="position:absolute;bottom:30px;left:50%;transform:translateX(-50%);"></div>
+        </div>
+
         <div class="section" id="sec-haberler">
             <div class="sec-title" id="st-haberler">Son Haberler</div>
             <div class="rss-tabs">
@@ -3604,6 +3633,111 @@ function closeWelcomePopup(){
         <div id="rmd-nosocial" style="display:none;color:#6a8caf;font-size:.82rem;text-align:center;padding:12px 0;">Sosyal medya bilgisi bulunamadi</div>
     </div>
 </div>
+
+<script>
+// ===== RESMİ VİDEO PLAYER =====
+const YT_API_KEY = 'AIzaSyCk0fgTroD9nqt0cJOoP5Wm-rlhUDvRU1Q';
+const YT_CHANNELS = {
+    motogp: 'UCgyQ6OF3MBe9eENjWMTuE_w',
+    wsbk:   'UCo6IfN4JnzP2O2qYQ_OEsKg',
+    f1:     'UCB_qr75-ydFVKSF9Dmo6izg'
+};
+let currentChannel = 'motogp';
+
+async function loadVideos(channel, btn) {
+    currentChannel = channel;
+    // tab aktif
+    document.querySelectorAll('#video-tabs .cat-tab').forEach(b => {
+        b.style.background = 'var(--card)';
+        b.style.borderColor = 'var(--border)';
+        b.style.color = '#9aadcc';
+    });
+    btn.style.background = '#e8001d';
+    btn.style.borderColor = '#e8001d';
+    btn.style.color = '#fff';
+
+    const grid = document.getElementById('video-grid');
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);font-size:.85rem;">Yükleniyor...</div>';
+
+    try {
+        const channelId = YT_CHANNELS[channel];
+        const url = `https://www.googleapis.com/youtube/v3/search?key=${YT_API_KEY}&channelId=${channelId}&part=snippet&order=date&type=video&maxResults=12`;
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (!data.items || data.items.length === 0) {
+            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">Video bulunamadı.</div>';
+            return;
+        }
+
+        grid.innerHTML = data.items.map(item => {
+            const vid = item.id.videoId;
+            const title = item.snippet.title;
+            const thumb = item.snippet.thumbnails.medium?.url || item.snippet.thumbnails.default?.url;
+            const published = new Date(item.snippet.publishedAt).toLocaleDateString('tr-TR');
+            return `
+            <div onclick="openVideoPopup('${vid}','${title.replace(/'/g,"&#39;")}')"
+                 style="background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .2s,border-color .2s;"
+                 onmouseover="this.style.transform='translateY(-3px)';this.style.borderColor='var(--accent)'"
+                 onmouseout="this.style.transform='';this.style.borderColor='var(--border)'">
+                <div style="position:relative;">
+                    <img src="${thumb}" alt="${title}" style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;">
+                    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+                        <div style="width:48px;height:48px;background:rgba(220,0,0,.85);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">▶</div>
+                    </div>
+                </div>
+                <div style="padding:10px 12px;">
+                    <div style="font-size:.78rem;font-weight:700;color:#fff;line-height:1.4;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">${title}</div>
+                    <div style="font-size:.7rem;color:var(--muted);">${published}</div>
+                    <a href="https://www.youtube.com/watch?v=${vid}" target="_blank" rel="noopener noreferrer"
+                       onclick="event.stopPropagation()"
+                       style="display:inline-block;margin-top:8px;font-size:.68rem;color:#ff4444;text-decoration:none;font-weight:700;">
+                        ▶ YouTube'da İzle →
+                    </a>
+                </div>
+            </div>`;
+        }).join('');
+    } catch(e) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">Video yüklenemedi. Lütfen tekrar deneyin.</div>';
+    }
+}
+
+function openVideoPopup(videoId, title) {
+    const popup = document.getElementById('video-popup');
+    const iframe = document.getElementById('video-iframe');
+    const linkDiv = document.getElementById('video-popup-link');
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    linkDiv.innerHTML = `<a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener noreferrer"
+        style="background:rgba(255,0,0,.85);color:#fff;text-decoration:none;padding:8px 18px;border-radius:20px;font-size:.8rem;font-weight:700;">
+        ▶ YouTube'da İzle
+    </a>`;
+    popup.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeVideoPopup(e) {
+    if (e.target === document.getElementById('video-popup')) closeVideoPopupBtn();
+}
+function closeVideoPopupBtn() {
+    document.getElementById('video-popup').style.display = 'none';
+    document.getElementById('video-iframe').src = '';
+    document.body.style.overflow = '';
+}
+
+// Videolar bölümü açıldığında otomatik yükle
+const _origShowSection = typeof showSection === 'function' ? showSection : null;
+document.addEventListener('DOMContentLoaded', function() {
+    const origShow = window.showSection;
+    window.showSection = function(id) {
+        origShow(id);
+        if (id === 'sec-videolar' && document.getElementById('video-grid').children.length <= 1) {
+            const firstBtn = document.querySelector('#video-tabs .cat-tab');
+            loadVideos('motogp', firstBtn);
+        }
+    };
+});
+</script>
+
 </body>
 </html>
 
