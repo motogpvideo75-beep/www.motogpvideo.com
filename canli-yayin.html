@@ -276,40 +276,55 @@ function toggleFaq(el) {
   arrow.textContent = ans.classList.contains('open') ? '▲' : '▼';
 }
 
-// YouTube Live Check
+// YouTube Live Check — Çoklu Kanal
 const YT_API_KEY = 'AIzaSyCk0fgTroD9nqt0cJOoP5Wm-rlhUDvRU1Q';
-const YT_CHANNEL_ID = 'UCB-s1HQIZ_E4EaKANsHBrg'; // MotoGP official
+
+const YT_CHANNELS = [
+  { id: 'UCB-s1HQIZ_E4EaKANsHBrg', name: 'MotoGP Official',    url: 'https://www.youtube.com/@MotoGP' },
+  { id: 'UCqnLIeXFVS3aVRMoALR8b4g', name: 'Red Bull TV',        url: 'https://www.youtube.com/@redbulltv' },
+  { id: 'UCNQfQljYTAFHjLzCDzEgnWg', name: 'MotoGP Junior Team', url: 'https://www.youtube.com/@MotoGPJuniorTeam' },
+];
+
+async function checkChannelLive(channel) {
+  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${channel.id}&eventType=live&type=video&key=${YT_API_KEY}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  if (data.items && data.items.length > 0) {
+    return { channel, video: data.items[0] };
+  }
+  return null;
+}
 
 async function checkYoutubeLive() {
   const badge = document.getElementById('yt-status-badge');
   const content = document.getElementById('yt-content');
 
   try {
-    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${YT_CHANNEL_ID}&eventType=live&type=video&key=${YT_API_KEY}`;
-    const res = await fetch(url);
-    const data = await res.json();
+    // Tüm kanalları paralel kontrol et
+    const results = await Promise.all(YT_CHANNELS.map(ch => checkChannelLive(ch).catch(() => null)));
+    const found = results.find(r => r !== null);
 
-    if (data.items && data.items.length > 0) {
-      // CANLI YAYIN VAR
-      const videoId = data.items[0].id.videoId;
-      const title = data.items[0].snippet.title;
+    if (found) {
+      const videoId = found.video.id.videoId;
+      const title = found.video.snippet.title;
+      const chName = found.channel.name;
 
       badge.className = 'live-badge';
       badge.innerHTML = '🔴 CANLI';
 
       content.innerHTML = `
-        <div style="margin-bottom:10px;font-size:.9rem;color:var(--muted);">▶ ${title}</div>
+        <div style="margin-bottom:10px;font-size:.9rem;color:var(--muted);">
+          📡 <strong>${chName}</strong> — ${title}
+        </div>
         <div class="yt-embed-wrap">
           <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1"
             allowfullscreen allow="autoplay; encrypted-media"></iframe>
         </div>
       `;
 
-      // Live alert göster
       document.getElementById('live-alert').style.display = 'flex';
 
     } else {
-      // Canlı yayın yok
       badge.className = 'offline-badge';
       badge.innerHTML = '⚫ Yayın Yok';
 
@@ -317,11 +332,12 @@ async function checkYoutubeLive() {
         <div class="yt-offline-box">
           <div class="icon">📡</div>
           <h3>Şu an canlı yayın bulunmuyor</h3>
-          <p>MotoGP resmi YouTube kanalında aktif canlı yayın yok.<br>
-          Yarış haftası sonu pit lane, sıralama ve röportaj yayınları burada otomatik açılır.</p>
-          <a class="yt-channel-link" href="https://www.youtube.com/@MotoGP" target="_blank" rel="noopener">
-            📺 MotoGP YouTube Kanalına Git
-          </a>
+          <p>Yarış haftası sonu pit lane, sıralama ve röportaj yayınları burada otomatik açılır.<br>
+          MotoGP, Red Bull TV ve MotoGP Junior Team kanalları takip ediliyor.</p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;">
+            <a class="yt-channel-link" href="https://www.youtube.com/@MotoGP" target="_blank" rel="noopener">📺 MotoGP</a>
+            <a class="yt-channel-link" href="https://www.youtube.com/@redbulltv" target="_blank" rel="noopener" style="background:#1a1a2e;">🔴 Red Bull TV</a>
+          </div>
         </div>
       `;
     }
@@ -332,17 +348,14 @@ async function checkYoutubeLive() {
       <div class="yt-offline-box">
         <div class="icon">📡</div>
         <h3>Şu an canlı yayın bulunmuyor</h3>
-        <p>Yarış haftası sonu pit lane, sıralama ve röportaj yayınları burada otomatik açılır.</p>
-        <a class="yt-channel-link" href="https://www.youtube.com/@MotoGP" target="_blank" rel="noopener">
-          📺 MotoGP YouTube Kanalına Git
-        </a>
+        <p>Yarış haftası sonu yayınlar burada otomatik açılır.</p>
+        <a class="yt-channel-link" href="https://www.youtube.com/@MotoGP" target="_blank" rel="noopener">📺 MotoGP YouTube</a>
       </div>
     `;
   }
 }
 
 checkYoutubeLive();
-// Her 3 dakikada bir yeniden kontrol et
 setInterval(checkYoutubeLive, 3 * 60 * 1000);
 </script>
 </body>
