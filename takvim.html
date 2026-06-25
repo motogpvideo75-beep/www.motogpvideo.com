@@ -110,6 +110,31 @@ footer a{color:var(--accent);text-decoration:none;}
   ]
 }
 </script>
+<script>
+(function(){
+  var saved = localStorage.getItem('mgv_lang');
+  var urlLang = new URLSearchParams(window.location.search).get('lang');
+  var lang = urlLang || saved || 'tr';
+  if(urlLang) localStorage.setItem('mgv_lang', urlLang);
+  document.documentElement.lang = lang;
+  var meta = {
+    tr: { title: 'MotoGP 2026 Yarış Takvimi – Tarih ve Saat Bilgileri | motogpvideo.com', desc: 'MotoGP 2026 yarış takvimi, tarihler ve Türkiye saatiyle saat bilgileri. MotoGP yarışı saat kaçta başlıyor? Tüm Grand Prix tarihleri burada.' },
+    en: { title: 'MotoGP 2026 Race Calendar – All Grand Prix Dates & Times | motogpvideo.com', desc: 'Full MotoGP 2026 race calendar with all Grand Prix dates, start times and circuit info. Never miss a MotoGP race – check schedules in your timezone.' },
+    de: { title: 'MotoGP 2026 Rennkalender – Alle Grand Prix Termine | motogpvideo.com', desc: 'Vollständiger MotoGP 2026 Rennkalender mit allen Grand Prix Terminen und Startzeiten. Kein MotoGP Rennen mehr verpassen.' },
+    fr: { title: 'Calendrier MotoGP 2026 – Dates et Horaires | motogpvideo.com', desc: 'Calendrier complet MotoGP 2026 avec toutes les dates des Grands Prix et horaires de départ. Ne manquez aucune course MotoGP.' },
+    es: { title: 'Calendario MotoGP 2026 – Fechas y Horarios | motogpvideo.com', desc: 'Calendario completo MotoGP 2026 con todas las fechas de los Grandes Premios y horarios de salida. No te pierdas ninguna carrera.' },
+    it: { title: 'Calendario MotoGP 2026 – Date e Orari | motogpvideo.com', desc: 'Calendario completo MotoGP 2026 con tutte le date dei Gran Premi e gli orari di partenza. Non perdere nessuna gara MotoGP.' },
+    pt: { title: 'Calendário MotoGP 2026 – Datas e Horários | motogpvideo.com', desc: 'Calendário completo do MotoGP 2026 com todas as datas dos Grandes Prêmios e horários de largada.' },
+    ja: { title: 'MotoGP 2026 レースカレンダー – 日程と時間 | motogpvideo.com', desc: 'MotoGP 2026の全グランプリ日程、スタート時間、サーキット情報。レースを見逃さないために。' },
+    ar: { title: 'تقويم MotoGP 2026 – مواعيد وجداول السباقات | motogpvideo.com', desc: 'التقويم الكامل لـ MotoGP 2026 مع جميع مواعيد سباقات الجائزة الكبرى وأوقات الانطلاق.' },
+    id: { title: 'Kalender MotoGP 2026 – Semua Tanggal Grand Prix | motogpvideo.com', desc: 'Kalender lengkap MotoGP 2026 dengan semua tanggal Grand Prix dan waktu mulai. Jangan lewatkan satu pun balapan.' }
+  };
+  var m = meta[lang] || meta['en'];
+  document.title = m.title;
+  var d = document.querySelector('meta[name="description"]');
+  if(d) d.setAttribute('content', m.desc);
+})();
+</script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSW3BQM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

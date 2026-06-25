@@ -111,6 +111,31 @@ footer a{color:var(--accent);text-decoration:none;}
   }
 }
 </script>
+<script>
+(function(){
+  var saved = localStorage.getItem('mgv_lang');
+  var urlLang = new URLSearchParams(window.location.search).get('lang');
+  var lang = urlLang || saved || 'tr';
+  if(urlLang) localStorage.setItem('mgv_lang', urlLang);
+  document.documentElement.lang = lang;
+  var meta = {
+    tr: { title: 'MotoGP Yayın Rehberi — Hangi Kanalda İzlenir? 2026 | motogpvideo.com', desc: 'MotoGP 2026 hangi kanalda yayınlanıyor? S Sport Plus, beIN Sports, TRT Spor canlı yayın bilgileri, ülkeye göre MotoGP yayıncıları.' },
+    en: { title: 'MotoGP 2026 Live Stream Guide – Where to Watch | motogpvideo.com', desc: 'Where to watch MotoGP 2026 live? Official broadcaster guide by country: BT Sport, ESPN, Sky Sports, DAZN and more. Find your channel now.' },
+    de: { title: 'MotoGP 2026 Live Stream – Wo schauen? Sender-Guide | motogpvideo.com', desc: 'Wo kann man MotoGP 2026 live schauen? Offizielle Sender nach Land: ServusTV, Sky Sport und mehr. Jetzt deinen Kanal finden.' },
+    fr: { title: 'MotoGP 2026 en Direct – Où Regarder? Guide Chaînes | motogpvideo.com', desc: 'Où regarder MotoGP 2026 en direct? Guide des diffuseurs officiels par pays: Canal+, beIN Sports et plus encore.' },
+    es: { title: 'MotoGP 2026 en Directo – Dónde Ver | motogpvideo.com', desc: '¿Dónde ver MotoGP 2026 en directo? Guía de emisoras oficiales por país: DAZN, Movistar+ y más.' },
+    it: { title: 'MotoGP 2026 in Diretta – Dove Guardare | motogpvideo.com', desc: 'Dove guardare MotoGP 2026 in diretta? Guida alle emittenti ufficiali per paese: Sky Sport MotoGP, DAZN e altro.' },
+    pt: { title: 'MotoGP 2026 ao Vivo – Onde Assistir | motogpvideo.com', desc: 'Onde assistir MotoGP 2026 ao vivo? Guia de emissoras oficiais por país: Sport TV, DAZN e mais.' },
+    ja: { title: 'MotoGP 2026 ライブ中継 – どこで見る？放送局ガイド | motogpvideo.com', desc: 'MotoGP 2026のライブ放送はどこで見る？国別の公式放送局ガイド：Huluなど。' },
+    ar: { title: 'MotoGP 2026 بث مباشر – أين تشاهد؟ | motogpvideo.com', desc: 'أين تشاهد MotoGP 2026 مباشرة؟ دليل المذيعين الرسميين حسب البلد.' },
+    id: { title: 'MotoGP 2026 Live Stream – Di Mana Nonton? | motogpvideo.com', desc: 'Di mana nonton MotoGP 2026 live? Panduan stasiun TV resmi per negara: Trans7, Mola TV dan lainnya.' }
+  };
+  var m = meta[lang] || meta['en'];
+  document.title = m.title;
+  var d = document.querySelector('meta[name="description"]');
+  if(d) d.setAttribute('content', m.desc);
+})();
+</script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSW3BQM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

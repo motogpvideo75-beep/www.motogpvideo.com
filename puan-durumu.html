@@ -90,6 +90,22 @@ footer a{color:var(--accent);text-decoration:none;}
   var lang = urlLang || saved || 'tr';
   if(urlLang) localStorage.setItem('mgv_lang', urlLang);
   document.documentElement.lang = lang;
+  var meta = {
+    tr: { title: 'MotoGP 2026 Puan Durumu – Güncel Şampiyona Sıralaması | motogpvideo.com', desc: 'MotoGP 2026 şampiyona puan durumu. Güncel sürücü ve takım sıralamaları, tüm yarışların sonuçları.' },
+    en: { title: 'MotoGP 2026 Championship Standings – Live Points Table | motogpvideo.com', desc: 'MotoGP 2026 rider and constructor championship standings, updated after every race. See who leads the title fight.' },
+    de: { title: 'MotoGP 2026 WM-Stand – Aktuell | motogpvideo.com', desc: 'MotoGP 2026 Fahrer- und Konstrukteurs-Weltmeisterschaft: aktuelle Punkte nach jedem Rennen.' },
+    fr: { title: 'Classement MotoGP 2026 – Points Championnat | motogpvideo.com', desc: 'Classement pilotes et constructeurs MotoGP 2026, mis à jour après chaque course.' },
+    es: { title: 'Clasificación MotoGP 2026 – Puntos Campeonato | motogpvideo.com', desc: 'Clasificación de pilotos y constructores MotoGP 2026, actualizada tras cada carrera.' },
+    it: { title: 'Classifica MotoGP 2026 – Punti Campionato | motogpvideo.com', desc: 'Classifica piloti e costruttori MotoGP 2026, aggiornata dopo ogni gara.' },
+    pt: { title: 'Classificação MotoGP 2026 – Pontos do Campeonato | motogpvideo.com', desc: 'Classificação de pilotos e construtores do MotoGP 2026, atualizada após cada corrida.' },
+    ja: { title: 'MotoGP 2026 選手権ポイントスタンディング | motogpvideo.com', desc: 'MotoGP 2026のライダーおよびコンストラクターズチャンピオンシップの最新ポイント。' },
+    ar: { title: 'ترتيب بطولة MotoGP 2026 – جدول النقاط | motogpvideo.com', desc: 'ترتيب السائقين والفرق في بطولة MotoGP 2026، محدث بعد كل سباق.' },
+    id: { title: 'Klasemen MotoGP 2026 – Poin Kejuaraan | motogpvideo.com', desc: 'Klasemen pembalap dan konstruktor MotoGP 2026, diperbarui setelah setiap balapan.' }
+  };
+  var m = meta[lang] || meta['en'];
+  document.title = m.title;
+  var d = document.querySelector('meta[name="description"]');
+  if(d) d.setAttribute('content', m.desc);
 })();
 </script>
 </head>
