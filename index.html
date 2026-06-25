@@ -3592,7 +3592,10 @@ function closeWelcomePopup(){
 }
 (function(){
     if(sessionStorage.getItem('popup_shown')) return;
-    var lang = (navigator.language || 'en').split('-')[0];
+    // Pre-loader veya localStorage'dan gelen dili kullan — en güvenilir kaynak
+    var lang = document.documentElement.lang ||
+               localStorage.getItem('userLangChoice') ||
+               (navigator.language || 'en').split('-')[0];
     if(!popupTexts[lang]) lang = 'en';
     const parts = (popupTexts[lang]||popupTexts['tr']).split('|');
     document.getElementById('popup-text').innerHTML = parts[0] + (parts[1] ? '<br><span style="color:#e8001d;font-weight:700;margin-top:6px;display:inline-block">' + parts[1] + '</span>' : '');
