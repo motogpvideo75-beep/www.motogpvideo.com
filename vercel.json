@@ -1,4 +1,24 @@
 {
+  "headers": [
+    {
+      "source": "/(.*\\.(?:js|css|woff2?|ttf|otf|eot|ico|svg|webp|png|jpg|jpeg|gif))",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*\\.html)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400" }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400" }
+      ]
+    }
+  ],
   "redirects": [
     { "source": "/index-en.html", "destination": "/", "permanent": true },
     { "source": "/index-tr.html", "destination": "/", "permanent": true },
