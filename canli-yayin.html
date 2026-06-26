@@ -218,7 +218,7 @@ footer a{color:var(--accent);text-decoration:none;}
         const data = await apiFetch({type:'seasons'});
         // API'den gelen yapı: {stages:[{id, description, type:'season'...}]}
         const seasons = (data.stages||[])
-          .filter(s=>s.type==='season' && s.category?.name==='MotoGP')
+          .filter(s=>s.type==='season' && s.category?.name==='MotoGP' && /\d{4}/.test(s.description))
           .sort((a,b)=>b.scheduled.localeCompare(a.scheduled));
         seasonSel.innerHTML = seasons.map(s=>`<option value="${s.id}">${s.description}</option>`).join('');
         badge.textContent='Sezon seçin'; badge.style.background='#2c3e50';
