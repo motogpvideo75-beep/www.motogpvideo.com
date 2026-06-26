@@ -72,6 +72,8 @@ body{background:var(--bg);color:var(--text);font-family:"Segoe UI",Arial,sans-se
 .channel-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--text);transition:border-color .2s,transform .1s;}
 .channel-card:hover{border-color:var(--accent);transform:translateY(-2px);}
 .channel-card.featured{border-color:var(--accent);background:var(--card2);}
+    .badge-live{background:#e10600;color:#fff;padding:2px 8px;border-radius:10px;font-size:.7rem;font-weight:700;animation:livepulse 1.2s infinite;}
+    @keyframes livepulse{0%,100%{opacity:1;}50%{opacity:.4;}}
 .channel-logo{font-size:2rem;flex-shrink:0;}
 .channel-name{font-weight:700;font-size:.95rem;}
 .channel-type{color:var(--muted);font-size:.8rem;margin-top:2px;}
@@ -400,30 +402,42 @@ footer a{color:var(--accent);text-decoration:none;}
 
   <div class="section-title">🇹🇷 Türkiye'de MotoGP Nerede Yayınlanıyor?</div>
   <div class="channel-grid">
-    <a class="channel-card featured" href="https://www.ssportplus.com" target="_blank" rel="noopener noreferrer">
+    <a class="channel-card featured" href="https://www.ssportplus.com/canli-yayin" target="_blank" rel="noopener noreferrer">
       <div class="channel-logo">📺</div>
       <div>
         <div class="channel-name">S Sport Plus</div>
         <div class="channel-type">Online & Uygulama</div>
+        <span class="channel-badge badge-live">🔴 CANLI</span>
         <span class="channel-badge badge-paid">Ücretli</span>
         <span class="channel-badge badge-official">✔ Resmi Yayıncı</span>
       </div>
     </a>
-    <a class="channel-card featured" href="https://www.beinsports.com/tr" target="_blank" rel="noopener noreferrer">
+    <a class="channel-card featured" href="https://www.beinsports.com/tr/canli-yayin" target="_blank" rel="noopener noreferrer">
       <div class="channel-logo">📡</div>
       <div>
         <div class="channel-name">beIN Sports</div>
         <div class="channel-type">Kablo & Uydu TV</div>
+        <span class="channel-badge badge-live">🔴 CANLI</span>
         <span class="channel-badge badge-paid">Ücretli</span>
         <span class="channel-badge badge-official">✔ Resmi Yayıncı</span>
       </div>
     </a>
-    <a class="channel-card" href="https://www.trtspor.com.tr" target="_blank" rel="noopener noreferrer">
+    <a class="channel-card" href="https://www.trtspor.com.tr/canli-yayin" target="_blank" rel="noopener noreferrer">
       <div class="channel-logo">📻</div>
       <div>
         <div class="channel-name">TRT Spor</div>
         <div class="channel-type">Karasal & Online</div>
+        <span class="channel-badge badge-live">🔴 CANLI</span>
         <span class="channel-badge badge-free">Ücretsiz</span>
+      </div>
+    </a>
+    <a class="channel-card" href="https://www.tivibu.com.tr/motogp" target="_blank" rel="noopener noreferrer">
+      <div class="channel-logo">📺</div>
+      <div>
+        <div class="channel-name">Tivibu</div>
+        <div class="channel-type">73. kanal · IPTV & Uygulama</div>
+        <span class="channel-badge badge-live">🔴 CANLI</span>
+        <span class="channel-badge badge-paid">Ücretli</span>
       </div>
     </a>
     <a class="channel-card" href="https://www.motogp.com/en/live" target="_blank" rel="noopener noreferrer">
@@ -454,8 +468,29 @@ footer a{color:var(--accent);text-decoration:none;}
       <a class="channel-card" href="https://www.tntsports.co.uk" target="_blank" rel="noopener noreferrer">
         <div class="channel-logo">📺</div><div><div class="channel-name">TNT Sports</div><span class="channel-badge badge-paid">Ücretli</span></div>
       </a>
-      <a class="channel-card" href="https://www.skysports.com" target="_blank" rel="noopener noreferrer">
-        <div class="channel-logo">📡</div><div><div class="channel-name">Sky Sports</div><span class="channel-badge badge-paid">Ücretli</span></div>
+      <a class="channel-card" href="https://www.skysports.com/watch-sky-sports" target="_blank" rel="noopener noreferrer">
+        <div class="channel-logo">📡</div>
+        <div>
+          <div class="channel-name">Sky Sport MotoGP</div>
+          <div class="channel-type">TV & Online</div>
+          <span class="channel-badge badge-live">🔴 CANLI</span>
+          <span class="channel-badge badge-paid">Ücretli</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="country-section">
+    <div class="country-title">🇦🇹 Avusturya (Ücretsiz!)</div>
+    <div class="channel-grid">
+      <a class="channel-card featured" href="https://www.servustv.com/sport/motogp/" target="_blank" rel="noopener noreferrer">
+        <div class="channel-logo">🦬</div>
+        <div>
+          <div class="channel-name">ServusTV</div>
+          <div class="channel-type">Ücretsiz · Tüm seanslar</div>
+          <span class="channel-badge badge-live">🔴 CANLI</span>
+          <span class="channel-badge badge-free">Ücretsiz</span>
+        </div>
       </a>
     </div>
   </div>
