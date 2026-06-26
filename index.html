@@ -1649,6 +1649,7 @@
     <main class="main">
         <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Motor Sporları Merkezi — MotoGP, WorldSBK ve Formula 1 Yayın Rehberi, Takvim ve Puan Durumu</h1>
         <div class="section active" id="sec-canli">
+            <div id="home-live-timing" style="display:none;margin-bottom:18px;"></div>
             <div style="background:linear-gradient(135deg,#0d1220 0%,#1a0505 50%,#0d1220 100%);border:1px solid #e8001d44;border-radius:12px;padding:22px;margin-bottom:18px;text-align:center;">
                 <div style="font-size:1.3rem;font-weight:900;letter-spacing:1.5px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:12px;animation:titleBlink 2s infinite;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 36 24"><rect width="36" height="24" fill="#E30A17"/><circle cx="13" cy="12" r="6" fill="white"/><circle cx="15" cy="12" r="4.8" fill="#E30A17"/><polygon points="19.5,9.5 22.5,12 19.5,14.5 20.5,12" fill="white"/><circle cx="22.5" cy="10.5" r="0.8" fill="white"/></svg>
@@ -3712,6 +3713,121 @@ function closeVideoPopupBtn() {
 }
 
 // Video yükleme showSection içinde yapılıyor
+
+// ====== ANA SAYFA OTOMATİK CANLI SIRALAMA ======
+// Yarış seansı aktifken ana sayfanın en üstünde canlı sıralama gösterir.
+// Seans bitince "son sonuç" olarak kalır, seans yoksa gizlenir.
+(function(){
+  const box = document.getElementById('home-live-timing');
+  if(!box) return;
+  let pollTimer = null;
+
+  const FLAGS = {ITA:'🇮🇹',SPA:'🇪🇸',ESP:'🇪🇸',FRA:'🇫🇷',JPN:'🇯🇵',GBR:'🇬🇧',
+    AUS:'🇦🇺',RSA:'🇿🇦',ZAF:'🇿🇦',TUR:'🇹🇷',BRA:'🇧🇷',GER:'🇩🇪',DEU:'🇩🇪',USA:'🇺🇸',
+    POR:'🇵🇹',PRT:'🇵🇹',NED:'🇳🇱',NLD:'🇳🇱',AUT:'🇦🇹',THA:'🇹🇭',ARG:'🇦🇷',
+    MYS:'🇲🇾',MAL:'🇲🇾',IDN:'🇮🇩',IND:'🇮🇩',CZE:'🇨🇿',HUN:'🇭🇺',COL:'🇨🇴'};
+  function flag(c){ return FLAGS[c] || ''; }
+
+  async function fetchLive(){
+    try{
+      const r = await fetch('/api/motogp?type=livetiming');
+      if(!r.ok) return null;
+      const txt = await r.text();
+      if(!txt || txt.length < 5) return null;
+      return JSON.parse(txt);
+    }catch(e){ return null; }
+  }
+
+  function hide(){
+    box.style.display = 'none';
+    if(pollTimer){ clearInterval(pollTimer); pollTimer = null; }
+  }
+
+  function render(data){
+    const head = (data && data.head) || {};
+    const riders = (data && data.rider) || {};
+    const keys = Object.keys(riders);
+    if(!keys.length){ hide(); return; }
+
+    const sessName = head.session_name || 'Seans';
+    const circuit = head.circuit_name || '';
+    const status = head.session_status_name || '';
+    const isLive = status !== 'F';
+
+    const sorted = keys.map(k=>riders[k]).sort((a,b)=>(a.order||99)-(b.order||99));
+    const top = sorted.slice(0, 15); // ana sayfada ilk 15
+
+    const badge = isLive
+      ? '<span style="display:inline-flex;align-items:center;gap:6px;background:#e10600;color:#fff;font-weight:900;font-size:.72rem;padding:4px 12px;border-radius:20px;animation:titleBlink 1s infinite;">🔴 CANLI</span>'
+      : '<span style="background:#27ae60;color:#fff;font-weight:900;font-size:.72rem;padding:4px 12px;border-radius:20px;">✅ TAMAMLANDI</span>';
+
+    let html = `
+      <div style="background:linear-gradient(135deg,#1a0505,#0d1220);border:2px solid #e10600;border-radius:14px;overflow:hidden;box-shadow:0 0 24px #e1060044;">
+        <div style="padding:14px 18px;background:linear-gradient(90deg,#e10600 0%,#8b0000 100%);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-size:1.1rem;font-weight:900;color:#fff;letter-spacing:.5px;">🏁 CANLI SIRALAMA</span>
+            ${badge}
+          </div>
+          <span style="font-size:.8rem;color:#ffd;font-weight:700;">${circuit} · ${sessName}</span>
+        </div>
+        <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:.82rem;">
+          <thead>
+            <tr style="background:#0d1220;color:#8aa;text-align:left;">
+              <th style="padding:8px 10px;">#</th><th style="padding:8px 6px;">No</th>
+              <th style="padding:8px 10px;">Sürücü</th><th style="padding:8px 6px;"></th>
+              <th style="padding:8px 10px;">En İyi Tur</th><th style="padding:8px 10px;">Fark</th>
+              <th style="padding:8px 10px;">Takım</th>
+            </tr>
+          </thead><tbody>`;
+
+    top.forEach((rd,i)=>{
+      const pos = rd.order || (i+1);
+      const num = rd.rider_number || '';
+      const name = rd.rider_shortname || rd.rider_surname || '-';
+      const nat = rd.rider_nation || '';
+      const isTurk = nat === 'TUR';
+      const team = rd.team_name || '';
+      const lap = rd.lap_time || '-';
+      const gap = i===0 ? '–' : ('+' + (rd.gap_first || '?'));
+      const pit = rd.on_pit === true;
+      const rowBg = isTurk ? 'background:linear-gradient(90deg,#e1060033,transparent);border-left:3px solid #e10600;' : (i%2 ? 'background:#ffffff05;' : '');
+      html += `<tr style="${rowBg}color:#fff;border-bottom:1px solid #ffffff0d;">
+        <td style="padding:7px 10px;font-weight:900;color:${pos<=3?'#ffd700':'#fff'};">${pos}</td>
+        <td style="padding:7px 6px;color:#888;">${num}</td>
+        <td style="padding:7px 10px;font-weight:700;">${name}</td>
+        <td style="padding:7px 6px;">${flag(nat)}</td>
+        <td style="padding:7px 10px;font-family:monospace;color:#9fe;">${lap}</td>
+        <td style="padding:7px 10px;font-family:monospace;color:#aaa;">${gap}</td>
+        <td style="padding:7px 10px;color:#999;font-size:.75rem;">${team}${pit?' <span style="background:#ff9800;color:#000;font-size:.6rem;font-weight:900;padding:1px 5px;border-radius:3px;">PIT</span>':''}</td>
+      </tr>`;
+    });
+
+    html += `</tbody></table></div>
+        <div style="padding:10px 18px;background:#0d1220;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;">
+          <span style="font-size:.72rem;color:#777;">${isLive?'🔄 30 saniyede bir otomatik güncellenir':'Seans tamamlandı'} · Resmi MotoGP verisi</span>
+          <a href="canli-yayin.html" style="font-size:.78rem;color:#ff6b6b;font-weight:700;text-decoration:none;">Tüm sıralama ve yayın rehberi →</a>
+        </div>
+      </div>`;
+
+    box.innerHTML = html;
+    box.style.display = 'block';
+
+    if(isLive){
+      if(!pollTimer) pollTimer = setInterval(loadAndRender, 30000);
+    } else {
+      if(pollTimer){ clearInterval(pollTimer); pollTimer = null; }
+    }
+  }
+
+  async function loadAndRender(){
+    const data = await fetchLive();
+    if(data) render(data);
+    else hide();
+  }
+
+  loadAndRender();
+})();
 </script>
 
 </body>
