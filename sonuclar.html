@@ -136,7 +136,8 @@ footer a{color:var(--accent);text-decoration:none;}
     <button class="back-btn" onclick="showRaceList()">← Tüm Yarışlar</button>
     <div class="race-header" id="race-header"></div>
     <div class="tabs" id="category-tabs"></div>
-    <select class="session-select" id="session-select" onchange="loadClassification()"></select>
+    <div style="color:var(--muted);font-size:.8rem;margin-bottom:8px;">Seans seçin:</div>
+    <div class="tabs" id="session-tabs"></div>
     <div id="classification-result">
       <div class="loading"><div class="spinner"></div>Sonuçlar yükleniyor...</div>
     </div>
@@ -243,34 +244,38 @@ function selectCategory(idx){
 
 // 3. Seansları yükle
 async function loadSessions(){
-  const sel = document.getElementById('session-select');
-  sel.innerHTML = '<option>Yükleniyor...</option>';
+  const tabsEl = document.getElementById('session-tabs');
+  tabsEl.innerHTML = '<div style="color:var(--muted);padding:8px;">Yükleniyor...</div>';
   document.getElementById('classification-result').innerHTML = '<div class="loading"><div class="spinner"></div>Seanslar yükleniyor...</div>';
   try {
     const data = await apiFetch({ type:'sessions', event: currentEvent.id, category: currentCategory.id });
     currentSessions = Array.isArray(data) ? data : [];
-    // Seans tipi öncelik sırası: Race, Sprint, Q2, Q1, FP2, FP, PR
     const order = {RAC:1,SPR:2,Q2:3,Q1:4,QP:3,FP2:5,FP:6,FP1:6,PR:7,WUP:8};
-    const labels = {RAC:'🏁 Yarış (Race)',SPR:'⚡ Sprint',Q2:'⏱️ Qualifying 2',Q1:'⏱️ Qualifying 1',QP:'⏱️ Qualifying',FP1:'Practice 1',FP2:'Practice 2',FP:'Free Practice',PR:'Practice',WUP:'Warm Up'};
+    const labels = {RAC:'🏁 Yarış',SPR:'⚡ Sprint',Q2:'⏱️ Sıralama 2',Q1:'⏱️ Sıralama 1',QP:'⏱️ Sıralama',FP1:'Antrenman 1',FP2:'Antrenman 2',FP:'Antrenman',PR:'Pratik',WUP:'Isınma'};
     currentSessions.sort((a,b)=>(order[a.type]||9)-(order[b.type]||9));
-    sel.innerHTML = currentSessions.map(s=>{
-      const label = labels[s.type] || s.type;
-      return `<option value="${s.id}">${label}</option>`;
-    }).join('');
-    if(currentSessions.length){
-      loadClassification();
-    } else {
+    if(!currentSessions.length){
+      tabsEl.innerHTML = '';
       document.getElementById('classification-result').innerHTML = '<div class="loading">Bu kategori için seans bulunamadı.</div>';
+      return;
     }
+    tabsEl.innerHTML = currentSessions.map((s,i)=>{
+      const label = labels[s.type] || s.type;
+      return `<div class="tab ${i===0?'active':''}" onclick="selectSession(${i})">${label}</div>`;
+    }).join('');
+    selectSession(0);
   } catch(e){
-    sel.innerHTML = '<option>Yüklenemedi</option>';
+    tabsEl.innerHTML = '';
     document.getElementById('classification-result').innerHTML = '<div class="loading">Seanslar yüklenemedi.</div>';
   }
 }
 
+function selectSession(idx){
+  document.querySelectorAll('#session-tabs .tab').forEach((t,i)=>t.classList.toggle('active', i===idx));
+  loadClassification(currentSessions[idx].id);
+}
+
 // 4. Sonuçları yükle
-async function loadClassification(){
-  const sessionId = document.getElementById('session-select').value;
+async function loadClassification(sessionId){
   if(!sessionId) return;
   const session = currentSessions.find(s=>s.id===sessionId);
   document.getElementById('classification-result').innerHTML = '<div class="loading"><div class="spinner"></div>Sonuçlar yükleniyor...</div>';
