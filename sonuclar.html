@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MotoGP 2026 Yarış Sonuçları — Tüm Grand Prix Sonuçları | motogpvideo.com</title>
+<meta name="description" content="MotoGP 2026 yarış sonuçları. Tüm Grand Prix, Sprint, Qualifying ve Practice sonuçları. MotoGP, Moto2, Moto3 resmi sonuçlar ve tur zamanları.">
+<meta name="keywords" content="MotoGP sonuçları, MotoGP 2026 yarış sonuçları, Grand Prix sonuçları, MotoGP race results, Moto2 Moto3 sonuçları, sprint sonuçları">
+<link rel="canonical" href="https://www.motogpvideo.com/sonuclar.html">
+<link rel="alternate" hreflang="tr" href="https://www.motogpvideo.com/sonuclar.html?lang=tr">
+<link rel="alternate" hreflang="en" href="https://www.motogpvideo.com/sonuclar.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://www.motogpvideo.com/sonuclar.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.motogpvideo.com/sonuclar.html">
+<meta property="og:title" content="MotoGP 2026 Yarış Sonuçları — Tüm Grand Prix">
+<meta property="og:description" content="MotoGP 2026 tüm yarış sonuçları, tur zamanları ve sıralamalar.">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png">
+<link rel="icon" href="favicon.ico">
+<style>
+:root{--bg:#0d1220;--card:#131d30;--card2:#192438;--accent:#e8001d;--border:#1e2d4a;--text:#fff;--muted:#7a90b8;--gold:#ffd700;--silver:#c0c0c0;--bronze:#cd7f32;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:"Segoe UI",Arial,sans-serif;min-height:100vh;}
+.topbar{background:#080e1a;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--accent);flex-wrap:wrap;gap:10px;}
+.topbar a{color:#fff;text-decoration:none;font-weight:700;font-size:1.1rem;}
+.topbar nav a{margin-left:14px;color:var(--muted);font-size:.88rem;text-decoration:none;}
+.topbar nav a:hover,.topbar nav a.active{color:#fff;}
+.hero{background:linear-gradient(135deg,#0d1220 0%,#1a0005 100%);padding:32px 20px;text-align:center;border-bottom:1px solid var(--border);}
+.hero h1{font-size:1.8rem;font-weight:800;margin-bottom:6px;}
+.hero h1 span{color:var(--accent);}
+.hero p{color:var(--muted);font-size:.9rem;}
+.container{max-width:1000px;margin:0 auto;padding:24px 16px;}
+
+/* Yarış kartları grid */
+.race-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
+.race-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all .2s;text-decoration:none;color:var(--text);display:block;}
+.race-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.race-card .rc-round{font-size:.72rem;color:var(--muted);font-weight:600;}
+.race-card .rc-flag{font-size:1.6rem;}
+.race-card .rc-name{font-weight:700;font-size:.95rem;margin:6px 0 4px;}
+.race-card .rc-circuit{font-size:.78rem;color:var(--muted);}
+.race-card .rc-date{font-size:.75rem;color:var(--accent);margin-top:8px;font-weight:600;}
+.race-card .rc-status{display:inline-block;font-size:.65rem;padding:2px 8px;border-radius:10px;margin-top:6px;font-weight:700;}
+.st-finished{background:rgba(39,174,96,.15);color:#2ecc71;}
+.st-upcoming{background:rgba(122,144,184,.15);color:var(--muted);}
+
+/* Geri butonu */
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;cursor:pointer;font-size:.85rem;margin-bottom:20px;font-weight:600;}
+.back-btn:hover{color:#fff;border-color:var(--accent);}
+
+/* Yarış detay başlık */
+.race-header{background:linear-gradient(135deg,#131d30,#1a0510);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:20px;}
+.race-header h2{font-size:1.4rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.race-header .rh-circuit{color:var(--muted);font-size:.9rem;margin-top:6px;}
+
+/* Kategori + seans seçici */
+.tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.tab{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:7px 16px;border-radius:20px;cursor:pointer;font-size:.82rem;font-weight:600;transition:all .2s;}
+.tab.active,.tab:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+.session-select{background:var(--card);color:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:.85rem;margin-bottom:16px;width:100%;max-width:300px;}
+
+/* Sonuç tablosu */
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;}
+thead th{background:#0d1525;padding:10px 12px;text-align:left;font-size:.74rem;font-weight:700;letter-spacing:.5px;color:var(--muted);text-transform:uppercase;white-space:nowrap;}
+tbody tr{border-bottom:1px solid var(--border);}
+tbody tr:hover{background:var(--card2);}
+td{padding:10px 12px;font-size:.86rem;white-space:nowrap;}
+.pos{font-weight:800;font-size:1rem;width:38px;text-align:center;}
+.pos-1{color:var(--gold);}.pos-2{color:var(--silver);}.pos-3{color:var(--bronze);}
+.rider-num{color:var(--muted);font-weight:600;width:34px;}
+.rider-name{font-weight:700;}
+.team-name{font-size:.76rem;color:var(--muted);}
+.lap-time{font-family:monospace;color:#4fc3f7;}
+.gap-time{font-family:monospace;color:var(--muted);}
+.pts{font-weight:800;color:var(--gold);text-align:center;}
+.turkish td{border-left:3px solid var(--accent);background:rgba(232,0,29,.08);}
+
+.loading{text-align:center;padding:50px;color:var(--muted);}
+.spinner{border:3px solid var(--border);border-top:3px solid var(--accent);border-radius:50%;width:36px;height:36px;animation:spin 1s linear infinite;margin:0 auto 14px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.weather-bar{display:flex;gap:14px;flex-wrap:wrap;font-size:.78rem;color:var(--muted);margin-bottom:14px;background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;}
+.weather-bar span strong{color:#fff;}
+
+footer{text-align:center;padding:24px;color:var(--muted);font-size:.78rem;border-top:1px solid var(--border);margin-top:32px;}
+footer a{color:var(--accent);text-decoration:none;}
+@media(max-width:620px){
+  td,th{padding:8px 8px;}
+  .hero h1{font-size:1.4rem;}
+  .hide-m{display:none;}
+}
+</style>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-KSW3BQM");</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "MotoGP 2026 Yarış Sonuçları",
+  "description": "MotoGP, Moto2, Moto3 2026 tüm yarış sonuçları ve tur zamanları",
+  "url": "https://www.motogpvideo.com/sonuclar.html",
+  "about": {
+    "@type": "SportsOrganization",
+    "name": "MotoGP",
+    "sport": "Motosiklet Yarışı",
+    "url": "https://www.motogp.com"
+  }
+}
+</script>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KSW3BQM" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div class="topbar">
+  <a href="/">🏍️ MotoGP Video</a>
+  <nav>
+    <a href="/">Ana Sayfa</a>
+    <a href="takvim.html">Takvim</a>
+    <a href="puan-durumu.html">Puan Durumu</a>
+    <a href="sonuclar.html" class="active">Sonuçlar</a>
+    <a href="canli-yayin.html">Yayın Rehberi</a>
+  </nav>
+</div>
+
+<div class="hero">
+  <h1>MotoGP 2026 <span>Yarış Sonuçları</span></h1>
+  <p>Tüm Grand Prix, Sprint, Qualifying ve Practice sonuçları · Resmi MotoGP verisi</p>
+</div>
+
+<div class="container">
+  <!-- Yarış listesi görünümü -->
+  <div id="race-list-view">
+    <div id="race-grid" class="race-grid">
+      <div class="loading"><div class="spinner"></div>Yarışlar yükleniyor...</div>
+    </div>
+  </div>
+
+  <!-- Yarış detay görünümü -->
+  <div id="race-detail-view" style="display:none;">
+    <button class="back-btn" onclick="showRaceList()">← Tüm Yarışlar</button>
+    <div class="race-header" id="race-header"></div>
+    <div class="tabs" id="category-tabs"></div>
+    <select class="session-select" id="session-select" onchange="loadClassification()"></select>
+    <div id="classification-result">
+      <div class="loading"><div class="spinner"></div>Sonuçlar yükleniyor...</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 motogpvideo.com · Resmi MotoGP verisi · <a href="/">Ana Sayfa</a>
+</footer>
+
+<script>
+const SEASON_2026 = 'e88b4e43-2209-47aa-8e83-0e0b1cedde6e';
+const CATEGORIES = [
+  { name: 'MotoGP', id: 'e8c110ad-64aa-4e8e-8a86-f2f152f6a942' },
+  { name: 'Moto2',  id: '549640b8-fd9c-4245-acfd-60e4bc38b25c' },
+  { name: 'Moto3',  id: '954f7e65-2ef2-4423-b949-4961cc603e45' }
+];
+const FLAGS = {TH:'🇹🇭',BR:'🇧🇷',US:'🇺🇸',ES:'🇪🇸',FR:'🇫🇷',IT:'🇮🇹',HU:'🇭🇺',CZ:'🇨🇿',NL:'🇳🇱',DE:'🇩🇪',GB:'🇬🇧',AT:'🇦🇹',JP:'🇯🇵',ID:'🇮🇩',AU:'🇦🇺',MY:'🇲🇾',PT:'🇵🇹',QA:'🇶🇦',AR:'🇦🇷',IN:'🇮🇳'};
+const NAT_FLAGS = {ITA:'🇮🇹',SPA:'🇪🇸',ESP:'🇪🇸',FRA:'🇫🇷',JPN:'🇯🇵',GBR:'🇬🇧',AUS:'🇦🇺',RSA:'🇿🇦',ZAF:'🇿🇦',TUR:'🇹🇷',BRA:'🇧🇷',GER:'🇩🇪',USA:'🇺🇸',POR:'🇵🇹',NED:'🇳🇱',AUT:'🇦🇹',SUI:'🇨🇭',CZE:'🇨🇿'};
+
+let allEvents = [];
+let currentEvent = null;
+let currentCategory = CATEGORIES[0];
+let currentSessions = [];
+
+async function apiFetch(params){
+  const r = await fetch('/api/motogp?' + new URLSearchParams(params));
+  if(!r.ok) throw new Error('API ' + r.status);
+  return r.json();
+}
+
+// 1. Yarışları yükle
+async function loadEvents(){
+  try {
+    const data = await apiFetch({ type:'events', season: SEASON_2026 });
+    allEvents = Array.isArray(data) ? data : [];
+    renderRaceGrid();
+    // URL'de ?gp=THA varsa direkt o yarışı aç
+    const gp = new URLSearchParams(location.search).get('gp');
+    if(gp){
+      const ev = allEvents.find(e => (e.short_name||'').toUpperCase() === gp.toUpperCase());
+      if(ev) openRace(ev, false);
+    }
+  } catch(e){
+    document.getElementById('race-grid').innerHTML = '<div class="loading">Yarışlar yüklenemedi: '+e.message+'</div>';
+  }
+}
+
+function renderRaceGrid(){
+  const grid = document.getElementById('race-grid');
+  // En yeniden eskiye sırala
+  const sorted = [...allEvents].sort((a,b)=>(b.date_start||'').localeCompare(a.date_start||''));
+  grid.innerHTML = sorted.map((ev,i)=>{
+    const iso = ev.country?.iso || '';
+    const flag = FLAGS[iso] || '🏁';
+    const circuit = ev.circuit?.name || '';
+    const round = allEvents.length - allEvents.indexOf(ev);
+    const finished = ev.status === 'FINISHED';
+    const date = (ev.date_start||'').slice(0,10);
+    return `<a class="race-card" onclick="openRace(allEvents[${allEvents.indexOf(ev)}],true)">
+      <div class="rc-flag">${flag}</div>
+      <div class="rc-round">${ev.short_name||''}</div>
+      <div class="rc-name">${ev.name||''}</div>
+      <div class="rc-circuit">${circuit}</div>
+      <div class="rc-date">${date}</div>
+      <div class="rc-status ${finished?'st-finished':'st-upcoming'}">${finished?'✓ Tamamlandı':'Yaklaşan'}</div>
+    </a>`;
+  }).join('');
+}
+
+// 2. Yarış aç
+async function openRace(ev, pushUrl){
+  currentEvent = ev;
+  currentCategory = CATEGORIES[0];
+  document.getElementById('race-list-view').style.display = 'none';
+  document.getElementById('race-detail-view').style.display = 'block';
+  window.scrollTo(0,0);
+
+  if(pushUrl){
+    const url = new URL(location);
+    url.searchParams.set('gp', ev.short_name);
+    history.pushState({}, '', url);
+  }
+
+  const iso = ev.country?.iso || '';
+  const flag = FLAGS[iso] || '🏁';
+  document.getElementById('race-header').innerHTML = `
+    <h2>${flag} ${ev.name||''}</h2>
+    <div class="rh-circuit">📍 ${ev.circuit?.name||''}, ${ev.circuit?.place||''} · ${(ev.date_start||'').slice(0,10)} – ${(ev.date_end||'').slice(0,10)}</div>`;
+
+  // Kategori sekmeleri
+  document.getElementById('category-tabs').innerHTML = CATEGORIES.map((c,i)=>
+    `<div class="tab ${i===0?'active':''}" onclick="selectCategory(${i})">${c.name}</div>`
+  ).join('');
+
+  loadSessions();
+}
+
+function selectCategory(idx){
+  currentCategory = CATEGORIES[idx];
+  document.querySelectorAll('#category-tabs .tab').forEach((t,i)=>t.classList.toggle('active', i===idx));
+  loadSessions();
+}
+
+// 3. Seansları yükle
+async function loadSessions(){
+  const sel = document.getElementById('session-select');
+  sel.innerHTML = '<option>Yükleniyor...</option>';
+  document.getElementById('classification-result').innerHTML = '<div class="loading"><div class="spinner"></div>Seanslar yükleniyor...</div>';
+  try {
+    const data = await apiFetch({ type:'sessions', event: currentEvent.id, category: currentCategory.id });
+    currentSessions = Array.isArray(data) ? data : [];
+    // Seans tipi öncelik sırası: Race, Sprint, Q2, Q1, FP2, FP, PR
+    const order = {RAC:1,SPR:2,Q2:3,Q1:4,QP:3,FP2:5,FP:6,FP1:6,PR:7,WUP:8};
+    const labels = {RAC:'🏁 Yarış (Race)',SPR:'⚡ Sprint',Q2:'⏱️ Qualifying 2',Q1:'⏱️ Qualifying 1',QP:'⏱️ Qualifying',FP1:'Practice 1',FP2:'Practice 2',FP:'Free Practice',PR:'Practice',WUP:'Warm Up'};
+    currentSessions.sort((a,b)=>(order[a.type]||9)-(order[b.type]||9));
+    sel.innerHTML = currentSessions.map(s=>{
+      const label = labels[s.type] || s.type;
+      return `<option value="${s.id}">${label}</option>`;
+    }).join('');
+    if(currentSessions.length){
+      loadClassification();
+    } else {
+      document.getElementById('classification-result').innerHTML = '<div class="loading">Bu kategori için seans bulunamadı.</div>';
+    }
+  } catch(e){
+    sel.innerHTML = '<option>Yüklenemedi</option>';
+    document.getElementById('classification-result').innerHTML = '<div class="loading">Seanslar yüklenemedi.</div>';
+  }
+}
+
+// 4. Sonuçları yükle
+async function loadClassification(){
+  const sessionId = document.getElementById('session-select').value;
+  if(!sessionId) return;
+  const session = currentSessions.find(s=>s.id===sessionId);
+  document.getElementById('classification-result').innerHTML = '<div class="loading"><div class="spinner"></div>Sonuçlar yükleniyor...</div>';
+  try {
+    const data = await apiFetch({ type:'classification', session: sessionId });
+    renderClassification(data, session);
+  } catch(e){
+    document.getElementById('classification-result').innerHTML = '<div class="loading">Sonuçlar yüklenemedi: '+e.message+'</div>';
+  }
+}
+
+function renderClassification(data, session){
+  const cls = data.classification || [];
+  if(!cls.length){
+    document.getElementById('classification-result').innerHTML = '<div class="loading">Bu seans için sonuç bulunamadı.</div>';
+    return;
+  }
+
+  const isRace = session && (session.type === 'RAC' || session.type === 'SPR');
+
+  // Hava durumu
+  let weatherHtml = '';
+  if(session && session.condition){
+    const c = session.condition;
+    weatherHtml = `<div class="weather-bar">
+      ${c.track?`<span>🛣️ Pist: <strong>${c.track}</strong></span>`:''}
+      ${c.air?`<span>🌡️ Hava: <strong>${c.air}</strong></span>`:''}
+      ${c.ground?`<span>🔥 Zemin: <strong>${c.ground}</strong></span>`:''}
+      ${c.humidity?`<span>💧 Nem: <strong>${c.humidity}</strong></span>`:''}
+      ${c.weather?`<span>☁️ <strong>${c.weather}</strong></span>`:''}
+    </div>`;
+  }
+
+  let html = weatherHtml + `<table><thead><tr>
+    <th>#</th><th>No</th><th>Sürücü</th><th></th>
+    <th>${isRace?'Süre/Fark':'En İyi Tur'}</th>
+    ${isRace?'<th>Puan</th>':'<th>Fark</th>'}
+    <th class="hide-m">Takım</th>
+  </tr></thead><tbody>`;
+
+  cls.forEach((r,i)=>{
+    const rider = r.rider || {};
+    const pos = r.position || (i+1);
+    const num = rider.number || '';
+    const name = (rider.full_name) || (rider.surname ? (rider.name||'')+' '+rider.surname : '-');
+    const nat = NAT_FLAGS[rider.country?.iso] || rider.country?.iso || '';
+    const team = r.team?.name || '';
+    const isTurk = (rider.country?.iso === 'TUR') || (name.toLowerCase().includes('razgatl'));
+
+    let timeCol, gapCol;
+    if(isRace){
+      timeCol = r.time || (r.gap?.first ? '+'+r.gap.first : '-');
+      gapCol = r.points != null ? r.points : '';
+    } else {
+      timeCol = r.best_lap?.time || r.time || '-';
+      gapCol = i===0 ? '–' : (r.gap?.first ? '+'+r.gap.first : (r.gap?.lap?'+'+r.gap.lap:'-'));
+    }
+
+    const posClass = pos<=3 ? 'pos-'+pos : '';
+    html += `<tr class="${isTurk?'turkish':''}">
+      <td class="pos ${posClass}">${pos}</td>
+      <td class="rider-num">${num}</td>
+      <td class="rider-name">${name}</td>
+      <td>${nat}</td>
+      <td class="${isRace?'gap-time':'lap-time'}">${timeCol}</td>
+      <td class="${isRace?'pts':'gap-time'}">${gapCol}</td>
+      <td class="team-name hide-m">${team}</td>
+    </tr>`;
+  });
+  html += '</tbody></table>';
+  document.getElementById('classification-result').innerHTML = html;
+}
+
+function showRaceList(){
+  document.getElementById('race-detail-view').style.display = 'none';
+  document.getElementById('race-list-view').style.display = 'block';
+  const url = new URL(location);
+  url.searchParams.delete('gp');
+  history.pushState({}, '', url);
+  window.scrollTo(0,0);
+}
+
+window.addEventListener('popstate', ()=>{
+  const gp = new URLSearchParams(location.search).get('gp');
+  if(gp){
+    const ev = allEvents.find(e => (e.short_name||'').toUpperCase() === gp.toUpperCase());
+    if(ev) openRace(ev, false);
+  } else {
+    showRaceList();
+  }
+});
+
+loadEvents();
+</script>
+</body>
+</html>
