@@ -159,30 +159,23 @@ footer a{color:var(--accent);text-decoration:none;}
 <div class="container">
 
   <!-- YOUTUBE LIVE EMBED SECTION -->
-  <!-- LIVE TIMING WIDGET -->
+  <!-- CANLI TIMING WIDGET (MotoGP resmi API) -->
   <div class="yt-live-section" style="margin-bottom:24px;" id="timing-section">
     <div class="yt-live-header">
       <h2>🏁 Canlı Sıralama</h2>
-      <span id="timing-badge" style="background:#555;color:#fff;padding:4px 10px;border-radius:20px;font-size:.75rem;font-weight:700;">Yükleniyor...</span>
+      <span id="timing-badge" style="background:#555;color:#fff;padding:4px 10px;border-radius:20px;font-size:.75rem;font-weight:700;">Kontrol ediliyor...</span>
     </div>
-    <p style="color:#aaa;font-size:.85rem;margin:0 0 16px 0;">Sportradar resmi verisi · Seans bittikten sonra sonuçlar güncellenir</p>
-
-    <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
-      <select id="timing-season" style="background:#1a1a2e;color:#fff;border:1px solid #333;border-radius:8px;padding:8px 12px;font-size:.85rem;flex:1;min-width:180px;">
-        <option value="">Sezon yükleniyor...</option>
-      </select>
-      <select id="timing-stage" style="background:#1a1a2e;color:#fff;border:1px solid #333;border-radius:8px;padding:8px 12px;font-size:.85rem;flex:2;min-width:200px;">
-        <option value="">Önce sezon seçin</option>
-      </select>
-      <button onclick="loadTimingResults()" style="background:#e10600;color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:.85rem;cursor:pointer;white-space:nowrap;">🔄 Yükle</button>
-    </div>
+    <p style="color:#aaa;font-size:.85rem;margin:0 0 16px 0;">MotoGP resmi canlı timing · Seans sırasında otomatik güncellenir</p>
 
     <div id="timing-table-wrap" style="overflow-x:auto;border-radius:10px;background:#0d0d1a;">
       <div id="timing-table" style="padding:40px;text-align:center;color:#666;">
-        ⬆️ Sezon ve etap seçip "Yükle" butonuna tıklayın
+        ⏳ Canlı yayın kontrol ediliyor...
       </div>
     </div>
-    <div id="timing-meta" style="color:#555;font-size:.75rem;margin-top:8px;text-align:right;"></div>
+    <div id="timing-meta" style="color:#555;font-size:.75rem;margin-top:8px;display:flex;justify-content:space-between;align-items:center;">
+      <span id="timing-auto"></span>
+      <span id="timing-time"></span>
+    </div>
   </div>
 
   <style>
@@ -191,6 +184,7 @@ footer a{color:var(--accent);text-decoration:none;}
     .timing-tbl td{padding:9px 12px;border-bottom:1px solid #1a1a1a;color:#e0e0e0;white-space:nowrap;}
     .timing-tbl tr:hover td{background:#1a1a2e;}
     .timing-tbl .pos{font-weight:700;color:#fff;width:40px;}
+    .timing-tbl .num{color:#888;font-weight:600;width:36px;}
     .timing-tbl .rider{font-weight:600;color:#fff;}
     .timing-tbl .team{color:#888;font-size:.8rem;}
     .timing-tbl .time{font-family:monospace;color:#4fc3f7;}
@@ -198,145 +192,116 @@ footer a{color:var(--accent);text-decoration:none;}
     .timing-tbl tr:nth-child(1) .pos{color:#ffd700;}
     .timing-tbl tr:nth-child(2) .pos{color:#c0c0c0;}
     .timing-tbl tr:nth-child(3) .pos{color:#cd7f32;}
+    .timing-tbl .pit{color:#e10600;font-size:.7rem;font-weight:700;}
+    .tur-flag{display:inline-block;width:8px;height:8px;border-radius:50%;background:#e10600;margin-right:6px;animation:livepulse 1.2s infinite;}
   </style>
 
   <script>
   (function(){
-    const seasonSel = document.getElementById('timing-season');
-    const stageSel  = document.getElementById('timing-stage');
-    const badge     = document.getElementById('timing-badge');
-    const tableDiv  = document.getElementById('timing-table');
-    const metaDiv   = document.getElementById('timing-meta');
+    const badge    = document.getElementById('timing-badge');
+    const tableDiv = document.getElementById('timing-table');
+    const autoEl   = document.getElementById('timing-auto');
+    const timeEl   = document.getElementById('timing-time');
+    let pollTimer = null;
 
-    async function apiFetch(params){
-      const r = await fetch('/api/sportradar?' + new URLSearchParams(params));
-      if(!r.ok) throw new Error('API ' + r.status);
-      return r.json();
+    async function fetchLive(){
+      try {
+        const r = await fetch('/api/motogp?type=livetiming');
+        if(!r.ok) throw new Error('API ' + r.status);
+        return r.json();
+      } catch(e){ return null; }
     }
 
-    // Sezon = Sportradar'da stage type:season
-    async function loadSeasons(){
-      try{
-        const data = await apiFetch({type:'seasons'});
-        // API'den gelen yapı: {stages:[{id, description, type:'season'...}]}
-        const seasons = (data.stages||[])
-          .filter(s=>s.type==='season' && s.category?.name==='MotoGP' && /\d{4}/.test(s.description))
-          .sort((a,b)=>b.scheduled.localeCompare(a.scheduled));
-        seasonSel.innerHTML = seasons.map(s=>`<option value="${s.id}">${s.description}</option>`).join('');
-        badge.textContent='Sezon seçin'; badge.style.background='#2c3e50';
-        if(seasons.length) loadGPs(seasons[0].id);
-      }catch(e){
-        seasonSel.innerHTML='<option>Yüklenemedi</option>';
-        badge.textContent='Hata'; badge.style.background='#c0392b';
-      }
+    function natFlag(code){
+      // ülke kodunu emoji bayrağa çevir (basit)
+      const map={ITA:'🇮🇹',SPA:'🇪🇸',ESP:'🇪🇸',FRA:'🇫🇷',JPN:'🇯🇵',GBR:'🇬🇧',
+        AUS:'🇦🇺',RSA:'🇿🇦',ZAF:'🇿🇦',TUR:'🇹🇷',BRA:'🇧🇷',GER:'🇩🇪',USA:'🇺🇸',
+        POR:'🇵🇹',NED:'🇳🇱',AUT:'🇦🇹'};
+      return map[code]||code;
     }
 
-    // GP listesi: season summary → stage.stages (type:event)
-    async function loadGPs(seasonId){
-      stageSel.innerHTML='<option>GP listesi yükleniyor...</option>';
-      try{
-        const data = await apiFetch({type:'summary', stage:seasonId});
-        const gps = (data.stage?.stages||[])
-          .filter(s=>s.type==='event')
-          .sort((a,b)=>b.scheduled.localeCompare(a.scheduled)); // en yenisi önce
-        stageSel.innerHTML = '<option value="">— GP seçin —</option>' +
-          gps.map(gp=>`<option value="${gp.id}">${gp.description} (${gp.scheduled?.slice(0,10)||''})</option>`).join('');
-        stageSel.onchange = ()=>{
-          if(stageSel.value) loadSessions(stageSel.value);
-        };
-      }catch(e){
-        stageSel.innerHTML='<option>Yüklenemedi</option>';
+    function render(data){
+      const head = data.head || {};
+      const riders = data.rider || {};
+      const keys = Object.keys(riders);
+
+      if(!keys.length){
+        showOffline();
+        return;
       }
-    }
 
-    // Seanslar: GP summary → stage.stages (practice/qualifying/race/sprint)
-    async function loadSessions(gpId){
-      stageSel.innerHTML='<option>Seanslar yükleniyor...</option>';
-      try{
-        const data = await apiFetch({type:'summary', stage:gpId});
-        const sessions = (data.stage?.stages||[])
-          .filter(s=>['practice','qualifying','race','sprint_race','warm_up'].includes(s.type));
-        stageSel.innerHTML = '<option value="">— Seans seçin —</option>' +
-          sessions.map(s=>`<option value="${s.id}">${s.description} ${s.status==='Closed'?'✅':''}</option>`).join('');
-        stageSel.onchange = null; // GP onchange'den seanse geçince reset
-        stageSel.onchange = ()=>{
-          // Boş bırak, Yükle butonu kullanılsın
-        };
-      }catch(e){
-        stageSel.innerHTML='<option>Yüklenemedi</option>';
-      }
-    }
+      const sessName = head.session_name || 'Seans';
+      const sessStatus = head.session_status_name || '';
+      const isLive = sessStatus !== 'F'; // F = Finished
 
-    window.loadTimingResults = async function(){
-      const stageId = stageSel.value;
-      if(!stageId){tableDiv.innerHTML='<div style="padding:30px;color:#888">Lütfen bir seans seçin.</div>';return;}
-      badge.style.background='#555'; badge.textContent='Yükleniyor...';
-      tableDiv.innerHTML='<div style="padding:40px;text-align:center;color:#666;">⏳ Veri çekiliyor...</div>';
-      try{
-        const data = await apiFetch({type:'summary', stage:stageId});
-        const stage = data.stage||{};
-        const competitors = stage.competitors||[];
-        if(!competitors.length){
-          tableDiv.innerHTML='<div style="padding:30px;color:#888">Bu seans için henüz sonuç yok.</div>';
-          badge.textContent='Veri Yok'; badge.style.background='#555';
-          return;
-        }
-        renderResults(competitors, stage);
-      }catch(e){
-        tableDiv.innerHTML=`<div style="padding:30px;color:#e10600">Hata: ${e.message}</div>`;
-        badge.style.background='#c0392b'; badge.textContent='Hata';
-      }
-    };
+      badge.style.background = isLive ? '#e10600' : '#27ae60';
+      badge.innerHTML = isLive ? '<span class="tur-flag"></span>CANLI' : '✅ Tamamlandı';
 
-    function renderResults(competitors, stage){
-      const stageName = stage.description||'Sonuçlar';
-      badge.style.background='#27ae60'; badge.textContent='✅ '+stageName;
-      metaDiv.textContent='Son güncelleme: '+new Date().toLocaleTimeString('tr-TR');
+      autoEl.textContent = isLive ? '🔄 30 saniyede bir otomatik güncellenir' : '';
+      timeEl.textContent = 'Son güncelleme: ' + new Date().toLocaleTimeString('tr-TR');
 
-      // Pozisyona göre sırala
-      const sorted = [...competitors].sort((a,b)=>(a.result?.position||99)-(b.result?.position||99));
-
-      // Seans tipi tespiti
-      const type = stage.type||'';
-      const isRace = type==='race'||type==='sprint_race';
-      const timeLabel = isRace ? 'Toplam Süre' : 'En İyi Tur';
+      // sürücüleri order'a göre sırala
+      const sorted = keys.map(k=>riders[k]).sort((a,b)=>(a.order||99)-(b.order||99));
 
       let html = `<div style="padding:12px 16px;background:#1a1a2e;border-radius:10px 10px 0 0;display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-weight:700;color:#fff;">${stageName}</span>
-        <span style="color:#888;font-size:.8rem;">${competitors.length} sürücü</span>
+        <span style="font-weight:700;color:#fff;">${head.circuit_name||''} · ${sessName}</span>
+        <span style="color:#888;font-size:.8rem;">${sorted.length} sürücü</span>
       </div>
       <table class="timing-tbl"><thead><tr>
-        <th>#</th><th>Sürücü</th><th></th><th>${timeLabel}</th><th>Fark</th><th>Takım</th>${isRace?'<th>Puan</th>':''}
+        <th>Pos</th><th>No</th><th>Sürücü</th><th></th><th>En İyi Tur</th><th>Fark</th><th>Takım</th>
       </tr></thead><tbody>`;
 
-      sorted.forEach((c,i)=>{
-        const res = c.result||{};
-        const pos = res.position||(i+1);
-        const name = c.name||'-';
-        const nat = c.country_code||c.nationality||'';
-        const team = c.team?.name||'';
-        const time = isRace ? (res.gap||res.time||'-') : (res.fastest_lap_time||'-');
-        const gap = i===0 ? '–' : (res.gap||'+?');
-        const pts = res.points||'';
-        const status = res.status||'';
-        const dnf = status==='DNF'||status==='DNS'||status==='DSQ';
+      sorted.forEach((rd,i)=>{
+        const pos = rd.order || (i+1);
+        const num = rd.rider_number || '';
+        const name = rd.rider_shortname || rd.rider_surname || '-';
+        const nat = natFlag(rd.rider_nation||'');
+        const team = rd.team_name || '';
+        const lapTime = rd.lap_time || '-';
+        const gap = i===0 ? '–' : ('+' + (rd.gap_first||'?'));
+        const onPit = rd.on_pit === true;
 
-        html+=`<tr${dnf?' style="opacity:.5"':''}>
-          <td class="pos">${dnf?status:pos}</td>
+        html += `<tr>
+          <td class="pos">${pos}</td>
+          <td class="num">${num}</td>
           <td class="rider">${name}</td>
-          <td style="font-size:.75rem;color:#888;">${nat}</td>
-          <td class="time">${time}</td>
-          <td class="gap">${i===0?'–':gap}</td>
-          <td class="team">${team}</td>
-          ${isRace?`<td style="color:#ffd700;font-weight:600;">${pts}</td>`:''}
+          <td>${nat}</td>
+          <td class="time">${lapTime}</td>
+          <td class="gap">${gap}</td>
+          <td class="team">${team} ${onPit?'<span class="pit">PIT</span>':''}</td>
         </tr>`;
       });
-      html+='</tbody></table>';
-      tableDiv.innerHTML=html;
+      html += '</tbody></table>';
+      tableDiv.innerHTML = html;
+
+      // canlıysa polling başlat
+      if(isLive){
+        if(!pollTimer) pollTimer = setInterval(loadAndRender, 30000);
+      } else {
+        if(pollTimer){ clearInterval(pollTimer); pollTimer = null; }
+      }
     }
 
-    seasonSel.onchange = ()=>loadGPs(seasonSel.value);
-    loadSeasons();
+    function showOffline(){
+      badge.style.background = '#555';
+      badge.textContent = 'Seans Yok';
+      autoEl.textContent = '';
+      timeEl.textContent = '';
+      tableDiv.innerHTML = `<div style="padding:40px;text-align:center;color:#888;">
+        <div style="font-size:2rem;margin-bottom:8px;">🏁</div>
+        Şu an aktif bir seans yok.<br>
+        <span style="font-size:.8rem;color:#666;">Yarış haftası sonu seansları sırasında canlı sıralama burada görünür.</span>
+      </div>`;
+      if(pollTimer){ clearInterval(pollTimer); pollTimer = null; }
+    }
+
+    async function loadAndRender(){
+      const data = await fetchLive();
+      if(data) render(data);
+      else showOffline();
+    }
+
+    loadAndRender();
   })();
   </script>
 
