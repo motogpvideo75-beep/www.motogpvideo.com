@@ -15,6 +15,10 @@
 <meta property="og:title" content="MotoGP 2026 Puan Durumu — Şampiyona Sıralaması">
 <meta property="og:description" content="MotoGP 2026 Round 9 sonrası güncel şampiyona sıralaması.">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MotoGP 2026 Puan Durumu | motogpvideo.com">
+<meta name="twitter:description" content="MotoGP 2026 güncel şampiyona sıralaması. Sürücü ve takım puanları.">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png">
 <link rel="icon" href="favicon.ico">
 <style>
 :root{--bg:#0d1220;--card:#131d30;--card2:#192438;--accent:#e8001d;--border:#1e2d4a;--text:#fff;--muted:#7a90b8;--gold:#ffd700;--silver:#c0c0c0;--bronze:#cd7f32;}
@@ -106,6 +110,15 @@ footer a{color:var(--accent);text-decoration:none;}
   document.title = m.title;
   var d = document.querySelector('meta[name="description"]');
   if(d) d.setAttribute('content', m.desc);
+  var ogTitle = m.title.replace(/\s*\|\s*motogpvideo\.com\s*$/i, '');
+  var ot = document.querySelector('meta[property="og:title"]');
+  if(ot) ot.setAttribute('content', ogTitle);
+  var od = document.querySelector('meta[property="og:description"]');
+  if(od) od.setAttribute('content', m.desc);
+  var tt = document.querySelector('meta[name="twitter:title"]');
+  if(tt) tt.setAttribute('content', ogTitle);
+  var td = document.querySelector('meta[name="twitter:description"]');
+  if(td) td.setAttribute('content', m.desc);
 })();
 </script>
 </head>

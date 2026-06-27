@@ -133,6 +133,15 @@ footer a{color:var(--accent);text-decoration:none;}
   document.title = m.title;
   var d = document.querySelector('meta[name="description"]');
   if(d) d.setAttribute('content', m.desc);
+  var ogTitle = m.title.replace(/\s*\|\s*motogpvideo\.com\s*$/i, '');
+  var ot = document.querySelector('meta[property="og:title"]');
+  if(ot) ot.setAttribute('content', ogTitle);
+  var od = document.querySelector('meta[property="og:description"]');
+  if(od) od.setAttribute('content', m.desc);
+  var tt = document.querySelector('meta[name="twitter:title"]');
+  if(tt) tt.setAttribute('content', ogTitle);
+  var td = document.querySelector('meta[name="twitter:description"]');
+  if(td) td.setAttribute('content', m.desc);
 })();
 </script>
 </head>
