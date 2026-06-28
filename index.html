@@ -1649,58 +1649,6 @@
     <main class="main">
         <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Motor Sporları Merkezi — MotoGP, WorldSBK ve Formula 1 Yayın Rehberi, Takvim ve Puan Durumu</h1>
         <div class="section active" id="sec-canli">
-            <!-- GECICI CANLI YAYIN KARTI - SEANS SONRASI SIL (BASLANGIC) -->
-            <style>
-            .lvc{background:linear-gradient(135deg,#1a0510,#131d30);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:14px;overflow:hidden;margin-bottom:18px;}
-            .lvc-head{display:flex;align-items:center;gap:12px;padding:13px 16px;flex-wrap:wrap;}
-            .lvc-live{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;text-transform:uppercase;}
-            .lvc-dot{width:8px;height:8px;border-radius:50%;background:#fff;animation:lvc-blink 1.2s infinite;}
-            @keyframes lvc-blink{0%,100%{opacity:1}50%{opacity:.2}}
-            .lvc-head h3{font-size:.95rem;font-weight:700;margin:0;color:#fff;}
-            .lvc-head h3 small{display:block;color:var(--muted);font-size:.74rem;font-weight:500;margin-top:2px;}
-            .lvc-player{position:relative;aspect-ratio:16/9;cursor:pointer;background:linear-gradient(135deg,#2a0008 0%,#0d1220 55%,#1a0510 100%);}
-            .lvc-play{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
-            .lvc-play svg{width:64px;height:64px;filter:drop-shadow(0 3px 10px rgba(0,0,0,.6));transition:transform .2s;}
-            .lvc-player:hover .lvc-play svg{transform:scale(1.08);}
-            .lvc-play span{color:#fff;font-size:.86rem;font-weight:600;text-shadow:0 1px 4px rgba(0,0,0,.7);}
-            .lvc-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3;}
-            .lvc-foot{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:12px 16px;border-top:1px solid var(--border);}
-            .lvc-btn{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:600;padding:8px 14px;border-radius:8px;text-decoration:none;border:1px solid var(--border);color:var(--muted);background:var(--card);}
-            .lvc-btn:hover{color:#fff;border-color:var(--accent);}
-            .lvc-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
-            .lvc-note{flex:1;min-width:200px;font-size:.74rem;color:var(--muted);line-height:1.5;}
-            .lvc-note strong{color:#fff;}
-            </style>
-            <div class="lvc">
-              <div class="lvc-head">
-                <span class="lvc-live"><span class="lvc-dot"></span>Canlı</span>
-                <h3>Resmî MotoGP Yayını <span style="font-size:.7rem;font-weight:600;color:var(--muted);">(resmî YouTube şovları)</span><small>Build-up, sprint öncesi ve ücretsiz resmî şovlar yayındayken burada oynar — yarışın kendisi değil</small></h3>
-              </div>
-              <div class="lvc-player" id="lvc-player" onclick="lvcPlay()">
-                <div class="lvc-play" id="lvc-play">
-                  <svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg"><path d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.5C4 2.3 2.3 4.8 1.5 7.7.1 13 0 24 0 24s.1 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.5c2.9-.8 4.6-3.3 5.4-6.2C67.9 35 68 24 68 24s-.1-11-1.5-16.3z" fill="#e8001d"/><path d="M45 24 27 14v20" fill="#fff"/></svg>
-                  <span>Resmî yayını sitede oynat</span>
-                </div>
-              </div>
-              <div class="lvc-foot">
-                <a class="lvc-btn primary" href="https://www.youtube.com/channel/UC8pYaQzbBBXg9GIOHRvTmDQ/live" target="_blank" rel="noopener">↗ YouTube'da aç</a>
-                <a class="lvc-btn" href="canli-yayin.html">📺 Yayın Rehberi</a>
-                <div class="lvc-note" style="background:rgba(232,0,29,.08);border:1px solid var(--border);border-radius:8px;padding:9px 12px;"><strong style="color:#fff;">ℹ️ Bilgi:</strong> Asıl yarış &amp; sprint Türkiye'de resmî olarak <strong>S Sport</strong>'tadır. Bu alan korsan değil; yalnızca resmî MotoGP YouTube kanalının ücretsiz şovlarını gösterir.</div>
-              </div>
-            </div>
-            <script>
-            function lvcPlay(){
-              var p=document.getElementById('lvc-player');
-              if(p.querySelector('iframe'))return;
-              var pl=document.getElementById('lvc-play');if(pl)pl.style.display='none';
-              var f=document.createElement('iframe');
-              f.src='https://www.youtube.com/embed/live_stream?channel=UC8pYaQzbBBXg9GIOHRvTmDQ&autoplay=1';
-              f.allow='autoplay; encrypted-media; fullscreen';
-              f.setAttribute('allowfullscreen','');
-              p.appendChild(f);
-            }
-            </script>
-            <!-- GECICI CANLI YAYIN KARTI - SEANS SONRASI SIL (BITIS) -->
             <div id="home-live-timing" style="display:none;margin-bottom:18px;"></div>
             <div style="background:linear-gradient(135deg,#0d1220 0%,#1a0505 50%,#0d1220 100%);border:1px solid #e8001d44;border-radius:12px;padding:22px;margin-bottom:18px;text-align:center;">
                 <div style="font-size:1.3rem;font-weight:900;letter-spacing:1.5px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:12px;animation:titleBlink 2s infinite;">
