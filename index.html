@@ -1649,7 +1649,6 @@
     <main class="main">
         <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Motor Sporları Merkezi — MotoGP, WorldSBK ve Formula 1 Yayın Rehberi, Takvim ve Puan Durumu</h1>
         <div class="section active" id="sec-canli">
-            <div id="home-live-timing" style="display:none;margin-bottom:18px;"></div>
             <!-- GECICI CANLI YAYIN KARTI - SEANS SONRASI SIL (BASLANGIC) -->
             <style>
             .lvc{background:linear-gradient(135deg,#1a0510,#131d30);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:14px;overflow:hidden;margin-bottom:18px;}
@@ -1675,7 +1674,7 @@
             <div class="lvc">
               <div class="lvc-head">
                 <span class="lvc-live"><span class="lvc-dot"></span>Canlı</span>
-                <h3>Resmî MotoGP Yayını<small>Build-up, sprint öncesi ve ücretsiz resmî şovlar yayındayken burada oynar</small></h3>
+                <h3>Resmî MotoGP Yayını <span style="font-size:.7rem;font-weight:600;color:var(--muted);">(resmî YouTube şovları)</span><small>Build-up, sprint öncesi ve ücretsiz resmî şovlar yayındayken burada oynar — yarışın kendisi değil</small></h3>
               </div>
               <div class="lvc-player" id="lvc-player" onclick="lvcPlay()">
                 <div class="lvc-play" id="lvc-play">
@@ -1686,7 +1685,7 @@
               <div class="lvc-foot">
                 <a class="lvc-btn primary" href="https://www.youtube.com/channel/UC8pYaQzbBBXg9GIOHRvTmDQ/live" target="_blank" rel="noopener">↗ YouTube'da aç</a>
                 <a class="lvc-btn" href="canli-yayin.html">📺 Yayın Rehberi</a>
-                <div class="lvc-note">Asıl yarış &amp; sprint Türkiye'de resmî olarak <strong>S Sport</strong>'tadır. Bu alan korsan değil; yalnızca resmî MotoGP kanalına yönlendirir.</div>
+                <div class="lvc-note" style="background:rgba(232,0,29,.08);border:1px solid var(--border);border-radius:8px;padding:9px 12px;"><strong style="color:#fff;">ℹ️ Bilgi:</strong> Asıl yarış &amp; sprint Türkiye'de resmî olarak <strong>S Sport</strong>'tadır. Bu alan korsan değil; yalnızca resmî MotoGP YouTube kanalının ücretsiz şovlarını gösterir.</div>
               </div>
             </div>
             <script>
@@ -1702,6 +1701,7 @@
             }
             </script>
             <!-- GECICI CANLI YAYIN KARTI - SEANS SONRASI SIL (BITIS) -->
+            <div id="home-live-timing" style="display:none;margin-bottom:18px;"></div>
             <div style="background:linear-gradient(135deg,#0d1220 0%,#1a0505 50%,#0d1220 100%);border:1px solid #e8001d44;border-radius:12px;padding:22px;margin-bottom:18px;text-align:center;">
                 <div style="font-size:1.3rem;font-weight:900;letter-spacing:1.5px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:12px;animation:titleBlink 2s infinite;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 36 24"><rect width="36" height="24" fill="#E30A17"/><circle cx="13" cy="12" r="6" fill="white"/><circle cx="15" cy="12" r="4.8" fill="#E30A17"/><polygon points="19.5,9.5 22.5,12 19.5,14.5 20.5,12" fill="white"/><circle cx="22.5" cy="10.5" r="0.8" fill="white"/></svg>
