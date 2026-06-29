@@ -1651,53 +1651,44 @@
         <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Motor Sporları Merkezi — MotoGP, WorldSBK ve Formula 1 Yayın Rehberi, Takvim ve Puan Durumu</h1>
         <div class="section active" id="sec-canli">
             <!-- YOUTUBE-CANLI-BASLANGIC | yayin bitince bu blok (BASLANGIC..BITIS arasi) kaldirilacak -->
-            <!-- S-SPORT-OZET-BASLANGIC | kanal: UCCOLmmp8DDErGVLzs__GsgQ (S Sport'ta MotoGP) -->
-            <!-- Son videoyu otomatik gösterir. Manuel geçersiz kılmak için SSPORT_OVERRIDE_ID'ye video ID girin. -->
+            <!-- MOTOGP-YT-BASLANGIC | MotoGP resmi YouTube kanalı — otomatik sessiz başlar -->
+            <!-- Video değiştirmek için MOTOGP_VIDEO_ID'yi güncelle, boş bırakırsan kanal son videosu gelir -->
             <div id="home-youtube-live" style="background:linear-gradient(135deg,#1a0505,#0d1220);border:1px solid #e8001d66;border-radius:12px;padding:14px;margin-bottom:18px;">
                 <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;font-weight:900;letter-spacing:.5px;font-size:.95rem;color:#fff;">
                     <span style="display:inline-flex;align-items:center;gap:6px;background:#e8001d;color:#fff;padding:3px 11px;border-radius:20px;font-size:.72rem;">
-                        <span style="width:8px;height:8px;border-radius:50%;background:#fff;animation:ytLiveBlink 1s infinite;"></span>SON ÖZET
+                        <span style="width:8px;height:8px;border-radius:50%;background:#fff;animation:ytLiveBlink 1s infinite;"></span>CANLI YAYIN
                     </span>
-                    <span id="yt-live-title">S Sport MotoGP Özeti</span>
-                    <a id="ssport-yt-link" href="https://www.youtube.com/@ssportmotogp" target="_blank" rel="noopener" style="margin-left:auto;display:inline-flex;align-items:center;gap:5px;background:#ff0000;color:#fff;font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:12px;text-decoration:none;">▶ S Sport YouTube</a>
+                    <span id="yt-live-title">MotoGP Resmi Yayın</span>
                 </div>
                 <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;background:#000;">
-                    <iframe id="ssport-iframe"
-                        title="S Sport MotoGP Son Özet" loading="lazy" allowfullscreen
+                    <iframe id="motogp-iframe"
+                        title="MotoGP Resmi YouTube" loading="lazy" allowfullscreen
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
                         style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
-                </div>
-                <div style="margin-top:8px;font-size:.75rem;color:#7a90b8;text-align:right;">
-                    Kaynak: <a href="https://www.youtube.com/channel/UCCOLmmp8DDErGVLzs__GsgQ" target="_blank" rel="noopener" style="color:#ff6b6b;">S Sport'ta MotoGP</a> (resmî YouTube kanalı)
                 </div>
             </div>
             <script>
             (function(){
                 /* ============================================================
-                   S SPORT ÖZET OYNATICI
-                   Normalde buraya DOKUNMANA GEREK YOK — son video otomatik gelir.
-                   Bir yarış özeti öne çıkarmak istersen video ID'yi aşağıya yaz.
-                   Boş bırakırsan kanalın en son videosunu otomatik gösterir.
+                   MotoGP OYNATICI
+                   Video değiştirmek için aşağıya YouTube video ID yaz.
+                   Boş bırakırsan MotoGP kanalının canlı/son videosunu gösterir.
                    ============================================================ */
-                var SSPORT_OVERRIDE_ID = "761DhqAtQHQ";  // Hollanda GP Özeti — sonraki yarış sonrası güncelle
+                var MOTOGP_VIDEO_ID = "";  // örn: "dQw4w9WgXcQ" — boşsa otomatik kanal
 
-                var CHANNEL_ID = "UCCOLmmp8DDErGVLzs__GsgQ";
-                var frame = document.getElementById("ssport-iframe");
-                var link  = document.getElementById("ssport-yt-link");
+                var MOTOGP_CHANNEL_ID = "UCgyY2UaXsK-yFHKkMDETt9A"; // MotoGP resmi kanal
+                var frame = document.getElementById("motogp-iframe");
 
-                var id = (SSPORT_OVERRIDE_ID || "").trim();
+                var id = (MOTOGP_VIDEO_ID || "").trim();
                 if (id) {
-                    frame.src = "https://www.youtube.com/embed/" + encodeURIComponent(id) + "?rel=0&playsinline=1";
-                    link.href = "https://www.youtube.com/watch?v=" + encodeURIComponent(id);
+                    frame.src = "https://www.youtube.com/embed/" + encodeURIComponent(id) + "?autoplay=1&mute=1&rel=0&playsinline=1";
                 } else {
-                    /* Kanalın son videosunu RSS üzerinden çek (CORS-proxy olmadan
-                       doğrudan çekilemez; bu nedenle kanal playlist embed kullanıyoruz) */
-                    frame.src = "https://www.youtube.com/embed?listType=user_uploads&list=" + CHANNEL_ID + "&rel=0&playsinline=1";
+                    frame.src = "https://www.youtube.com/embed/live_stream?channel=" + MOTOGP_CHANNEL_ID + "&autoplay=1&mute=1&rel=0";
                 }
             })();
             </script>
-            <!-- S-SPORT-OZET-BITIS -->
+            <!-- MOTOGP-YT-BITIS -->
             <style>@keyframes ytLiveBlink{0%,100%{opacity:1}50%{opacity:.2}}</style>
             <!-- YOUTUBE-CANLI-BITIS -->
             <div id="home-live-timing" style="display:none;margin-bottom:18px;"></div>
