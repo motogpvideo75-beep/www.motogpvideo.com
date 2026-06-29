@@ -331,6 +331,43 @@ async function loadRaces() {
   injectEventSchema(allRaces);
 }
 
+// --- Pist -> adres eslestirme (SportsEvent location.address: GSC "address" uyarisi icin) ---
+var MGV_CIRCUIT_ADDR = [
+  {k:["buriram","chang"], l:"Buriram", c:"TH"},
+  {k:["goi"], l:"Goiânia", c:"BR"},
+  {k:["termas","rio hondo","río hondo"], l:"Termas de Río Hondo", c:"AR"},
+  {k:["lusail","losail"], l:"Lusail", c:"QA"},
+  {k:["jerez"], l:"Jerez de la Frontera", c:"ES"},
+  {k:["le mans"], l:"Le Mans", c:"FR"},
+  {k:["catalunya","barcelona","montmel"], l:"Montmeló", c:"ES"},
+  {k:["balaton"], l:"Balatonfőkajár", c:"HU"},
+  {k:["brno"], l:"Brno", c:"CZ"},
+  {k:["assen"], l:"Assen", c:"NL"},
+  {k:["sachsenring"], l:"Hohenstein-Ernstthal", c:"DE"},
+  {k:["silverstone"], l:"Silverstone", c:"GB"},
+  {k:["red bull ring","spielberg"], l:"Spielberg", c:"AT"},
+  {k:["aragon","aragón","motorland"], l:"Alcañiz", c:"ES"},
+  {k:["misano"], l:"Misano Adriatico", c:"IT"},
+  {k:["motegi"], l:"Motegi", c:"JP"},
+  {k:["mandalika"], l:"Kuta", c:"ID"},
+  {k:["phillip island"], l:"Phillip Island", c:"AU"},
+  {k:["sepang"], l:"Sepang", c:"MY"},
+  {k:["algarve","portim"], l:"Portimão", c:"PT"},
+  {k:["ricardo tormo","valencia","cheste"], l:"Cheste", c:"ES"}
+];
+function mgvCircuitAddress(circuit){
+  if(!circuit) return null;
+  var s = String(circuit).toLowerCase();
+  for(var i=0;i<MGV_CIRCUIT_ADDR.length;i++){
+    var rec = MGV_CIRCUIT_ADDR[i];
+    for(var j=0;j<rec.k.length;j++){
+      if(s.indexOf(rec.k[j])!==-1){
+        return {"@type":"PostalAddress","addressLocality":rec.l,"addressCountry":rec.c};
+      }
+    }
+  }
+  return null;
+}
 // --- SportsEvent yapilandirilmis veri (GSC: location + startDate zorunlu alanlari) ---
 function injectEventSchema(races){
   try{
@@ -351,7 +388,7 @@ function injectEventSchema(races){
           "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
           "image": [IMG],
           "url": "https://www.motogpvideo.com/takvim.html",
-          "location": { "@type": "Place", "name": r.circuit },
+          "location": (function(){ var loc={ "@type": "Place", "name": r.circuit }; var a=mgvCircuitAddress(r.circuit); if(a) loc.address=a; return loc; })(),
           "organizer": { "@type": "Organization", "name": "MotoGP", "url": "https://www.motogp.com" }
         };
       });
