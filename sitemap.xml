@@ -1450,4 +1450,12 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://www.motogpvideo.com/goodwood.html?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.motogpvideo.com/goodwood.html"/>
   </url>
+  <url>
+    <loc>https://www.motogpvideo.com/almanya-gp-canli-izle.html</loc>
+    <lastmod>2026-06-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.motogpvideo.com/almanya-gp-canli-izle.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.motogpvideo.com/almanya-gp-canli-izle.html"/>
+  </url>
 </urlset>
