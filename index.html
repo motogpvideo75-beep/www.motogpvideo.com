@@ -679,6 +679,10 @@
             document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
             document.querySelectorAll(".lang-btn").forEach(btn => { if(btn.textContent.includes(lang.toUpperCase())) btn.classList.add("active"); });
             const d = langData[lang];
+            document.title = d.heroTitle + " | motogpvideo.com";
+            const __metaDesc = document.querySelector('meta[name="description"]'); if (__metaDesc) __metaDesc.setAttribute('content', d.heroDesc);
+            const __ogTitle = document.querySelector('meta[property="og:title"]'); if (__ogTitle) __ogTitle.setAttribute('content', d.heroTitle);
+            const __ogDesc = document.querySelector('meta[property="og:description"]'); if (__ogDesc) __ogDesc.setAttribute('content', d.heroDesc);
             const mt = document.getElementById("main-title"); if (mt) mt.innerText = d.title;
             const tl = document.getElementById("ticker-label"); if (tl) tl.innerText = d.label;
             const tn = document.getElementById("ticker-news"); if (tn) tn.innerText = d.news;
@@ -3444,6 +3448,10 @@
         document.querySelectorAll(".lang-btn").forEach(btn => { btn.classList.remove("active"); });
         document.querySelectorAll(".lang-btn").forEach(btn => { if (btn.textContent.includes(lang.toUpperCase())) btn.classList.add("active"); });
         const d = langData[lang];
+        document.title = d.heroTitle + " | motogpvideo.com";
+        const __metaDesc = document.querySelector('meta[name="description"]'); if (__metaDesc) __metaDesc.setAttribute('content', d.heroDesc);
+        const __ogTitle = document.querySelector('meta[property="og:title"]'); if (__ogTitle) __ogTitle.setAttribute('content', d.heroTitle);
+        const __ogDesc = document.querySelector('meta[property="og:description"]'); if (__ogDesc) __ogDesc.setAttribute('content', d.heroDesc);
         const mt = document.getElementById("main-title"); if (mt) mt.innerText = d.title;
         const pi = document.getElementById("pilot-info"); if (pi) pi.innerText = d.pilots;
         const cdl = document.getElementById("cd-label-text"); if (cdl) cdl.innerText = d.cdLabel;
