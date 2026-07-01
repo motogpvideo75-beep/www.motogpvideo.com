@@ -38,6 +38,7 @@
     <!-- Preconnect - Hız optimizasyonu -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://i.ytimg.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet"></noscript>
@@ -1735,8 +1736,8 @@
                 if (id) {
                     poster.src = "https://i.ytimg.com/vi/" + encodeURIComponent(id) + "/hqdefault.jpg";
                     poster.onload = function(){
-                        /* hqdefault yoksa gri 120x90 döner; büyükse maxres dene */
-                        if (this.naturalWidth > 300) {
+                        /* Sadece geniş ekranda maxres'e yükselt — mobilde hqdefault yeter (200KB tasarruf) */
+                        if (this.naturalWidth > 300 && window.innerWidth >= 768) {
                             var hi = new Image();
                             var p = this;
                             hi.onload = function(){ if (hi.naturalWidth > 300) p.src = hi.src; };
