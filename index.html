@@ -36,11 +36,11 @@
     </script>
 
     <!-- Preconnect - Hız optimizasyonu -->
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet"></noscript>
 
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
@@ -171,7 +171,19 @@
       }
     ]
     </script>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-KSW3BQM");</script>
+    <script>
+    /* GTM — geciktirilmiş yükleme: ilk etkileşim veya 3 sn (performans için) */
+    (function(){
+        var loaded = false;
+        function loadGTM(){
+            if (loaded) return; loaded = true;
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer","GTM-KSW3BQM");
+            ["scroll","mousemove","touchstart","keydown","click"].forEach(function(e){window.removeEventListener(e, loadGTM, {passive:true});});
+        }
+        ["scroll","mousemove","touchstart","keydown","click"].forEach(function(e){window.addEventListener(e, loadGTM, {passive:true, once:true});});
+        setTimeout(loadGTM, 3000);
+    })();
+    </script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -1696,32 +1708,65 @@
                     </span>
                     <span id="yt-live-title">MotoGP Resmi Yayın</span>
                 </div>
-                <div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;background:#000;">
-                    <iframe id="motogp-iframe"
-                        title="MotoGP Resmi YouTube" loading="lazy" allowfullscreen
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+                <div id="motogp-player-box" style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;background:#000;cursor:pointer;">
+                    <img id="motogp-poster" alt="MotoGP video — izlemek için tıklayın" loading="eager" fetchpriority="high"
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+                    <div id="motogp-play-btn" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:74px;height:52px;background:#e8001d;border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,.6);transition:transform .15s;">
+                        <span style="width:0;height:0;border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px;"></span>
+                    </div>
                 </div>
             </div>
             <script>
             (function(){
                 /* ============================================================
-                   MotoGP OYNATICI
+                   MotoGP OYNATICI — FACADE (performans için click-to-play)
                    Video değiştirmek için aşağıya YouTube video ID yaz.
-                   Boş bırakırsan MotoGP kanalının canlı/son videosunu gösterir.
+                   Boş bırakırsan MotoGP kanalının canlı yayın embed'ini gösterir.
                    ============================================================ */
                 var MOTOGP_VIDEO_ID = "zsuZ4j9qEK8";  // Hollanda GP Tam Highlight — sonraki yarış sonrası güncelle
 
                 var MOTOGP_CHANNEL_ID = "UCgyY2UaXsK-yFHKkMDETt9A"; // MotoGP resmi kanal
-                var frame = document.getElementById("motogp-iframe");
-
+                var box = document.getElementById("motogp-player-box");
+                var poster = document.getElementById("motogp-poster");
+                var playBtn = document.getElementById("motogp-play-btn");
                 var id = (MOTOGP_VIDEO_ID || "").trim();
+
+                /* Poster: YouTube küçük resmi (iframe'e göre ~%95 daha hafif) */
                 if (id) {
-                    frame.src = "https://www.youtube.com/embed/" + encodeURIComponent(id) + "?autoplay=1&rel=0&playsinline=1";
+                    poster.src = "https://i.ytimg.com/vi/" + encodeURIComponent(id) + "/hqdefault.jpg";
+                    poster.onload = function(){
+                        /* hqdefault yoksa gri 120x90 döner; büyükse maxres dene */
+                        if (this.naturalWidth > 300) {
+                            var hi = new Image();
+                            var p = this;
+                            hi.onload = function(){ if (hi.naturalWidth > 300) p.src = hi.src; };
+                            hi.src = "https://i.ytimg.com/vi/" + encodeURIComponent(id) + "/maxresdefault.jpg";
+                        }
+                    };
                 } else {
-                    frame.src = "https://www.youtube.com/embed/live_stream?channel=" + MOTOGP_CHANNEL_ID + "&autoplay=1&mute=1&rel=0";
+                    poster.style.background = "linear-gradient(135deg,#1a0505,#0d1220)";
                 }
+
+                box.addEventListener("mouseenter", function(){ playBtn.style.transform = "translate(-50%,-50%) scale(1.1)"; });
+                box.addEventListener("mouseleave", function(){ playBtn.style.transform = "translate(-50%,-50%)"; });
+
+                box.addEventListener("click", function(){
+                    var frame = document.createElement("iframe");
+                    frame.id = "motogp-iframe";
+                    frame.title = "MotoGP Resmi YouTube";
+                    frame.allowFullscreen = true;
+                    frame.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+                    frame.referrerPolicy = "strict-origin-when-cross-origin";
+                    frame.style.cssText = "position:absolute;top:0;left:0;width:100%;height:100%;border:0;";
+                    if (id) {
+                        frame.src = "https://www.youtube.com/embed/" + encodeURIComponent(id) + "?autoplay=1&rel=0&playsinline=1";
+                    } else {
+                        frame.src = "https://www.youtube.com/embed/live_stream?channel=" + MOTOGP_CHANNEL_ID + "&autoplay=1&mute=1&rel=0";
+                    }
+                    box.innerHTML = "";
+                    box.style.cursor = "default";
+                    box.appendChild(frame);
+                }, { once: true });
             })();
             </script>
             <!-- MOTOGP-YT-BITIS -->
