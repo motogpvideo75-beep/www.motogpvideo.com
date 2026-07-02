@@ -1992,3 +1992,10 @@ function closeVideoPopupBtn() {
 
   loadAndRender();
 })();
+
+
+/* CLS önleme: tüm dil değiştirme dinleyicileri çalıştıktan sonra gövdeyi göster.
+   Bu dinleyici dosyanın SONUNDA kayıtlı olduğu için en son tetiklenir. */
+window.addEventListener("DOMContentLoaded", function(){
+    document.documentElement.classList.remove("lang-pending");
+});
