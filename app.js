@@ -1901,6 +1901,7 @@ function closeVideoPopupBtn() {
 
   function hide(){
     box.style.display = 'none';
+    box.style.minHeight = '0';
     if(pollTimer){ clearInterval(pollTimer); pollTimer = null; }
   }
 
