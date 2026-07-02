@@ -10,14 +10,14 @@
 <meta property="og:title" content="MotoGP 2026 Yarış Takvimi — Tüm Grand Prix Tarihleri">
 <meta property="og:description" content="MotoGP 2026 yarış takvimi, tarihler ve Türkiye saatiyle saat bilgileri. Tüm Grand Prix tarihleri ve pistler.">
 <meta property="og:url" content="https://www.motogpvideo.com/takvim.html">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png">
+<meta property="og:image" content="https://www.motogpvideo.com/banner.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="motogpvideo.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="MotoGP 2026 Yarış Takvimi | motogpvideo.com">
 <meta name="twitter:description" content="MotoGP 2026 tüm yarış tarihleri, Türkiye saatiyle başlangıç saatleri.">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png">
+<meta name="twitter:image" content="https://www.motogpvideo.com/banner.png">
 <link rel="alternate" hreflang="tr" href="https://www.motogpvideo.com/takvim.html">
 <link rel="alternate" hreflang="en" href="https://www.motogpvideo.com/takvim.html?lang=en">
 <link rel="alternate" hreflang="de" href="https://www.motogpvideo.com/takvim.html?lang=de">
@@ -372,7 +372,7 @@ function mgvCircuitAddress(circuit){
 function injectEventSchema(races){
   try{
     if(!races || !races.length) return;
-    const IMG = "https://cdn.jsdelivr.net/gh/motogpvideo75-beep/www.motogpvideo.com@main/banner.png";
+    const IMG = "/banner.png";
     const items = races
       .filter(r => r && r.name && r.date && r.circuit)
       .map(r => {
