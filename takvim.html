@@ -18,17 +18,6 @@
 <meta name="twitter:title" content="MotoGP 2026 Yarış Takvimi | motogpvideo.com">
 <meta name="twitter:description" content="MotoGP 2026 tüm yarış tarihleri, Türkiye saatiyle başlangıç saatleri.">
 <meta name="twitter:image" content="https://www.motogpvideo.com/banner.png">
-<link rel="alternate" hreflang="tr" href="https://www.motogpvideo.com/takvim.html">
-<link rel="alternate" hreflang="en" href="https://www.motogpvideo.com/takvim.html?lang=en">
-<link rel="alternate" hreflang="de" href="https://www.motogpvideo.com/takvim.html?lang=de">
-<link rel="alternate" hreflang="fr" href="https://www.motogpvideo.com/takvim.html?lang=fr">
-<link rel="alternate" hreflang="ja" href="https://www.motogpvideo.com/takvim.html?lang=ja">
-<link rel="alternate" hreflang="es" href="https://www.motogpvideo.com/takvim.html?lang=es">
-<link rel="alternate" hreflang="it" href="https://www.motogpvideo.com/takvim.html?lang=it">
-<link rel="alternate" hreflang="pt" href="https://www.motogpvideo.com/takvim.html?lang=pt">
-<link rel="alternate" hreflang="ar" href="https://www.motogpvideo.com/takvim.html?lang=ar">
-<link rel="alternate" hreflang="id" href="https://www.motogpvideo.com/takvim.html?lang=id">
-<link rel="alternate" hreflang="x-default" href="https://www.motogpvideo.com/takvim.html">
 <link rel="canonical" href="https://www.motogpvideo.com/takvim.html">
 <link rel="icon" href="favicon.ico">
 <style>
@@ -372,7 +361,7 @@ function mgvCircuitAddress(circuit){
 function injectEventSchema(races){
   try{
     if(!races || !races.length) return;
-    const IMG = "/banner.png";
+    const IMG = "https://www.motogpvideo.com/banner.png";
     const items = races
       .filter(r => r && r.name && r.date && r.circuit)
       .map(r => {
@@ -389,7 +378,9 @@ function injectEventSchema(races){
           "image": [IMG],
           "url": "https://www.motogpvideo.com/takvim.html",
           "location": (function(){ var loc={ "@type": "Place", "name": r.circuit }; var a=mgvCircuitAddress(r.circuit); if(a) loc.address=a; return loc; })(),
-          "organizer": { "@type": "Organization", "name": "MotoGP", "url": "https://www.motogp.com" }
+          "organizer": { "@type": "Organization", "name": "MotoGP", "url": "https://www.motogp.com" },
+          "performer": { "@type": "PerformingGroup", "name": "MotoGP World Championship Riders" },
+          "offers": { "@type": "Offer", "url": "https://tickets.motogp.com/", "availability": "https://schema.org/InStock", "priceCurrency": "EUR", "validFrom": "2026-01-15" }
         };
       });
     if(!items.length) return;
