@@ -1618,10 +1618,16 @@ const langData = {
         document.querySelectorAll(".lang-btn").forEach(btn => { btn.classList.remove("active"); });
         document.querySelectorAll(".lang-btn").forEach(btn => { if (btn.textContent.includes(lang.toUpperCase())) btn.classList.add("active"); });
         const d = langData[lang];
-        document.title = d.heroTitle + " | motogpvideo.com";
-        const __metaDesc = document.querySelector('meta[name="description"]'); if (__metaDesc) __metaDesc.setAttribute('content', d.heroDesc);
-        const __ogTitle = document.querySelector('meta[property="og:title"]'); if (__ogTitle) __ogTitle.setAttribute('content', d.heroTitle);
-        const __ogDesc = document.querySelector('meta[property="og:description"]'); if (__ogDesc) __ogDesc.setAttribute('content', d.heroDesc);
+        /* SEO KORUMASI: Otomatik dil algılamada title/meta değişmez. Googlebot en-US
+           olduğu için aksi halde İngilizce başlık dizine giriyor (GSC'de görüldü).
+           Title/meta sadece kullanıcı bilinçli dil seçmişse (userLangChoice) güncellenir. */
+        var __userChose = false; try { __userChose = !!localStorage.getItem("userLangChoice"); } catch(e) {}
+        if (__userChose) {
+            document.title = d.heroTitle + " | motogpvideo.com";
+            const __metaDesc = document.querySelector('meta[name="description"]'); if (__metaDesc) __metaDesc.setAttribute('content', d.heroDesc);
+            const __ogTitle = document.querySelector('meta[property="og:title"]'); if (__ogTitle) __ogTitle.setAttribute('content', d.heroTitle);
+            const __ogDesc = document.querySelector('meta[property="og:description"]'); if (__ogDesc) __ogDesc.setAttribute('content', d.heroDesc);
+        }
         const mt = document.getElementById("main-title"); if (mt) mt.innerText = d.title;
         const pi = document.getElementById("pilot-info"); if (pi) pi.innerText = d.pilots;
         const cdl = document.getElementById("cd-label-text"); if (cdl) cdl.innerText = d.cdLabel;
