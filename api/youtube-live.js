@@ -67,8 +67,8 @@ export default async function handler(req, res) {
     return res.status(200).json({
       timestamp: new Date().toISOString(),
       trustedCount: trusted.length,
-      otherCount: other.length,
-      streams: [...trusted, ...other.slice(0, 5)]
+      otherCount: 0,
+      streams: trusted
     });
 
   } catch (e) {
