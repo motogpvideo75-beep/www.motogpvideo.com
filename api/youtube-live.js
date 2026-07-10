@@ -15,13 +15,17 @@ export default async function handler(req, res) {
     'UCjl3GkVm-c3cce3nFa6fR7Q': { n: 'WorldSBK',              c: 'wsbk',     i: '\u{1F3CD}\uFE0F' },
     'UCwKq447rYMhSmQkuCKMruiA': { n: 'Motorsport.tv',          c: 'general',  i: '\u{1F3C1}' },
     'UCOk0MNEP-M04EJkJ-5qFRHw': { n: 'WorldSBK Official',     c: 'wsbk',     i: '\u{1F3CD}\uFE0F' },
-    'UCuBpNwGpf7g_1P1KnCDxrAg': { n: 'ADAC Motorsport',       c: 'general',  i: '\u{1F69A}' },
+    'UCMehJkatrBnXQnjQ7dWID7A': { n: 'ADAC Motorsport',       c: 'general',  i: '\u{1F69A}' },
+    'UC1E4R6hqW0mFIWdqMGAxsSQ': { n: 'GT World',              c: 'general',  i: '\u{1F3CE}\uFE0F' },
+    'UCYzfPs4YMhwNZSRfpM38thg': { n: 'FIA Rallycross',        c: 'rally',    i: '\u{1F3C1}' },
+    'UC-yzfPs4YMhwNZSRfpM38thg': { n: 'WRC Official',        c: 'rally',    i: '\u{1F3C1}' },
+    'UCa6pF3EwQW-Sj-46DOXWydw': { n: 'FIA Karting',           c: 'karting',  i: '\u{1F3CE}\uFE0F' },
   };
 
   try {
     const url = 'https://www.googleapis.com/youtube/v3/search'
       + '?part=snippet&type=video&eventType=live'
-      + '&q=' + encodeURIComponent('MotoGP|motorsport|WorldSBK|Formula 1|Goodwood|ADAC|racing live')
+      + '&q=' + encodeURIComponent('MotoGP|motorsport|WorldSBK|Formula 1|Goodwood|ADAC|GT World Challenge|FIA karting|WRC rally|racing live')
       + '&maxResults=50&order=viewCount'
       + '&key=' + API_KEY;
 
