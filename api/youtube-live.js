@@ -15,12 +15,13 @@ export default async function handler(req, res) {
     'UCjl3GkVm-c3cce3nFa6fR7Q': { n: 'WorldSBK',              c: 'wsbk',     i: '\u{1F3CD}\uFE0F' },
     'UCwKq447rYMhSmQkuCKMruiA': { n: 'Motorsport.tv',          c: 'general',  i: '\u{1F3C1}' },
     'UCOk0MNEP-M04EJkJ-5qFRHw': { n: 'WorldSBK Official',     c: 'wsbk',     i: '\u{1F3CD}\uFE0F' },
+    'UCuBpNwGpf7g_1P1KnCDxrAg': { n: 'ADAC Motorsport',       c: 'general',  i: '\u{1F69A}' },
   };
 
   try {
     const url = 'https://www.googleapis.com/youtube/v3/search'
       + '?part=snippet&type=video&eventType=live'
-      + '&q=' + encodeURIComponent('MotoGP|motorsport|WorldSBK|Formula 1|Goodwood|racing live')
+      + '&q=' + encodeURIComponent('MotoGP|motorsport|WorldSBK|Formula 1|Goodwood|ADAC|racing live')
       + '&maxResults=50&order=viewCount'
       + '&key=' + API_KEY;
 
