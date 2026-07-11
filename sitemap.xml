@@ -227,4 +227,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.motogpvideo.com/german-gp-en.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.motogpvideo.com/almanya-gp-canli-izle.html"/>
   </url>
+  <url>
+    <loc>https://www.motogpvideo.com/sachsenring-rehber.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
