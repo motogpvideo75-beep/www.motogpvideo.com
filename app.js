@@ -1,443 +1,33 @@
-const langData = {
-            tr: {
-                title: "MOTOR SPORLARI MERKEZİ", label: "SON DAKİKA",
-                news: "• Yarış hafta sonu heyecanı başlıyor!",
-                pilots: "Türkiye: Kenan Sofuoğlu, Toprak Razgatlıoğlu",
-                live: "YAYIN BİLGİLERİ VE PROGRAMI!",
-                cdLabel: " TÜRKİYE GRAND PRIX 2026'YA KALAN SÜRE:",
-                platform: {
-                    title:"Motor Sporları Dünyasına Hoş Geldiniz!",
-                    p1:"🌍 motogpvideo.com, dünyanın dört bir yanındaki motor sporu severleri için kurulmuş bağımsız bir bilgi ve yayın rehberi platformudur.",
-                    p2:"📺 MotoGP, WorldSBK, Moto2, Moto3, Dünya SSP ve Formula 1 yarışlarını nerede, hangi kanalda izleyeceğinizi tek bir çatı altında bulabilirsiniz.",
-                    p3:"🇹🇷 Toprak Razgatlıoğlu, Bahattin Sofuoğlu, Can Öncü ve Deniz Öncü başta olmak üzere tüm kategorilerin sürücü kadrolarını takip edebilirsiniz.",
-                    p4:"📰 Güncel haberler, 2026 yarış takvimleri, pist bilgileri ve marka ansiklopedisi ile her şey burada.",
-                    p5:"⚡ Amacımız: Motor sporlarını seven herkese, dil farkı gözetmeksizin, ücretsiz ve erişilebilir bir platform sunmak.",
-                    p6:"🏁 Yarış başlasın!",
-                    disc:"⚠️ Bu site resmi bir yayın kuruluşu değildir. Tüm yayın hakları ilgili kuruluşlara aittir."
-                },
-                sidebar: { sec1:"Yayınlar", canli:"Motor Sporları Yeri", tv:"TV Kanalları", platform:"Özel Platformlar", sec2:"Bilgi", sponsor:"Resmi Sponsorlar", galeri:"Galeri", resmi:"Resmi Siteler", iletisim:"İletişim", platform:"Özel Platformlar", sec1:"Yayınlar", mission:"Misyonumuz", markalar:"Marka Ansiklopedisi", ekipman:"Kask & Tulum Markaları", lastik:"Lastik Markaları", sec3:"Yarışlar", takvim:"2026 Takvimi", sonuclar:"Yarış Sonuçları", biniciler:"Biniciler & Takımlar", tt:"Isle of Man TT", haberler:"Haberler", global:"Global Hit Sporlar", mission:"Misyonumuz", missionText:"Amatörden motor sporları dünyasını desteklemek ve izleyicileri güçlü, kaliteli yayınlarla buluşturmaktır. Herkese Hoş!", missionLink:"Yasal Canlı Yayın Rehberi" },
-                nav: ["Ana Sayfa","Yarışlar ▾","Galeri","Resmi Siteler","İletişim"],
-                tvRaceTitle:"MOTOR SPORLARI YARISI KANALLARI", turkRiders:"TÜRK SÜRÜCÜLER", officialBadge:"RESMİ YAYIN KURULUŞU", watchBtn:"RESMİ SİTEDE İZLE", btnGit:"RESMİ YAYIN KURULUŞU",
-                secTitles: { canli:"Resmi Siteler", tv:"TV Kanalları — Ülkeye Göre", platform:"Özel Platformlar", markalar:"Marka Ansiklopedisi", ekipman:"Kask & Tulum Markaları", lastik:"Lastik Markaları", takvim:"2026 MotoGP Takvimi", biniciler:"Biniciler & Takımlar", haberler:"Son Haberler", global:"Global Hit Sporlar" },
-                rssTabs: ["MotoGP","WorldSBK","Formula 1","WRC Ralli","WEC Dayanıklılık","Motokros (MXGP)"],
-                footer: "BU SİTE RESMİ BİR YAYIN KURULUŞU DEĞİLDİR. TÜM YAYIN HAKLARI İLGİLİ KURULUŞLARA AİTTİR.",
-                chBtn: "RESMİ SİTEDE İZLE",
-                heroTitle: "MOTOR SPORLARI DÜNYASINA HOŞ GELDİNİZ!",
-                heroDesc: "MotoGP, WorldSBK ve Formula 1 yarışlarını takip edebileceğiniz, güncel haberler, sürücü kadroları ve yarış takvimlerine ulaşabileceğiniz merkezi platformunuz.",
-                appBanner: "📱 MotoGP Video Android Uygulamamız Çıktı! Telefonunuza Hemen İndirmek İçin Tıklayın",
-                brandLabels:{founded:"GP Girişi", champ:"Şampiyonluk", riders:"Öne Çıkan İsimler", site:"🌐 RESMİ SİTE"},
-                countryNames: { usa:"ABD", uk_italy:"İngiltere / İtalya", europe:"Avrupa", france:"Fransa", germany_austria:"Almanya / Avusturya", uk:"İngiltere", world:"🌐 Dünya Geneli", europe_globe:"🌍 Avrupa", usa_flag:"🇺🇸 ABD", turkey:"Türkiye", asia:"Asya", japan:"Japonya", indonesia:"Endonezya", india:"Hindistan", latin_america:"Latin Amerika", brazil:"Brezilya", middle_east:"Orta Doğu", africa:"Afrika", isle_of_man:"🇮🇲 Man Adası", canada:"Kanada", mexico:"Meksika", germany:"Almanya", italy:"İtalya", china:"Çin", australia:"Avustralya" },
-                worldCupTitle:"🌍 FIFA DÜNYA KUPASI 2026 — RESMİ YAYIN KANALLARI",
-                tt: {
-                    heroTitle:"🇮🇲 ISLE OF MAN TT — 1907'DEN BERİ TAM GAZ ⚡",
-                    heroDesc:"Dünyanın en eski ve en zorlu yol yarışı olan Isle of Man TT, her yıl Mountain Course'ta düzenleniyor. Halka açık yollarda, saatte 300 km'ye yaklaşan hızlarla geçen efsanevi bir motosiklet yarışı.",
-                    cardCourseTitle:"🏁 Mountain Course", cardCourseValue:"60.72 km / 37.73 mil",
-                    cardDateTitle:"📅 TT 2027", cardDateValue:"31 Mayıs – 12 Haziran 2027",
-                    cardRiderTitle:"🏆 Michael Dunlop", cardRiderValue:"29+ TT galibiyeti",
-                    cardLocationTitle:"📍 Lokasyon", cardLocationValue:"Douglas, Isle of Man",
-                    linksTitle:"Resmi Bağlantılar",
-                    linkSite:"Resmi Site", linkSiteBtn:"ZİYARET ET",
-                    linkNews:"TT Haberleri", linkNewsBtn:"HABERLER",
-                    linkPlus:"TT+", linkPlusBtn:"İZLE",
-                    linkLive:"TT Live Pass", linkLiveBtn:"CANLI YAYIN",
-                    linkClassic:"Klasik TT", linkClassicBtn:"KEŞFET",
-                    linkLinktree:"Tüm Bağlantılar", linkLinktreeBtn:"LINKTREE",
-                    socialTitle:"Sosyal Medya",
-                    disclaimer:"⚠️ Bu site resmi bir yayın kuruluşu değildir. Isle of Man TT ile ilgili tüm yayın ve marka hakları TT Races Official / Isle of Man Government'a aittir."
-                }
-            },
-            en: {
-                title: "MOTORSPORTS CENTER", label: "LATEST",
-                news: "• Race weekend is coming! Welcome to the global hub.",
-                pilots: "Global Icons: Fabio Quartararo, Jack Miller",
-                live: "BROADCAST INFO & SCHEDULE",
-                cdLabel: "TIME LEFT TO MOTO GP TURKEY GRAND PRIX 2026:",
-                platform: {
-                    title:"Welcome to the World of Motorsports!",
-                    p1:"🌍 motogpvideo.com is an independent information and broadcast guide platform built for motorsport fans around the world.",
-                    p2:"📺 Find out where, on which channel and platform to watch MotoGP, WorldSBK, Moto2, Moto3, World SSP and Formula 1 — all in one place.",
-                    p3:"🇹🇷 Follow the full rider lineups of all categories, led by Turkey's motorsport pride: Toprak Razgatlıoğlu, Bahattin Sofuoğlu, Can Öncü and Deniz Öncü.",
-                    p4:"📰 Latest news, 2026 race calendars, circuit info and brand encyclopedia — everything you need is here.",
-                    p5:"⚡ Our goal is simple: provide a free and accessible platform for every motorsport fan, regardless of language.",
-                    p6:"🏁 Let the race begin!",
-                    disc:"⚠️ This site is not an official broadcaster. All broadcasting rights belong to their respective organizations."
-                },
-                sidebar: { sec1:"Broadcasts", canli:"Motorsports Info", tv:"TV Channels", platform:"Special Platforms", sec2:"Info", sponsor:"Official Sponsors", galeri:"Gallery", resmi:"Official Sites", iletisim:"Contact", platform:"Special Platforms", sec1:"Broadcasts", mission:"Our Mission", markalar:"Brand Encyclopedia", ekipman:"Helmet & Suit Brands", lastik:"Tyre Brands", sec3:"Races", takvim:"2026 Calendar", sonuclar:"Race Results", biniciler:"Riders & Teams", tt:"Isle of Man TT", haberler:"News", global:"Global Hit Sports", mission:"Our Mission", missionText:"To support the motorsports world and connect fans with high-quality, legal broadcasts. Welcome everyone!", missionLink:"Legal Live Streaming Guide" },
-                nav: ["Home","Races ▾","Gallery","Official Sites","Contact"],
-                tvRaceTitle:"MOTORSPORT RACE CHANNELS", turkRiders:"TURKISH RIDERS", officialBadge:"OFFICIAL BROADCASTER", watchBtn:"WATCH ON OFFICIAL SITE", btnGit:"OFFICIAL BROADCASTER",
-                secTitles: { canli:"Official Sites", tv:"TV Channels by Country", platform:"Special Platforms", markalar:"Brand Encyclopedia", ekipman:"Helmet & Suit Brands", lastik:"Tyre Brands", takvim:"2026 MotoGP Calendar", biniciler:"Riders & Teams", haberler:"Latest News", global:"Global Hit Sports" },
-                rssTabs: ["MotoGP","WorldSBK","Formula 1","WRC Rally","WEC Endurance","Motocross (MXGP)"],
-                footer: "THIS SITE IS NOT AN OFFICIAL BROADCASTER. ALL BROADCASTING RIGHTS BELONG TO THEIR RESPECTIVE ORGANIZATIONS.",
-                chBtn: "WATCH ON OFFICIAL SITE",
-                heroTitle: "WELCOME TO THE WORLD OF MOTORSPORTS!",
-                heroDesc: "Your central platform to follow MotoGP, WorldSBK and Formula 1 races, latest news, rider lineups and race calendars.",
-                appBanner: "📱 Our MotoGP Video Android App Is Out! Tap to Download It to Your Phone Now",
-                brandLabels:{founded:"Founded", champ:"Championships", riders:"Key Riders", site:"🌐 OFFICIAL SITE"},
-                countryNames: { usa:"USA", uk_italy:"UK / Italy", europe:"Europe", france:"France", germany_austria:"Germany / Austria", uk:"UK", world:"🌐 Worldwide", europe_globe:"🌍 Europe", usa_flag:"🇺🇸 USA", turkey:"Turkey", asia:"Asia", japan:"Japan", indonesia:"Indonesia", india:"India", latin_america:"Latin America", brazil:"Brazil", middle_east:"Middle East", africa:"Africa", isle_of_man:"🇮🇲 Isle of Man", canada:"Canada", mexico:"Mexico", germany:"Germany", italy:"Italy", china:"China", australia:"Australia" },
-                worldCupTitle:"🌍 FIFA WORLD CUP 2026 — OFFICIAL BROADCAST CHANNELS",
-                tt: {
-                    heroTitle:"🇮🇲 ISLE OF MAN TT — FULL THROTTLE SINCE 1907 ⚡",
-                    heroDesc:"The Isle of Man TT, the world's oldest and most demanding road race, is held every year on the Mountain Course. A legendary motorcycle race on public roads, with speeds approaching 300 km/h.",
-                    cardCourseTitle:"🏁 Mountain Course", cardCourseValue:"60.72 km / 37.73 mi",
-                    cardDateTitle:"📅 TT 2027", cardDateValue:"31 May – 12 June 2027",
-                    cardRiderTitle:"🏆 Michael Dunlop", cardRiderValue:"29+ TT wins",
-                    cardLocationTitle:"📍 Location", cardLocationValue:"Douglas, Isle of Man",
-                    linksTitle:"Official Links",
-                    linkSite:"Official Site", linkSiteBtn:"VISIT",
-                    linkNews:"TT News", linkNewsBtn:"NEWS",
-                    linkPlus:"TT+", linkPlusBtn:"WATCH",
-                    linkLive:"TT Live Pass", linkLiveBtn:"LIVE COVERAGE",
-                    linkClassic:"Classic TT", linkClassicBtn:"EXPLORE",
-                    linkLinktree:"All Links", linkLinktreeBtn:"LINKTREE",
-                    socialTitle:"Social Media",
-                    disclaimer:"⚠️ This site is not an official broadcaster. All broadcasting and brand rights related to the Isle of Man TT belong to TT Races Official / Isle of Man Government."
-                }
-            },
-            de: {
-                title: "MOTORSPORT ZENTRUM", label: "AKTUELL", news: "• Das Rennwochenende kommt bald!", pilots: "Deutschland: Stefan Bradl", live: "SENDUNG INFO & PROGRAMM", cdLabel: "VERBLEIBENDE ZEIT BIS MOTO GP TÜRKEI GP 2026:",
-                sidebar: { sec1:"Übertragungen", canli:"Motorsport Info", tv:"TV-Sender", platform:"Spezielle Plattformen", sec2:"Info", sponsor:"Offizielle Sponsoren", galeri:"Galerie", resmi:"Offizielle Seiten", iletisim:"Kontakt", platform:"Spezielle Plattformen", sec1:"Sendungen", mission:"Unsere Mission", markalar:"Marken-Enzyklopädie", ekipman:"Helm- & Kombi-Marken", lastik:"Reifenmarken", sec3:"Rennen", takvim:"Kalender 2026", sonuclar:"Rennergebnisse", biniciler:"Fahrer & Teams", tt:"Isle of Man TT", haberler:"Nachrichten", global:"Globale Top-Sports", mission:"Unsere Mission", missionText:"Die Motorsportwelt unterstützen und Fans mit hochwertigen, legalen Übertragungen verbinden.", missionLink:"Offizieller Live-Streaming-Leitfaden" },
-                platform: {
-                    title:"Willkommen in der Welt des Motorsports!",
-                    p1:"🌍 motogpvideo.com ist eine unabhängige Informations- und Sendeplattform für Motorsportfans aus aller Welt.",
-                    p2:"📺 Finden Sie heraus, wo Sie MotoGP, WorldSBK, Moto2, Moto3 und Formel 1 sehen können — alles an einem Ort.",
-                    p3:"🇹🇷 Verfolgen Sie alle Fahrer aller Kategorien, angeführt von Toprak Razgatlıoğlu, Bahattin Sofuoğlu, Can Öncü und Deniz Öncü.",
-                    p4:"📰 Aktuelle Nachrichten, Rennkalender 2026, Streckendaten und Marken-Enzyklopädie — alles hier.",
-                    p5:"⚡ Unser Ziel: Eine kostenlose Plattform für alle Motorsportfans, unabhängig von der Sprache.",
-                    p6:"🏁 Auf die Plätze, fertig, los!",
-                    disc:"⚠️ Diese Seite ist kein offizieller Sender. Alle Übertragungsrechte liegen bei den jeweiligen Organisationen."
-                },
-                nav: ["Startseite","Rennen ▾","Galerie","Offizielle Seiten","Kontakt"],
-                tvRaceTitle:"MOTORSPORT RENNKANÄLE", turkRiders:"TÜRKISCHE FAHRER", officialBadge:"OFFIZIELLER SENDER", watchBtn:"AUF OFFIZIELLER SEITE ANSEHEN", btnGit:"OFFIZIELLER SENDER",
-                secTitles: { canli:"Offizielle Seiten", tv:"TV-Sender nach Land", platform:"Spezielle Plattformen", markalar:"Marken-Enzyklopädie", ekipman:"Helm- & Kombi-Marken", lastik:"Reifenmarken", takvim:"MotoGP Kalender 2026", biniciler:"Fahrer & Teams", haberler:"Aktuelle Nachrichten", global:"Globale Top-Sports" },
-                rssTabs: ["MotoGP","WorldSBK","Formel 1","WRC Rallye","WEC Langstrecke","Motocross (MXGP)"],
-                footer: "DIESE SEITE IST KEIN OFFIZIELLER SENDER. ALLE ÜBERTRAGUNGSRECHTE LIEGEN BEI DEN JEWEILIGEN ORGANISATIONEN.",
-                chBtn: "AUF OFFIZIELLER SEITE ANSEHEN",
-                heroTitle: "WILLKOMMEN IN DER WELT DES MOTORSPORTS!",
-                heroDesc: "Ihre zentrale Plattform für MotoGP, WorldSBK und Formel 1 Rennen, aktuelle Nachrichten, Fahrer und Rennkalender.",
-                appBanner: "📱 Unsere MotoGP Video Android-App ist da! Jetzt aufs Handy herunterladen",
-                brandLabels:{founded:"Gegründet", champ:"Meisterschaften", riders:"Wichtige Fahrer", site:"🌐 OFFIZIELLE SEITE"},
-                countryNames: { usa:"USA", uk_italy:"UK / Italien", europe:"Europa", france:"Frankreich", germany_austria:"Deutschland / Österreich", uk:"UK", world:"🌐 Weltweit", europe_globe:"🌍 Europa", usa_flag:"🇺🇸 USA", turkey:"Türkei", asia:"Asien", japan:"Japan", indonesia:"Indonesien", india:"Indien", latin_america:"Lateinamerika", brazil:"Brasilien", middle_east:"Naher Osten", africa:"Afrika", isle_of_man:"🇮🇲 Isle of Man", canada:"Kanada", mexico:"Mexiko", germany:"Deutschland", italy:"Italien", china:"China", australia:"Australien" },
-                worldCupTitle:"🌍 FIFA WM 2026 — OFFIZIELLE ÜBERTRAGUNGSKANÄLE",
-                tt: {
-                    heroTitle:"🇮🇲 ISLE OF MAN TT — VOLLGAS SEIT 1907 ⚡",
-                    heroDesc:"Die Isle of Man TT, das älteste und anspruchsvollste Straßenrennen der Welt, findet jedes Jahr auf dem Mountain Course statt. Ein legendäres Motorradrennen auf öffentlichen Straßen mit Geschwindigkeiten von fast 300 km/h.",
-                    cardCourseTitle:"🏁 Mountain Course", cardCourseValue:"60,72 km / 37,73 Meilen",
-                    cardDateTitle:"📅 TT 2027", cardDateValue:"31. Mai – 12. Juni 2027",
-                    cardRiderTitle:"🏆 Michael Dunlop", cardRiderValue:"29+ TT-Siege",
-                    cardLocationTitle:"📍 Standort", cardLocationValue:"Douglas, Isle of Man",
-                    linksTitle:"Offizielle Links",
-                    linkSite:"Offizielle Seite", linkSiteBtn:"BESUCHEN",
-                    linkNews:"TT-Nachrichten", linkNewsBtn:"NACHRICHTEN",
-                    linkPlus:"TT+", linkPlusBtn:"ANSEHEN",
-                    linkLive:"TT Live Pass", linkLiveBtn:"LIVE-ÜBERTRAGUNG",
-                    linkClassic:"Classic TT", linkClassicBtn:"ENTDECKEN",
-                    linkLinktree:"Alle Links", linkLinktreeBtn:"LINKTREE",
-                    socialTitle:"Soziale Medien",
-                    disclaimer:"⚠️ Diese Seite ist kein offizieller Sender. Alle Übertragungs- und Markenrechte bezüglich der Isle of Man TT liegen bei TT Races Official / Isle of Man Government."
-                }
-            },
-            fr: {
-                title: "CENTRE SPORTS MOTO", label: "DERNIÈRE MINUTE", news: "• Le week-end de course arrive bientôt!", pilots: "France: Johann Zarco, Fabio Quartararo", live: "INFO & PROGRAMME DES ÉMISSIONS", cdLabel: "TEMPS RESTANT AVANT LE GP DE TURQUIE 2026:",
-                sidebar: { sec1:"Diffusions", canli:"Motorsport Info", tv:"Chaînes TV", platform:"Plateformes Spéciales", sec2:"Info", sponsor:"Sponsors Officiels", galeri:"Galerie", resmi:"Sites Officiels", iletisim:"Contact", platform:"Plateformes Spéciales", sec1:"Diffusions", mission:"Notre Mission", markalar:"Encyclopédie des Marques", ekipman:"Marques de Casques & Combinaisons", lastik:"Marques de Pneus", sec3:"Courses", takvim:"Calendrier 2026", sonuclar:"Résultats des Courses", biniciler:"Pilotes & Équipes", tt:"Isle of Man TT", haberler:"Actualités", global:"Sports Mondiaux", mission:"Notre Mission", missionText:"Soutenir le monde du motorsport et connecter les fans aux diffusions légales et de qualité.", missionLink:"Guide de Streaming Légal" },
-                platform: {
-                    title:"Bienvenue dans le monde du Motorsport!",
-                    p1:"🌍 motogpvideo.com est une plateforme d'information indépendante pour les fans de motorsport du monde entier.",
-                    p2:"📺 Découvrez où regarder MotoGP, WorldSBK, Moto2, Moto3 et Formule 1 — tout en un seul endroit.",
-                    p3:"🇹🇷 Suivez tous les pilotes de toutes les catégories, menés par Toprak Razgatlıoğlu, Bahattin Sofuoğlu, Can Öncü et Deniz Öncü.",
-                    p4:"📰 Actualités, calendriers 2026, infos circuits et encyclopédie des marques — tout est ici.",
-                    p5:"⚡ Notre objectif: offrir une plateforme gratuite à tous les fans de motorsport, quelle que soit la langue.",
-                    p6:"🏁 Que la course commence!",
-                    disc:"⚠️ Ce site n'est pas un diffuseur officiel. Tous les droits de diffusion appartiennent aux organisations concernées."
-                },
-                nav: ["Accueil","Courses ▾","Galerie","Sites Officiels","Contact"],
-                tvRaceTitle:"CHAÎNES DE COURSE MOTORSPORT", turkRiders:"PILOTES TURCS", officialBadge:"DIFFUSEUR OFFICIEL", watchBtn:"VOIR SUR LE SITE OFFICIEL", btnGit:"DIFFUSEUR OFFICIEL",
-                secTitles: { canli:"Sites Officiels", tv:"Chaînes TV par Pays", platform:"Plateformes Spéciales", markalar:"Encyclopédie des Marques", ekipman:"Marques de Casques & Combinaisons", lastik:"Marques de Pneus", takvim:"Calendrier MotoGP 2026", biniciler:"Pilotes & Équipes", haberler:"Dernières Actualités", global:"Sports Mondiaux" },
-                rssTabs: ["MotoGP","WorldSBK","Formule 1","WRC Rallye","WEC Endurance","Motocross (MXGP)"],
-                footer: "CE SITE N'EST PAS UN DIFFUSEUR OFFICIEL. TOUS LES DROITS DE DIFFUSION APPARTIENNENT AUX ORGANISATIONS CONCERNÉES.",
-                chBtn: "VOIR SUR LE SITE OFFICIEL",
-                heroTitle: "BIENVENUE DANS LE MONDE DU MOTORSPORT!",
-                heroDesc: "Votre plateforme centrale pour suivre MotoGP, WorldSBK et Formule 1, actualités, pilotes et calendriers.",
-                appBanner: "📱 Notre application Android MotoGP Video est disponible ! Téléchargez-la maintenant",
-                brandLabels:{founded:"Fondé", champ:"Championnats", riders:"Pilotes Clés", site:"🌐 SITE OFFICIEL"},
-                countryNames: { usa:"USA", uk_italy:"Royaume-Uni / Italie", europe:"Europe", france:"France", germany_austria:"Allemagne / Autriche", uk:"Royaume-Uni", world:"🌐 Mondial", europe_globe:"🌍 Europe", usa_flag:"🇺🇸 USA", turkey:"Turquie", asia:"Asie", japan:"Japon", indonesia:"Indonésie", india:"Inde", latin_america:"Amérique latine", brazil:"Brésil", middle_east:"Moyen-Orient", africa:"Afrique", isle_of_man:"🇮🇲 Île de Man", canada:"Canada", mexico:"Mexique", germany:"Allemagne", italy:"Italie", china:"Chine", australia:"Australie" },
-                worldCupTitle:"🌍 COUPE DU MONDE FIFA 2026 — CHAÎNES DE DIFFUSION OFFICIELLES",
-                tt: {
-                    heroTitle:"🇮🇲 ISLE OF MAN TT — PLEIN GAZ DEPUIS 1907 ⚡",
-                    heroDesc:"L'Isle of Man TT, la course sur route la plus ancienne et la plus exigeante au monde, se déroule chaque année sur le Mountain Course. Une course de moto légendaire sur routes publiques, avec des vitesses approchant les 300 km/h.",
-                    cardCourseTitle:"🏁 Mountain Course", cardCourseValue:"60,72 km / 37,73 mi",
-                    cardDateTitle:"📅 TT 2027", cardDateValue:"31 mai – 12 juin 2027",
-                    cardRiderTitle:"🏆 Michael Dunlop", cardRiderValue:"29+ victoires au TT",
-                    cardLocationTitle:"📍 Lieu", cardLocationValue:"Douglas, Isle of Man",
-                    linksTitle:"Liens Officiels",
-                    linkSite:"Site Officiel", linkSiteBtn:"VISITER",
-                    linkNews:"Actualités TT", linkNewsBtn:"ACTUALITÉS",
-                    linkPlus:"TT+", linkPlusBtn:"REGARDER",
-                    linkLive:"TT Live Pass", linkLiveBtn:"DIRECT",
-                    linkClassic:"Classic TT", linkClassicBtn:"DÉCOUVRIR",
-                    linkLinktree:"Tous les Liens", linkLinktreeBtn:"LINKTREE",
-                    socialTitle:"Réseaux Sociaux",
-                    disclaimer:"⚠️ Ce site n'est pas un diffuseur officiel. Tous les droits de diffusion et de marque relatifs à l'Isle of Man TT appartiennent à TT Races Official / Isle of Man Government."
-                }
-            },
-            ja: {
-                title: "モータースポーツセンター", label: "最新情報", news: "• レースウィークがもうすぐ始まります！", pilots: "トルコ: トプラク・ラズガトリオール、バハッティン・ソフオール", live: "情報＆放送スケジュール", cdLabel: "2026年トルコGPまでの残り時間:",
-                sidebar: { sec1:"放送", canli:"モータースポーツ情報", tv:"TVチャンネル", platform:"特別プラットフォーム", sec2:"情報", sponsor:"公式スポンサー", galeri:"ギャラリー", resmi:"公式サイト", iletisim:"お問い合わせ", platform:"特別プラットフォーム", sec1:"放送", mission:"私たちの使命", markalar:"ブランド百科事典", ekipman:"ヘルメット＆スーツブランド", lastik:"タイヤブランド", sec3:"レース", takvim:"2026年カレンダー", sonuclar:"レース結果", biniciler:"ライダー＆チーム", tt:"Isle of Man TT", haberler:"ニュース", global:"世界のスポーツ", mission:"私たちの使命", missionText:"モータースポーツの世界を支え、ファンを合法で高品質な放送につなげます。", missionLink:"合法ストリーミングガイド" },
-                platform: {
-                    title:"モータースポーツの世界へようこそ！",
-                    p1:"🌍 motogpvideo.comは、世界中のモータースポーツファンのための独立情報プラットフォームです。",
-                    p2:"📺 MotoGP、WorldSBK、Moto2、Moto3、フォーミュラ1の視聴方法をまとめてご紹介します。",
-                    p3:"🇹🇷 トプラク・ラズガトリオール、バハッティン・ソフオール、ジャン・オンジュ、デニズ・オンジュをはじめ、全クラスのライダーをフォローできます。",
-                    p4:"📰 ニュース、2026年カレンダー、サーキット情報、ブランド百科事典がすべてここにあります。",
-                    p5:"⚡ 言語を問わず、すべてのモータースポーツファンに無料のプラットフォームを提供することが私たちの目標です。",
-                    p6:"🏁 レースを始めましょう！",
-                    disc:"⚠️ このサイトは公式放送局ではありません。すべての放送権はそれぞれの団体に帰属します。"
-                },
-                nav: ["ホーム","レース ▾","ギャラリー","公式サイト","お問い合わせ"],
-                tvRaceTitle:"モータースポーツレースチャンネル", turkRiders:"トルコ人ライダー", officialBadge:"公式放送局", watchBtn:"公式サイトで見る", btnGit:"公式放送局",
-                brandLabels:{founded:"創設", champ:"チャンピオンシップ", riders:"主要ライダー", site:"🌐 公式サイト"},
-                secTitles: { canli:"公式サイト", tv:"国別TVチャンネル", platform:"特別プラットフォーム", markalar:"ブランド百科事典", ekipman:"ヘルメット＆スーツブランド", lastik:"タイヤブランド", takvim:"2026年MotoGPカレンダー", biniciler:"ライダー＆チーム", haberler:"最新ニュース", global:"世界のスポーツ" },
-                rssTabs: ["MotoGP","WorldSBK","フォーミュラ1","WRCラリー","WEC耐久","モトクロス(MXGP)"],
-                footer: "このサイトは公式放送局ではありません。すべての放送権はそれぞれの団体に帰属します。",
-                chBtn: "公式サイトで視聴",
-                heroTitle: "モータースポーツの世界へようこそ！",
-                heroDesc: "MotoGP、WorldSBK、フォーミュラ1のニュース、ライダー、カレンダーを追うための中心プラットフォーム。",
-                appBanner: "📱 MotoGP Video Androidアプリが登場！今すぐスマホにダウンロード",
-                countryNames: { usa:"アメリカ", uk_italy:"英国 / イタリア", europe:"ヨーロッパ", france:"フランス", germany_austria:"ドイツ / オーストリア", uk:"英国", world:"🌐 世界中", europe_globe:"🌍 ヨーロッパ", usa_flag:"🇺🇸 アメリカ", turkey:"トルコ", asia:"アジア", japan:"日本", indonesia:"インドネシア", india:"インド", latin_america:"ラテンアメリカ", brazil:"ブラジル", middle_east:"中東", africa:"アフリカ", isle_of_man:"🇮🇲 マン島", canada:"カナダ", mexico:"メキシコ", germany:"ドイツ", italy:"イタリア", china:"中国", australia:"オーストラリア" },
-                worldCupTitle:"🌍 FIFAワールドカップ2026 — 公式放送チャンネル",
-                tt: {
-                    heroTitle:"🇮🇲 アイル・オブ・マンTT — 1907年から全開 ⚡",
-                    heroDesc:"世界最古で最も過酷なロードレース、アイル・オブ・マンTTは毎年マウンテンコースで開催されます。一般公道で時速300kmに迫るスピードを誇る伝説的なバイクレースです。",
-                    cardCourseTitle:"🏁 マウンテンコース", cardCourseValue:"60.72 km / 37.73 マイル",
-                    cardDateTitle:"📅 TT 2027", cardDateValue:"2027年5月31日 – 6月12日",
-                    cardRiderTitle:"🏆 マイケル・ダンロップ", cardRiderValue:"TT通算29勝以上",
-                    cardLocationTitle:"📍 開催地", cardLocationValue:"ダグラス、アイル・オブ・マン",
-                    linksTitle:"公式リンク",
-                    linkSite:"公式サイト", linkSiteBtn:"アクセス",
-                    linkNews:"TTニュース", linkNewsBtn:"ニュース",
-                    linkPlus:"TT+", linkPlusBtn:"視聴",
-                    linkLive:"TT Live Pass", linkLiveBtn:"ライブ配信",
-                    linkClassic:"クラシックTT", linkClassicBtn:"詳細",
-                    linkLinktree:"すべてのリンク", linkLinktreeBtn:"LINKTREE",
-                    socialTitle:"ソーシャルメディア",
-                    disclaimer:"⚠️ このサイトは公式放送局ではありません。アイル・オブ・マンTTに関するすべての放送権およびブランド権はTT Races Official / Isle of Man Governmentに帰属します。"
-                }
-            },
-            es: {
-                title: "CENTRO DE DEPORTES DE MOTOR", label: "ÚLTIMA HORA", news: "• ¡El fin de semana de carreras está cerca!", pilots: "España: Marc Márquez, Jorge Martín", live: "INFORMACIÓN Y PROGRAMA DE EMISIÓN", cdLabel: "TIEMPO RESTANTE PARA EL GP DE TURQUÍA 2026:",
-                sidebar: { sec1:"Transmisiones", canli:"Información de Motociclismo", tv:"Canales de TV", platform:"Plataformas Especiales", sec2:"Información", sponsor:"Patrocinadores Oficiales", galeri:"Galería", resmi:"Sitios Oficiales", iletisim:"Contacto", platform:"Plataformas Especiales", sec1:"Transmisiones", mission:"Nuestra Misión", markalar:"Enciclopedia de Marcas", ekipman:"Marcas de Cascos y Monos", lastik:"Marcas de Neumáticos", sec3:"Carreras", takvim:"Calendario 2026", sonuclar:"Resultados", biniciler:"Pilotos y Equipos", tt:"Isle of Man TT", haberler:"Noticias", global:"Deportes Globales", mission:"Nuestra Misión", missionText:"Apoyar el mundo del motociclismo y conectar a los aficionados con transmisiones legales de alta calidad. ¡Bienvenidos todos!", missionLink:"Guía de Transmisión Legal" },
-                platform: {
-                    title:"¡Bienvenido al Mundo del Motociclismo!",
-                    p1:"🌍 motogpvideo.com es una plataforma independiente de información y guía de transmisión para los aficionados al motociclismo de todo el mundo.",
-                    p2:"📺 Encuentra dónde, en qué canal y plataforma ver MotoGP, WorldSBK, Moto2, Moto3, World SSP y Fórmula 1, todo en un solo lugar.",
-                    p3:"🇹🇷 Sigue las alineaciones completas de pilotos de todas las categorías, encabezadas por el orgullo del motociclismo turco: Toprak Razgatlıoğlu, Bahattin Sofuoğlu, Can Öncü y Deniz Öncü.",
-                    p4:"📰 Últimas noticias, calendarios de carreras 2026, información de circuitos y enciclopedia de marcas, todo lo que necesitas está aquí.",
-                    p5:"⚡ Nuestro objetivo es simple: ofrecer una plataforma gratuita y accesible para todos los aficionados al motociclismo, sin importar el idioma.",
-                    p6:"🏁 ¡Que empiece la carrera!",
-                    disc:"⚠️ Este sitio no es una emisora oficial. Todos los derechos de transmisión pertenecen a sus respectivas organizaciones."
-                },
-                nav: ["Inicio","Carreras ▾","Galería","Sitios Oficiales","Contacto"],
-                tvRaceTitle:"CANALES DE CARRERAS DE MOTOR", turkRiders:"PILOTOS TURCOS", officialBadge:"EMISORA OFICIAL", watchBtn:"VER EN SITIO OFICIAL", btnGit:"EMISORA OFICIAL",
-                secTitles: { canli:"Sitios Oficiales", tv:"Canales de TV por País", platform:"Plataformas Especiales", markalar:"Enciclopedia de Marcas", ekipman:"Marcas de Cascos y Monos", lastik:"Marcas de Neumáticos", takvim:"Calendario MotoGP 2026", biniciler:"Pilotos y Equipos", haberler:"Últimas Noticias", global:"Deportes Globales" },
-                rssTabs: ["MotoGP","WorldSBK","Fórmula 1","WRC Rally","WEC Resistencia","Motocross (MXGP)"],
-                footer: "ESTE SITIO NO ES UNA EMISORA OFICIAL. TODOS LOS DERECHOS DE TRANSMISIÓN PERTENECEN A SUS RESPECTIVAS ORGANIZACIONES.",
-                chBtn: "VER EN SITIO OFICIAL",
-                heroTitle: "¡BIENVENIDO AL MUNDO DEL MOTOCICLISMO!",
-                heroDesc: "Tu plataforma central para seguir las carreras de MotoGP, WorldSBK y Fórmula 1, las últimas noticias, alineaciones de pilotos y calendarios de carreras.",
-                appBanner: "📱 ¡Nuestra app Android de MotoGP Video ya está disponible! Descárgala ahora en tu teléfono",
-                brandLabels:{founded:"Fundado", champ:"Campeonatos", riders:"Pilotos Clave", site:"🌐 SITIO OFICIAL"},
-                countryNames: { usa:"EE.UU.", uk_italy:"Reino Unido / Italia", europe:"Europa", france:"Francia", germany_austria:"Alemania / Austria", uk:"Reino Unido", world:"🌐 Mundial", europe_globe:"🌍 Europa", usa_flag:"🇺🇸 EE.UU.", turkey:"Turquía", asia:"Asia", japan:"Japón", indonesia:"Indonesia", india:"India", latin_america:"América Latina", brazil:"Brasil", middle_east:"Oriente Medio", africa:"África", isle_of_man:"🇮🇲 Isla de Man", canada:"Canadá", mexico:"México", germany:"Alemania", italy:"Italia", china:"China", australia:"Australia" },
-                worldCupTitle:"🌍 COPA MUNDIAL DE LA FIFA 2026 — CANALES OFICIALES DE TRANSMISIÓN",
-                tt: {
-                    heroTitle:"🇮🇲 ISLE OF MAN TT — A TODO GAS DESDE 1907 ⚡",
-                    heroDesc:"La Isle of Man TT, la carrera en carretera más antigua y exigente del mundo, se celebra cada año en el Mountain Course. Una legendaria carrera de motos en carreteras públicas, con velocidades cercanas a los 300 km/h.",
-                    cardCourseTitle:"🏁 Mountain Course", cardCourseValue:"60,72 km / 37,73 mi",
-                    cardDateTitle:"📅 TT 2027", cardDateValue:"31 de mayo – 12 de junio de 2027",
-                    cardRiderTitle:"🏆 Michael Dunlop", cardRiderValue:"29+ victorias en el TT",
-                    cardLocationTitle:"📍 Ubicación", cardLocationValue:"Douglas, Isle of Man",
-                    linksTitle:"Enlaces Oficiales",
-                    linkSite:"Sitio Oficial", linkSiteBtn:"VISITAR",
-                    linkNews:"Noticias TT", linkNewsBtn:"NOTICIAS",
-                    linkPlus:"TT+", linkPlusBtn:"VER",
-                    linkLive:"TT Live Pass", linkLiveBtn:"EN VIVO",
-                    linkClassic:"Classic TT", linkClassicBtn:"DESCUBRIR",
-                    linkLinktree:"Todos los Enlaces", linkLinktreeBtn:"LINKTREE",
-                    socialTitle:"Redes Sociales",
-                    disclaimer:"⚠️ Este sitio no es una emisora oficial. Todos los derechos de transmisión y de marca relacionados con la Isle of Man TT pertenecen a TT Races Official / Isle of Man Government."
-                }
-            },
-            it: {
-                title: "CENTRO MOTORSPORT", label: "ULTIMA ORA", news: "• Il weekend di gara è in arrivo!", pilots: "Italia: Marco Bezzecchi, Francesco Bagnaia", live: "INFO E PROGRAMMA DELLE TRASMISSIONI", cdLabel: "TEMPO RIMANENTE AL GP DI TURCHIA 2026:",
-                sidebar: { sec1:"Trasmissioni", canli:"Info Motorsport", tv:"Canali TV", platform:"Piattaforme Speciali", sec2:"Info", sponsor:"Sponsor Ufficiali", galeri:"Galleria", resmi:"Siti Ufficiali", iletisim:"Contatto", platform:"Piattaforme Speciali", sec1:"Trasmissioni", mission:"La Nostra Missione", markalar:"Enciclopedia dei Marchi", ekipman:"Marchi di Caschi e Tute", lastik:"Marchi di Pneumatici", sec3:"Gare", takvim:"Calendario 2026", sonuclar:"Resultados", biniciler:"Piloti e Team", tt:"Isle of Man TT", haberler:"Notizie", global:"Sport Globali", mission:"La Nostra Missione", missionText:"Supportare il mondo del motorsport e collegare i fan a trasmissioni legali di alta qualità. Benvenuti a tutti!", missionLink:"Guida allo Streaming Legale" },
-                platform: {
-                    title:"Benvenuti nel Mondo del Motorsport!",
-                    p1:"🌍 motogpvideo.com è una piattaforma indipendente di informazione e guida alle trasmissioni per gli appassionati di motorsport in tutto il mondo.",
-                    p2:"📺 Scopri dove, su quale canale e piattaforma seguire MotoGP, WorldSBK, Moto2, Moto3, World SSP e Formula 1, tutto in un unico posto.",
-                    p3:"🇹🇷 Segui le formazioni complete dei piloti di tutte le categorie, guidate dall'orgoglio motoristico turco: Toprak Razgatlıoğlu, Bahattin Sofuoğlu, Can Öncü e Deniz Öncü.",
-                    p4:"📰 Ultime notizie, calendari di gara 2026, informazioni sui circuiti ed enciclopedia dei marchi: tutto ciò che serve è qui.",
-                    p5:"⚡ Il nostro obiettivo è semplice: offrire una piattaforma gratuita e accessibile a ogni appassionato di motorsport, indipendentemente dalla lingua.",
-                    p6:"🏁 Si parte!",
-                    disc:"⚠️ Questo sito non è un'emittente ufficiale. Tutti i diritti di trasmissione appartengono alle rispettive organizzazioni."
-                },
-                nav: ["Home","Gare ▾","Galleria","Siti Ufficiali","Contatti"],
-                tvRaceTitle:"CANALI DI GARA MOTORSPORT", turkRiders:"PILOTI TURCHI", officialBadge:"EMITTENTE UFFICIALE", watchBtn:"GUARDA SUL SITO UFFICIALE", btnGit:"EMITTENTE UFFICIALE",
-                secTitles: { canli:"Siti Ufficiali", tv:"Canali TV per Paese", platform:"Piattaforme Speciali", markalar:"Enciclopedia dei Marchi", ekipman:"Marchi di Caschi e Tute", lastik:"Marchi di Pneumatici", takvim:"Calendario MotoGP 2026", biniciler:"Piloti e Team", haberler:"Ultime Notizie", global:"Sport Globali" },
-                rssTabs: ["MotoGP","WorldSBK","Formula 1","WRC Rally","WEC Endurance","Motocross (MXGP)"],
-                footer: "QUESTO SITO NON È UN'EMITTENTE UFFICIALE. TUTTI I DIRITTI DI TRASMISSIONE APPARTENGONO ALLE RISPETTIVE ORGANIZZAZIONI.",
-                chBtn: "GUARDA SUL SITO UFFICIALE",
-                heroTitle: "BENVENUTI NEL MONDO DEL MOTORSPORT!",
-                heroDesc: "La tua piattaforma centrale per seguire le gare di MotoGP, WorldSBK e Formula 1, ultime notizie, formazioni piloti e calendari di gara.",
-                appBanner: "📱 La nostra app Android MotoGP Video è disponibile! Scaricala ora sul tuo telefono",
-                brandLabels:{founded:"Fondato", champ:"Campionati", riders:"Piloti Chiave", site:"🌐 SITO UFFICIALE"},
-                countryNames: { usa:"USA", uk_italy:"Regno Unito / Italia", europe:"Europa", france:"Francia", germany_austria:"Germania / Austria", uk:"Regno Unito", world:"🌐 Mondiale", europe_globe:"🌍 Europa", usa_flag:"🇺🇸 USA", turkey:"Turchia", asia:"Asia", japan:"Giappone", indonesia:"Indonesia", india:"India", latin_america:"America Latina", brazil:"Brasile", middle_east:"Medio Oriente", africa:"Africa", isle_of_man:"🇮🇲 Isola di Man", canada:"Canada", mexico:"Messico", germany:"Germania", italy:"Italia", china:"Cina", australia:"Australia" },
-                worldCupTitle:"🌍 COPPA DEL MONDO FIFA 2026 — CANALI DI TRASMISSIONE UFFICIALI",
-                tt: {
-                    heroTitle:"🇮🇲 ISLE OF MAN TT — A TUTTA VELOCITÀ DAL 1907 ⚡",
-                    heroDesc:"La Isle of Man TT, la corsa su strada più antica e impegnativa al mondo, si svolge ogni anno sul Mountain Course. Una leggendaria gara motociclistica su strade pubbliche, con velocità che si avvicinano ai 300 km/h.",
-                    cardCourseTitle:"🏁 Mountain Course", cardCourseValue:"60,72 km / 37,73 mi",
-                    cardDateTitle:"📅 TT 2027", cardDateValue:"31 maggio – 12 giugno 2027",
-                    cardRiderTitle:"🏆 Michael Dunlop", cardRiderValue:"29+ vittorie al TT",
-                    cardLocationTitle:"📍 Località", cardLocationValue:"Douglas, Isle of Man",
-                    linksTitle:"Link Ufficiali",
-                    linkSite:"Sito Ufficiale", linkSiteBtn:"VISITA",
-                    linkNews:"Notizie TT", linkNewsBtn:"NOTIZIE",
-                    linkPlus:"TT+", linkPlusBtn:"GUARDA",
-                    linkLive:"TT Live Pass", linkLiveBtn:"DIRETTA",
-                    linkClassic:"Classic TT", linkClassicBtn:"ESPLORA",
-                    linkLinktree:"Tutti i Link", linkLinktreeBtn:"LINKTREE",
-                    socialTitle:"Social Media",
-                    disclaimer:"⚠️ Questo sito non è un'emittente ufficiale. Tutti i diritti di trasmissione e di marchio relativi alla Isle of Man TT appartengono a TT Races Official / Isle of Man Government."
-                }
-            },
-            pt: {
-                title: "CENTRO DE DESPORTOS A MOTOR", label: "ÚLTIMA HORA", news: "• O fim de semana de corrida está chegando!", pilots: "Brasil: Diogo Moreira, Eric Granado", live: "INFORMAÇÕES E PROGRAMAÇÃO DA TRANSMISSÃO", cdLabel: "TEMPO RESTANTE PARA O GP DA TURQUIA 2026:",
-                sidebar: { sec1:"Transmissões", canli:"Info Desportos a Motor", tv:"Canais de TV", platform:"Plataformas Especiais", sec2:"Info", sponsor:"Patrocinadores Oficiais", galeri:"Galeria", resmi:"Sites Oficiais", iletisim:"Contacto", platform:"Plataformas Especiais", sec1:"Transmissões", mission:"Nossa Missão", markalar:"Enciclopédia de Marcas", ekipman:"Marcas de Capacetes e Macacões", lastik:"Marcas de Pneus", sec3:"Corridas", takvim:"Calendário 2026", sonuclar:"Resultados das Corridas", biniciler:"Pilotos e Equipas", tt:"Isle of Man TT", haberler:"Notícias", global:"Desportos Globais", mission:"Nossa Missão", missionText:"Apoiar o mundo dos desportos a motor e conectar fãs a transmissões legais de alta qualidade. Bem-vindos a todos!", missionLink:"Guia de Transmissão Legal" },
-                platform: {
-                    title:"Bem-vindo ao Mundo dos Desportos a Motor!",
-                    p1:"🌍 motogpvideo.com é uma plataforma independente de informação e guia de transmissão para fãs de desportos a motor de todo o mundo.",
-                    p2:"📺 Descubra onde, em que canal e plataforma assistir MotoGP, WorldSBK, Moto2, Moto3, World SSP e Fórmula 1, tudo num só lugar.",
-                    p3:"🇹🇷 Acompanhe as alinhamentos completos de pilotos de todas as categorias, liderados pelo orgulho do motociclismo turco: Toprak Razgatlıoğlu, Bahattin Sofuoğlu, Can Öncü e Deniz Öncü.",
-                    p4:"📰 Últimas notícias, calendários de corridas 2026, informações de circuitos e enciclopédia de marcas, tudo o que precisa está aqui.",
-                    p5:"⚡ Nosso objetivo é simples: oferecer uma plataforma gratuita e acessível para todos os fãs de desportos a motor, independentemente do idioma.",
-                    p6:"🏁 Que a corrida comece!",
-                    disc:"⚠️ Este site não é uma emissora oficial. Todos os direitos de transmissão pertencem às respetivas organizações."
-                },
-                nav: ["Início","Corridas ▾","Galeria","Sites Oficiais","Contacto"],
-                tvRaceTitle:"CANAIS DE CORRIDAS DE DESPORTOS A MOTOR", turkRiders:"PILOTOS TURCOS", officialBadge:"EMISSORA OFICIAL", watchBtn:"ASSISTIR NO SITE OFICIAL", btnGit:"EMISSORA OFICIAL",
-                secTitles: { canli:"Sites Oficiais", tv:"Canais de TV por País", platform:"Plataformas Especiais", markalar:"Enciclopédia de Marcas", ekipman:"Marcas de Capacetes e Macacões", lastik:"Marcas de Pneus", takvim:"Calendário MotoGP 2026", biniciler:"Pilotos e Equipas", haberler:"Últimas Notícias", global:"Desportos Globais" },
-                rssTabs: ["MotoGP","WorldSBK","Fórmula 1","WRC Rali","WEC Resistência","Motocross (MXGP)"],
-                footer: "ESTE SITE NÃO É UMA EMISSORA OFICIAL. TODOS OS DIREITOS DE TRANSMISSÃO PERTENCEM ÀS RESPETIVAS ORGANIZAÇÕES.",
-                chBtn: "ASSISTIR NO SITE OFICIAL",
-                heroTitle: "BEM-VINDO AO MUNDO DOS DESPORTOS A MOTOR!",
-                heroDesc: "Sua plataforma central para acompanhar as corridas de MotoGP, WorldSBK e Fórmula 1, últimas notícias, alinhamentos de pilotos e calendários de corridas.",
-                appBanner: "📱 Nosso app Android MotoGP Video já está disponível! Baixe agora no seu telefone",
-                brandLabels:{founded:"Fundado", champ:"Campeonatos", riders:"Pilotos Chave", site:"🌐 SITE OFICIAL"},
-                countryNames: { usa:"EUA", uk_italy:"Reino Unido / Itália", europe:"Europa", france:"França", germany_austria:"Alemanha / Áustria", uk:"Reino Unido", world:"🌐 Mundial", europe_globe:"🌍 Europa", usa_flag:"🇺🇸 EUA", turkey:"Turquia", asia:"Ásia", japan:"Japão", indonesia:"Indonésia", india:"Índia", latin_america:"América Latina", brazil:"Brasil", middle_east:"Oriente Médio", africa:"África", isle_of_man:"🇮🇲 Ilha de Man", canada:"Canadá", mexico:"México", germany:"Alemanha", italy:"Itália", china:"China", australia:"Austrália" },
-                worldCupTitle:"🌍 COPA DO MUNDO FIFA 2026 — CANAIS OFICIAIS DE TRANSMISSÃO",
-                tt: {
-                    heroTitle:"🇮🇲 ISLE OF MAN TT — A TODO GÁS DESDE 1907 ⚡",
-                    heroDesc:"A Isle of Man TT, a corrida de rua mais antiga e exigente do mundo, é realizada todos os anos no Mountain Course. Uma corrida de motos lendária em estradas públicas, com velocidades próximas de 300 km/h.",
-                    cardCourseTitle:"🏁 Mountain Course", cardCourseValue:"60,72 km / 37,73 mi",
-                    cardDateTitle:"📅 TT 2027", cardDateValue:"31 de maio – 12 de junho de 2027",
-                    cardRiderTitle:"🏆 Michael Dunlop", cardRiderValue:"29+ vitórias no TT",
-                    cardLocationTitle:"📍 Localização", cardLocationValue:"Douglas, Isle of Man",
-                    linksTitle:"Links Oficiais",
-                    linkSite:"Site Oficial", linkSiteBtn:"VISITAR",
-                    linkNews:"Notícias TT", linkNewsBtn:"NOTÍCIAS",
-                    linkPlus:"TT+", linkPlusBtn:"ASSISTIR",
-                    linkLive:"TT Live Pass", linkLiveBtn:"TRANSMISSÃO EM DIRETO",
-                    linkClassic:"Classic TT", linkClassicBtn:"EXPLORAR",
-                    linkLinktree:"Todos os Links", linkLinktreeBtn:"LINKTREE",
-                    socialTitle:"Redes Sociais",
-                    disclaimer:"⚠️ Este site não é uma emissora oficial. Todos os direitos de transmissão e marca relacionados à Isle of Man TT pertencem à TT Races Official / Isle of Man Government."
-                }
-            },
-            ar: {
-                title: "مركز رياضات المحركات", label: "آخر الأخبار", news: "• عطلة نهاية أسبوع السباق على الأبواب!", pilots: "تركيا: توبراك رازغاتلي أوغلو", live: "معلومات وجدول البث", cdLabel: "الوقت المتبقي لجائزة تركيا الكبرى 2026:",
-                sidebar: { sec1:"البث", canli:"معلومات رياضات المحركات", tv:"قنوات التلفزيون", platform:"منصات خاصة", sec2:"معلومات", sponsor:"الرعاة الرسميون", galeri:"معرض الصور", resmi:"المواقع الرسمية", iletisim:"اتصل بنا", platform:"منصات خاصة", sec1:"البث", mission:"مهمتنا", markalar:"موسوعة العلامات التجارية", ekipman:"علامات الخوذات والبدلات", lastik:"علامات الإطارات", sec3:"السباقات", takvim:"تقويم 2026", sonuclar:"نتائج السباقات", biniciler:"السائقون والفرق", tt:"جزيرة مان TT", haberler:"الأخبار", global:"رياضات عالمية بارزة", mission:"مهمتنا", missionText:"دعم عالم رياضات المحركات وربط المشجعين ببث قانوني عالي الجودة. مرحباً بالجميع!", missionLink:"دليل البث المباشر القانوني" },
-                platform: {
-                    title:"مرحباً بكم في عالم رياضات المحركات!",
-                    p1:"🌍 موقع motogpvideo.com هو منصة معلومات وبث مستقلة لعشاق رياضات المحركات حول العالم.",
-                    p2:"📺 اكتشف أين ومن خلال أي قناة ومنصة يمكنك مشاهدة MotoGP وWorldSBK وMoto2 وMoto3 وFormula 1 — كل ذلك في مكان واحد.",
-                    p3:"🇹🇷 تابع قوائم السائقين الكاملة لجميع الفئات، بقيادة فخر رياضة المحركات التركية: توبراك رازغاتلي أوغلو وباهاتين صوفوأوغلو وجان أونجو ودنيز أونجو.",
-                    p4:"📰 آخر الأخبار، وتقويم سباقات 2026، ومعلومات الحلبات، وموسوعة العلامات التجارية — كل ما تحتاجه موجود هنا.",
-                    p5:"⚡ هدفنا بسيط: تقديم منصة مجانية ومتاحة لكل عشاق رياضات المحركات، بغض النظر عن اللغة.",
-                    p6:"🏁 لتبدأ السباقات!",
-                    disc:"⚠️ هذا الموقع ليس جهة بث رسمية. جميع حقوق البث ملك للمنظمات المعنية."
-                },
-                nav: ["الرئيسية","السباقات ▾","المعرض","المواقع الرسمية","اتصل بنا"],
-                tvRaceTitle:"قنوات سباقات رياضات المحركات", turkRiders:"السائقون الأتراك", officialBadge:"جهة البث الرسمية", watchBtn:"شاهد على الموقع الرسمي", btnGit:"جهة البث الرسمية",
-                secTitles: { canli:"المواقع الرسمية", tv:"قنوات التلفزيون حسب الدولة", platform:"منصات خاصة", markalar:"موسوعة العلامات التجارية", ekipman:"علامات الخوذات والبدلات", lastik:"علامات الإطارات", takvim:"تقويم MotoGP 2026", biniciler:"السائقون والفرق", haberler:"آخر الأخبار", global:"رياضات عالمية بارزة" },
-                rssTabs: ["MotoGP","WorldSBK","فورمولا 1","رالي WRC","تحمل WEC","موتوكروس (MXGP)"],
-                footer: "هذا الموقع ليس جهة بث رسمية. جميع حقوق البث ملك للمنظمات المعنية.",
-                chBtn: "شاهد على الموقع الرسمي",
-                heroTitle: "مرحباً بكم في عالم رياضات المحركات!",
-                heroDesc: "منصتك المركزية لمتابعة سباقات MotoGP وWorldSBK وFormula 1، وآخر الأخبار، وقوائم السائقين، وتقويم السباقات.",
-                appBanner: "📱 تطبيق MotoGP Video لنظام أندرويد متاح الآن! اضغط لتحميله على هاتفك",
-                brandLabels:{founded:"التأسيس", champ:"البطولات", riders:"أبرز السائقين", site:"🌐 الموقع الرسمي"},
-                countryNames: { usa:"الولايات المتحدة", uk_italy:"بريطانيا / إيطاليا", europe:"أوروبا", france:"فرنسا", germany_austria:"ألمانيا / النمسا", uk:"بريطانيا", world:"🌐 عالمي", europe_globe:"🌍 أوروبا", usa_flag:"🇺🇸 الولايات المتحدة", turkey:"تركيا", asia:"آسيا", japan:"اليابان", indonesia:"إندونيسيا", india:"الهند", latin_america:"أمريكا اللاتينية", brazil:"البرازيل", middle_east:"الشرق الأوسط", africa:"أفريقيا", isle_of_man:"🇮🇲 جزيرة مان", canada:"كندا", mexico:"المكسيك", germany:"ألمانيا", italy:"إيطاليا", china:"الصين", australia:"أستراليا" },
-                worldCupTitle:"🌍 كأس العالم FIFA 2026 — قنوات البث الرسمية",
-                tt: {
-                    heroTitle:"🇮🇲 جزيرة مان TT — بأقصى سرعة منذ 1907 ⚡",
-                    heroDesc:"يقام سباق جزيرة مان TT، أقدم وأصعب سباق طرق في العالم، كل عام على مسار الجبل (Mountain Course). سباق دراجات نارية أسطوري على طرق عامة بسرعات تقترب من 300 كم/س.",
-                    cardCourseTitle:"🏁 مسار الجبل", cardCourseValue:"60.72 كم / 37.73 ميل",
-                    cardDateTitle:"📅 TT 2027", cardDateValue:"31 مايو – 12 يونيو 2027",
-                    cardRiderTitle:"🏆 مايكل دنلوب", cardRiderValue:"+29 انتصاراً في TT",
-                    cardLocationTitle:"📍 الموقع", cardLocationValue:"دوغلاس، جزيرة مان",
-                    linksTitle:"روابط رسمية",
-                    linkSite:"الموقع الرسمي", linkSiteBtn:"زيارة",
-                    linkNews:"أخبار TT", linkNewsBtn:"الأخبار",
-                    linkPlus:"TT+", linkPlusBtn:"مشاهدة",
-                    linkLive:"TT Live Pass", linkLiveBtn:"بث مباشر",
-                    linkClassic:"Classic TT", linkClassicBtn:"استكشف",
-                    linkLinktree:"كل الروابط", linkLinktreeBtn:"LINKTREE",
-                    socialTitle:"وسائل التواصل الاجتماعي",
-                    disclaimer:"⚠️ هذا الموقع ليس جهة بث رسمية. جميع حقوق البث والعلامة التجارية المتعلقة بسباق جزيرة مان TT ملك لـ TT Races Official / حكومة جزيرة مان."
-                }
-            },
-            id: {
-                title: "PUSAT OLAHRAGA MOTOR", label: "TERBARU", news: "• Akhir pekan balapan akan segera tiba!", pilots: "Indonesia: Veda Pratama, Mario Suryo Aji", live: "INFO & JADWAL SIARAN", cdLabel: "WAKTU TERSISA UNTUK GP TURKI 2026:",
-                sidebar: { sec1:"Siaran", canli:"Info Olahraga Motor", tv:"Kanal TV", platform:"Platform Khusus", sec2:"Info", sponsor:"Sponsor Resmi", galeri:"Galeri", resmi:"Situs Resmi", iletisim:"Kontak", platform:"Platform Khusus", sec1:"Siaran", mission:"Misi Kami", markalar:"Ensiklopedia Merek", ekipman:"Merek Helm & Jaket Kulit", lastik:"Merek Ban", sec3:"Balapan", takvim:"Kalender 2026", sonuclar:"Hasil Balapan", biniciler:"Pembalap & Tim", tt:"Isle of Man TT", haberler:"Berita", global:"Olahraga Global", mission:"Misi Kami", missionText:"Mendukung dunia olahraga motor dan menghubungkan penggemar dengan siaran legal berkualitas tinggi. Selamat datang semua!", missionLink:"Panduan Streaming Legal" },
-                platform: {
-                    title:"Selamat Datang di Dunia Olahraga Motor!",
-                    p1:"🌍 motogpvideo.com adalah platform informasi dan panduan siaran independen untuk penggemar olahraga motor di seluruh dunia.",
-                    p2:"📺 Temukan di mana, di kanal dan platform apa untuk menonton MotoGP, WorldSBK, Moto2, Moto3, World SSP, dan Formula 1, semuanya dalam satu tempat.",
-                    p3:"🇹🇷 Ikuti susunan pembalap lengkap dari semua kategori, dipimpin oleh kebanggaan olahraga motor Turki: Toprak Razgatlıoğlu, Bahattin Sofuoğlu, Can Öncü, dan Deniz Öncü.",
-                    p4:"📰 Berita terbaru, kalender balapan 2026, informasi sirkuit, dan ensiklopedia merek, semua yang Anda butuhkan ada di sini.",
-                    p5:"⚡ Tujuan kami sederhana: menyediakan platform gratis dan mudah diakses untuk setiap penggemar olahraga motor, tanpa memandang bahasa.",
-                    p6:"🏁 Mari balapan dimulai!",
-                    disc:"⚠️ Situs ini bukan penyiar resmi. Semua hak siaran adalah milik organisasi terkait."
-                },
-                nav: ["Beranda","Balapan ▾","Galeri","Situs Resmi","Kontak"],
-                tvRaceTitle:"KANAL BALAPAN OLAHRAGA MOTOR", turkRiders:"PEMBALAP TURKI", officialBadge:"PENYIAR RESMI", watchBtn:"TONTON DI SITUS RESMI", btnGit:"PENYIAR RESMI",
-                secTitles: { canli:"Situs Resmi", tv:"Kanal TV per Negara", platform:"Platform Khusus", markalar:"Ensiklopedia Merek", ekipman:"Merek Helm & Jaket Kulit", lastik:"Merek Ban", takvim:"Kalender MotoGP 2026", biniciler:"Pembalap & Tim", haberler:"Berita Terbaru", global:"Olahraga Global" },
-                rssTabs: ["MotoGP","WorldSBK","Formula 1","WRC Reli","WEC Ketahanan","Motocross (MXGP)"],
-                footer: "SITUS INI BUKAN PENYIAR RESMI. SEMUA HAK SIARAN ADALAH MILIK ORGANISASI TERKAIT.",
-                chBtn: "TONTON DI SITUS RESMI",
-                heroTitle: "SELAMAT DATANG DI DUNIA OLAHRAGA MOTOR!",
-                heroDesc: "Platform utama Anda untuk mengikuti balapan MotoGP, WorldSBK, dan Formula 1, berita terbaru, susunan pembalap, dan kalender balapan.",
-                appBanner: "📱 Aplikasi Android MotoGP Video kami sudah tersedia! Unduh sekarang ke ponsel Anda",
-                brandLabels:{founded:"Didirikan", champ:"Kejuaraan", riders:"Pembalap Utama", site:"🌐 SITUS RESMI"},
-                countryNames: { usa:"AS", uk_italy:"Inggris / Italia", europe:"Eropa", france:"Prancis", germany_austria:"Jerman / Austria", uk:"Inggris", world:"🌐 Seluruh Dunia", europe_globe:"🌍 Eropa", usa_flag:"🇺🇸 AS", turkey:"Turki", asia:"Asia", japan:"Jepang", indonesia:"Indonesia", india:"India", latin_america:"Amerika Latin", brazil:"Brasil", middle_east:"Timur Tengah", africa:"Afrika", isle_of_man:"🇮🇲 Pulau Man", canada:"Kanada", mexico:"Meksiko", germany:"Jerman", italy:"Italia", china:"Tiongkok", australia:"Australia" },
-                worldCupTitle:"🌍 PIALA DUNIA FIFA 2026 — KANAL SIARAN RESMI",
-                tt: {
-                    heroTitle:"🇮🇲 ISLE OF MAN TT — GAS PENUH SEJAK 1907 ⚡",
-                    heroDesc:"Isle of Man TT, balapan jalan raya tertua dan paling menantang di dunia, diadakan setiap tahun di Mountain Course. Balapan motor legendaris di jalan umum dengan kecepatan mendekati 300 km/jam.",
-                    cardCourseTitle:"🏁 Mountain Course", cardCourseValue:"60,72 km / 37,73 mi",
-                    cardDateTitle:"📅 TT 2027", cardDateValue:"31 Mei – 12 Juni 2027",
-                    cardRiderTitle:"🏆 Michael Dunlop", cardRiderValue:"29+ kemenangan TT",
-                    cardLocationTitle:"📍 Lokasi", cardLocationValue:"Douglas, Isle of Man",
-                    linksTitle:"Tautan Resmi",
-                    linkSite:"Situs Resmi", linkSiteBtn:"KUNJUNGI",
-                    linkNews:"Berita TT", linkNewsBtn:"BERITA",
-                    linkPlus:"TT+", linkPlusBtn:"TONTON",
-                    linkLive:"TT Live Pass", linkLiveBtn:"SIARAN LANGSUNG",
-                    linkClassic:"Classic TT", linkClassicBtn:"JELAJAHI",
-                    linkLinktree:"Semua Tautan", linkLinktreeBtn:"LINKTREE",
-                    socialTitle:"Media Sosial",
-                    disclaimer:"⚠️ Situs ini bukan penyiar resmi. Semua hak siaran dan merek terkait Isle of Man TT adalah milik TT Races Official / Isle of Man Government."
-                }
-            },
-        };
+/* ===== MGV app.js — Optimized: langData lazy-loaded per language ===== */
+
+// Language data cache — only the active language is loaded
+const langData = {};
+let _langLoadPromises = {};
+
+/**
+ * Load a language JSON file. Returns cached data if already loaded.
+ * @param {string} lang - Language code (tr, en, de, etc.)
+ * @returns {Promise<object>} Language data object
+ */
+function loadLang(lang) {
+    if (langData[lang]) return Promise.resolve(langData[lang]);
+    if (_langLoadPromises[lang]) return _langLoadPromises[lang];
+    _langLoadPromises[lang] = fetch('/lang/' + lang + '.json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            langData[lang] = data;
+            delete _langLoadPromises[lang];
+            return data;
+        })
+        .catch(function(err) {
+            console.warn('Lang load failed:', lang, err);
+            delete _langLoadPromises[lang];
+            // Fallback to Turkish if available
+            if (lang !== 'tr' && langData['tr']) return langData['tr'];
+            return null;
+        });
+    return _langLoadPromises[lang];
+}
 
         const navLabels = {
             tr:{takvim:"📅 Takvim",puan:"🏆 Puan",canli:"📺 Yayın Rehberi",readBtn:"OKU",newsLoaded:"{n} haber yüklendi",footerPrivacy:"🔒 Gizlilik & KVKK",footerCookie:"🍪 Çerez Politikası",footerContact:"✉️ İletişim"},
@@ -496,9 +86,11 @@ const langData = {
         }
 
         function switchLang(lang) {
+            loadLang(lang).then(function(d) {
+                if (!d) return;
             document.querySelectorAll(".lang-btn").forEach(btn => btn.classList.remove("active"));
             document.querySelectorAll(".lang-btn").forEach(btn => { if(btn.textContent.includes(lang.toUpperCase())) btn.classList.add("active"); });
-            const d = langData[lang];
+            
             document.title = d.heroTitle + " | motogpvideo.com";
             const __metaDesc = document.querySelector('meta[name="description"]'); if (__metaDesc) __metaDesc.setAttribute('content', d.heroDesc);
             const __ogTitle = document.querySelector('meta[property="og:title"]'); if (__ogTitle) __ogTitle.setAttribute('content', d.heroTitle);
@@ -591,6 +183,8 @@ const langData = {
             const ltEl = document.querySelector('.lt-guide-' + lang);
             if (ltEl) ltEl.style.display = 'inline';
             else { const ltTr = document.querySelector('.lt-guide-tr'); if(ltTr) ltTr.style.display='inline'; }
+        
+            });
         }
 
         function showSection(id) {
@@ -1438,7 +1032,7 @@ const langData = {
 
     function buildBrandGrid() {
             const lang = document.documentElement.lang || 'tr';
-            const ld = langData[lang];
+            const ld = langData[lang] || {};
             const bl = ld && ld.brandLabels ? ld.brandLabels : {founded:"GP Girişi", champ:"Şampiyonluk", riders:"Öne Çıkan İsimler", site:"🌐 RESMİ SİTE"};
             const grid = document.getElementById("brand-grid");
             grid.innerHTML = "";
@@ -1615,9 +1209,13 @@ const langData = {
     });
 
     function switchLangSilent(lang) {
-        document.querySelectorAll(".lang-btn").forEach(btn => { btn.classList.remove("active"); });
-        document.querySelectorAll(".lang-btn").forEach(btn => { if (btn.textContent.includes(lang.toUpperCase())) btn.classList.add("active"); });
-        const d = langData[lang];
+        loadLang(lang).then(function(d) {
+            if (!d) return;
+            document.querySelectorAll(".lang-btn").forEach(btn => { btn.classList.remove("active"); });
+            document.querySelectorAll(".lang-btn").forEach(btn => { if (btn.textContent.includes(lang.toUpperCase())) btn.classList.add("active"); });
+
+        
+        
         /* SEO KORUMASI: Otomatik dil algılamada title/meta değişmez. Googlebot en-US
            olduğu için aksi halde İngilizce başlık dizine giriyor (GSC'de görüldü).
            Title/meta sadece kullanıcı bilinçli dil seçmişse (userLangChoice) güncellenir. */
@@ -1704,6 +1302,8 @@ const langData = {
         const ltEl2 = document.querySelector('.lt-guide-' + lang);
         if (ltEl2) ltEl2.style.display = 'inline';
         else { const ltTr2 = document.querySelector('.lt-guide-tr'); if(ltTr2) ltTr2.style.display='inline'; }
+    
+        });
     }
 
 /* ===== MGV app.js — index inline bloklarından taşındı ===== */
@@ -1748,8 +1348,8 @@ function closeWelcomePopup(){
     var urlLang = params.get('lang');
     if(!urlLang || supportedLangs.indexOf(urlLang) === -1) return;
 
-    function applySeoLang(lang){
-        var d = langData[lang];
+    function applySeoLang(lang){ loadLang(lang).then(function(d) {
+        
         if(!d) return;
         if(d.title) document.title = d.title + ' | motogpvideo.com';
         if(d.heroDesc){
@@ -1757,7 +1357,7 @@ function closeWelcomePopup(){
             if(metaDesc) metaDesc.setAttribute('content', d.heroDesc);
             var ogDesc = document.querySelector('meta[property="og:description"]');
             if(ogDesc) ogDesc.setAttribute('content', d.heroDesc);
-        }
+        }});
         if(d.heroTitle){
             var ogTitle = document.querySelector('meta[property="og:title"]');
             if(ogTitle) ogTitle.setAttribute('content', d.heroTitle);
