@@ -329,41 +329,41 @@ function loadLang(lang) {
         const raceCalendars = {
             motogp: [
                 {venue:"Hollanda (Assen)", date:"2026-06-28T14:00:00"},
-                {venue:"Almanya (Sachsenring)", date:"2026-07-12T23:59:00"},
-                {venue:"Britanya (Silverstone)", date:"2026-08-09T23:59:00"},
-                {venue:"Aragón (MotorLand)", date:"2026-08-30T23:59:00"},
-                {venue:"San Marino (Misano)", date:"2026-09-13T23:59:00"},
-                {venue:"Avusturya (Red Bull Ring)", date:"2026-09-20T23:59:00"},
-                {venue:"Japonya (Motegi)", date:"2026-10-04T23:59:00"},
-                {venue:"Endonezya (Mandalika)", date:"2026-10-11T23:59:00"},
-                {venue:"Avustralya (Phillip Island)", date:"2026-10-25T23:59:00"},
-                {venue:"Malezya (Sepang)", date:"2026-11-01T23:59:00"},
-                {venue:"Portekiz (Algarve)", date:"2026-11-15T23:59:00"},
-                {venue:"Valencia (Ricardo Tormo)", date:"2026-11-22T23:59:00"}
+                {venue:"Almanya (Sachsenring)", date:"2026-07-12T13:00:00"},
+                {venue:"Britanya (Silverstone)", date:"2026-08-09T16:00:00"},
+                {venue:"Aragón (MotorLand)", date:"2026-08-30T15:00:00"},
+                {venue:"San Marino (Misano)", date:"2026-09-13T15:00:00"},
+                {venue:"Avusturya (Red Bull Ring)", date:"2026-09-20T15:00:00"},
+                {venue:"Japonya (Motegi)", date:"2026-10-04T09:00:00"},
+                {venue:"Endonezya (Mandalika)", date:"2026-10-11T10:00:00"},
+                {venue:"Avustralya (Phillip Island)", date:"2026-10-25T07:00:00"},
+                {venue:"Malezya (Sepang)", date:"2026-11-01T10:00:00"},
+                {venue:"Portekiz (Algarve)", date:"2026-11-15T15:00:00"},
+                {venue:"Valencia (Ricardo Tormo)", date:"2026-11-22T15:00:00"}
             ],
             wsbk: [
                 {venue:"San Marino (Misano)", date:"2026-06-14T23:59:00"},
-                {venue:"Britanya (Donington)", date:"2026-07-12T23:59:00"},
-                {venue:"Fransa (Magny-Cours)", date:"2026-09-06T23:59:00"},
-                {venue:"İtalya (Cremona)", date:"2026-09-27T23:59:00"},
-                {venue:"Portekiz (Estoril)", date:"2026-10-11T23:59:00"},
-                {venue:"İspanya (Jerez)", date:"2026-10-18T23:59:00"}
+                {venue:"Britanya (Donington)", date:"2026-07-12T13:00:00"},
+                {venue:"Fransa (Magny-Cours)", date:"2026-09-06T15:00:00"},
+                {venue:"İtalya (Cremona)", date:"2026-09-27T15:00:00"},
+                {venue:"Portekiz (Estoril)", date:"2026-10-11T15:00:00"},
+                {venue:"İspanya (Jerez)", date:"2026-10-18T15:00:00"}
             ],
             f1: [
                 {venue:"Kanada GP", date:"2026-06-15T23:59:00"},
                 {venue:"Avusturya GP", date:"2026-06-29T23:59:00"},
-                {venue:"Britanya GP", date:"2026-07-06T23:59:00"},
-                {venue:"Belçika GP", date:"2026-07-27T23:59:00"},
-                {venue:"Macaristan GP", date:"2026-08-03T23:59:00"},
-                {venue:"Hollanda GP", date:"2026-08-31T23:59:00"},
-                {venue:"İtalya GP (Monza)", date:"2026-09-07T23:59:00"},
-                {venue:"Singapur GP", date:"2026-09-21T23:59:00"},
-                {venue:"ABD GP (Austin)", date:"2026-10-19T23:59:00"},
-                {venue:"Meksika GP", date:"2026-10-26T23:59:00"},
-                {venue:"Brezilya GP", date:"2026-11-09T23:59:00"},
-                {venue:"Las Vegas GP", date:"2026-11-22T23:59:00"},
-                {venue:"Katar GP", date:"2026-11-29T23:59:00"},
-                {venue:"Abu Dabi GP", date:"2026-12-06T23:59:00"}
+                {venue:"Britanya GP", date:"2026-07-06T15:00:00"},
+                {venue:"Belçika GP", date:"2026-07-27T16:00:00"},
+                {venue:"Macaristan GP", date:"2026-08-03T16:00:00"},
+                {venue:"Hollanda GP", date:"2026-08-31T16:00:00"},
+                {venue:"İtalya GP (Monza)", date:"2026-09-07T16:00:00"},
+                {venue:"Singapur GP", date:"2026-09-21T15:00:00"},
+                {venue:"ABD GP (Austin)", date:"2026-10-19T21:00:00"},
+                {venue:"Meksika GP", date:"2026-10-26T22:00:00"},
+                {venue:"Brezilya GP", date:"2026-11-09T20:00:00"},
+                {venue:"Las Vegas GP", date:"2026-11-22T08:00:00"},
+                {venue:"Katar GP", date:"2026-11-29T18:00:00"},
+                {venue:"Abu Dabi GP", date:"2026-12-06T16:00:00"}
             ]
         };
 
